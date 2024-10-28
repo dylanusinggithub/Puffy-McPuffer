@@ -59,7 +59,7 @@ public class LockBalancing : MonoBehaviour
         {
             moveBoat();
             updateTimer();
-            if(Input.GetMouseButtonUp(0)) steerBoat();
+            steerBoat();
         }
         if (player.transform.position.magnitude > failureRadius) GameOver();
 
