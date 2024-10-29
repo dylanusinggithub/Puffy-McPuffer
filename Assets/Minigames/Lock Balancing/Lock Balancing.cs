@@ -130,7 +130,7 @@ public class LockBalancing : MonoBehaviour
         boatRotation *= strengthR;
 
         Vector3 boatTransform = new Vector3(boatTransformX, boatTransformY, 0);
-        player.transform.position = boatTransform - player.transform.position;
+        player.transform.position = boatTransform;
 
         player.transform.eulerAngles = new Vector3(0, 0, player.transform.position.magnitude * boatRotation);
     }
