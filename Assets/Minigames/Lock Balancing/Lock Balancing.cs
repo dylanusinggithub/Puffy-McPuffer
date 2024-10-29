@@ -32,6 +32,12 @@ public class LockBalancing : MonoBehaviour
     int perlinR = 0;
 
 
+    [SerializeField, Range(0f, 3f)]
+    float startScale = 0.7f;
+
+    [SerializeField, Range(0f, 3f)]
+    float endScale = 1.2f;
+
     // Gameplay
     [Header("Gameplay")]
     [SerializeField, Range(5f, 30f)]
@@ -45,8 +51,8 @@ public class LockBalancing : MonoBehaviour
     float failureRadius = 5;
     bool gameFailed;
 
-    [SerializeField, Range(1f, 100f)]
-    int mouseStrength = 25;
+    [SerializeField, Range(0f, 100f)]
+    int mouseStrength = 0;
 
     [SerializeField]
     bool mouseInvetered;
@@ -65,18 +71,24 @@ public class LockBalancing : MonoBehaviour
         Gizmos.DrawWireSphere(Vector3.zero, failureRadius);
     }
 
-    
-    void Update()
+
+    void FixedUpdate()
     {
         if (!gameFailed)
         {
             moveBoat();
             updateTimer();
             steerBoat();
-            increaseStrength();
+            increaseScale();
         }
 
     }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        Time.timeScale = 0;
+        Timer.text = "Failure";
+    }
+
     void GameOver()
     {
         gameFailed = true;
@@ -93,9 +105,10 @@ public class LockBalancing : MonoBehaviour
         player.transform.Translate(mousePos);
     }
 
-    void increaseStrength()
+    void increaseScale()
     {
-        
+        float scale = Mathf.Lerp(startScale, endScale, (startTime - timeRemaining) / startTime);
+        player.transform.localScale = new Vector3(scale, scale, 0);
     }
 
     void updateTimer()
@@ -130,8 +143,8 @@ public class LockBalancing : MonoBehaviour
         boatRotation *= strengthR;
 
         Vector3 boatTransform = new Vector3(boatTransformX, boatTransformY, 0);
-        player.transform.position = boatTransform;
 
+        player.transform.position = boatTransform;
         player.transform.eulerAngles = new Vector3(0, 0, player.transform.position.magnitude * boatRotation);
     }
 }
