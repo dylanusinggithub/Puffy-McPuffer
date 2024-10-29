@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class NEWLockBalancing : MonoBehaviour
 {
@@ -35,22 +34,29 @@ public class NEWLockBalancing : MonoBehaviour
     // Gameplay
     [Header("Gameplay")]
     [SerializeField, Range(5f, 30f)]
-    float startTime = 10;
+    float timeStart = 10;
     float timeRemaining;
 
     Text Timer;
-    bool gameFailed;
 
-    [SerializeField, Range(1f, 10f)]
+    [SerializeField, Range(0f, 10f)]
+    float collisionX = 5;
+
+    [SerializeField, Range(1f, 4f)]
     float waterMaxHeight = 5;
-    float waterHeight;
+    float waterHeight = -3.8f;
 
-
+    // Controls
+    [Header("Controls")]
     [SerializeField, Range(0f, 100f)]
     int mouseStrength = 0;
 
     [SerializeField]
-    bool mouseInvetered;
+    bool mouseInverted;
+
+
+    enum GameState { Start, Play, Fail, Complete };
+    GameState state;
 
     // Start is called before the first frame update
     void Awake()
@@ -58,45 +64,104 @@ public class NEWLockBalancing : MonoBehaviour
         player = GameObject.Find("Player");
         Timer = GameObject.Find("Timer").GetComponent<Text>();
 
-        timeRemaining = startTime;
+        Timer.enabled = false;
+
+        timeRemaining = timeStart;
+        state = GameState.Start;
     }
 
     void FixedUpdate()
     {
-        if (!gameFailed)
+
+        switch (state)
         {
-            moveBoat();
-            updateTimer();
-            steerBoat();
-            increaseHeight();
+            case GameState.Start:
+                {
+                    animationMoveLeft();
+                }
+                break;
+
+            case GameState.Play:
+                {
+                    moveBoat();
+                    updateTimer();
+                    steerBoat();
+                    increaseHeight();
+                    checkCollision();
+                }
+                break;
+
+            case GameState.Complete:
+                {
+                    animationMoveLeft();
+                }
+                break;
         }
-
-    }
-    void OnTriggerExit2D(Collider2D other)
-    {
-        Time.timeScale = 0;
-        Timer.text = "Failure";
     }
 
-    void GameOver()
+
+    void OnDrawGizmos()
     {
-        gameFailed = true;
-        Timer.text = "Failure";
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(Vector2.zero, new Vector2(collisionX, 10));
+    }
+
+    void checkCollision()
+    {
+        if (Mathf.Abs(player.transform.position.x) > collisionX)
+        {
+            state = GameState.Fail;
+            Timer.text = "Failure";
+        }
+    }
+
+    void animationMoveLeft()
+    {
+        if (state == GameState.Start)
+            if (player.transform.position.x < 0)
+            {
+                state = GameState.Play;
+                Timer.enabled = true;
+            }
+
+        if (state == GameState.Complete)
+            if (player.transform.position.x < -11) Time.timeScale = 0;
+
+
+        if (perlinY == 100 / perlinStepSizeY) perlinY = 0;
+        else perlinY++;
+
+        if (perlinR == 100 / perlinStepSizeR) perlinR = 0;
+        else perlinR++;
+
+        float boatTransformY = Mathf.PerlinNoise1D(((float)perlinY / 100) * perlinStepSizeY) - 0.5f;
+        float boatRotation = Mathf.PerlinNoise1D(((float)perlinR / 100) * perlinStepSizeR) - 0.5f;
+
+        boatTransformY *= strengthY;
+        boatTransformY += waterHeight;
+
+        boatRotation *= strengthR;
+
+        Vector3 boatTransform = new Vector3(player.transform.position.x - 2 * Time.deltaTime, boatTransformY, 1);
+
+        player.transform.position = boatTransform;
+        player.transform.eulerAngles = new Vector3(0, 0, boatRotation);
     }
 
     void increaseHeight()
     {
-        waterHeight = Mathf.Lerp(-4f, waterMaxHeight, (startTime - timeRemaining) / startTime);
+        float timeElapsed = (timeStart - timeRemaining) / timeStart;
+        waterHeight = Mathf.Lerp(-3.8f, waterMaxHeight, timeElapsed);
     }
 
     void steerBoat()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos *= ((float)mouseStrength / 100);
-        
-        if(mouseInvetered) mousePos = -mousePos;
 
-        player.transform.Translate(mousePos);
+        if (mouseInverted) mousePos = -mousePos;
+
+        player.transform.Translate(new Vector2(mousePos.x, 0));
     }
 
     void updateTimer()
@@ -107,7 +172,11 @@ public class NEWLockBalancing : MonoBehaviour
             timeRemaining -= Time.deltaTime;
             Timer.text = timeRemaining.ToString("F2");
         }
-        else Timer.text = "Finished!";
+        else
+        {
+            state = GameState.Complete;
+            Timer.text = "Complete!";
+        }
     }
 
     void moveBoat()
@@ -125,7 +194,7 @@ public class NEWLockBalancing : MonoBehaviour
         float boatTransformY = Mathf.PerlinNoise1D(((float)perlinY / 100) * perlinStepSizeY) - 0.5f;
 
         float boatRotation = Mathf.PerlinNoise1D(((float)perlinR / 100) * perlinStepSizeR) - 0.5f;
-        
+
         boatTransformX *= strengthX;
 
         boatTransformY *= strengthY;
