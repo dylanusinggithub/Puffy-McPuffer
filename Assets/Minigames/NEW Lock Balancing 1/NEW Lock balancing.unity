@@ -169,14 +169,16 @@ MonoBehaviour:
   perlinStepSizeX: 0.66
   perlinStepSizeY: 1
   perlinStepSizeR: 0.23
-  strengthX: 24.5
+  strengthX: 12.2
   strengthY: 1
   strengthR: 11.2
   timeStart: 30
   collisionX: 4
   waterMaxHeight: 2.8
-  mouseStrength: 100
+  keyStrength: 20
+  mouseStrength: 9
   mouseInverted: 0
+  decelerationAmount: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

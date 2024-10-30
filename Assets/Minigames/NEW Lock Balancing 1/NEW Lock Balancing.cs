@@ -49,11 +49,21 @@ public class NEWLockBalancing : MonoBehaviour
     // Controls
     [Header("Controls")]
     [SerializeField, Range(0f, 100f)]
-    int mouseStrength = 0;
+    int keyStrength = 20;
+
+    [SerializeField, Range(0f, 100f)]
+    int mouseStrength = 10;
+
+    [SerializeField, Range(0f, 3f)]
+    float mouseMaxDist = 2;
 
     [SerializeField]
-    bool mouseInverted;
+    bool mouseInverted = false;
 
+    [SerializeField, Range(0f, 100f)]
+    int decelerationAmount = 0;
+
+    float playerMovement;
 
     enum GameState { Start, Play, Fail, Complete };
     GameState state;
@@ -98,7 +108,6 @@ public class NEWLockBalancing : MonoBehaviour
                 break;
         }
     }
-
 
     void OnDrawGizmos()
     {
@@ -156,12 +165,31 @@ public class NEWLockBalancing : MonoBehaviour
 
     void steerBoat()
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos *= ((float)mouseStrength / 100);
+        if (Input.GetButton("Horizontal"))
+        {
 
-        if (mouseInverted) mousePos = -mousePos;
+            playerMovement += Input.GetAxis("Horizontal") * ((float)keyStrength / 100);
+        }
+        else if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
+        {
+            float mouseDist = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
+            Mathf.Clamp(mouseDist, -mouseMaxDist, mouseMaxDist);
 
-        player.transform.Translate(new Vector2(mousePos.x, 0));
+            if (mouseInverted) mouseDist *= -1;
+
+            playerMovement += mouseDist * ((float)mouseStrength / 100);
+        }
+        else
+        {
+            // Decelerates by X amount (divided by 100 to make it more reasoanble)
+            if (Mathf.Abs(playerMovement) > (float)decelerationAmount / 100)
+            {
+                if (playerMovement > 0) playerMovement -= (float)decelerationAmount / 100;
+                if (playerMovement < 0) playerMovement += (float)decelerationAmount / 100;
+            }
+            else playerMovement = 0;
+        }
+        player.transform.Translate(new Vector2(playerMovement, 0));
     }
 
     void updateTimer()
