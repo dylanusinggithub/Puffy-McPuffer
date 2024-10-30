@@ -26,6 +26,8 @@ public class NEWLockBalancing : MonoBehaviour
     [SerializeField, Range(0f, 100f)]
     float strengthR = 1;
 
+    Vector3 boatTransform;
+
     int perlinX = 0;
     int perlinY = 50;
 
@@ -45,6 +47,13 @@ public class NEWLockBalancing : MonoBehaviour
     [SerializeField, Range(1f, 4f)]
     float waterMaxHeight = 5;
     float waterHeight = -3.8f;
+
+
+    [SerializeField, Range(0f, 100f)]
+    int arrowStrength = 50;
+
+    [SerializeField]
+    GameObject arrowMovement;
 
     // Controls
     [Header("Controls")]
@@ -98,6 +107,7 @@ public class NEWLockBalancing : MonoBehaviour
                     steerBoat();
                     increaseHeight();
                     checkCollision();
+                    displayArrow();
                 }
                 break;
 
@@ -113,6 +123,25 @@ public class NEWLockBalancing : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(Vector2.zero, new Vector2(collisionX, 10));
+    }
+
+    void displayArrow()
+    {
+        Transform arrowBody = arrowMovement.transform.GetChild(0);
+        Transform arrowHead = arrowMovement.transform.GetChild(1);
+
+        float arrowlength = boatTransform.x + playerMovement;
+
+        arrowBody.transform.localScale = new Vector3(arrowlength * (float)arrowStrength / 100, 0.15f, 1);
+        arrowBody.transform.position = new Vector2((arrowlength) / 2 * ((float)arrowStrength / 100), 3.9f);
+
+        arrowHead.transform.position = new Vector2(arrowlength * ((float)arrowStrength / 100), 3.9f);
+        arrowHead.transform.localScale = new Vector3(0.4f, arrowlength * (float)arrowStrength / 400, 1);
+
+
+        Color arrowColour = Color.yellow + (Color.red - Color.yellow) * Mathf.Abs((arrowlength * (float)arrowStrength / 100) / 4);
+        arrowBody.GetComponent<SpriteRenderer>().color = arrowColour;
+        arrowHead.GetComponent<SpriteRenderer>().color = arrowColour;
     }
 
     void checkCollision()
@@ -230,7 +259,7 @@ public class NEWLockBalancing : MonoBehaviour
 
         boatRotation *= strengthR;
 
-        Vector3 boatTransform = new Vector3(boatTransformX, boatTransformY, 0);
+        boatTransform = new Vector3(boatTransformX, boatTransformY, 0);
 
         player.transform.position = boatTransform;
         player.transform.eulerAngles = new Vector3(0, 0, player.transform.position.x * boatRotation);
