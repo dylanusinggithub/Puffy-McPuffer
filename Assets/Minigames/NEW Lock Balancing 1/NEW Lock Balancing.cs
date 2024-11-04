@@ -133,9 +133,7 @@ public class NEWLockBalancing : MonoBehaviour
                     increaseHeight();
                     checkCollision();
                     displayArrow();
-
-                    if (puffy.transform.position.x < 0) puffy.transform.localScale = new Vector3(puffyScaleX, puffy.transform.localScale.y, 1);
-                    else puffy.transform.localScale = new Vector3(-puffyScaleX, puffy.transform.localScale.y, 1);
+                    flipPuffy();
                 }
                 break;
 
@@ -156,6 +154,12 @@ public class NEWLockBalancing : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(Vector2.zero, new Vector2(collisionX, 10));
+    }
+
+    void flipPuffy()
+    {
+        if (puffy.transform.position.x < 0) puffy.transform.localScale = new Vector3(puffyScaleX, puffy.transform.localScale.y, 1);
+        else puffy.transform.localScale = new Vector3(-puffyScaleX, puffy.transform.localScale.y, 1);
     }
 
     void displayArrow()
