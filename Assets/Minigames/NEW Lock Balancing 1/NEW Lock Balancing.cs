@@ -1,11 +1,13 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class NEWLockBalancing : MonoBehaviour
 {
     // Boat Movement
     GameObject player;
+    GameObject WaterSimple;
 
     [Header("Boat Movement")]
     [SerializeField, Range(0f, 5f)]
@@ -27,6 +29,7 @@ public class NEWLockBalancing : MonoBehaviour
     float strengthR = 1;
 
     Vector3 boatTransform;
+    Vector3 waterTransform;
 
     int perlinX = 0;
     int perlinY = 50;
@@ -82,6 +85,7 @@ public class NEWLockBalancing : MonoBehaviour
     {
         player = GameObject.Find("Player");
         Timer = GameObject.Find("Timer").GetComponent<Text>();
+        WaterSimple = GameObject.Find("WaterSimple");
 
         Timer.enabled = false;
 
@@ -118,7 +122,11 @@ public class NEWLockBalancing : MonoBehaviour
                 break;
         }
     }
-
+    public void Retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        print("the button is working");
+    }
     void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
@@ -256,7 +264,6 @@ public class NEWLockBalancing : MonoBehaviour
 
         boatTransformY *= strengthY;
         boatTransformY += waterHeight;
-
         boatRotation *= strengthR;
 
         boatTransform = new Vector3(boatTransformX, boatTransformY, 0);
