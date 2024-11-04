@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class NEWLockBalancing : MonoBehaviour
 {
     // Boat Movement
-    GameObject player;
+    GameObject puffy;
     GameObject WaterSimple;
 
     [Header("Boat Movement")]
@@ -44,13 +44,30 @@ public class NEWLockBalancing : MonoBehaviour
 
     Text Timer;
 
+    float puffyScaleX;
+
     [SerializeField, Range(0f, 10f)]
     float collisionX = 5;
 
+
+    // Water Setting
+    [Header("Water Settings")]
     [SerializeField, Range(1f, 4f)]
     float waterMaxHeight = 5;
-    float waterHeight = -3.8f;
 
+    [SerializeField, Range(1f, 4f)]
+    float waterMinHeight = 3.5f;
+
+    [SerializeField]
+    GameObject waterObject;
+
+    [SerializeField, Range(0f, 1f)]
+    float waterOffset = 1;
+
+    float waterHeight;
+
+    // Arrow
+    [Header("Arrow Settings")]
 
     [SerializeField, Range(0f, 100f)]
     int arrowStrength = 50;
@@ -83,7 +100,7 @@ public class NEWLockBalancing : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        player = GameObject.Find("Player");
+        puffy = GameObject.Find("Player");
         Timer = GameObject.Find("Timer").GetComponent<Text>();
         WaterSimple = GameObject.Find("WaterSimple");
 
@@ -91,6 +108,10 @@ public class NEWLockBalancing : MonoBehaviour
 
         timeRemaining = timeStart;
         state = GameState.Start;
+
+        waterHeight = -waterMinHeight;
+
+        puffyScaleX = puffy.transform.localScale.x;
     }
 
     void FixedUpdate()
@@ -112,6 +133,9 @@ public class NEWLockBalancing : MonoBehaviour
                     increaseHeight();
                     checkCollision();
                     displayArrow();
+
+                    if (puffy.transform.position.x < 0) puffy.transform.localScale = new Vector3(puffyScaleX, puffy.transform.localScale.y, 1);
+                    else puffy.transform.localScale = new Vector3(-puffyScaleX, puffy.transform.localScale.y, 1);
                 }
                 break;
 
@@ -122,9 +146,10 @@ public class NEWLockBalancing : MonoBehaviour
                 break;
         }
     }
-    public void Retry()
+    public void Retry(GameObject Button)
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Button.SetActive(false);
         print("the button is working");
     }
     void OnDrawGizmos()
@@ -154,7 +179,7 @@ public class NEWLockBalancing : MonoBehaviour
 
     void checkCollision()
     {
-        if (Mathf.Abs(player.transform.position.x) > collisionX)
+        if (Mathf.Abs(puffy.transform.position.x) > collisionX)
         {
             state = GameState.Fail;
             Timer.text = "Failure";
@@ -164,14 +189,14 @@ public class NEWLockBalancing : MonoBehaviour
     void animationMoveLeft()
     {
         if (state == GameState.Start)
-            if (player.transform.position.x < 0)
+            if (puffy.transform.position.x < 0)
             {
                 state = GameState.Play;
                 Timer.enabled = true;
             }
 
         if (state == GameState.Complete)
-            if (player.transform.position.x < -11) Time.timeScale = 0;
+            if (puffy.transform.position.x < -11) Time.timeScale = 0;
 
 
         if (perlinY == 100 / perlinStepSizeY) perlinY = 0;
@@ -188,16 +213,19 @@ public class NEWLockBalancing : MonoBehaviour
 
         boatRotation *= strengthR;
 
-        Vector3 boatTransform = new Vector3(player.transform.position.x - 2 * Time.deltaTime, boatTransformY, 1);
+        Vector3 boatTransform = new Vector3(puffy.transform.position.x - 2 * Time.deltaTime, boatTransformY, 1);
 
-        player.transform.position = boatTransform;
-        player.transform.eulerAngles = new Vector3(0, 0, boatRotation);
+        puffy.transform.position = boatTransform;
+        puffy.transform.eulerAngles = new Vector3(0, 0, boatRotation);
     }
 
     void increaseHeight()
     {
         float timeElapsed = (timeStart - timeRemaining) / timeStart;
-        waterHeight = Mathf.Lerp(-3.8f, waterMaxHeight, timeElapsed);
+        waterHeight = Mathf.Lerp(-waterMinHeight, waterMaxHeight, timeElapsed);
+
+        float waterObjectScale = Mathf.Lerp(waterOffset, waterMaxHeight + waterOffset + waterMinHeight, timeElapsed);
+        waterObject.transform.localScale = new Vector3(waterObject.transform.localScale.x, waterObjectScale, 1);
     }
 
     void steerBoat()
@@ -226,7 +254,7 @@ public class NEWLockBalancing : MonoBehaviour
             }
             else playerMovement = 0;
         }
-        player.transform.Translate(new Vector2(playerMovement, 0));
+        puffy.transform.Translate(new Vector2(playerMovement, 0));
     }
 
     void updateTimer()
@@ -268,7 +296,7 @@ public class NEWLockBalancing : MonoBehaviour
 
         boatTransform = new Vector3(boatTransformX, boatTransformY, 0);
 
-        player.transform.position = boatTransform;
-        player.transform.eulerAngles = new Vector3(0, 0, player.transform.position.x * boatRotation);
+        puffy.transform.position = boatTransform;
+        puffy.transform.eulerAngles = new Vector3(0, 0, puffy.transform.position.x * boatRotation);
     }
 }
