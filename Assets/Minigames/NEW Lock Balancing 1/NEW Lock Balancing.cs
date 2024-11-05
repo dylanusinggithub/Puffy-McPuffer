@@ -2,6 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.Mathematics;
+using Random = UnityEngine.Random;
+using System.Collections.Generic;
 
 public class NEWLockBalancing : MonoBehaviour
 {
@@ -51,6 +54,30 @@ public class NEWLockBalancing : MonoBehaviour
 
     [SerializeField]
     GameObject BTN_Retry;
+
+    // Obstacles 
+    [Header("Obstacles Settings")]
+
+    [SerializeField]
+    GameObject[] obstacles;
+    List<GameObject> obstaclesCount = new List<GameObject>();
+
+    [SerializeField, Range(0, 3f)]
+    float obstaclesSpawnRate;
+    float obstaclesSpawnCooldown;
+
+    [SerializeField, Range(0, 3f)]
+    float obstaclesStunTime;
+    float obstaclesStunCooldown;
+
+    [SerializeField, Range(0, 8f)]
+    float obstaclesSpawnRange;
+
+    [SerializeField, Range(0, 100)]
+    int obstaclesChance;
+
+    [SerializeField, Range(0f, 1f)]
+    float obstacleScaleVariance;
 
     // Water Setting
     [Header("Water Settings")]
@@ -112,8 +139,6 @@ public class NEWLockBalancing : MonoBehaviour
         state = GameState.Start;
 
         waterHeight = -waterMinHeight;
-
-        puffyScaleX = puffy.transform.localScale.x;
     }
 
     void FixedUpdate()
@@ -136,6 +161,7 @@ public class NEWLockBalancing : MonoBehaviour
                     checkCollision();
                     displayArrow();
                     flipPuffy();
+                    spawnObstacles();
                 }
                 break;
 
@@ -157,16 +183,56 @@ public class NEWLockBalancing : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         BTN_Retry.SetActive(false);
     }
+
     void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(Vector2.zero, new Vector2(collisionX, 10));
     }
 
+
+    // Hit by obstacle
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        obstaclesStunCooldown = obstaclesStunTime;
+        Destroy(collision.gameObject);
+        state = GameState.Fail;
+        print("owie");
+    }
+
+    void spawnObstacles()
+    {
+        if(obstaclesSpawnCooldown < 0) 
+        { 
+            if (Random.Range(1, obstaclesChance) < obstaclesChance)
+            {
+                Vector3 pos = new Vector3(Random.Range(-obstaclesSpawnRange, obstaclesSpawnRange), 5, 0);
+                GameObject GOObstatical = Instantiate(obstacles[Random.Range(0, obstacles.Length - 1)], pos, quaternion.identity);
+
+                obstaclesSpawnCooldown = obstaclesSpawnRate;
+                obstaclesCount.Add(GOObstatical);
+
+                float scale = Random.Range(-obstacleScaleVariance, obstacleScaleVariance);
+                GOObstatical.transform.localScale = new Vector3(scale, scale, 1);
+
+                for(int i = 0; i < obstaclesCount.Count; i++)
+                {
+                    if (obstaclesCount[i].transform.position.y < -4f)
+                    {
+                        Destroy(obstaclesCount[i]);
+                        obstaclesCount.Remove(obstaclesCount[i]);
+                    }
+                }
+            }
+        }
+        else obstaclesSpawnCooldown -= Time.deltaTime;
+
+    }
+
     void flipPuffy()
     {
-        if (puffy.transform.position.x < 0) puffy.transform.localScale = new Vector3(puffyScaleX, puffy.transform.localScale.y, 1);
-        else puffy.transform.localScale = new Vector3(-puffyScaleX, puffy.transform.localScale.y, 1);
+        if (puffy.transform.position.x < 0) puffy.GetComponent<SpriteRenderer>().flipX = false;
+        else puffy.GetComponent<SpriteRenderer>().flipX = true;
     }
 
     void displayArrow()
@@ -207,7 +273,12 @@ public class NEWLockBalancing : MonoBehaviour
             }
 
         if (state == GameState.Complete)
+        {
+            // So puffy always faces left at end
+            puffy.GetComponent<SpriteRenderer>().flipX = false;
             if (puffy.transform.position.x < -11) Time.timeScale = 0;
+        }
+
 
 
         if (perlinY == 100 / perlinStepSizeY) perlinY = 0;
@@ -241,6 +312,13 @@ public class NEWLockBalancing : MonoBehaviour
 
     void steerBoat()
     {
+
+        if (obstaclesStunCooldown > 0)
+        {
+            obstaclesStunCooldown -= Time.deltaTime;
+            return;
+        }
+
         if (Input.GetButton("Horizontal"))
         {
 
