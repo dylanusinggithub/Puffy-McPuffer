@@ -49,6 +49,8 @@ public class NEWLockBalancing : MonoBehaviour
     [SerializeField, Range(0f, 10f)]
     float collisionX = 5;
 
+    [SerializeField]
+    GameObject BTN_Retry;
 
     // Water Setting
     [Header("Water Settings")]
@@ -137,6 +139,12 @@ public class NEWLockBalancing : MonoBehaviour
                 }
                 break;
 
+            case GameState.Fail:
+                {
+                    BTN_Retry.gameObject.SetActive(true);
+                }
+                break;
+
             case GameState.Complete:
                 {
                     animationMoveLeft();
@@ -144,11 +152,10 @@ public class NEWLockBalancing : MonoBehaviour
                 break;
         }
     }
-    public void Retry(GameObject Button)
+    public void Retry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Button.SetActive(false);
-        print("the button is working");
+        BTN_Retry.SetActive(false);
     }
     void OnDrawGizmos()
     {
