@@ -36,8 +36,12 @@ public class PipeScript : MonoBehaviour
         //Picks a random number from 0 to the number of angles that are viable
         int rand = Random.Range(0, rotations.Length);
 
+        
+
         //Randomize rotation based on z axis
         transform.eulerAngles = new Vector3(0, 0, rotations[rand]);
+
+        
 
         //
         if (PossibleRotation > 1)

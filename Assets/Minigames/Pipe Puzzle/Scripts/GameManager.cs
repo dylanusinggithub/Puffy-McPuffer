@@ -22,10 +22,21 @@ public class GameManager : MonoBehaviour
 
         Pipes = new GameObject[totalPipes];
 
+        
+
         for (int i = 0; i < Pipes.Length; i++)
         {
             Pipes[i] = PipeHolder.transform.GetChild(i).gameObject;
+
+            int rand2 = Random.Range(0, 5);
+
+            if (rand2 == 1)
+            {
+                Pipes[i].GetComponent<Renderer>().material.color = Color.black;
+            }
         }
+
+        
     }
 
     public void correctMove()
