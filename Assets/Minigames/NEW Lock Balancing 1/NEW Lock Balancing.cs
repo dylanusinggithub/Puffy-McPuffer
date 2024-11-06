@@ -53,7 +53,7 @@ public class NEWLockBalancing : MonoBehaviour
     float collisionX = 5;
 
     [SerializeField]
-    GameObject BTN_Retry;
+    GameObject GameOver;
 
     // Obstacles 
     [Header("Obstacles Settings")]
@@ -165,7 +165,7 @@ public class NEWLockBalancing : MonoBehaviour
 
             case GameState.Fail:
                 {
-                    BTN_Retry.gameObject.SetActive(true);
+                    GameOver.gameObject.SetActive(true);
                 }
                 break;
 
@@ -176,10 +176,14 @@ public class NEWLockBalancing : MonoBehaviour
                 break;
         }
     }
-    public void Retry()
+    public void BTN_Retry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        BTN_Retry.SetActive(false);
+    }
+
+    public void BTN_Exit()
+    {
+        SceneManager.LoadScene("Level Select Map");
     }
 
     void OnDrawGizmos()
