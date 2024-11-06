@@ -66,10 +66,6 @@ public class NEWLockBalancing : MonoBehaviour
     float obstaclesSpawnRate;
     float obstaclesSpawnCooldown;
 
-    [SerializeField, Range(0, 3f)]
-    float obstaclesStunTime;
-    float obstaclesStunCooldown;
-
     [SerializeField, Range(0, 8f)]
     float obstaclesSpawnRange;
 
@@ -78,6 +74,8 @@ public class NEWLockBalancing : MonoBehaviour
 
     [SerializeField, Range(0f, 1f)]
     float obstacleScaleVariance;
+
+    public bool puffyStunned;
 
     // Water Setting
     [Header("Water Settings")]
@@ -188,16 +186,6 @@ public class NEWLockBalancing : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(Vector2.zero, new Vector2(collisionX, 10));
-    }
-
-
-    // Hit by obstacle
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        obstaclesStunCooldown = obstaclesStunTime;
-        Destroy(collision.gameObject);
-        state = GameState.Fail;
-        print("owie");
     }
 
     void spawnObstacles()
@@ -312,19 +300,12 @@ public class NEWLockBalancing : MonoBehaviour
 
     void steerBoat()
     {
-
-        if (obstaclesStunCooldown > 0)
-        {
-            obstaclesStunCooldown -= Time.deltaTime;
-            return;
-        }
-
-        if (Input.GetButton("Horizontal"))
+        if (Input.GetButton("Horizontal") && !puffyStunned)
         {
 
             playerMovement += Input.GetAxis("Horizontal") * ((float)keyStrength / 100);
         }
-        else if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
+        else if ((Input.GetMouseButton(0) || Input.GetMouseButton(1)) && !puffyStunned)
         {
             float mouseDist = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
             Mathf.Clamp(mouseDist, -mouseMaxDist, mouseMaxDist);
