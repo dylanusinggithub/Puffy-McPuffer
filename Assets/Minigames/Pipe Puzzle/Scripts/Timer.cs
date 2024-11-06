@@ -15,6 +15,7 @@ public class Timer : MonoBehaviour
     GameManager gameManager;
     //PipeScript pipeScript;
     public GameObject puffything;
+    public GameObject puffything2;
 
     private void Awake()
     {
@@ -47,7 +48,7 @@ public class Timer : MonoBehaviour
         else
         {
             youlose.SetActive(true);
-            puffything.SetActive(true);
+            puffything2.SetActive(true);
             //pipeScript.enabled = false;
         }
     }
