@@ -23,6 +23,8 @@ public class PipeScript : MonoBehaviour
     //Visual representation of complete tile
     public GameObject FilledTile;
 
+    public GameObject Pipes;
+
     //Locate the game manager via the game manager object
     private void Awake()
     {
@@ -50,6 +52,7 @@ public class PipeScript : MonoBehaviour
             {
                 isPlaced = true;
                 gameManager.correctMove();
+                Pipes.GetComponent<Renderer>().material.color = Color.white;
             }
         }
         else
@@ -58,6 +61,7 @@ public class PipeScript : MonoBehaviour
             {
                 isPlaced = true;
                 gameManager.correctMove();
+                Pipes.GetComponent<Renderer>().material.color = Color.white;
             }
         }
         
@@ -83,6 +87,7 @@ public class PipeScript : MonoBehaviour
             {
                 isPlaced = true;
                 gameManager.correctMove();
+                Pipes.GetComponent<Renderer>().material.color = Color.white;
             }
             else if (isPlaced == true)
             {
@@ -96,6 +101,7 @@ public class PipeScript : MonoBehaviour
             {
                 isPlaced = true;
                 gameManager.correctMove();
+                Pipes.GetComponent<Renderer>().material.color = Color.white;
             }
             else if (isPlaced == true)
             {
@@ -119,6 +125,7 @@ public class PipeScript : MonoBehaviour
                 {
                     isPlaced = true;
                     gameManager.correctMove();
+                    Pipes.GetComponent<Renderer>().material.color = Color.white;
                 }
                 else if (isPlaced == true)
                 {
@@ -132,6 +139,7 @@ public class PipeScript : MonoBehaviour
                 {
                     isPlaced = true;
                     gameManager.correctMove();
+                    Pipes.GetComponent<Renderer>().material.color = Color.white;
                 }
                 else if (isPlaced == true)
                 {
