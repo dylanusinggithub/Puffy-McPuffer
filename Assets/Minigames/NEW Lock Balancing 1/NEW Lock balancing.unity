@@ -316,7 +316,7 @@ MonoBehaviour:
   obstaclesSpawnRate: 2
   obstaclesSpawnRange: 4.04
   obstaclesChance: 100
-  obstacleScaleVariance: 0.596
+  obstacleScaleVariance: 0.838
   puffyStunned: 0
   waterMaxHeight: 2.84
   waterMinHeight: 3.49
