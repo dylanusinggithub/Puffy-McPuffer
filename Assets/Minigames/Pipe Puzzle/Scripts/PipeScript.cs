@@ -25,6 +25,8 @@ public class PipeScript : MonoBehaviour
 
     public GameObject Pipes;
 
+    int clickcounter;
+
     //Locate the game manager via the game manager object
     private void Awake()
     {
@@ -52,7 +54,7 @@ public class PipeScript : MonoBehaviour
             {
                 isPlaced = true;
                 gameManager.correctMove();
-                Pipes.GetComponent<Renderer>().material.color = Color.white;
+                 
             }
         }
         else
@@ -61,7 +63,7 @@ public class PipeScript : MonoBehaviour
             {
                 isPlaced = true;
                 gameManager.correctMove();
-                Pipes.GetComponent<Renderer>().material.color = Color.white;
+                 
             }
         }
         
@@ -73,6 +75,11 @@ public class PipeScript : MonoBehaviour
         {
             FilledTile.SetActive(true);
         }
+
+        if (clickcounter == 3)
+        {
+            Pipes.GetComponent<Renderer>().material.color = Color.white;
+        }
     }
 
     private void OnMouseDown()
@@ -80,6 +87,7 @@ public class PipeScript : MonoBehaviour
         transform.Rotate(new Vector3(0, 0, 90));
         transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
 
+        clickcounter++;
 
         if (PossibleRotation > 1)
         {
@@ -87,7 +95,7 @@ public class PipeScript : MonoBehaviour
             {
                 isPlaced = true;
                 gameManager.correctMove();
-                Pipes.GetComponent<Renderer>().material.color = Color.white;
+                
             }
             else if (isPlaced == true)
             {
@@ -101,7 +109,7 @@ public class PipeScript : MonoBehaviour
             {
                 isPlaced = true;
                 gameManager.correctMove();
-                Pipes.GetComponent<Renderer>().material.color = Color.white;
+                 
             }
             else if (isPlaced == true)
             {
@@ -118,6 +126,7 @@ public class PipeScript : MonoBehaviour
             transform.Rotate(new Vector3(0, 0, -90));
             transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
 
+            clickcounter++;
 
             if (PossibleRotation > 1)
             {
@@ -125,7 +134,7 @@ public class PipeScript : MonoBehaviour
                 {
                     isPlaced = true;
                     gameManager.correctMove();
-                    Pipes.GetComponent<Renderer>().material.color = Color.white;
+                     
                 }
                 else if (isPlaced == true)
                 {
@@ -139,7 +148,7 @@ public class PipeScript : MonoBehaviour
                 {
                     isPlaced = true;
                     gameManager.correctMove();
-                    Pipes.GetComponent<Renderer>().material.color = Color.white;
+                     
                 }
                 else if (isPlaced == true)
                 {

@@ -34,10 +34,6 @@ public class GameManager : MonoBehaviour
             {
                 Pipes[i].GetComponent<Renderer>().material.color = Color.black;
                 
-                if (Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(0))
-                {
-                    Pipes[i].GetComponent<Renderer>().material.color = Color.white;
-                }
             }
         }
 
