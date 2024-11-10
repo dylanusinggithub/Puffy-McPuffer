@@ -622,7 +622,7 @@ MonoBehaviour:
   score: {fileID: 84814876}
   youwin: {fileID: 1814202527}
   timer_image: {fileID: 2141943635}
-  maxtime: 15
+  maxtime: 17
   puffything: {fileID: 1319339707}
   puffything2: {fileID: 2049514492}
 --- !u!4 &65191531
@@ -9833,7 +9833,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Yayyyyyyyyyyyy you win    \n\n :     D"
+  m_text: Success
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10351,7 +10351,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rip Puffy (._.)
+  m_text: You Lose
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
