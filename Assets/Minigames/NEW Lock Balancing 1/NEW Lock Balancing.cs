@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using Unity.Mathematics;
 using Random = UnityEngine.Random;
 using System.Collections.Generic;
+using System.Collections;
 
 public class NEWLockBalancing : MonoBehaviour
 {
@@ -61,6 +62,12 @@ public class NEWLockBalancing : MonoBehaviour
     [SerializeField]
     GameObject[] obstacles;
     List<GameObject> obstaclesCount = new List<GameObject>();
+
+    [SerializeField]
+    GameObject obstaclesWarning;
+
+    [SerializeField, Range(0, 3f)]
+    float obstaclesDelay;
 
     [SerializeField, Range(0, 3f)]
     float obstaclesSpawnRate;
@@ -159,7 +166,7 @@ public class NEWLockBalancing : MonoBehaviour
                     checkCollision();
                     displayArrow();
                     flipPuffy();
-                    spawnObstacles();
+                    StartCoroutine(spawnObstacles());
                 }
                 break;
 
@@ -192,16 +199,23 @@ public class NEWLockBalancing : MonoBehaviour
         Gizmos.DrawWireCube(Vector2.zero, new Vector2(collisionX, 10));
     }
 
-    void spawnObstacles()
+    private IEnumerator spawnObstacles()
     {
         if(obstaclesSpawnCooldown < 0) 
         { 
             if (Random.Range(1, obstaclesChance) < obstaclesChance)
             {
-                Vector3 pos = new Vector3(Random.Range(-obstaclesSpawnRange, obstaclesSpawnRange), 5, 0);
+                obstaclesSpawnCooldown = obstaclesSpawnRate;
+
+                Vector3 pos = new Vector3(Random.Range(-obstaclesSpawnRange, obstaclesSpawnRange), 4, 0);
+
+                GameObject Warning = Instantiate(obstaclesWarning, pos, quaternion.identity);
+                yield return new WaitForSeconds(obstaclesDelay);
+                Destroy(Warning);
+
+                pos += new Vector3(0, 4, 0);
                 GameObject GOObstatical = Instantiate(obstacles[Random.Range(0, obstacles.Length - 1)], pos, quaternion.identity);
 
-                obstaclesSpawnCooldown = obstaclesSpawnRate;
                 obstaclesCount.Add(GOObstatical);
 
                 float scale = Random.Range(-obstacleScaleVariance, obstacleScaleVariance);
@@ -218,7 +232,6 @@ public class NEWLockBalancing : MonoBehaviour
             }
         }
         else obstaclesSpawnCooldown -= Time.deltaTime;
-
     }
 
     void flipPuffy()

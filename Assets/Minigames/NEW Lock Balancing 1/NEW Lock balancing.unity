@@ -311,6 +311,8 @@ MonoBehaviour:
   GameOver: {fileID: 837196950}
   obstacles:
   - {fileID: 3832458924436411706, guid: 608d1031cc24f2140b3ec92925ee93f7, type: 3}
+  obstaclesWarning: {fileID: 7489723503762382315, guid: 826a399fbe62bdc4380b9860776a0cb2, type: 3}
+  obstaclesDelay: 1
   obstaclesSpawnRate: 2
   obstaclesSpawnRange: 4.04
   obstaclesChance: 100
@@ -1601,6 +1603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstaclesStunTime: 1
   obstaclesBounceHeight: 2
+  obstaclesBounceSpin: 30
 --- !u!1 &1549764524
 GameObject:
   m_ObjectHideFlags: 0

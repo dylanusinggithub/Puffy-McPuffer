@@ -10,6 +10,9 @@ public class PuffyController : MonoBehaviour
     [SerializeField, Range(0, 8f)]
     float obstaclesBounceHeight;
 
+    [SerializeField, Range(0, 30f)]
+    float obstaclesBounceSpin;
+
     NEWLockBalancing GM;
 
     void Start()
@@ -24,6 +27,9 @@ public class PuffyController : MonoBehaviour
         GM.puffyStunned = true;
 
         collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, obstaclesBounceHeight);
+
+        
+        collision.gameObject.GetComponent<Rigidbody2D>().AddTorque((Random.Range(0, 1) * 2 - 1) * Random.Range(0, obstaclesBounceSpin));
         collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
     }
 
