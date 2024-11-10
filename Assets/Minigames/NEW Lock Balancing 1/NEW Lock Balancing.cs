@@ -55,6 +55,9 @@ public class NEWLockBalancing : MonoBehaviour
 
     [SerializeField]
     GameObject GameOver;
+    
+    [SerializeField]
+    GameObject Win;
 
     // Obstacles 
     [Header("Obstacles Settings")]
@@ -179,6 +182,7 @@ public class NEWLockBalancing : MonoBehaviour
             case GameState.Complete:
                 {
                     animationMoveLeft();
+                    Win.gameObject.SetActive(true);
                 }
                 break;
         }
