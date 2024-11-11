@@ -917,9 +917,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laneDistance: 6
-  maxSpeed: 10
-  accelerationRate: 2
-  decelerationRate: 3
+  maxSpeed: 30
+  accelerationRate: 10
+  decelerationRate: 10
   rotationAngle: 15
   rotationSpeed: 5
 --- !u!70 &1715504749
