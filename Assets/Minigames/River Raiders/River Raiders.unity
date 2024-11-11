@@ -616,7 +616,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cratePrefab: {fileID: 3569236671586850714, guid: 4185886e8adecfd47afc72f117f308f6, type: 3}
   spawnPoint: {fileID: 757846762}
-  spawnInterval: 2
+  spawnInterval: 4
 --- !u!4 &757846762
 Transform:
   m_ObjectHideFlags: 0
@@ -1025,7 +1025,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9dd74c92bf689e64fa162cebf13cfaf6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 598f3b871de643e49a12ec0e303e7b0c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
