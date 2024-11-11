@@ -12,6 +12,6 @@ public class ButtonScript : MonoBehaviour
 
     public void PlayPipe()
     {
-        SceneManager.LoadScene("Pipelike");
+        SceneManager.LoadScene("Pipebackstory");
     }
 }
