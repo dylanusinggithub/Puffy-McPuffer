@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class CrateMovement : MonoBehaviour
 {
-    // Speed at which the crate will move downward
-    public float moveSpeed = 2.0f;
+    public float moveSpeed = 2.0f; // Crate speed is set to 2
 
+    // Update is called once per frame
     void Update()
     {
-        // Move the crate downward based on moveSpeed
-        transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
+        transform.Translate(Vector3.down * moveSpeed * Time.deltaTime); // Move the crate downward based on moveSpeed
     }
 }

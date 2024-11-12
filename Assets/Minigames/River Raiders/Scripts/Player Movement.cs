@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     // Array to hold the X positions for the three lanes
     private Vector3[] lanes = new Vector3[3];
-    private int currentLane = 1; // Start in the middle lane
+    private int currentLane = 1; // Player starts in the middle lane
 
     public float laneDistance = 6.0f; // Distance between lanes
     public float maxSpeed = 10f; // Max speed for lane switching
@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private Quaternion targetRotation; // Target rotation when switching lanes
     private Quaternion defaultRotation; // Upward rotation for reset
 
-
+    // STart is called before the first frame update
     void Start()
     {
         // Initialize lane positions assuming lanes are evenly spaced on the X-axis
@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         targetRotation = defaultRotation; // Initialize target rotation to be upward
     }
 
+    // Update is called once per frame
     void Update()
     {
         HandleInput(); // Handle Input Function is called

@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class DestroyOffScreen : MonoBehaviour
 {
+    // Update is called once per frame
     void Update()
     {
-        // Check if crate has moved below the screen
-        if (transform.position.y < -6.5f) // adjust based on your screen height
+        
+        if (transform.position.y < -6.5f) // If obstacle has reached -6.5 on Y axis of the screen (at the bottom offscreen)
         {
-            Destroy(gameObject);
+            Destroy(gameObject); // Obstacle is destroyed
         }
     }
 }
