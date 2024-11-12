@@ -458,7 +458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cratePrefab: {fileID: 3569236671586850714, guid: 4185886e8adecfd47afc72f117f308f6, type: 3}
   spawnPoint: {fileID: 757846762}
-  spawnInterval: 5
+  spawnInterval: 6
 --- !u!4 &757846762
 Transform:
   m_ObjectHideFlags: 0
@@ -568,6 +568,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1237279318}
   - component: {fileID: 1237279317}
+  - component: {fileID: 1237279319}
   m_Layer: 0
   m_Name: Canal Bank (Left)
   m_TagString: Untagged
@@ -642,6 +643,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1237279319
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237279316}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1414114218
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,6 +698,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1414114220}
   - component: {fileID: 1414114219}
+  - component: {fileID: 1414114221}
   m_Layer: 0
   m_Name: Canal Bank (Right)
   m_TagString: Untagged
@@ -726,6 +773,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1414114221
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414114218}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1715504747
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,8 +852,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laneDistance: 6
   maxSpeed: 30
-  accelerationRate: 10
-  decelerationRate: 10
+  accelerationRate: 15.6
+  decelerationRate: 13.5
   rotationAngle: 15
   rotationSpeed: 5
 --- !u!70 &1715504749
@@ -939,7 +1031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   treeLogPrefab: {fileID: 991686087053083813, guid: e68c3d88b43aa534a9c665a8773a496e, type: 3}
   spawnPoint: {fileID: 1792262184}
-  spawnInterval: 7
+  spawnInterval: 8
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
