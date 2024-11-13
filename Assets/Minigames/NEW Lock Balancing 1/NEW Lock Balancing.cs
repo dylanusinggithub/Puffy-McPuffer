@@ -104,13 +104,13 @@ public class NEWLockBalancing : MonoBehaviour
     float waterHeight;
 
     // Arrow
-    [Header("Arrow Settings")]
+    [Header("Water Movement Settings")]
 
     [SerializeField, Range(0f, 100f)]
-    int arrowStrength = 50;
+    int waterMovementStrength = 50;
 
     [SerializeField]
-    GameObject arrowMovement;
+    GameObject waterMovement, waterCill;
 
     // Controls
     [Header("Controls")]
@@ -147,6 +147,9 @@ public class NEWLockBalancing : MonoBehaviour
         state = GameState.Start;
 
         waterHeight = -waterMinHeight;
+
+        waterCill.transform.position = new Vector3(waterCill.transform.position.x, waterMaxHeight - waterOffset, 0);
+        waterCill.transform.GetChild(0).transform.position = new Vector3(0, waterMaxHeight - waterOffset, 0);
     }
 
     void FixedUpdate()
@@ -167,7 +170,7 @@ public class NEWLockBalancing : MonoBehaviour
                     steerBoat();
                     increaseHeight();
                     checkCollision();
-                    displayArrow();
+                    displayWaterMovement();
                     flipPuffy();
                     StartCoroutine(spawnObstacles());
                 }
@@ -244,23 +247,10 @@ public class NEWLockBalancing : MonoBehaviour
         else puffy.GetComponent<SpriteRenderer>().flipX = true;
     }
 
-    void displayArrow()
+    void displayWaterMovement()
     {
-        Transform arrowBody = arrowMovement.transform.GetChild(0);
-        Transform arrowHead = arrowMovement.transform.GetChild(1);
-
-        float arrowlength = boatTransform.x + playerMovement;
-
-        arrowBody.transform.localScale = new Vector3(arrowlength * (float)arrowStrength / 100, 0.15f, 1);
-        arrowBody.transform.position = new Vector2((arrowlength) / 2 * ((float)arrowStrength / 100), 3.9f);
-
-        arrowHead.transform.position = new Vector2(arrowlength * ((float)arrowStrength / 100), 3.9f);
-        arrowHead.transform.localScale = new Vector3(0.4f, arrowlength * (float)arrowStrength / 400, 1);
-
-
-        Color arrowColour = Color.yellow + (Color.red - Color.yellow) * Mathf.Abs((arrowlength * (float)arrowStrength / 100) / 4);
-        arrowBody.GetComponent<SpriteRenderer>().color = arrowColour;
-        arrowHead.GetComponent<SpriteRenderer>().color = arrowColour;
+        float rotation = Mathf.Lerp(-1, 1, (boatTransform.x + collisionX) / (collisionX * 2));
+        waterMovement.transform.localScale = new Vector3(rotation * ((float)waterMovementStrength/100), waterMovement.transform.localScale.y, waterMovement.transform.localScale.z);
     }
 
     void checkCollision()
