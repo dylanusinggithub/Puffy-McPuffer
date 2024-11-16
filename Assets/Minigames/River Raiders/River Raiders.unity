@@ -309,7 +309,7 @@ Transform:
   m_GameObject: {fileID: 294356729}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.053999998, y: -3.21, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.17362556, y: 0.33000007, z: 0.33}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -319,7 +319,7 @@ Transform:
   - {fileID: 1813920595}
   - {fileID: 1320821542}
   - {fileID: 614369212}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1610205113}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &431539282
 GameObject:
@@ -1565,6 +1565,38 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1610205112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1610205113}
+  m_Layer: 0
+  m_Name: Ropes holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1610205113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610205112}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.05400002, y: -3.21, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 294356732}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1715504747
 GameObject:
   m_ObjectHideFlags: 0
@@ -1597,11 +1629,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 686d13b36748d634db05e2578e3f70ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementStrength: 10
-  movementDeceleration: 0.5
+  movementStrength: 2.6
+  movementDeceleration: 0.12
   rotationStrength: 100
   movementArea: 6
-  velocity: 0
 --- !u!70 &1715504749
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2034,4 +2065,4 @@ SceneRoots:
   - {fileID: 1414114220}
   - {fileID: 757846762}
   - {fileID: 1792262184}
-  - {fileID: 294356732}
+  - {fileID: 1610205113}
