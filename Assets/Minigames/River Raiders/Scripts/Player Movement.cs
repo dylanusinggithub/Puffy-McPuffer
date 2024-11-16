@@ -1,115 +1,46 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Array to hold the X positions for the three lanes
-    private Vector3[] lanes = new Vector3[3];
-    private int currentLane = 1; // Player starts in the middle lane
+    [SerializeField, Range(0, 100)]
+    float movementStrength = 100;
 
-    public float laneDistance = 6.0f; // Distance between lanes
-    public float maxSpeed = 10f; // Max speed for lane switching
-    public float accelerationRate = 2f; // Speed increase per second
-    public float decelerationRate = 3f; // Speed decrease per second
+    [SerializeField, Range(0, 2)]
+    float movementDeceleration = 1;
 
-    private Vector3 targetPosition; // Target position for the player
-    private float currentSpeed = 0f; // Current speed
-    private bool isMovingToNewLane = false; // Check if player is changing lanes
+    [SerializeField, Range(0, 100)]
+    float rotationStrength = 50;
 
-    // Rotation settings
-    public float rotationAngle = 15f; // Angle to rotate when moving left or right
-    public float rotationSpeed = 5f; // Speed to rotate towards target angle
+    [SerializeField, Range(0, 8)]
+    float movementArea = 6;
 
-    private Quaternion targetRotation; // Target rotation when switching lanes
-    private Quaternion defaultRotation; // Upward rotation for reset
-
-    // STart is called before the first frame update
-    void Start()
-    {
-        // Initialize lane positions assuming lanes are evenly spaced on the X-axis
-        lanes[0] = new Vector3(-laneDistance, transform.position.y, transform.position.z); // Left lane
-        lanes[1] = new Vector3(0, transform.position.y, transform.position.z);  // Middle lane
-        lanes[2] = new Vector3(laneDistance, transform.position.y, transform.position.z);  // Right lane
-
-        targetPosition = lanes[currentLane]; // Start at middle lane
-        defaultRotation = transform.rotation; // Store the default upward rotation
-        targetRotation = defaultRotation; // Initialize target rotation to be upward
-    }
+    float velocity = 0;
 
     // Update is called once per frame
     void Update()
     {
-        HandleInput(); // Handle Input Function is called
-        SmoothMovement(); // Smooth Movement Funciton is called
-        SmoothRotation(); // Smooth Rotation Funciton is called
-    }
-
-    // Handle Input Function
-    private void HandleInput()
-    {
-        if (isMovingToNewLane) return; // Prevent new input while moving to a lane
-
-        // Check for left movement
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetButton("Horizontal")) velocity = Input.GetAxis("Horizontal") * (float)movementStrength / 100;
+        else
         {
-            if (currentLane > 0)
+            // Decelerates by X amount (divided by 100 to make it more reasoanble)
+            if (Mathf.Abs(velocity) > (float)movementDeceleration / 100)
             {
-                currentLane--; // Move one lane left
-                targetPosition = lanes[currentLane];
-                isMovingToNewLane = true;
-
-                // Set rotation to the left
-                targetRotation = Quaternion.Euler(0, 0, rotationAngle);
+                if (velocity > 0) velocity -= (float)movementDeceleration / 100;
+                if (velocity < 0) velocity += (float)movementDeceleration / 100;
             }
+            else velocity = 0;
         }
 
-        // Check for right movement
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        // Stops Puffy from going past the edges
+        if (Mathf.Abs(transform.position.x + velocity) > movementArea)
         {
-            if (currentLane < lanes.Length - 1)
-            {
-                currentLane++; // Move one lane right
-                targetPosition = lanes[currentLane];
-                isMovingToNewLane = true;
+            if (transform.position.x > 0) transform.position = new Vector2(movementArea - 0.01f, transform.position.y);
+            else transform.position = new Vector2(-movementArea + 0.01f, transform.position.y);
 
-                // Set rotation to the right
-                targetRotation = Quaternion.Euler(0, 0, -rotationAngle);
-            }
-        }
-    }
-
-    // Smooth Movement Function
-    private void SmoothMovement()
-    {
-        if (!isMovingToNewLane) return; // Only move if transitioning to a new lane
-
-        // Accelerate to max speed if not yet at max speed
-        if (currentSpeed < maxSpeed)
-        {
-            currentSpeed += accelerationRate * Time.deltaTime;
-            currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed); // Clamp speed
+            velocity = 0;
         }
 
-        // Move the player smoothly to the target position
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, currentSpeed * Time.deltaTime);
-
-        // Decelerate and stop when close to the target
-        if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
-        {
-            transform.position = targetPosition; // Snap to target
-            currentSpeed = 0; // Reset speed
-            isMovingToNewLane = false; // Allow new lane input
-
-            // Reset rotation back to default (upward) after reaching the lane
-            targetRotation = defaultRotation;
-        }
-    }
-
-    // Smooth Rotation Funciton
-    private void SmoothRotation()
-    {
-        // Smoothly rotate towards the target rotation
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        transform.transform.position = new Vector2(velocity + transform.transform.position.x, transform.transform.position.y);
+        transform.rotation = Quaternion.Euler(0, 0, -velocity * (rotationStrength * 5));
     }
 }
