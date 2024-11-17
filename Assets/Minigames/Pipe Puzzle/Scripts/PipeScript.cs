@@ -82,7 +82,7 @@ public class PipeScript : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
+    /*private void OnMouseDown()
     {
         transform.Rotate(new Vector3(0, 0, 90));
         transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
@@ -117,7 +117,7 @@ public class PipeScript : MonoBehaviour
                 gameManager.wrongMove();
             }
         }
-    }
+    }*/
 
     private void OnMouseOver()
     {
