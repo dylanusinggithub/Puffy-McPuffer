@@ -5,17 +5,18 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText; // Score  text element
-    private int score = 0; // Player's score
+    public TextMeshProUGUI scoreText; // Score Text
+    private int score = 0; // Player's score is set at 0
 
-    // Method to increase score
+    // Add Score Function
     public void AddScore(int points)
     {
         score += points; // Add 1 point to game score
-        UpdateScoreText(); // Update the Score text
+        score = Mathf.Max(score, 0); // Ensure score doesn't go below 0
+        UpdateScoreText(); // Update Score Text function is called
     }
 
-    // Update the UI text
+    // Update Score Text Function
     private void UpdateScoreText()
     {
         scoreText.text = "Cargo Collected: " + score.ToString();

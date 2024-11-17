@@ -1982,6 +1982,8 @@ MonoBehaviour:
   movementDeceleration: 0.12
   rotationStrength: 100
   movementArea: 6
+  ropeRenderer: {fileID: 0}
+  crateRenderer: {fileID: 0}
 --- !u!70 &1715504749
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
