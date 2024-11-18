@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject PipeHolder;
     public GameObject[] Pipes;
+    public GameObject[] Pipes2;
 
     [SerializeField]
     int totalPipes = 0;
@@ -37,7 +38,20 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        
+        for (int i = 0; i < Pipes2.Length; i++)
+        {
+            Pipes2[i] = PipeHolder.transform.GetChild(i).gameObject;
+
+            int rand2 = Random.Range(0, 5);
+
+            if (rand2 == 1)
+            {
+                Pipes2[i].GetComponent<Renderer>().material.color = Color.black;
+
+            }
+        }
+
+
     }
 
     public void correctMove()
