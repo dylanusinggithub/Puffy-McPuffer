@@ -1317,7 +1317,6 @@ Transform:
   - {fileID: 814471184}
   - {fileID: 976245070}
   - {fileID: 347338260}
-  - {fileID: 1123572142}
   - {fileID: 1599988576}
   - {fileID: 1052847800}
   - {fileID: 1729000236}
@@ -11035,12 +11034,12 @@ Transform:
   m_GameObject: {fileID: 1123572141}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.74, y: 1.23, z: 0}
-  m_LocalScale: {x: 0.8841, y: 0.8657, z: 1}
+  m_LocalPosition: {x: 0.7420001, y: 0.39761353, z: 0}
+  m_LocalScale: {x: 0.61887, y: 0.60599, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1887561182}
-  m_Father: {fileID: 103607874}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1123572143
 BoxCollider2D:
@@ -11094,7 +11093,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1123572141}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b54cfd2af33b8ee41ac190d98ce975ec, type: 3}
   m_Name: 
@@ -19428,6 +19427,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1026255025}
   - {fileID: 994814192}
+  - {fileID: 1123572142}
   - {fileID: 1809271570}
   - {fileID: 62795443}
   - {fileID: 222454025}
