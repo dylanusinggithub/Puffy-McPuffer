@@ -47,7 +47,7 @@ public class PipeScript : MonoBehaviour
 
         
 
-        //
+        //sciprrrrrrrrrrrrrt
         if (PossibleRotation > 1)
         {
             if (transform.eulerAngles.z == correctRotation[0] || transform.eulerAngles.z == correctRotation[1])
