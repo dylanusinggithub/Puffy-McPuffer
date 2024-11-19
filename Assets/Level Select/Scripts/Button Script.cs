@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,5 +11,9 @@ public class ButtonScript : MonoBehaviour
     public void PlayPipe()
     {
         SceneManager.LoadScene("Pipebackstory");
+    }
+    public void PlayCanal()
+    {
+        SceneManager.LoadScene("River Raiders");
     }
 }
