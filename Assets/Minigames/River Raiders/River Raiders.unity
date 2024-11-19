@@ -1978,9 +1978,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 686d13b36748d634db05e2578e3f70ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementStrength: 100
-  movementDeceleration: 0.12
-  rotationStrength: 100
+  movementStrength: 12
+  movementDeceleration: 1.2
+  rotationStrength: 52
   movementArea: 6
 --- !u!70 &1715504749
 CapsuleCollider2D:
