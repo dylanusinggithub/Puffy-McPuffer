@@ -303,11 +303,11 @@ MonoBehaviour:
   perlinStepSizeX: 0.72
   perlinStepSizeY: 1
   perlinStepSizeR: 0.23
-  strengthX: 15.6
-  strengthY: 1
+  strengthX: 4.1
+  strengthY: 0.6
   strengthR: 11.2
-  timeStart: 13.2
-  collisionX: 4
+  createCompletion: 10
+  collisionX: 5
   GameOver: {fileID: 837196950}
   Win: {fileID: 355893874}
   obstacles:
@@ -317,13 +317,13 @@ MonoBehaviour:
   obstaclesSpawnRate: 1.75
   obstaclesSpawnRange: 5.01
   obstaclesChance: 100
-  obstacleScaleVariance: 0.909
-  puffyStunned: 0
-  waterMaxHeight: 2.84
-  waterMinHeight: 3.49
+  obstacleScaleVariance: 0.3
+  waterMaxHeight: 1.79
+  waterMinHeight: 3.44
   waterObject: {fileID: 1050993059}
-  waterOffset: 0.413
+  waterOffset: 1
   waterMovementStrength: 50
+  waterHeightSeconds: 1
   waterMovement: {fileID: 1021543593}
   waterCill: {fileID: 806565832}
   keyStrength: 4
@@ -2275,8 +2275,8 @@ Transform:
   m_GameObject: {fileID: 1408217715}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.01, y: -3.09, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalPosition: {x: 4, y: -3.5, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2417,9 +2417,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b8efa402c7556438eaaf0cd5b382de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclesStunTime: 1
-  obstaclesBounceHeight: 2
-  obstaclesBounceSpin: 30
 --- !u!1 &1549764524
 GameObject:
   m_ObjectHideFlags: 0
@@ -2810,7 +2807,7 @@ GameObject:
   - component: {fileID: 1719342287}
   - component: {fileID: 1719342286}
   m_Layer: 5
-  m_Name: Timer
+  m_Name: CreateText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
