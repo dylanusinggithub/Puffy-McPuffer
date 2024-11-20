@@ -8,7 +8,7 @@ public class DestroyOffScreen : MonoBehaviour
     void Update()
     {
         
-        if (transform.position.y < -6.5f) // If obstacle has reached -6.5 on Y axis of the screen (at the bottom offscreen)
+        if (transform.position.y < -18.5f) // If obstacle has reached -18.5 on Y axis of the screen (at the bottom offscreen)
         {
             Destroy(gameObject); // Obstacle is destroyed
         }

@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetButton("Horizontal")) velocity = Input.GetAxis("Horizontal") * (float)movementStrength / 100;
+        if (Input.GetButton("Vertical")) velocity = -Input.GetAxis("Vertical") * (float)movementStrength / 100;
         else
         {
             // Decelerates by X amount (divided by 100 to make it more reasoanble)
