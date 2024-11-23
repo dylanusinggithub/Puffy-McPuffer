@@ -6,15 +6,11 @@ using Unity.Mathematics;
 using Random = UnityEngine.Random;
 using System.Collections.Generic;
 using System.Collections;
-using UnityEngine.UIElements;
 
 public class NEWLockBalancing : MonoBehaviour
 {
-    GameObject Leafparticle;
-    // Boat Movement
-    GameObject puffy;
-    GameObject WaterSimple;
 
+    #region Boat Movement
     [Header("Boat Movement")]
     [SerializeField, Range(0f, 5f)]
     float perlinStepSizeX = 1;
@@ -41,9 +37,12 @@ public class NEWLockBalancing : MonoBehaviour
     int perlinY = 50;
 
     int perlinR = 0;
+    #endregion
 
-    // Gameplay
+    #region Gameplay
     [Header("Gameplay")]
+    GameObject puffy;
+
     [SerializeField, Range(5f, 30f)]
     float createCompletion = 10;
     float createCount;
@@ -60,10 +59,14 @@ public class NEWLockBalancing : MonoBehaviour
     
     [SerializeField]
     GameObject Win;
+    #endregion
 
-    // Obstacles 
+    #region Obstacles
+
+
+    GameObject LeafParticle;
+
     [Header("Obstacles Settings")]
-
     [SerializeField]
     GameObject[] obstacles;
     List<GameObject> obstaclesCount = new List<GameObject>();
@@ -73,6 +76,9 @@ public class NEWLockBalancing : MonoBehaviour
 
     [SerializeField, Range(0, 3f)]
     float obstaclesDelay;
+
+    [SerializeField, Range(0, 180f)]
+    float ObstacleRotation;
 
     [SerializeField, Range(0, 3f)]
     float obstaclesSpawnRate;
@@ -84,12 +90,10 @@ public class NEWLockBalancing : MonoBehaviour
     [SerializeField, Range(0, 100)]
     int obstaclesChance;
 
-    [SerializeField, Range(0f, 1f)]
-    float obstacleScaleVariance;
-
     bool puffyStunned;
+    #endregion
 
-    // Water Setting
+    #region Water Height
     [Header("Water Settings")]
     [SerializeField, Range(1f, 4f)]
     float waterMaxHeight = 5;
@@ -105,8 +109,9 @@ public class NEWLockBalancing : MonoBehaviour
 
     float waterHeight;
     float waterPecentage = 0;
+    #endregion
 
-    // Arrow
+    #region Water Movement
     [Header("Water Movement Settings")]
 
     [SerializeField, Range(0, 100)]
@@ -117,8 +122,9 @@ public class NEWLockBalancing : MonoBehaviour
 
     [SerializeField]
     GameObject waterMovement, waterCill;
+    #endregion
 
-    // Controls
+    #region Controls
     [Header("Controls")]
     [SerializeField, Range(0f, 100f)]
     int keyStrength = 20;
@@ -136,6 +142,7 @@ public class NEWLockBalancing : MonoBehaviour
     int decelerationAmount = 0;
 
     float playerMovement;
+    #endregion
 
     enum GameState { Start, Play, Fail, Complete };
     GameState state;
@@ -143,10 +150,10 @@ public class NEWLockBalancing : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Leafparticle = GameObject.Find("LeafParticles");
+        LeafParticle = GameObject.Find("LeafParticles");
+
         puffy = GameObject.Find("Player");
         createText = GameObject.Find("CreateText").GetComponent<Text>();
-        WaterSimple = GameObject.Find("WaterSimple");
 
         createText.text = createCount + " / " + createCompletion;
         createText.enabled = false;
@@ -222,6 +229,7 @@ public class NEWLockBalancing : MonoBehaviour
             {
                 obstaclesSpawnCooldown = obstaclesSpawnRate;
 
+                
                 Vector3 pos = new Vector3(Random.Range(-obstaclesSpawnRange, obstaclesSpawnRange), 4, 0);
 
                 GameObject Warning = Instantiate(obstaclesWarning, pos, quaternion.identity);
@@ -229,12 +237,10 @@ public class NEWLockBalancing : MonoBehaviour
                 Destroy(Warning);
 
                 pos += new Vector3(0, 4, 0);
-                GameObject GOObstatical = Instantiate(obstacles[Random.Range(0, obstacles.Length - 1)], pos, quaternion.identity);
+                GameObject GOObstatical = Instantiate(obstacles[Random.Range(0, obstacles.Length)], pos, quaternion.identity);
+                GOObstatical.transform.Rotate(new Vector3(0, 0, Random.Range(-ObstacleRotation, ObstacleRotation)));
 
                 obstaclesCount.Add(GOObstatical);
-
-                float scale = Random.Range(1 - obstacleScaleVariance, 1 + obstacleScaleVariance);
-                GOObstatical.transform.localScale = new Vector3(scale, scale, 1);
 
                 for(int i = 0; i < obstaclesCount.Count; i++)
                 {
@@ -373,6 +379,7 @@ public class NEWLockBalancing : MonoBehaviour
         float boatRotation = Mathf.PerlinNoise1D(((float)perlinR / 100) * perlinStepSizeR) - 0.5f;
 
         boatTransformX *= strengthX;
+        LeafParticle.transform.GetChild(0).GetComponent<ParticleSystemForceField>().directionX = boatTransformX;
 
         boatTransformY *= strengthY;
         boatTransformY += waterHeight;
