@@ -71,13 +71,5 @@ public class GameManager : MonoBehaviour
         correctPipes--;
     }
 
-    public void BTN_NextLevel()
-    {
-        foreach(GameObject Pipes in Layouts.getChildren())
-        {
-            Pipes.SetActive(false);
-        }
-
-        Layouts.getChild(Pipes).SetActive(true);
-    }
+    
 }
