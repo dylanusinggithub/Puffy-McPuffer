@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -1635619528447634280}
   m_Layer: 0
   m_Name: TreeLogPrefab
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bdcaa75b64ecf34bb227b7c8a87fc2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  moveSpeed: 5.32
 --- !u!114 &-696302886408406294
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,6 +9,11 @@ public class ScoreManager : MonoBehaviour
     private int score = 0; // Player's score is set at 0
     public GameObject cargo;
 
+    public int GetScore()
+    {
+        return score; // Provide access to the score
+    }
+
     // Add Score Function
     public void AddScore(int points)
     {
