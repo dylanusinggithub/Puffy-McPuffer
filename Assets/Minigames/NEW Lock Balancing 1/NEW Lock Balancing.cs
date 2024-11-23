@@ -10,6 +10,7 @@ using UnityEngine.UIElements;
 
 public class NEWLockBalancing : MonoBehaviour
 {
+    GameObject Leafparticle;
     // Boat Movement
     GameObject puffy;
     GameObject WaterSimple;
@@ -142,6 +143,7 @@ public class NEWLockBalancing : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        Leafparticle = GameObject.Find("LeafParticles");
         puffy = GameObject.Find("Player");
         createText = GameObject.Find("CreateText").GetComponent<Text>();
         WaterSimple = GameObject.Find("WaterSimple");
