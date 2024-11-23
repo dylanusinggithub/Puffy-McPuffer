@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject Layouts;
     public GameObject PipeHolder;
     public GameObject[] Pipes;
     public GameObject[] Pipes2;
@@ -70,4 +71,13 @@ public class GameManager : MonoBehaviour
         correctPipes--;
     }
 
+    public void BTN_NextLevel()
+    {
+        foreach(GameObject Pipes in Layouts.getChildren())
+        {
+            Pipes.SetActive(false);
+        }
+
+        Layouts.getChild(Pipes).SetActive(true);
+    }
 }
