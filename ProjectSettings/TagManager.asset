@@ -6,6 +6,7 @@ TagManager:
   tags:
   - How to Play
   - Options
+  - Obstacle
   layers:
   - Default
   - TransparentFX

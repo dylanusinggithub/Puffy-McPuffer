@@ -1,3 +1,5 @@
+using System.Diagnostics;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -15,6 +17,37 @@ public class PlayerMovement : MonoBehaviour
     float movementArea = 6;
 
     float velocity = 0;
+
+    public GameObject gameOverPanel;
+
+    private ScoreManager scoreManager;
+
+    
+    void Start()
+    {
+        gameOverPanel.SetActive(false);
+
+        // Find the ScoreManager in the scene
+        scoreManager = FindObjectOfType<ScoreManager>();
+        if (scoreManager == null)
+        {
+            UnityEngine.Debug.LogError("ScoreManager not found in the scene.");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            // Use the score from the ScoreManager
+            if (scoreManager != null && scoreManager.GetScore() <=0)
+            {
+                gameOverPanel.SetActive(true);
+                Time.timeScale = 0;
+                Destroy(gameObject);
+            }
+        }
+    }
 
     // Update is called once per frame
     void FixedUpdate()
