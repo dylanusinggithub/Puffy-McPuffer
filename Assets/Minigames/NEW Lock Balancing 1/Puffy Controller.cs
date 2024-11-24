@@ -13,6 +13,8 @@ public class PuffyController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         collision.gameObject.transform.position = new Vector2(0, -10);
-        GM.StartCoroutine("increaseHeight");
+
+        if(collision.gameObject.transform.tag == "Collectable") GM.StartCoroutine(GM.changeHeight(true));
+        else GM.StartCoroutine(GM.changeHeight(false));
     }
 }

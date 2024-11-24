@@ -61,36 +61,45 @@ public class NEWLockBalancing : MonoBehaviour
     GameObject Win;
     #endregion
 
-    #region Obstacles
+    #region Objects
 
-
-    GameObject LeafParticle;
-
-    [Header("Obstacles Settings")]
+    [Header("Objects Settings")]
     [SerializeField]
-    GameObject[] obstacles;
-    List<GameObject> obstaclesCount = new List<GameObject>();
+    GameObject[] Collectable;
 
     [SerializeField]
-    GameObject obstaclesWarning;
+    GameObject[] Obstacle;
+    List<GameObject> CollectableCount = new List<GameObject>(), ObstacleCount = new List<GameObject>();
+
+
+    [SerializeField]
+    GameObject CollectablePopup, ObstaclePopup;
 
     [SerializeField, Range(0, 3f)]
-    float obstaclesDelay;
+    float popupDelay;
 
-    [SerializeField, Range(0, 180f)]
-    float ObstacleRotation;
 
-    [SerializeField, Range(0, 3f)]
-    float obstaclesSpawnRate;
-    float obstaclesSpawnCooldown;
+    [SerializeField, Range(0, 10f)]
+    float CollectableSpawnRate;
+
+    [SerializeField, Range(0, 10f)]
+    float ObstacleSpawnRate;
+    float CollectableSpawnCooldown, ObstacleSpawnCooldown;
 
     [SerializeField, Range(0, 8f)]
-    float obstaclesSpawnRange;
+    float ObjectSpawnRange;
+
 
     [SerializeField, Range(0, 100)]
-    int obstaclesChance;
+    int CollectableChance;
 
-    bool puffyStunned;
+    [SerializeField, Range(0, 100)]
+    int ObstacleChance;
+
+
+    [SerializeField, Range(0, 180)]
+    int ObstacleRotation;
+
     #endregion
 
     #region Water Height
@@ -112,8 +121,9 @@ public class NEWLockBalancing : MonoBehaviour
     #endregion
 
     #region Water Movement
-    [Header("Water Movement Settings")]
+    GameObject LeafParticle;
 
+    [Header("Water Movement Settings")]
     [SerializeField, Range(0, 100)]
     int waterMovementStrength = 50;
 
@@ -185,7 +195,8 @@ public class NEWLockBalancing : MonoBehaviour
                     checkCollision();
                     displayWaterMovement();
                     flipPuffy();
-                    StartCoroutine(spawnObstacles());
+                    StartCoroutine(spawnObject());
+                    cleanObjects();
                 }
                 break;
 
@@ -221,38 +232,73 @@ public class NEWLockBalancing : MonoBehaviour
         Gizmos.DrawWireCube(Vector2.zero, new Vector2(collisionX, 10));
     }
 
-    private IEnumerator spawnObstacles()
+    private IEnumerator spawnObject()
     {
-        if(obstaclesSpawnCooldown < 0) 
-        { 
-            if (Random.Range(1, obstaclesChance) < obstaclesChance)
+        bool isCollect = false, isObstacle = false;
+
+        if (CollectableSpawnCooldown < 0)
+        {
+            isCollect = true;
+            CollectableSpawnCooldown = CollectableSpawnRate;
+            if (Random.Range(1, 100) > CollectableChance) yield break;
+        }
+        else CollectableSpawnCooldown -= Time.deltaTime;
+
+        if (ObstacleSpawnCooldown < 0)
+        {
+            isObstacle = true;
+            ObstacleSpawnCooldown = ObstacleSpawnRate;
+            if (Random.Range(1, 100) > ObstacleChance) yield break;
+        }
+        else ObstacleSpawnCooldown -= Time.deltaTime;
+
+        if (isCollect || isObstacle)
+        {
+            Vector3 pos = new Vector3(Random.Range(-ObjectSpawnRange, ObjectSpawnRange), 4, 0);
+
+            GameObject popup;
+            if (isCollect) popup = Instantiate(CollectablePopup, pos, quaternion.identity);
+            else popup = Instantiate(ObstaclePopup, pos, quaternion.identity);
+
+            yield return new WaitForSeconds(popupDelay);
+            Destroy(popup);
+
+            GameObject GOObject;
+            pos += new Vector3(0, 4, 0);
+
+            if (isCollect)
             {
-                obstaclesSpawnCooldown = obstaclesSpawnRate;
-
-                
-                Vector3 pos = new Vector3(Random.Range(-obstaclesSpawnRange, obstaclesSpawnRange), 4, 0);
-
-                GameObject Warning = Instantiate(obstaclesWarning, pos, quaternion.identity);
-                yield return new WaitForSeconds(obstaclesDelay);
-                Destroy(Warning);
-
-                pos += new Vector3(0, 4, 0);
-                GameObject GOObstatical = Instantiate(obstacles[Random.Range(0, obstacles.Length)], pos, quaternion.identity);
-                GOObstatical.transform.Rotate(new Vector3(0, 0, Random.Range(-ObstacleRotation, ObstacleRotation)));
-
-                obstaclesCount.Add(GOObstatical);
-
-                for(int i = 0; i < obstaclesCount.Count; i++)
-                {
-                    if (obstaclesCount[i].transform.position.y < -4f)
-                    {
-                        Destroy(obstaclesCount[i]);
-                        obstaclesCount.Remove(obstaclesCount[i]);
-                    }
-                }
+                GOObject = Instantiate(Collectable[Random.Range(0, Collectable.Length)], pos, quaternion.identity);
+                CollectableCount.Add(GOObject);
+            }
+            else
+            {
+                GOObject = Instantiate(Obstacle[Random.Range(0, Obstacle.Length)], pos, quaternion.identity);
+                GOObject.transform.Rotate(new Vector3(0, 0, Random.Range(-ObstacleRotation, ObstacleRotation)));
+                ObstacleCount.Add(GOObject);
             }
         }
-        else obstaclesSpawnCooldown -= Time.deltaTime;
+    }
+
+    void cleanObjects()
+    {
+        for (int i = 0; i < CollectableCount.Count; i++)
+        {
+            if (CollectableCount[i].transform.position.y < -4f)
+            {
+                Destroy(CollectableCount[i]);
+                CollectableCount.Remove(CollectableCount[i]);
+            }
+        }
+
+        for (int i = 0; i < ObstacleCount.Count; i++)
+        {
+            if (ObstacleCount[i].transform.position.y < -4f)
+            {
+                Destroy(ObstacleCount[i]);
+                ObstacleCount.Remove(ObstacleCount[i]);
+            }
+        }
     }
 
     void flipPuffy()
@@ -311,25 +357,44 @@ public class NEWLockBalancing : MonoBehaviour
     }
 
     // get called from Puffy Controller
-    public IEnumerator increaseHeight()
+    public IEnumerator changeHeight(bool increase)
     {
-
-        createCount++;
-        if (createCount >= createCompletion) state = GameState.Complete;
-
+        if (increase)
+        {
+            createCount++;
+            if (createCount >= createCompletion) state = GameState.Complete;
+        }
+        else if (createCount > 0) createCount--;
         createText.text = createCount + " / " + createCompletion;
 
         int waterSmoothness = 100;
-        for(int i = 0; i < waterSmoothness; i++)
+        if (increase)
         {
-            yield return new WaitForSeconds(waterHeightSeconds / waterSmoothness);
-            waterPecentage += waterHeightSeconds / waterSmoothness;
+            for (int i = 0; i < waterSmoothness; i++)
+            {
+                yield return new WaitForSeconds(waterHeightSeconds / waterSmoothness);
+                waterPecentage += waterHeightSeconds / waterSmoothness;
 
-            waterHeight = Mathf.Lerp(-waterMinHeight, waterMaxHeight, waterPecentage / createCompletion);
-            float waterObjectScale = Mathf.Lerp(0, waterMaxHeight + waterMinHeight, waterPecentage / createCompletion) + waterOffset;
+                waterHeight = Mathf.Lerp(-waterMinHeight, waterMaxHeight, waterPecentage / createCompletion);
+                float waterObjectScale = Mathf.Lerp(0, waterMaxHeight + waterMinHeight, waterPecentage / createCompletion) + waterOffset;
 
-            waterObject.transform.localScale = new Vector3(waterObject.transform.localScale.x, waterObjectScale, 1);
+                waterObject.transform.localScale = new Vector3(waterObject.transform.localScale.x, waterObjectScale, 1);
+            }
         }
+        else
+        {
+            for (int i = waterSmoothness; i > 0; i--)
+            {
+                yield return new WaitForSeconds(waterHeightSeconds / waterSmoothness);
+                waterPecentage -= waterHeightSeconds / waterSmoothness;
+
+                waterHeight = Mathf.Lerp(-waterMinHeight, waterMaxHeight, waterPecentage / createCompletion);
+                float waterObjectScale = Mathf.Lerp(0, waterMaxHeight + waterMinHeight, waterPecentage / createCompletion) + waterOffset;
+
+                waterObject.transform.localScale = new Vector3(waterObject.transform.localScale.x, waterObjectScale, 1);
+            }
+        }
+
 
     }
 
