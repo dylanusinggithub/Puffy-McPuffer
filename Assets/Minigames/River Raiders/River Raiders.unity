@@ -2656,10 +2656,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 686d13b36748d634db05e2578e3f70ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementStrength: 12
-  movementDeceleration: 1.2
-  rotationStrength: 52
+  movementStrength: 0.7
+  movementDeceleration: 0.3
+  velocityMax: 0.2
+  rotationStrength: 16
   movementArea: 6
+  velocity: 0
   gameOverPanel: {fileID: 1900258571}
 --- !u!70 &1715504749
 CapsuleCollider2D:
