@@ -522,6 +522,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1238462919}
   cargo: {fileID: 1277309731}
+  scoreWin: 5
+  youWin: {fileID: 1591526189}
 --- !u!4 &351965733
 Transform:
   m_ObjectHideFlags: 0
@@ -549,12 +551,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6299cde6c559a5849bfde40c4f609e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerDuration: 90
-  timer: 0
-  requiredScore: 30
-  isGameActive: 1
-  timerText: {fileID: 580269087}
-  scoreManager: {fileID: 0}
 --- !u!4 &418923085 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5294011498102669193, guid: b7692f71b5be45f47b2dcbd3f1fcf82e, type: 3}
@@ -2383,13 +2379,14 @@ GameObject:
   - component: {fileID: 1591526190}
   - component: {fileID: 1591526192}
   - component: {fileID: 1591526191}
+  - component: {fileID: 1591526193}
   m_Layer: 5
   m_Name: You Win Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1591526190
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2450,6 +2447,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1591526189}
   m_CullTransparentMesh: 1
+--- !u!114 &1591526193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591526189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43bd4d04a0b27304292adacacc8b2d55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  youWinPanel: {fileID: 1591526189}
 --- !u!1 &1610205112
 GameObject:
   m_ObjectHideFlags: 0
@@ -2563,7 +2573,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1646514868}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1591526193}
+        m_TargetAssemblyTypeName: YouWin, Assembly-CSharp
+        m_MethodName: OnQuitButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1646514868
 MonoBehaviour:
   m_ObjectHideFlags: 0
