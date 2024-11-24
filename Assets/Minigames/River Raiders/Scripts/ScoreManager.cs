@@ -17,7 +17,7 @@ public class ScoreManager : MonoBehaviour
     int timeWin;
     float timeTillWin = 0;
 
-    public GameObject youWin;
+    public GameObject youWin, gameOver;
 
     public int GetScore()
     {
@@ -38,11 +38,10 @@ public class ScoreManager : MonoBehaviour
         }
         else
         {
-            if (scoreWin == score)
-            {
-                Time.timeScale = 0;
-                youWin.SetActive(true);
-            }
+            if (scoreWin == score) youWin.SetActive(true);
+            else gameOver.SetActive(true);
+
+            Time.timeScale = 0;
         }
     }
 
