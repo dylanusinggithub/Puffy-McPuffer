@@ -318,8 +318,8 @@ MonoBehaviour:
   CollectablePopup: {fileID: 7489723503762382315, guid: 6e298be917d1b8746b7bd438816ecc63, type: 3}
   ObstaclePopup: {fileID: 7489723503762382315, guid: 826a399fbe62bdc4380b9860776a0cb2, type: 3}
   popupDelay: 3
-  CollectableSpawnRate: 5
-  ObstacleSpawnRate: 3
+  CollectableSpawnRate: 2.46
+  ObstacleSpawnRate: 3.68
   ObjectSpawnRange: 5
   CollectableChance: 100
   ObstacleChance: 100
