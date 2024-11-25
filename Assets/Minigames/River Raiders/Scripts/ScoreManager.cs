@@ -9,6 +9,8 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI timeText; // Score Text
     private int score = 0; // Player's score is set at 0
     public GameObject cargo;
+    public GameObject cargo2;
+    public GameObject cargo3;
 
     [SerializeField, Range(0f, 20f)]
     int scoreWin;
@@ -43,6 +45,22 @@ public class ScoreManager : MonoBehaviour
 
             Time.timeScale = 0;
         }
+
+        if (score == 1)
+        {
+            cargo.SetActive(true);
+            cargo2.SetActive(false);
+            cargo3.SetActive(false);
+        }
+        else if (score == 2)
+        {
+            cargo2.SetActive(true);
+            cargo3.SetActive(false);
+        }
+        else if (score == 3)
+        {
+            cargo3.SetActive(true);
+        }
     }
 
     // Add Score Function
@@ -51,7 +69,6 @@ public class ScoreManager : MonoBehaviour
         score += points; // Add 1 point to game score
         score = Mathf.Max(score, 0); // Ensure score doesn't go below 0
         UpdateScoreText(); // Update Score Text function is 
-        cargo.SetActive(true);
     }
 
     // Update Score Text Function
