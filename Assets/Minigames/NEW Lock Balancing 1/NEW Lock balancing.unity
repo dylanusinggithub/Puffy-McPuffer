@@ -318,8 +318,8 @@ MonoBehaviour:
   CollectablePopup: {fileID: 7489723503762382315, guid: 6e298be917d1b8746b7bd438816ecc63, type: 3}
   ObstaclePopup: {fileID: 7489723503762382315, guid: 826a399fbe62bdc4380b9860776a0cb2, type: 3}
   popupDelay: 3
-  CollectableSpawnRate: 5
-  ObstacleSpawnRate: 3
+  CollectableSpawnRate: 2.46
+  ObstacleSpawnRate: 3.68
   ObjectSpawnRange: 5
   CollectableChance: 100
   ObstacleChance: 100
@@ -7462,6 +7462,7 @@ GameObject:
   - component: {fileID: 1408217717}
   - component: {fileID: 1408217719}
   - component: {fileID: 1408217718}
+  - component: {fileID: 1408217720}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -7609,6 +7610,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1408217720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408217715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b8efa402c7556438eaaf0cd5b382de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1549764524
 GameObject:
   m_ObjectHideFlags: 0

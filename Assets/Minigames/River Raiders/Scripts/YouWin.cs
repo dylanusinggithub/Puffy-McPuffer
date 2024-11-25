@@ -7,8 +7,10 @@ public class YouWin : MonoBehaviour
 {
     public GameObject youWinPanel;
 
-    public void OnContinueButton()
+    // Clicking on the "Quit" button
+    public void OnQuitButton() // if the player clicks the "Quit" button
     {
-
+        SceneManager.LoadScene("Level Select Map"); // Level Select screen is loaded
+        Time.timeScale = 1f; // Time scale is reset to 1
     }
 }

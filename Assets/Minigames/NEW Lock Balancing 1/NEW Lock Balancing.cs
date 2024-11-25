@@ -365,6 +365,8 @@ public class NEWLockBalancing : MonoBehaviour
             if (createCount >= createCompletion) state = GameState.Complete;
         }
         else if (createCount > 0) createCount--;
+        else yield break;
+
         createText.text = createCount + " / " + createCompletion;
 
         int waterSmoothness = 100;
