@@ -7,6 +7,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Range(0, 100)]
     float movementStrength = 100;
 
+    [SerializeField, Range(0, 100)]
+    float mouseStrength = 100;
+
+    [SerializeField]
+    bool mouseInverted;
+
     [SerializeField, Range(0, 2)]
     float movementDeceleration = 1;
 
@@ -58,7 +64,19 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
 
-        if(Mathf.Abs(velocity) < velocityMax) velocity += -Input.GetAxis("Vertical") * ((float)movementStrength / 100);
+        if (Mathf.Abs(velocity) < velocityMax)
+        {
+            if(Input.GetButton("Vertical")) velocity += -Input.GetAxis("Vertical") * ((float)movementStrength / 100);
+            else if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
+            {
+                float mouseDist = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
+                mouseDist -= transform.position.x;
+
+                if (mouseInverted) mouseDist *= -1;
+
+                velocity += mouseDist * ((float)mouseStrength / 1000);
+            }
+        }
 
         if (Mathf.Abs(velocity) > (float)movementDeceleration / 100)
         {
