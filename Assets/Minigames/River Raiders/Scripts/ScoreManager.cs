@@ -15,7 +15,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField, Range(0f, 20f)]
     int scoreWin;
 
-    [SerializeField, Range(0f, 30f)]
+    [SerializeField, Range(0f, 50f)]
     int timeWin;
     float timeTillWin = 0;
 
@@ -40,7 +40,7 @@ public class ScoreManager : MonoBehaviour
         }
         else
         {
-            if (scoreWin == score) youWin.SetActive(true);
+            if (scoreWin <= score) youWin.SetActive(true);
             else gameOver.SetActive(true);
 
             Time.timeScale = 0;
@@ -74,6 +74,6 @@ public class ScoreManager : MonoBehaviour
     // Update Score Text Function
     private void UpdateScoreText()
     {
-        scoreText.text = "Cargo Collected: " + score.ToString();
+        scoreText.text = "Cargo Collected: " + score.ToString() + "/ " + scoreWin.ToString();
     }
 }

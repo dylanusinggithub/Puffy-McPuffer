@@ -531,9 +531,9 @@ MonoBehaviour:
   cargo2: {fileID: 1674182271}
   cargo3: {fileID: 2043729071}
   scoreWin: 5
-  timeWin: 30
+  timeWin: 40
   youWin: {fileID: 1591526189}
-  gameOver: {fileID: 1591526189}
+  gameOver: {fileID: 1900258571}
 --- !u!4 &351965733
 Transform:
   m_ObjectHideFlags: 0
@@ -562,19 +562,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectRange: 7
-  TreeCooldown: 3
+  TreeCooldown: 7.72
   TreeSpeed: 13.5
   TreeVariation: 0.8
   TreeObject: {fileID: 991686087053083813, guid: e68c3d88b43aa534a9c665a8773a496e, type: 3}
   TreeType: 0
-  createCooldown: 6.5
+  createCooldown: 5.85
   createSpeed: 2.2
   createVariation: 0.8
   createObject: {fileID: 3569236671586850714, guid: 4185886e8adecfd47afc72f117f308f6, type: 3}
   createType: 1
-  waveCooldown: 8.2
-  waveSpeed: 13
-  waveVariation: 1
+  waveCooldown: 6.02
+  waveSpeed: 1.1
+  waveVariation: 0.544
   waveObject: {fileID: 3746571308731363407, guid: f57e3041e4c63884a8703369d16568c5, type: 3}
   waveType: 0
 --- !u!1 &369453788
