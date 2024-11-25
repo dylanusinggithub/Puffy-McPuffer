@@ -17,7 +17,7 @@ public class ScoreManager : MonoBehaviour
 
     [SerializeField, Range(0f, 50f)]
     int timeWin;
-    float timeTillWin = 0;
+    public float timeTillWin = 0;
 
     public GameObject youWin, gameOver;
 

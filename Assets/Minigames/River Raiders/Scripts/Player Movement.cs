@@ -27,14 +27,17 @@ public class PlayerMovement : MonoBehaviour
 
     public float velocity = 0;
 
-    public GameObject gameOverPanel;
+    public GameObject gameOverPanel; // Game Over panel when player loses all cargo crates
 
-    private ScoreManager scoreManager;
+    public GameObject gameOverPanel2; // Game Over panel when player runs out of time
+
+    private ScoreManager scoreManager; // Reference to Score Manager script
 
     
     void Start()
     {
-        gameOverPanel.SetActive(false);
+        gameOverPanel.SetActive(false); // Game OVer panel for losing all cargo crates is set to false
+        gameOverPanel2.SetActive(false); // Game Over panel for running out of time is set to false
 
         // Find the ScoreManager in the scene
         scoreManager = FindObjectOfType<ScoreManager>();
@@ -52,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
             if (scoreManager != null && scoreManager.GetScore() <=0)
             {
                 gameOverPanel.SetActive(true);
+                gameOverPanel2.SetActive(false);
                 Time.timeScale = 0;
                 Destroy(gameObject);
             }

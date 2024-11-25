@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameOver : MonoBehaviour
 {
     public GameObject gameOverPanel; // Game Over panel
+    public GameObject gameOverPanel2;
 
     // Clicking on the "Retry" button
     public void OnRetryButton() // If the player clicks the "Retry" button
