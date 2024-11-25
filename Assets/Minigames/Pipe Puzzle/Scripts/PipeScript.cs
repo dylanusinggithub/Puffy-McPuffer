@@ -27,10 +27,17 @@ public class PipeScript : MonoBehaviour
 
     int clickcounter;
 
+    public GameObject broke1;
+    public GameObject broke2;
+    public GameObject broke0;
+
     //Locate the game manager via the game manager object
     private void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        broke0 = this.gameObject.transform.GetChild(0).gameObject;
+        broke1 = this.gameObject.transform.GetChild(0).GetChild(0).gameObject;
+        broke2 = this.gameObject.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
     }
 
     private void Start()
@@ -71,16 +78,23 @@ public class PipeScript : MonoBehaviour
 
     private void Update()
     {
-        if (gameManager.gamewon == true)
-        {
-            FilledTile.SetActive(true);
+        if (clickcounter == 1)
+        {           
+            broke1.SetActive(true);
         }
-
+        if (clickcounter == 2)
+        {
+            broke2.SetActive(true);
+        }
         if (clickcounter == 3)
         {
-            Pipes.GetComponent<Renderer>().material.color = Color.white;
+            broke0.SetActive(false);
+            broke1.SetActive(false);
+            broke2.SetActive(false);
         }
     }
+
+    //1 is child, 3 is most parent0
 
     private void OnMouseDown()
     {

@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
     public GameObject[] Pipes;
     public GameObject[] Pipes2;
 
+    public bool condition = false;
+    public GameObject[] BrokenObjects;
+     
+
     [SerializeField]
     int totalPipes = 0;
 
@@ -31,11 +35,13 @@ public class GameManager : MonoBehaviour
             Pipes[i] = PipeHolder.transform.GetChild(i).gameObject;
 
             int rand2 = Random.Range(0, 5);
-
+            
             if (rand2 == 1)
             {
-                Pipes[i].GetComponent<Renderer>().material.color = Color.black;
-                
+                //Pipes[i].GetComponent<Renderer>().material.color = Color.black;
+                //condition = true;
+                BrokenObjects[i].SetActive(true);
+
             }
         }
 
@@ -47,11 +53,11 @@ public class GameManager : MonoBehaviour
 
             if (rand2 == 1)
             {
-                Pipes2[i].GetComponent<Renderer>().material.color = Color.black;
-
+                //Pipes2[i].GetComponent<Renderer>().material.color = Color.black;
+                //condition = true;
+                BrokenObjects[i].SetActive(true);
             }
         }
-
 
     }
 
@@ -71,5 +77,5 @@ public class GameManager : MonoBehaviour
         correctPipes--;
     }
 
-    
+    //pipegrey_23,35(2),23(2),35(1),36,35,23(1),
 }
