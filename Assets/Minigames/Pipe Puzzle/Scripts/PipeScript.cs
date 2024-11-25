@@ -37,7 +37,7 @@ public class PipeScript : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         broke0 = this.gameObject.transform.GetChild(0).gameObject;
         broke1 = this.gameObject.transform.GetChild(0).GetChild(0).gameObject;
-        broke2 = this.gameObject.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
+        broke2 = this.gameObject.transform.GetChild(0).GetChild(0).GetChild(0).gameObject; //I might be able to make gamemanager easier/more efficient if i use this
     }
 
     private void Start()

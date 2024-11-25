@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     public bool condition = false;
     public GameObject[] BrokenObjects;
-     
+    public GameObject[] BrokenObjectsForLayout2;
 
     [SerializeField]
     int totalPipes = 0;
