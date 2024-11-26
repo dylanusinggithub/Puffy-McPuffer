@@ -30,18 +30,19 @@ public class GameManager : MonoBehaviour
     {
 
         int rand1 = Random.Range(0, 2);
-
+        
         if (rand1 == 1)
         {
+            totalPipes = 0;
             PipeHolder.SetActive(true);
-            //PipeHolder2.SetActive(false);
+            PipeHolder2.SetActive(false);
 
             totalPipes = PipeHolder.transform.childCount;
 
             Pipes = new GameObject[totalPipes];
             
             pipechange1.SetActive(true);
-            //pipechange2.SetActive(false);
+            pipechange2.SetActive(false);
 
             for (int i = 0; i < Pipes.Length; i++)
             {
@@ -60,13 +61,14 @@ public class GameManager : MonoBehaviour
         }
         else if (rand1 == 0)
         {
-            //PipeHolder.SetActive(false);
+            totalPipes = 0;
+            PipeHolder.SetActive(false);
             PipeHolder2.SetActive(true);
             pipechange2.SetActive(true);
             totalPipes = PipeHolder2.transform.childCount;
 
             
-            //pipechange1.SetActive(false);
+            pipechange1.SetActive(false);
 
             Pipes2 = new GameObject[totalPipes];
 
