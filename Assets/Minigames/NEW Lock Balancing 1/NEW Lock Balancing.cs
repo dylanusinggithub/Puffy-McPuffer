@@ -43,6 +43,9 @@ public class NEWLockBalancing : MonoBehaviour
     [Header("Gameplay")]
     GameObject puffy;
 
+    [SerializeField]
+    Text Loading;
+
     [SerializeField, Range(5f, 30f)]
     float createCompletion = 10;
     float createCount;
@@ -325,6 +328,7 @@ public class NEWLockBalancing : MonoBehaviour
             {
                 state = GameState.Play;
                 createText.enabled = true;
+                Loading.enabled = false;
             }
 
         if (state == GameState.Complete)
