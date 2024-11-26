@@ -3632,7 +3632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementStrength: 0.7
-  mouseStrength: 100
+  mouseStrength: 1.4
   mouseInverted: 0
   movementDeceleration: 0.3
   velocityMax: 0.2
