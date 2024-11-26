@@ -6,9 +6,12 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField, Range(0, 100)]
     float movementStrength = 100;
-
+    
     [SerializeField, Range(0, 100)]
     float mouseStrength = 100;
+
+    [SerializeField, Range(0, 2)]
+    float mouseMax = 2;
 
     [SerializeField]
     bool mouseInverted;
@@ -78,7 +81,9 @@ public class PlayerMovement : MonoBehaviour
 
                 if (mouseInverted) mouseDist *= -1;
 
-                velocity += mouseDist * ((float)mouseStrength / 1000);
+                velocity += mouseDist / (mouseStrength * 10);
+
+                velocity = Mathf.Clamp(velocity, -mouseMax, mouseMax);
             }
         }
 
