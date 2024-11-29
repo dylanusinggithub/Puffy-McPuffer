@@ -28,7 +28,7 @@ public class ScoreScript : MonoBehaviour
     void Start()
     {
         timeTillWin = timeWin;
-        Physics2D.gravity = new Vector2(-9.81f, 0); // Left (behind player)
+        Physics2D.gravity = new Vector2(-9.81f, 0); // Left (behind player) (-9.81f incase issues)
 
         timeText = GameObject.Find("Time Limit").GetComponent<TextMeshProUGUI>();
 
