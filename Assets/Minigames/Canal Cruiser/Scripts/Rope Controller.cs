@@ -13,8 +13,6 @@ public class RopeController : MonoBehaviour
 
     void FixedUpdate()
     {
-        this.transform.GetChild(0).transform.position = transform.position + initalOffset;
-
 
         // Stops it from changing nonexistent ropes
         if (SM.score < transform.childCount)

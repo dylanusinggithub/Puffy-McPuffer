@@ -28,6 +28,13 @@ public class PlayerScript : MonoBehaviour
 
     float velocity = 0;
 
+    ScoreScript SM;
+
+    private void Start()
+    {
+        SM = GameObject.Find("Game Manager").GetComponent<ScoreScript>();
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -66,5 +73,18 @@ public class PlayerScript : MonoBehaviour
 
         transform.transform.localPosition = new Vector3(transform.localPosition.x, velocity + transform.transform.localPosition.y, 0);
         transform.rotation = Quaternion.Euler(0, 0, velocity * (rotationStrength * 5) + -90);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        Destroy(collision.gameObject);
+
+        int points;
+        if (collision.tag == "Collectable") points = 1;
+        else points = -1;
+
+        if (points + SM.score > -1) SM.score += points;
+        else SM.Die(true);
     }
 }

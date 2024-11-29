@@ -55,7 +55,7 @@ public class ScoreScript : MonoBehaviour
 
         // Grabs the FailInfo's text and changes it acorrdingly
         if (lostCargo) gameOver.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text =
-                "You have lost the last remaining cargo crate, and sunk to the bottom of the canal.";
+                "You have failed to retrieve the requested cargo amount.";
 
         Time.timeScale = 0;
     }
