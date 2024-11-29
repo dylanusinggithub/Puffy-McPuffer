@@ -1,0 +1,66 @@
+using UnityEngine;
+
+public class PlayerScript : MonoBehaviour
+{
+    [SerializeField, Range(0, 100)]
+    float movementStrength = 100;
+    
+    [SerializeField, Range(0, 100)]
+    float mouseStrength = 100;
+
+    [SerializeField, Range(0, 2)]
+    float mouseMax = 2;
+
+    [SerializeField]
+    bool mouseInverted;
+
+    [SerializeField, Range(0, 2)]
+    float movementDeceleration = 1;
+
+    [SerializeField, Range(0, 100)]
+    float rotationStrength = 50;
+
+    [SerializeField, Range(0, 8)]
+    float movementArea = 6;
+
+    float velocity = 0;
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+
+        if(Input.GetButton("Horizontal")) velocity += -Input.GetAxis("Horizontal") * (movementStrength / 10000);
+        else if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
+        {
+            float mouseDist = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
+            mouseDist -= transform.position.y;
+
+            // Clamp isn't working?? so im setting it manually
+            if (Mathf.Abs(mouseDist) > mouseMax)
+            {
+                if (mouseDist > 0) mouseDist = mouseMax;
+                else mouseDist = -mouseMax;
+            }
+
+            velocity += mouseDist / (mouseStrength * 10);
+        }
+        else if (Mathf.Abs(velocity) > movementDeceleration / 1000)
+        {
+            if (velocity > 0) velocity -= movementDeceleration / 1000;
+            if (velocity < 0) velocity += movementDeceleration / 1000;
+        }
+        else velocity = 0;
+
+        // Stops Puffy from going past the edges
+        if (Mathf.Abs(transform.position.y + velocity) > movementArea)
+        {
+            if (transform.position.y > 0) transform.position = new Vector2(transform.position.x, movementArea - 0.01f);
+            else transform.position = new Vector2(transform.position.x, -movementArea + 0.01f);
+
+            velocity = 0;
+        }
+
+        transform.transform.position = new Vector3(transform.position.x, velocity + transform.transform.position.y, 0);
+        transform.rotation = Quaternion.Euler(0, 0, velocity * (rotationStrength * 5) + -90);
+    }
+}
