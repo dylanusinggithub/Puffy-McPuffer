@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    [SerializeField, Range(0, 10)]
+    float startSpeed = 5;
+    
     [SerializeField, Range(0, 100)]
     float movementStrength = 100;
     
@@ -28,12 +31,13 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        transform.parent.Translate(new Vector3(startSpeed, 0, 0));
 
         if(Input.GetButton("Horizontal")) velocity += -Input.GetAxis("Horizontal") * (movementStrength / 10000);
         else if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
         {
             float mouseDist = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
-            mouseDist -= transform.position.y;
+            mouseDist -= transform.localPosition.y;
 
             // Clamp isn't working?? so im setting it manually
             if (Mathf.Abs(mouseDist) > mouseMax)
@@ -52,15 +56,15 @@ public class PlayerScript : MonoBehaviour
         else velocity = 0;
 
         // Stops Puffy from going past the edges
-        if (Mathf.Abs(transform.position.y + velocity) > movementArea)
+        if (Mathf.Abs(transform.localPosition.y + velocity) > movementArea)
         {
-            if (transform.position.y > 0) transform.position = new Vector2(transform.position.x, movementArea - 0.01f);
-            else transform.position = new Vector2(transform.position.x, -movementArea + 0.01f);
+            if (transform.localPosition.y > 0) transform.localPosition = new Vector2(transform.localPosition.x, movementArea - 0.01f);
+            else transform.localPosition = new Vector2(transform.localPosition.x, -movementArea + 0.01f);
 
             velocity = 0;
         }
 
-        transform.transform.position = new Vector3(transform.position.x, velocity + transform.transform.position.y, 0);
+        transform.transform.localPosition = new Vector3(transform.localPosition.x, velocity + transform.transform.localPosition.y, 0);
         transform.rotation = Quaternion.Euler(0, 0, velocity * (rotationStrength * 5) + -90);
     }
 }
