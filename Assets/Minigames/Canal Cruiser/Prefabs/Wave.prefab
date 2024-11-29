@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3194561536938828615}
   - component: {fileID: 1627214792681854382}
   - component: {fileID: 4707304905821350916}
+  - component: {fileID: 1684683409943275526}
   m_Layer: 0
   m_Name: Wave
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,3 +131,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1684683409943275526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3746571308731363407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcebcbce22fbd6745a5ffc127c59c7f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomiseScale: 0
+  startSpeed: 0
