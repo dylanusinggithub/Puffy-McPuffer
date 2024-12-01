@@ -11,6 +11,7 @@ public class MenuButtons : MonoBehaviour
 
     public void BTN_Retry()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
