@@ -42,6 +42,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField, Range(0, 50)]
     float flashAmount;
 
+    [SerializeField] private ParticleSystem obstacleParticle;
+    private ParticleSystem obstacleParticleInstance;
+
     private void Start()
     {
         SM = GameObject.Find("Game Manager").GetComponent<ScoreScript>();
@@ -100,6 +103,7 @@ public class PlayerScript : MonoBehaviour
         {
             points = -1;
             StartCoroutine(DamageFlash());
+            SpawnObstacleParticles();
         }
 
         if (points + SM.score > -1) SM.score += points;
@@ -116,5 +120,10 @@ public class PlayerScript : MonoBehaviour
             yield return new WaitForSeconds(flashSeconds / flashAmount);
         }
         GetComponent<SpriteRenderer>().color = oldColor;
+    }
+
+    private void SpawnObstacleParticles()
+    {
+        obstacleParticleInstance = Instantiate(obstacleParticle, transform.position, Quaternion.identity);
     }
 }
