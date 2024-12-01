@@ -92,13 +92,15 @@ public class PlayerScript : MonoBehaviour
     {
 
         Destroy(collision.gameObject);
-        StartCoroutine(DamageFlash());
 
         int points;
 
         if (collision.tag == "Collectable") points = 1;
-        else points = -1;
-
+        else
+        {
+            points = -1;
+            StartCoroutine(DamageFlash());
+        }
 
         if (points + SM.score > -1) SM.score += points;
         else SM.Die(true);

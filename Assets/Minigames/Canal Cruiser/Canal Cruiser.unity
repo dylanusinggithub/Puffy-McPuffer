@@ -770,7 +770,7 @@ MonoBehaviour:
   movementArea: 5.4
   flashColor: {r: 0, g: 0, b: 0, a: 0}
   flashSeconds: 0.5
-  flashAmount: 20
+  flashAmount: 10
 --- !u!1001 &198151030
 PrefabInstance:
   m_ObjectHideFlags: 0
