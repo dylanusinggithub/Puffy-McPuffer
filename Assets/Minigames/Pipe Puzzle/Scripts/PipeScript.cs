@@ -109,6 +109,7 @@ public class PipeScript : MonoBehaviour
             {
                 isPlaced = true;
                 gameManager.correctMove();
+                FindObjectOfType<AudioManager>().Play("Piped");
                 
             }
             else if (isPlaced == true)
@@ -123,7 +124,8 @@ public class PipeScript : MonoBehaviour
             {
                 isPlaced = true;
                 gameManager.correctMove();
-                 
+                FindObjectOfType<AudioManager>().Play("Piped");
+
             }
             else if (isPlaced == true)
             {
@@ -148,7 +150,8 @@ public class PipeScript : MonoBehaviour
                 {
                     isPlaced = true;
                     gameManager.correctMove();
-                     
+                    FindObjectOfType<AudioManager>().Play("Piped");
+
                 }
                 else if (isPlaced == true)
                 {
@@ -162,7 +165,8 @@ public class PipeScript : MonoBehaviour
                 {
                     isPlaced = true;
                     gameManager.correctMove();
-                     
+                    FindObjectOfType<AudioManager>().Play("Piped");
+
                 }
                 else if (isPlaced == true)
                 {
