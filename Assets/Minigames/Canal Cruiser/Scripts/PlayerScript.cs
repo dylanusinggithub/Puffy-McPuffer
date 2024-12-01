@@ -29,10 +29,12 @@ public class PlayerScript : MonoBehaviour
     float velocity = 0;
 
     ScoreScript SM;
+    private DamageFlash _damageFlash;
 
     private void Start()
     {
         SM = GameObject.Find("Game Manager").GetComponent<ScoreScript>();
+        _damageFlash = GetComponent<DamageFlash>();
     }
 
     // Update is called once per frame
@@ -81,8 +83,10 @@ public class PlayerScript : MonoBehaviour
         Destroy(collision.gameObject);
 
         int points;
+
         if (collision.tag == "Collectable") points = 1;
         else points = -1;
+        
 
         if (points + SM.score > -1) SM.score += points;
         else SM.Die(true);
