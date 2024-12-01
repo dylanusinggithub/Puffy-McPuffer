@@ -16,6 +16,8 @@ public class Timer : MonoBehaviour
     //PipeScript pipeScript;
     public GameObject puffything;
     public GameObject puffything2;
+    public GameObject PuffyPic;
+
 
     private void Awake()
     {
@@ -37,6 +39,7 @@ public class Timer : MonoBehaviour
             youwin.SetActive(true);
             score.SetActive(true);
             puffything.SetActive(true);
+            PuffyPic.GetComponent<Animation>().enabled = false;
             //I'll add a counter instead assuming we're making it warioware style so just ++ points here
             //scoretext.text=time_remaining.ToString("Your score is " + time_remaining);
         }
@@ -49,6 +52,7 @@ public class Timer : MonoBehaviour
         {
             youlose.SetActive(true);
             puffything2.SetActive(true);
+            PuffyPic.GetComponent<Animation>().enabled = false;
             //pipeScript.enabled = false;
         }
     }

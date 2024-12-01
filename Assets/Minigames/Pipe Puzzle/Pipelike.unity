@@ -1913,6 +1913,7 @@ MonoBehaviour:
   maxtime: 30
   puffything: {fileID: 1319339707}
   puffything2: {fileID: 2049514492}
+  PuffyPic: {fileID: 985691417}
 --- !u!4 &65191531
 Transform:
   m_ObjectHideFlags: 0
