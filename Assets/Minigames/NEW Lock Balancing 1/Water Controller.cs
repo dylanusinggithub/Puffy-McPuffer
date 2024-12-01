@@ -41,8 +41,7 @@ public class WaterController : MonoBehaviour
     [SerializeField, Range(0f, 2f)]
     float waterOffset = 1;
 
-    [SerializeField]
-    float waterHeight;
+    public float waterHeight;
     float waterPecentage = 0;
     #endregion
 

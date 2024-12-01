@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 836736575883188988}
   - component: {fileID: 7581618867947029304}
+  - component: {fileID: 2865883708403791594}
   m_Layer: 0
   m_Name: CargoSign
   m_TagString: Untagged
@@ -84,3 +85,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2865883708403791594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7489723503762382315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 764a294ee0d709a4fab655134394ffdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitSeconds: 2
+  offset: 5
+  objects:
+  - {fileID: 3832458924436411706, guid: 608d1031cc24f2140b3ec92925ee93f7, type: 3}
