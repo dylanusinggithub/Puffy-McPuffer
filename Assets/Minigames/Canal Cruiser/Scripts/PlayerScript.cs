@@ -1,13 +1,14 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField, Range(0, 10)]
     float startSpeed = 5;
-    
+
     [SerializeField, Range(0, 100)]
     float movementStrength = 100;
-    
+
     [SerializeField, Range(0, 100)]
     float mouseStrength = 100;
 
@@ -29,12 +30,22 @@ public class PlayerScript : MonoBehaviour
     float velocity = 0;
 
     ScoreScript SM;
-    private DamageFlash _damageFlash;
+
+
+    [SerializeField]
+    Color flashColor;
+    Color oldColor;
+
+    [SerializeField, Range(0, 2)]
+    float flashSeconds;
+
+    [SerializeField, Range(0, 50)]
+    float flashAmount;
 
     private void Start()
     {
         SM = GameObject.Find("Game Manager").GetComponent<ScoreScript>();
-        _damageFlash = GetComponent<DamageFlash>();
+        oldColor = GetComponent<SpriteRenderer>().color;
     }
 
     // Update is called once per frame
@@ -42,7 +53,7 @@ public class PlayerScript : MonoBehaviour
     {
         transform.parent.Translate(new Vector3(startSpeed, 0, 0));
 
-        if(Input.GetButton("Horizontal")) velocity += -Input.GetAxis("Horizontal") * (movementStrength / 10000);
+        if (Input.GetButton("Horizontal")) velocity += -Input.GetAxis("Horizontal") * (movementStrength / 10000);
         else if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
         {
             float mouseDist = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
@@ -81,14 +92,27 @@ public class PlayerScript : MonoBehaviour
     {
 
         Destroy(collision.gameObject);
+        StartCoroutine(DamageFlash());
 
         int points;
 
         if (collision.tag == "Collectable") points = 1;
         else points = -1;
-        
+
 
         if (points + SM.score > -1) SM.score += points;
         else SM.Die(true);
+    }
+
+    IEnumerator DamageFlash()
+    {
+        for (int i = 0; i < flashSeconds * flashAmount; i++)
+        {
+            if (i % 2 == 0) GetComponent<SpriteRenderer>().color = flashColor; // changes colour every other time
+            else GetComponent<SpriteRenderer>().color = oldColor;
+
+            yield return new WaitForSeconds(flashSeconds / flashAmount);
+        }
+        GetComponent<SpriteRenderer>().color = oldColor;
     }
 }

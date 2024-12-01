@@ -610,7 +610,6 @@ GameObject:
   - component: {fileID: 186730354}
   - component: {fileID: 186730353}
   - component: {fileID: 186730356}
-  - component: {fileID: 186730357}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -769,20 +768,9 @@ MonoBehaviour:
   movementDeceleration: 0.75
   rotationStrength: 25
   movementArea: 5.4
---- !u!114 &186730357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186730350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d073ff9844cbcc45a6f14849836914f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _flashColour: {r: 1, g: 0, b: 0, a: 1}
-  _flashTime: 0.25
+  flashColor: {r: 0, g: 0, b: 0, a: 0}
+  flashSeconds: 0.5
+  flashAmount: 20
 --- !u!1001 &198151030
 PrefabInstance:
   m_ObjectHideFlags: 0

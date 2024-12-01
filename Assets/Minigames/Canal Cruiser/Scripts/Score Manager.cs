@@ -54,7 +54,7 @@ public class ScoreScript : MonoBehaviour
         else gameOver.SetActive(true);
 
         // Grabs the FailInfo's text and changes it acorrdingly
-        if (lostCargo) gameOver.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text =
+        if (lostCargo) gameOver.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text =
                 "You have failed to retrieve the requested cargo amount.";
 
         Time.timeScale = 0;
