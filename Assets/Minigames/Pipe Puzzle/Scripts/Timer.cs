@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +18,8 @@ public class Timer : MonoBehaviour
     public GameObject puffything;
     public GameObject puffything2;
     public GameObject PuffyPic;
-
+    public GameObject layer;
+    
 
     private void Awake()
     {
@@ -40,6 +42,7 @@ public class Timer : MonoBehaviour
             score.SetActive(true);
             puffything.SetActive(true);
             PuffyPic.GetComponent<Animation>().enabled = false;
+            layer.SetActive(true);
             //I'll add a counter instead assuming we're making it warioware style so just ++ points here
             //scoretext.text=time_remaining.ToString("Your score is " + time_remaining);
         }
@@ -50,9 +53,12 @@ public class Timer : MonoBehaviour
         }
         else
         {
+            FindObjectOfType<AudioManager>().Play("Sad");
             youlose.SetActive(true);
             puffything2.SetActive(true);
             PuffyPic.GetComponent<Animation>().enabled = false;
+            layer.SetActive(true);
+            
             //pipeScript.enabled = false;
         }
     }
