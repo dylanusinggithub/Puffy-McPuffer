@@ -151,5 +151,6 @@ public class GameManager : MonoBehaviour
         correctPipes--;
     }
 
-    //pipegrey_23,35(2),23(2),35(1),36,35,23(1),
+    
+
 }

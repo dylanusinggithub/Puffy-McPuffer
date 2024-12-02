@@ -31,6 +31,9 @@ public class PipeScript : MonoBehaviour
     public GameObject broke2;
     public GameObject broke0;
 
+    public ParticleSystem clickparticle;
+    private ParticleSystem clickinstance;
+
     //Locate the game manager via the game manager object
     private void Awake()
     {
@@ -103,6 +106,7 @@ public class PipeScript : MonoBehaviour
 
         clickcounter++;
         FindObjectOfType<AudioManager>().Play("Peeped");
+        spawnps();
         if (PossibleRotation > 1)
         {
             if (transform.eulerAngles.z == correctRotation[0] || transform.eulerAngles.z == correctRotation[1] && isPlaced == false)
@@ -144,7 +148,7 @@ public class PipeScript : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
 
             clickcounter++;
-
+            spawnps();
             if (PossibleRotation > 1)
             {
                 if (transform.eulerAngles.z == correctRotation[0] || transform.eulerAngles.z == correctRotation[1] && isPlaced == false)
@@ -176,5 +180,10 @@ public class PipeScript : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void spawnps()
+    {
+            clickinstance = Instantiate(clickparticle, transform.position, Quaternion.identity);
     }
 }
