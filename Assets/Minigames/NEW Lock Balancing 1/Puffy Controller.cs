@@ -13,6 +13,7 @@ public class PuffyController : MonoBehaviour
     [Header("Health")]
     [SerializeField, Range(1, 5)]
     int healthMax;
+    int health;
 
     float percentage = 0;
     bool isHit, isRed = false;
@@ -46,6 +47,8 @@ public class PuffyController : MonoBehaviour
         LB = GameObject.Find("GameManager").GetComponent<NEWLockBalancing>();
         DurabilityBar = GameObject.Find("Durability").transform.GetChild(1).gameObject;
         DurabilityBG = GameObject.Find("Durability").transform.GetChild(0).gameObject;
+
+        health = healthMax;
     }
 
     private void FixedUpdate()
@@ -76,6 +79,8 @@ public class PuffyController : MonoBehaviour
         {
             // makes it so it cannot get hurt again until decreasedDurability is finished
             if (!isHit) StartCoroutine(decreaseDurability());
+
+            if(health < 0) LB.state = NEWLockBalancing.GameState.Fail;
 
             // Stops puffy from going past the movement area
             if (transform.position.x > 0) transform.position = new Vector2(maxDist, transform.position.y);
@@ -116,6 +121,7 @@ public class PuffyController : MonoBehaviour
         int Smoothness = 60;
         float Seconds = 1;
 
+        health--;
         isHit = true;
         for (int i = 0; i < Smoothness; i++)
         {

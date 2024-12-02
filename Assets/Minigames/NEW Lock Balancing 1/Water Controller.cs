@@ -63,7 +63,7 @@ public class WaterController : MonoBehaviour
 
         background = GameObject.Find("Lock Background");
         background = background.transform.GetChild(background.transform.childCount - 1).gameObject;
-        background.transform.localScale = new Vector2(background.transform.localScale.x, waterMaxHeight + waterMinHeight + waterOffset);
+        background.transform.localScale = new Vector2(background.transform.localScale.x, waterMaxHeight + waterMinHeight + 1.5f);
     }
 
     void OnValidate() // Only activated outside of playmode
@@ -95,7 +95,9 @@ public class WaterController : MonoBehaviour
         boatTransformX = Mathf.PerlinNoise1D(((float)perlinX / 100) * perlinStepSizeX) - 0.5f;
         boatTransformY = Mathf.PerlinNoise1D(((float)perlinY / 100) * perlinStepSizeY) - 0.5f;
 
-        boatTransformX *= strengthX;
+        if (LB.state == NEWLockBalancing.GameState.Play) boatTransformX *= strengthX;
+        else boatTransformX = Puffy.transform.position.x; // stops puffy from being moved around during cutscene but still bobs up and down
+
         boatTransformY *= strengthY;
 
         boatRotation = -Puffy.transform.position.x * ((float)strengthR / 100);

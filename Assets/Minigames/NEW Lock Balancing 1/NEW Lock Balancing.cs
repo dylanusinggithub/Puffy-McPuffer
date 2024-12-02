@@ -8,6 +8,8 @@ public class NEWLockBalancing : MonoBehaviour
 
     [Header("Gameplay")]
     TextMeshProUGUI Loading, createText;
+
+    [SerializeField]
     GameObject GameOver, Win;
 
     [SerializeField, Range(5f, 30f)]
@@ -23,9 +25,11 @@ public class NEWLockBalancing : MonoBehaviour
     ParticleSystemForceField windForce;
 
     public enum GameState { Start, Play, Fail, Complete };
-    GameState state;
+    public GameState state;
 
     WaterController WB;
+
+    float cutsceneSpeed = -0.03f;
 
     private void Start()
     {
@@ -36,9 +40,6 @@ public class NEWLockBalancing : MonoBehaviour
         state = GameState.Start;
 
         Puffy = GameObject.Find("Player");
-
-        GameOver = GameObject.Find("GameOver Panel");
-        Win = GameObject.Find("Win Panel");
 
         arrowMovement = GameObject.Find("Arrow Origin");
         windForce = transform.GetChild(0).GetChild(0).GetComponent<ParticleSystemForceField>();
@@ -51,22 +52,45 @@ public class NEWLockBalancing : MonoBehaviour
         {
             case GameState.Start:
                 {
-                    if (Puffy.transform.position.x < 0)
-                    {
-                        WB.enabled = true;
-                        Loading.enabled = false;
-                        createText.enabled = true;
-                        Puffy.GetComponent<PuffyController>().enabled = true;
-                        GetComponent<ObjectDropper>().enabled = true;
-
-                        state = GameState.Play;
-                    }
-                    else Puffy.transform.Translate(new Vector2(-0.05f, 0));
+                    if (Puffy.transform.position.x < 0) state = GameState.Play;
+                    else Puffy.transform.Translate(new Vector2(cutsceneSpeed, 0));
                 }
                 break;
             case GameState.Play:
                 {
                     DisplayWaterMovement();
+                    WB.enabled = true;
+                    Loading.enabled = false;
+                    createText.enabled = true;
+                    Puffy.GetComponent<PuffyController>().enabled = true;
+                    GetComponent<ObjectDropper>().enabled = true;
+
+                }
+                break;
+            case GameState.Fail:
+                {
+                    arrowMovement.SetActive(false);
+
+                    createText.enabled = true;
+                    
+                    Puffy.GetComponent<PuffyController>().enabled = false;
+                    GetComponent<ObjectDropper>().enabled = false;
+                    GameOver.SetActive(true);
+
+                    Puffy.transform.Translate(new Vector2(cutsceneSpeed, 0));
+                }
+                break;
+            case GameState.Complete:
+                {
+                    arrowMovement.SetActive(false);
+                    createText.enabled = false;
+
+                    Puffy.GetComponent<PuffyController>().enabled = false;
+                    GetComponent<ObjectDropper>().enabled = false;
+
+                    Win.SetActive(true);
+
+                    Puffy.transform.Translate(new Vector2(cutsceneSpeed, 0));
                 }
                 break;
         }
@@ -98,8 +122,11 @@ public class NEWLockBalancing : MonoBehaviour
         if (Object.tag == "Collectable")
         {
             createCount++;
-            if (createCount >= createCompletion) state = GameState.Complete;
-
+            if (createCount >= createCompletion)
+            {
+                state = GameState.Complete;
+                Puffy.GetComponent<SpriteRenderer>().flipX = false;
+            }
             StartCoroutine(GetComponent<WaterController>().changeHeight(true));
         }
         else if (createCount > 0)
