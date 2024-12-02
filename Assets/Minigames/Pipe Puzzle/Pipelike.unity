@@ -11069,9 +11069,9 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
   - nameOfSound: Peeped
-    clip: {fileID: 8300000, guid: 1d15c2f148f73c345b4b9f90792ca114, type: 3}
+    clip: {fileID: 8300000, guid: 9bf96995b14ad0340952b0fdade7a703, type: 3}
     volume: 1
-    pitch: 1
+    pitch: 0.81
     source: {fileID: 0}
   - nameOfSound: Yippee
     clip: {fileID: 8300000, guid: 30a308703f2a4364aacbe53bcb5fea05, type: 3}
