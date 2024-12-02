@@ -84,6 +84,9 @@ public class PlayerScript : MonoBehaviour
             if (transform.localPosition.y > 0) transform.localPosition = new Vector2(transform.localPosition.x, movementArea - 0.01f);
             else transform.localPosition = new Vector2(transform.localPosition.x, -movementArea + 0.01f);
 
+            GetComponent<AudioSource>().volume = 1;
+            GetComponent<AudioSource>().Play();
+
             velocity = 0;
         }
 
@@ -93,6 +96,9 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+        collision.gameObject.GetComponent<AudioSource>().volume = 1;
+        collision.gameObject.GetComponent<AudioSource>().Play();
 
         Destroy(collision.gameObject);
 

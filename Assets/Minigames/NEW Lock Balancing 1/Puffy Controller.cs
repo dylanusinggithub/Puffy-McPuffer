@@ -118,6 +118,9 @@ public class PuffyController : MonoBehaviour
 
     IEnumerator decreaseDurability()
     {
+        GetComponent<AudioSource>().volume = 1;
+        GetComponent<AudioSource>().Play();
+
         int Smoothness = 60;
         float Seconds = 1;
 
@@ -142,6 +145,9 @@ public class PuffyController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         LB.CollectObject(collision.gameObject);
+
+        collision.gameObject.GetComponent<AudioSource>().volume = 1;
+        collision.gameObject.GetComponent<AudioSource>().Play();
 
         if (collision.gameObject.tag == "Obstacle")
         {
