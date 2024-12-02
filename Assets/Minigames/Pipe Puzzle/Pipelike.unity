@@ -41205,7 +41205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1536587473292895401, guid: 12d7713bb3b01824e8f11eacf9129f86, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2521787999202130469, guid: 12d7713bb3b01824e8f11eacf9129f86, type: 3}
       propertyPath: m_RenderMode
@@ -41213,15 +41213,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2521787999202130469, guid: 12d7713bb3b01824e8f11eacf9129f86, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2521787999202130469, guid: 12d7713bb3b01824e8f11eacf9129f86, type: 3}
       propertyPath: m_VelocityScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6697274238594370868, guid: 12d7713bb3b01824e8f11eacf9129f86, type: 3}
+      propertyPath: lengthInSec
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697274238594370868, guid: 12d7713bb3b01824e8f11eacf9129f86, type: 3}
       propertyPath: NoiseModule.frequency
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697274238594370868, guid: 12d7713bb3b01824e8f11eacf9129f86, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 6697274238594370868, guid: 12d7713bb3b01824e8f11eacf9129f86, type: 3}
       propertyPath: InitialModule.startSize.scalar
@@ -41265,7 +41273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6697274238594370868, guid: 12d7713bb3b01824e8f11eacf9129f86, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
