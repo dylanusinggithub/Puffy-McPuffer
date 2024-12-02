@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6697274238594370868}
   - component: {fileID: 2521787999202130469}
   m_Layer: 0
-  m_Name: ObstacleDamage2
+  m_Name: ClickParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4853,7 +4853,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5f4b5c135a32d2343af6587b19892783, type: 2}
+  - {fileID: 2100000, guid: 3fa916a68d2efc44093e42fdce74c959, type: 2}
   - {fileID: 2100000, guid: ccf60b93f4a32d9459a123a736fdc678, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
