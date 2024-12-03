@@ -17,10 +17,7 @@ public class ScoreScript : MonoBehaviour
     GameObject youWin;
 
     [SerializeField]
-    GameObject gameOver1;
-
-    [SerializeField]
-    GameObject gameOver2;
+    GameObject gameOver;
 
     [SerializeField, Range(0f, 50f)]
     int timeWin;
@@ -46,31 +43,24 @@ public class ScoreScript : MonoBehaviour
             timeTillWin -= Time.deltaTime;
             timeText.text = "Time Remaining: " + timeTillWin.ToString("F2"); // "F2" means 2 sig figures
         }
-        else Die(false);
+        else Die();
 
         scoreText.text = "Cargo Collected: " + score.ToString() + "/ " + scoreWin.ToString();
     }
 
-    public void Die(bool lostCargo)
+    public void Die()
     {
         if (scoreWin <= score) youWin.SetActive(true);
-        else gameOver1.SetActive(true);
-
-        // Grabs the FailInfo's text and changes it acorrdingly
-        if (lostCargo) gameOver1.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text =
-                "You have crashed and sunk to the bottom of the canal.";
-
-        Time.timeScale = 0;
-    }
-
-    public void OutOfTime(bool timeUp)
-    {
-        if (scoreWin <= score) youWin.SetActive(true);
-        else gameOver2.SetActive(true);
-
-        // Grabs the FailInfo's text and changes it acorrdingly
-        if (timeUp) gameOver2.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text =
-                "You have failed to retrieve the requested amount of cargo.";
+        else if (score == 0)
+        {
+            gameOver.SetActive(true);
+            gameOver.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "You have crashed and sunk to the bottom of the canal.";
+        }
+        else
+        {
+            gameOver.SetActive(true);
+            gameOver.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "You have failed to retrieve the requested amount of cargo.";
+        }
 
         Time.timeScale = 0;
     }

@@ -115,7 +115,7 @@ public class PlayerScript : MonoBehaviour
         }
 
         if (points + SM.score > -1) SM.score += points;
-        else SM.Die(true);
+        else SM.Die();
     }
 
     IEnumerator DamageFlash()
