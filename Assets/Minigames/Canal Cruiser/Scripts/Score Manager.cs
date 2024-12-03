@@ -17,7 +17,10 @@ public class ScoreScript : MonoBehaviour
     GameObject youWin;
 
     [SerializeField]
-    GameObject gameOver;
+    GameObject gameOver1;
+
+    [SerializeField]
+    GameObject gameOver2;
 
     [SerializeField, Range(0f, 50f)]
     int timeWin;
@@ -51,12 +54,25 @@ public class ScoreScript : MonoBehaviour
     public void Die(bool lostCargo)
     {
         if (scoreWin <= score) youWin.SetActive(true);
-        else gameOver.SetActive(true);
+        else gameOver1.SetActive(true);
 
         // Grabs the FailInfo's text and changes it acorrdingly
-        if (lostCargo) gameOver.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text =
-                "You have failed to retrieve the requested cargo amount.";
+        if (lostCargo) gameOver1.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text =
+                "You have crashed and sunk to the bottom of the canal.";
 
         Time.timeScale = 0;
     }
+
+    public void OutOfTime(bool timeUp)
+    {
+        if (scoreWin <= score) youWin.SetActive(true);
+        else gameOver2.SetActive(true);
+
+        // Grabs the FailInfo's text and changes it acorrdingly
+        if (timeUp) gameOver2.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text =
+                "You have failed to retrieve the requested amount of cargo.";
+
+        Time.timeScale = 0;
+    }
+
 }

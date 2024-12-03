@@ -14,6 +14,6 @@ public class ButtonScript : MonoBehaviour
     }
     public void PlayCanal()
     {
-        SceneManager.LoadScene("River Raiders");
+        SceneManager.LoadScene("Canal Cruiser");
     }
 }

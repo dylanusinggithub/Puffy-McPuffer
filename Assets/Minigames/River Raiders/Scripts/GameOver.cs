@@ -12,7 +12,7 @@ public class GameOver : MonoBehaviour
     // Clicking on the "Retry" button
     public void OnRetryButton() // If the player clicks the "Retry" button
     {
-        SceneManager.LoadScene("River Raiders"); // Minigame is reloaded
+        SceneManager.LoadScene("Canal Cruiser"); // Minigame is reloaded
         Time.timeScale = 1f; // Time scale is reset to 1 (gameplay starts again)
     }
 
