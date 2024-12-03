@@ -20,7 +20,9 @@ public class Clickparticle : MonoBehaviour
         {
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             particles.SetActive(true);
+            
             particles.transform.position = new Vector3(mousePos.x, mousePos.y, 0f);
+            //particles.GetComponent<ParticleSystem>().Play();
         }
 
         if (Input.GetMouseButtonUp(0))

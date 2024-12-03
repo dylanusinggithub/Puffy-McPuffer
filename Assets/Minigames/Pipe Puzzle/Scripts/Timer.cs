@@ -33,6 +33,7 @@ public class Timer : MonoBehaviour
         //scoretext = GetComponent<Text>();
     }
 
+
     // Update is called once per frame
     void Update()
     {

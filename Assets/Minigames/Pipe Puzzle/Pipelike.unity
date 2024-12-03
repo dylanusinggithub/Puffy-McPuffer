@@ -222,7 +222,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &4683778
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -713,7 +712,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &14639393
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -866,7 +864,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &17613397
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1020,7 +1017,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &21004695
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1509,7 +1505,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &48802501
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1813,7 +1808,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &56391669
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2359,7 +2353,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &66576142
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3069,7 +3062,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &94047201
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4317,7 +4309,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &151066217
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4555,7 +4546,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &152899804
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9596,7 +9586,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &154371153
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9835,7 +9824,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &165642153
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10655,7 +10643,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &200423623
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11380,7 +11367,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &223904238
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11533,7 +11519,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &226874862
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12277,7 +12262,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &268951742
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12598,7 +12582,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &281833579
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12836,7 +12819,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &286446544
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12989,7 +12971,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &288103603
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13227,7 +13208,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &296467183
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13886,7 +13866,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &314478921
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19348,7 +19327,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &347338263
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19587,7 +19565,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &350409501
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19993,7 +19970,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &372916497
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20739,7 +20715,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &433020280
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20976,7 +20951,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &443620005
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21382,7 +21356,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &464014822
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22210,7 +22183,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &515845631
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22680,7 +22652,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &531766107
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28904,7 +28875,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &596086347
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29310,7 +29280,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &620208153
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29463,7 +29432,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &627763799
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30459,7 +30427,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &668566635
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30612,7 +30579,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &669736786
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30765,7 +30731,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &671437596
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -31086,7 +31051,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &677040572
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32218,7 +32182,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &710863026
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32540,7 +32503,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &726117866
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32935,7 +32897,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &731349329
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33257,7 +33218,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &746473176
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33410,7 +33370,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &747136953
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33732,7 +33691,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &768983663
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33885,7 +33843,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &770112259
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -34256,7 +34213,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &778613737
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -34664,7 +34620,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &792965405
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35238,7 +35193,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &811842103
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35475,7 +35429,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &814471187
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35628,7 +35581,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &823784208
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35794,7 +35746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11c8069eb1dafd544bc327da8ffd8e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particles: {fileID: 586676802}
+  particles: {fileID: 1397272247}
 --- !u!4 &829600180
 Transform:
   m_ObjectHideFlags: 0
@@ -35910,7 +35862,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &834451336
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36063,7 +36014,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &837228308
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36216,7 +36166,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &841455791
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36453,7 +36402,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &847349998
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36726,7 +36674,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &850405583
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36880,7 +36827,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &854358161
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -37117,7 +37063,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &865551550
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -37610,7 +37555,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &885920523
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -37879,7 +37823,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &892869507
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -38117,7 +38060,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &898739707
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -39451,7 +39393,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &976245073
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -39688,7 +39629,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &984177824
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -40578,7 +40518,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1002281951
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -40899,7 +40838,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1009667685
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -41220,7 +41158,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1022080193
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -41594,7 +41531,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1034093451
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -41831,7 +41767,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1047274921
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -42028,7 +41963,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1050861737
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -42267,7 +42201,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1052847803
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -42589,7 +42522,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1067523271
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -42826,7 +42758,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1080098779
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -42979,7 +42910,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1081248910
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -43216,7 +43146,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1102400112
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -43538,7 +43467,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1117819477
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -43775,7 +43703,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1118795433
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -44188,7 +44115,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1123572145
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -44546,7 +44472,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1148331425
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -45196,7 +45121,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1176881351
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -45854,7 +45778,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1195066753
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -45907,11 +45830,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!198 &1196969359 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6697274238594370868, guid: 12d7713bb3b01824e8f11eacf9129f86, type: 3}
-  m_PrefabInstance: {fileID: 1207597594}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1200694506
 GameObject:
   m_ObjectHideFlags: 0
@@ -46240,7 +46158,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6697274238594370868, guid: 12d7713bb3b01824e8f11eacf9129f86, type: 3}
       propertyPath: stopAction
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6697274238594370868, guid: 12d7713bb3b01824e8f11eacf9129f86, type: 3}
       propertyPath: lengthInSec
@@ -46248,7 +46166,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6697274238594370868, guid: 12d7713bb3b01824e8f11eacf9129f86, type: 3}
       propertyPath: playOnAwake
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697274238594370868, guid: 12d7713bb3b01824e8f11eacf9129f86, type: 3}
+      propertyPath: autoRandomSeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6697274238594370868, guid: 12d7713bb3b01824e8f11eacf9129f86, type: 3}
       propertyPath: NoiseModule.frequency
@@ -46486,7 +46408,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1211136917
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -46640,7 +46561,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1212496540
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -47046,7 +46966,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1229651313
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -47958,7 +47877,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1316573689
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -48680,7 +48598,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1347272508
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -49581,6 +49498,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1397272247 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1536587473292895401, guid: 12d7713bb3b01824e8f11eacf9129f86, type: 3}
+  m_PrefabInstance: {fileID: 1207597594}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1398774227
 GameObject:
   m_ObjectHideFlags: 0
@@ -50055,7 +49977,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1402728294
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -50800,7 +50721,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1450804788
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -51495,7 +51415,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1503455502
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -51733,7 +51652,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1515069680
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -52223,7 +52141,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1549737134
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -52630,7 +52547,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1571107652
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -53097,7 +53013,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1590331502
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -53335,7 +53250,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1596620489
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -53489,7 +53403,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1599988579
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -53642,7 +53555,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1604049902
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -53857,7 +53769,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1616314944
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -54262,7 +54173,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1648591407
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -54415,7 +54325,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1653549013
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -54653,7 +54562,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1658760941
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -55348,7 +55256,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1707088428
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -55670,7 +55577,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1716956390
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -56501,7 +56407,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1729000239
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -56823,7 +56728,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1742927290
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -56976,7 +56880,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1748573560
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -57129,7 +57032,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1752257250
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -57282,7 +57184,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1755512802
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -58652,7 +58553,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1811603084
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -59023,7 +58923,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1817619415
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -59514,7 +59413,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1840052995
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -59921,7 +59819,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1858782220
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -61043,7 +60940,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1917770004
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -61449,7 +61345,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1931638912
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -61602,7 +61497,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1932346630
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -61755,7 +61649,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &1939128486
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -62179,7 +62072,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1955008151
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -62416,7 +62308,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1959289189
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -62654,7 +62545,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &1960323526
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -63312,7 +63202,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &2001132511
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -63549,7 +63438,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &2006474472
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -64611,7 +64499,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &2050384679
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -64848,7 +64735,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &2053963684
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -65620,7 +65506,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &2079770742
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -65774,7 +65659,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &2080711706
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -66034,7 +65918,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &2101675349
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -66187,7 +66070,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &2105042107
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -66577,7 +66459,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &2117920494
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -66730,7 +66611,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &2126279287
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -67136,7 +67016,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 1196969359}
 --- !u!212 &2134672982
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -67373,7 +67252,6 @@ MonoBehaviour:
   broke1: {fileID: 0}
   broke2: {fileID: 0}
   broke0: {fileID: 0}
-  clickparticle: {fileID: 0}
 --- !u!212 &2141804838
 SpriteRenderer:
   m_ObjectHideFlags: 0
