@@ -100,11 +100,13 @@ public class PlayerScript : MonoBehaviour
         collision.gameObject.GetComponent<AudioSource>().volume = 1;
         collision.gameObject.GetComponent<AudioSource>().Play();
 
-        Destroy(collision.gameObject);
-
         int points;
 
-        if (collision.tag == "Collectable") points = 1;
+        if (collision.tag == "Collectable")
+        {
+            points = 1;
+            Destroy(collision.gameObject);
+        }
         else
         {
             points = -1;
@@ -113,7 +115,7 @@ public class PlayerScript : MonoBehaviour
         }
 
         if (points + SM.score > -1) SM.score += points;
-        else SM.Die(true);
+        else SM.Die();
     }
 
     IEnumerator DamageFlash()

@@ -19,7 +19,7 @@ public class ScoreManager : MonoBehaviour
     int timeWin;
     public float timeTillWin = 0;
 
-    public GameObject youWin, gameOver;
+    public GameObject youWin, gameOver, gameOver2;
 
     public int GetScore()
     {
@@ -33,7 +33,9 @@ public class ScoreManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(timeTillWin > 0)
+        if (Time.timeScale == 0) return; // Skip if the game is already stopped
+
+        if (timeTillWin > 0)
         {
             timeTillWin -= Time.deltaTime;
             timeText.text = "Time Remaining: " + timeTillWin.ToString("F2");
@@ -69,6 +71,13 @@ public class ScoreManager : MonoBehaviour
         score += points; // Add 1 point to game score
         score = Mathf.Max(score, 0); // Ensure score doesn't go below 0
         UpdateScoreText(); // Update Score Text function is 
+
+        // Check if score is 0, indicating all cargo is lost
+        if (score == 0)
+        {
+            gameOver2.SetActive(true); // Show the "Game Over 2" panel
+            Time.timeScale = 0; // Stop the game
+        }
     }
 
     // Update Score Text Function

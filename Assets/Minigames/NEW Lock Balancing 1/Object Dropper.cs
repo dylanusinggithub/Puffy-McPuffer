@@ -44,9 +44,11 @@ public class ObjectDropper : MonoBehaviour
                     else if (GO.transform.GetChild(i).position.y < WC.waterHeight) // In the water
                     {
                         GO.transform.GetChild(i).GetComponent<BoxCollider2D>().enabled = false;
-                        GO.transform.GetChild(i).GetComponent<Rigidbody2D>().gravityScale = 12;
+                        GO.transform.GetChild(i).GetComponent<Rigidbody2D>().gravityScale = 0.2f;
                         GO.transform.GetChild(i).GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         GO.transform.GetChild(i).GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-50, 50);
+
+                        GO.transform.GetChild(i).parent = null;
                     }
                 }
 

@@ -43,20 +43,26 @@ public class ScoreScript : MonoBehaviour
             timeTillWin -= Time.deltaTime;
             timeText.text = "Time Remaining: " + timeTillWin.ToString("F2"); // "F2" means 2 sig figures
         }
-        else Die(false);
+        else Die();
 
         scoreText.text = "Cargo Collected: " + score.ToString() + "/ " + scoreWin.ToString();
     }
 
-    public void Die(bool lostCargo)
+    public void Die()
     {
         if (scoreWin <= score) youWin.SetActive(true);
-        else gameOver.SetActive(true);
-
-        // Grabs the FailInfo's text and changes it acorrdingly
-        if (lostCargo) gameOver.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text =
-                "You have failed to retrieve the requested cargo amount.";
+        else if (score == 0)
+        {
+            gameOver.SetActive(true);
+            gameOver.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "You have crashed and sunk to the bottom of the canal.";
+        }
+        else
+        {
+            gameOver.SetActive(true);
+            gameOver.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "You have failed to retrieve the requested amount of cargo.";
+        }
 
         Time.timeScale = 0;
     }
+
 }
