@@ -27,6 +27,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField, Range(0, 8)]
     float movementArea = 6;
 
+    [SerializeField] private AudioClip cargoCollectedSound;
+    private AudioSource audioSource;
+
     float velocity = 0;
 
     ScoreScript SM;
@@ -49,6 +52,9 @@ public class PlayerScript : MonoBehaviour
     {
         SM = GameObject.Find("Game Manager").GetComponent<ScoreScript>();
         oldColor = GetComponent<SpriteRenderer>().color;
+
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -106,6 +112,12 @@ public class PlayerScript : MonoBehaviour
         if (collision.tag == "Collectable")
         {
             points = 1;
+
+            if (cargoCollectedSound != null && audioSource != null)
+            {
+            audioSource.PlayOneShot(cargoCollectedSound);
+            }
+
             Destroy(collision.gameObject);
         }
         else
