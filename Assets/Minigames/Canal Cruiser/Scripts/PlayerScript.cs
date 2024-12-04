@@ -96,6 +96,7 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(!this.enabled) return; // Disabled scripts aren't fully disabled? <3 unity
 
         collision.gameObject.GetComponent<AudioSource>().volume = 1;
         collision.gameObject.GetComponent<AudioSource>().Play();
