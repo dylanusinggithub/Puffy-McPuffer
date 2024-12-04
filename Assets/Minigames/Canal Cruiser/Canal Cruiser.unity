@@ -130,6 +130,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 305954005}
     m_Modifications:
+    - target: {fileID: 745113304232343802, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c6ecf6cde1801334b91537ff33410a0a, type: 3}
     - target: {fileID: 991686087053083813, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
       propertyPath: m_Name
       value: TreeLogPrefab (1)
@@ -397,6 +401,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 7813404445370124319, guid: e579c4ed6d3761648b718a19518f1a64, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 29114257b1cc492418f7a814d5cb07b4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -866,6 +874,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CratePrefab (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6287479890062828946, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4628c1dddb0efa248985c1ecacb69efb, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -944,6 +956,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 7813404445370124319, guid: e579c4ed6d3761648b718a19518f1a64, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 29114257b1cc492418f7a814d5cb07b4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1166,6 +1182,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 314023360}
     m_Modifications:
+    - target: {fileID: 745113304232343802, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c6ecf6cde1801334b91537ff33410a0a, type: 3}
     - target: {fileID: 991686087053083813, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
       propertyPath: m_Name
       value: TreeLogPrefab
@@ -1231,6 +1251,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 911906978}
     m_Modifications:
+    - target: {fileID: 745113304232343802, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c6ecf6cde1801334b91537ff33410a0a, type: 3}
     - target: {fileID: 991686087053083813, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
       propertyPath: m_Name
       value: TreeLogPrefab (2)
@@ -1630,6 +1654,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CratePrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6287479890062828946, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4628c1dddb0efa248985c1ecacb69efb, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1697,6 +1725,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CratePrefab (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6287479890062828946, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4628c1dddb0efa248985c1ecacb69efb, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2121,6 +2153,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 7813404445370124319, guid: e579c4ed6d3761648b718a19518f1a64, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 29114257b1cc492418f7a814d5cb07b4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2194,6 +2230,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 7813404445370124319, guid: e579c4ed6d3761648b718a19518f1a64, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 29114257b1cc492418f7a814d5cb07b4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2568,6 +2608,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 7813404445370124319, guid: e579c4ed6d3761648b718a19518f1a64, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 29114257b1cc492418f7a814d5cb07b4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2707,6 +2751,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CratePrefab (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6287479890062828946, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4628c1dddb0efa248985c1ecacb69efb, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2785,6 +2833,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 7813404445370124319, guid: e579c4ed6d3761648b718a19518f1a64, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 29114257b1cc492418f7a814d5cb07b4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3131,6 +3183,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 7813404445370124319, guid: e579c4ed6d3761648b718a19518f1a64, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 29114257b1cc492418f7a814d5cb07b4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3233,6 +3289,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 780840989}
     m_Modifications:
+    - target: {fileID: 745113304232343802, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c6ecf6cde1801334b91537ff33410a0a, type: 3}
     - target: {fileID: 991686087053083813, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
       propertyPath: m_Name
       value: TreeLogPrefab (4)
@@ -3371,6 +3431,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2050901379}
     m_Modifications:
+    - target: {fileID: 745113304232343802, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c6ecf6cde1801334b91537ff33410a0a, type: 3}
     - target: {fileID: 991686087053083813, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
       propertyPath: m_Name
       value: TreeLogPrefab (2)
@@ -3501,6 +3565,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 7813404445370124319, guid: e579c4ed6d3761648b718a19518f1a64, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 29114257b1cc492418f7a814d5cb07b4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3519,6 +3587,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2050901379}
     m_Modifications:
+    - target: {fileID: 745113304232343802, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c6ecf6cde1801334b91537ff33410a0a, type: 3}
     - target: {fileID: 991686087053083813, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
       propertyPath: m_Name
       value: TreeLogPrefab (3)
@@ -3695,6 +3767,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CratePrefab (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6287479890062828946, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4628c1dddb0efa248985c1ecacb69efb, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3902,6 +3978,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 305954005}
     m_Modifications:
+    - target: {fileID: 745113304232343802, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c6ecf6cde1801334b91537ff33410a0a, type: 3}
     - target: {fileID: 991686087053083813, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
       propertyPath: m_Name
       value: TreeLogPrefab
@@ -4027,6 +4107,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 7813404445370124319, guid: e579c4ed6d3761648b718a19518f1a64, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 29114257b1cc492418f7a814d5cb07b4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4100,6 +4184,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 7813404445370124319, guid: e579c4ed6d3761648b718a19518f1a64, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 29114257b1cc492418f7a814d5cb07b4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4688,6 +4776,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CratePrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6287479890062828946, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4628c1dddb0efa248985c1ecacb69efb, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4761,6 +4853,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 7813404445370124319, guid: e579c4ed6d3761648b718a19518f1a64, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 29114257b1cc492418f7a814d5cb07b4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4823,6 +4919,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CratePrefab (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6287479890062828946, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4628c1dddb0efa248985c1ecacb69efb, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4880,6 +4980,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CratePrefab (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6287479890062828946, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4628c1dddb0efa248985c1ecacb69efb, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4953,6 +5057,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 7813404445370124319, guid: e579c4ed6d3761648b718a19518f1a64, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 29114257b1cc492418f7a814d5cb07b4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5026,6 +5134,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 7813404445370124319, guid: e579c4ed6d3761648b718a19518f1a64, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 29114257b1cc492418f7a814d5cb07b4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5099,6 +5211,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 7813404445370124319, guid: e579c4ed6d3761648b718a19518f1a64, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 29114257b1cc492418f7a814d5cb07b4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5156,6 +5272,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CratePrefab (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6287479890062828946, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4628c1dddb0efa248985c1ecacb69efb, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5303,6 +5423,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 780840989}
     m_Modifications:
+    - target: {fileID: 745113304232343802, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c6ecf6cde1801334b91537ff33410a0a, type: 3}
     - target: {fileID: 991686087053083813, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
       propertyPath: m_Name
       value: TreeLogPrefab (5)
@@ -5482,6 +5606,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 314023360}
     m_Modifications:
+    - target: {fileID: 745113304232343802, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c6ecf6cde1801334b91537ff33410a0a, type: 3}
     - target: {fileID: 991686087053083813, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
       propertyPath: m_Name
       value: TreeLogPrefab (1)
@@ -5607,6 +5735,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 7813404445370124319, guid: e579c4ed6d3761648b718a19518f1a64, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 29114257b1cc492418f7a814d5cb07b4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
