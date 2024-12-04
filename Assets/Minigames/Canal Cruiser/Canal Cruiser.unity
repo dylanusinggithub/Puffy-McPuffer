@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 27366750}
   m_Layer: 0
   m_Name: background
-  m_TagString: Background
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -714,7 +714,6 @@ MonoBehaviour:
   movementDeceleration: 0.75
   rotationStrength: 25
   movementArea: 5.4
-  cargoCollectedSound: {fileID: 8300000, guid: 4628c1dddb0efa248985c1ecacb69efb, type: 3}
   flashColor: {r: 0, g: 0, b: 0, a: 0}
   flashSeconds: 0.5
   flashAmount: 10
@@ -729,8 +728,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4628c1dddb0efa248985c1ecacb69efb, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -3652,10 +3651,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 305954005}
     m_Modifications:
-    - target: {fileID: 1976474173942067537, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2124172712110933406, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 74.1
@@ -3700,10 +3695,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CratePrefab (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 6287479890062828946, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 4628c1dddb0efa248985c1ecacb69efb, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4653,10 +4644,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 305954005}
     m_Modifications:
-    - target: {fileID: 1976474173942067537, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2124172712110933406, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21.72
@@ -4701,10 +4688,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CratePrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 6287479890062828946, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 4628c1dddb0efa248985c1ecacb69efb, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -8,7 +8,6 @@ TagManager:
   - Options
   - Obstacle
   - Collectable
-  - Background
   layers:
   - Default
   - TransparentFX
