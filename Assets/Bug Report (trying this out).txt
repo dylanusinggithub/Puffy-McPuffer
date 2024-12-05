@@ -1,0 +1,11 @@
+Canal Cruiser:
+Rope gets seperated from puffy after collecting cargo
+
+Audio for cargo is cut off so cant hear it
+
+Lock Balance:
+
+Same issue with cargo as before
+
+Pipe:
+Both the Win and Lose audio play at the same time when you win
