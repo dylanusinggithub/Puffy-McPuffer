@@ -10,7 +10,10 @@ public class ObjectScript : MonoBehaviour
     float startSpeed = 0;
 
     float sinkSeconds = 3;
-    Vector2 startScale; 
+    Vector2 startScale;
+
+    [SerializeField]
+    AudioClip[] objectAudio;
 
     private void OnValidate()
     {
@@ -48,6 +51,18 @@ public class ObjectScript : MonoBehaviour
             GetComponent<BoxCollider2D>().enabled = false;
             startScale = transform.localScale;
             StartCoroutine(Sink());
+
+            // Creates audio player object and assgins the clip given to the original colliding
+            // object so if it's deleted before it finishes playing it wont be cut off
+            GameObject AudioPlayer = new GameObject(this.name + " Audio Player");
+
+            AudioPlayer.AddComponent<AudioSource>();
+
+            AudioPlayer.GetComponent<AudioSource>().clip = objectAudio[Random.Range(0, objectAudio.Length)];
+            AudioPlayer.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("Volume");
+            AudioPlayer.GetComponent<AudioSource>().Play();
+
+            Destroy(AudioPlayer, AudioPlayer.GetComponent<AudioSource>().clip.length);
         }
     }
 }

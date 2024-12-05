@@ -146,8 +146,17 @@ public class PuffyController : MonoBehaviour
     {
         LB.CollectObject(collision.gameObject);
 
-        collision.gameObject.GetComponent<AudioSource>().volume = 1;
-        collision.gameObject.GetComponent<AudioSource>().Play();
+        // Creates audio player object and assgins the clip given to the original colliding
+        // object so if it's deleted before it finishes playing it wont be cut off
+        GameObject AudioPlayer = new GameObject(collision.gameObject.name + " Audio Player");
+
+        AudioPlayer.AddComponent<AudioSource>();
+
+        AudioPlayer.GetComponent<AudioSource>().clip = collision.gameObject.GetComponent<AudioSource>().clip;
+        AudioPlayer.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("Volume");
+        AudioPlayer.GetComponent<AudioSource>().Play();
+
+        Destroy(AudioPlayer, AudioPlayer.GetComponent<AudioSource>().clip.length);
 
         if (collision.gameObject.tag == "Obstacle")
         {
