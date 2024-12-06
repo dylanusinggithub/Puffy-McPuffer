@@ -46,11 +46,13 @@ public class WaterController : MonoBehaviour
     float waterPecentage = 0;
     #endregion
 
+    AnimationScript AS;
     NEWLockBalancing LB;
     GameObject Puffy;
 
     private void Start()
     {
+        AS = GetComponent<AnimationScript>();
         LB = GetComponent<NEWLockBalancing>();
 
         waterHeight = -waterMinHeight;
@@ -86,7 +88,7 @@ public class WaterController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (perlinX == 100 / perlinStepSizeX) perlinX = 0;
+        if (perlinX == 100 / perlinStepSizeX || AS.enabled) perlinX = 0;
         else perlinX++;
 
         if (perlinY == 100 / perlinStepSizeY) perlinY = 0;
@@ -95,7 +97,7 @@ public class WaterController : MonoBehaviour
         boatTransformX = Mathf.PerlinNoise1D(((float)perlinX / 100) * perlinStepSizeX) - 0.5f;
         boatTransformY = Mathf.PerlinNoise1D(((float)perlinY / 100) * perlinStepSizeY) - 0.5f;
 
-        if (LB.state == NEWLockBalancing.GameState.Play) boatTransformX *= strengthX;
+        if (!AS.enabled) boatTransformX *= strengthX;
         else boatTransformX = Puffy.transform.position.x; // stops puffy from being moved around during cutscene but still bobs up and down
 
         boatTransformY *= strengthY;
