@@ -18,8 +18,8 @@ public class AnimationScript : MonoBehaviour
 
     float timeWait;
 
-    GameObject Puffy;
-    float startSpeed = -0.02f;
+    GameObject Puffy, createText;
+    float startSpeed = -0.04f;
     Vector2 spawnPos = new Vector2(0, 4);
 
     public enum Animation { MoveToCentre, SpawnCreate, WaitCreate, SpawnObstacle, WaitObstacle}
@@ -29,6 +29,9 @@ public class AnimationScript : MonoBehaviour
     {
         Puffy = GameObject.Find("Player");
         Puffy.GetComponent<PuffyController>().enabled = false;
+
+        createText = GameObject.Find("CreateText");
+        createText.SetActive(false);
 
         state = Animation.MoveToCentre;
     }
@@ -131,6 +134,7 @@ public class AnimationScript : MonoBehaviour
                         Puffy.GetComponent<PuffyController>().enabled = true;
                         GetComponent<WaterController>().enabled = true;
                         GetComponent<ObjectDropper>().enabled = true;
+                        createText.gameObject.SetActive(true);
 
                         this.enabled = false;
                     }
