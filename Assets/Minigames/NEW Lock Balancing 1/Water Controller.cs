@@ -97,7 +97,7 @@ public class WaterController : MonoBehaviour
         boatTransformX = Mathf.PerlinNoise1D(((float)perlinX / 100) * perlinStepSizeX) - 0.5f;
         boatTransformY = Mathf.PerlinNoise1D(((float)perlinY / 100) * perlinStepSizeY) - 0.5f;
 
-        if (!AS.enabled) boatTransformX *= strengthX;
+        if (LB.state == NEWLockBalancing.GameState.Play) boatTransformX *= strengthX;
         else boatTransformX = Puffy.transform.position.x; // stops puffy from being moved around during cutscene but still bobs up and down
 
         boatTransformY *= strengthY;

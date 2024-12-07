@@ -12,7 +12,7 @@ public class NEWLockBalancing : MonoBehaviour
     [SerializeField]
     GameObject GameOver, Win;
 
-    [SerializeField, Range(5f, 30f)]
+    [SerializeField, Range(1f, 30f)]
     public float createCompletion = 10;
     float createCount;
 
@@ -24,7 +24,7 @@ public class NEWLockBalancing : MonoBehaviour
 
     ParticleSystemForceField windForce;
 
-    public enum GameState { Play, Fail, Complete };
+    public enum GameState { Cutscene, Play, Fail, Complete };
     public GameState state;
 
     WaterController WB;
@@ -48,6 +48,11 @@ public class NEWLockBalancing : MonoBehaviour
     {
         switch (state)
         {
+            case GameState.Cutscene:
+                {
+
+                }
+                break;
             case GameState.Play:
                 {
                     DisplayWaterMovement();
