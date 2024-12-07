@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class AnimationScript : MonoBehaviour
@@ -22,6 +23,11 @@ public class AnimationScript : MonoBehaviour
     float startSpeed = -0.04f;
     Vector2 spawnPos = new Vector2(0, 2);
 
+    [SerializeField, Range(0.1f, 2)]
+    float CinimaticSeconds;
+
+    GameObject CinamaticBars;
+
     public enum Animation { MoveToCentre, SpawnCreate, WaitCreate, SpawnObstacle, WaitObstacle}
     public Animation state;
 
@@ -31,6 +37,8 @@ public class AnimationScript : MonoBehaviour
         Puffy.GetComponent<PuffyController>().enabled = false;
 
         createText = GameObject.Find("CreateText");
+
+        CinamaticBars = GameObject.Find("Cinematic Bars");
 
         state = Animation.MoveToCentre;
     }
@@ -138,10 +146,25 @@ public class AnimationScript : MonoBehaviour
 
                         GetComponent<NEWLockBalancing>().state = NEWLockBalancing.GameState.Play;
 
+                        StartCoroutine(FadeOutBars());
+
                         this.enabled = false;
                     }
                 }
                 break;
+        }
+    }
+
+
+    IEnumerator FadeOutBars()
+    {
+        float smootheness = 100;
+        for (int i = 0; i < smootheness; i++)
+        {
+            yield return new WaitForSeconds(CinimaticSeconds / smootheness);
+            float scale = Mathf.Lerp(0, 2 / CinamaticBars.transform.GetChild(0).GetComponent<RectTransform>().rect.height, i / smootheness);
+
+            CinamaticBars.transform.localScale += new Vector3(0, scale, 0);
         }
     }
 }

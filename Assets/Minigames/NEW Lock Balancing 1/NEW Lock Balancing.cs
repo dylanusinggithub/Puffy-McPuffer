@@ -31,6 +31,10 @@ public class NEWLockBalancing : MonoBehaviour
 
     float cutsceneSpeed = -0.03f;
 
+    [SerializeField, Range(0, 2)]
+    float CinamaticSeconds = 1;
+    GameObject CinamaticBars;
+
     private void Start()
     {
         WB = GetComponent<WaterController>();
@@ -38,6 +42,7 @@ public class NEWLockBalancing : MonoBehaviour
         createText = GameObject.Find("CreateText").GetComponent<TextMeshProUGUI>();
 
         Puffy = GameObject.Find("Player");
+
 
         arrowMovement = GameObject.Find("Arrow Origin");
         windForce = transform.GetChild(0).GetChild(0).GetComponent<ParticleSystemForceField>();
