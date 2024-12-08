@@ -59,7 +59,7 @@ public class ObjectScript : MonoBehaviour
             AudioPlayer.AddComponent<AudioSource>();
 
             AudioPlayer.GetComponent<AudioSource>().clip = objectAudio[Random.Range(0, objectAudio.Length)];
-            AudioPlayer.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("Volume");
+            AudioPlayer.GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume");
             AudioPlayer.GetComponent<AudioSource>().Play();
 
             Destroy(AudioPlayer, AudioPlayer.GetComponent<AudioSource>().clip.length);

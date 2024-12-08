@@ -89,7 +89,7 @@ public class AnimationScript : MonoBehaviour
                         AudioPlayer.AddComponent<AudioSource>();
 
                         AudioPlayer.GetComponent<AudioSource>().clip = Create.GetComponent<AudioSource>().clip;
-                        AudioPlayer.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("Volume");
+                        AudioPlayer.GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume");
                         AudioPlayer.GetComponent<AudioSource>().Play();
 
                         Destroy(AudioPlayer, AudioPlayer.GetComponent<AudioSource>().clip.length);
@@ -131,7 +131,7 @@ public class AnimationScript : MonoBehaviour
                         AudioPlayer.AddComponent<AudioSource>();
 
                         AudioPlayer.GetComponent<AudioSource>().clip = Obstacle.GetComponent<AudioSource>().clip;
-                        AudioPlayer.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("Volume");
+                        AudioPlayer.GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume");
                         AudioPlayer.GetComponent<AudioSource>().Play();
 
                         Destroy(AudioPlayer, AudioPlayer.GetComponent<AudioSource>().clip.length);

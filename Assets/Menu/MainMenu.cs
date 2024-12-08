@@ -9,7 +9,9 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
+        if (PlayerPrefs.HasKey("Volume")) PlayerPrefs.SetFloat("Volume", 1);
         SceneManager.LoadScene("Level Select Map");
+
     }
 
     public void BTN_Main()
