@@ -31,10 +31,6 @@ public class NEWLockBalancing : MonoBehaviour
 
     float cutsceneSpeed = -0.03f;
 
-    [SerializeField, Range(0, 2)]
-    float CinamaticSeconds = 1;
-    GameObject CinamaticBars;
-
     private void Start()
     {
         WB = GetComponent<WaterController>();
@@ -53,11 +49,6 @@ public class NEWLockBalancing : MonoBehaviour
     {
         switch (state)
         {
-            case GameState.Cutscene:
-                {
-
-                }
-                break;
             case GameState.Play:
                 {
                     DisplayWaterMovement();
