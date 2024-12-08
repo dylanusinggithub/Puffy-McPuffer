@@ -4,6 +4,8 @@ using UnityEngine;
 [System.Serializable]
 public class Sound
 {
+    
+
     public string nameOfSound;
 
     public AudioClip clip;
@@ -16,4 +18,9 @@ public class Sound
 
     [HideInInspector]
     public AudioSource source;
+
+    void awake()
+    {
+        volume = PlayerPrefs.GetFloat("Volume");
+    }
 }
