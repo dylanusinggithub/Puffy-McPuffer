@@ -19,8 +19,5 @@ public class Sound
     [HideInInspector]
     public AudioSource source;
 
-    void awake()
-    {
-        volume = PlayerPrefs.GetFloat("Volume");
-    }
+    
 }
