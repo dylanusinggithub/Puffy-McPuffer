@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class LayoutSelector : MonoBehaviour
+public class TutorialController : MonoBehaviour
 {
     [SerializeField]
     int levelIndex;
@@ -26,9 +25,6 @@ public class LayoutSelector : MonoBehaviour
     {
 
         Physics2D.gravity = new Vector2(-9.81f, 0); // Left (behind player)
-        for (int i = 0; i < transform.childCount; i++) transform.GetChild(i).gameObject.SetActive(false);
-        transform.GetChild(levelIndex).gameObject.SetActive(true);
-
 
         // animation
         if (levelIndex != 0) this.enabled = false;

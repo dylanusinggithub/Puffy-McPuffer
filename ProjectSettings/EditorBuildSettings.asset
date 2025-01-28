@@ -21,9 +21,6 @@ EditorBuildSettings:
     path: Assets/Minigames/NEW Lock Balancing 1/NEW Lock balancing.unity
     guid: 41f479a90975b6c4faa952ef1e790f44
   - enabled: 1
-    path: Assets/Minigames/River Raiders/River Raiders.unity
-    guid: bd003057bbf0b2249817b0f97b4d0c65
-  - enabled: 1
     path: Assets/Minigames/Canal Cruiser/Canal Cruiser.unity
     guid: 8c54fa7cacd31a14eac51dc746667b67
   m_configObjects: {}

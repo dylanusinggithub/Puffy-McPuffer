@@ -1,10 +1,22 @@
 using System.Collections;
+using System.Collections.Specialized;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ObjectScript : MonoBehaviour
 {
     [SerializeField]
     bool randomiseScale;
+
+    [SerializeField]
+    bool bobbingRotation;
+    bool goRight;
+    int bobbingRotationCount = 0;
+
+    [SerializeField]
+    bool bobbingUpwards;
+    bool goUp;
+    int bobbingUpwardsCount = 0;
 
     [SerializeField, Range(-0.5f, 0.5f)]
     float startSpeed = 0;
@@ -24,10 +36,51 @@ public class ObjectScript : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if (bobbingRotation)
+        {
+            if(Random.Range(0, 1) == 0) goRight = true;
+
+            if (goRight) transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 5.2f);
+            else transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, -5.2f);
+        }
+
+        bobbingUpwardsCount = Random.Range(0, 100);
+    }
+
 
     private void FixedUpdate()
     {
         transform.Translate(new Vector2(0, startSpeed));   // don't ask why it's reversed, idk why
+
+        if (bobbingRotation)
+        {
+            int BobbingRotation = 2;
+
+            if (goRight) bobbingRotationCount -= BobbingRotation;
+            else bobbingRotationCount += BobbingRotation;
+
+            if (bobbingRotationCount > 100) goRight = true;
+            else if (bobbingRotationCount < -100) goRight = false;
+
+            transform.eulerAngles += new Vector3(0, 0, (float)bobbingRotationCount/500);
+        }
+
+        if (bobbingUpwards)
+        {
+            int BobbingUp = 3;
+
+            if (goUp) bobbingUpwardsCount -= BobbingUp;
+            else bobbingUpwardsCount += BobbingUp;
+
+            if (bobbingUpwardsCount > 100) goUp = true;
+            else if (bobbingUpwardsCount < -100) goUp = false;
+
+            transform.position += new Vector3(0, (float)bobbingUpwardsCount / 10000, 0);
+
+            print(bobbingUpwardsCount);
+        }
     }
 
     IEnumerator Sink()
