@@ -36,6 +36,7 @@ public class NEWLockBalancing : MonoBehaviour
         WB = GetComponent<WaterController>();
 
         createText = GameObject.Find("CreateText").GetComponent<TextMeshProUGUI>();
+        createText.text = "0 / " + createCompletion;
 
         Puffy = GameObject.Find("Player");
 

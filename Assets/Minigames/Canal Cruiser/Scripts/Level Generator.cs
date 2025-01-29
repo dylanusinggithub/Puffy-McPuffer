@@ -11,7 +11,8 @@ public class LevelGenerator : MonoBehaviour
 
     private void Start()
     {
-        levelIndex = PlayerPrefs.GetInt("LevelIndex", 0);
+        // sets the level index to minigameIndex which is provided by level desginer in menu screen
+        levelIndex = PlayerPrefs.GetInt("difficulty", 0);
 
         // Places each layout in order
         for (int i = 0; i < Levels[levelIndex].Length; i++)

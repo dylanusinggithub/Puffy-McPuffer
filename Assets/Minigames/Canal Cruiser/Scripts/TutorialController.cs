@@ -23,11 +23,10 @@ public class TutorialController : MonoBehaviour
 
     private void Start()
     {
-
         Physics2D.gravity = new Vector2(-9.81f, 0); // Left (behind player)
 
         // animation
-        if (levelIndex != 0) this.enabled = false;
+        if (PlayerPrefs.GetString("showTutorial", "False") == "False") this.enabled = false;
 
         Instantiate(animationObject, new Vector2(-9,0), Quaternion.Euler(0, 0, -90));
 

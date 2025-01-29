@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class AnimationScript : MonoBehaviour
@@ -41,6 +42,19 @@ public class AnimationScript : MonoBehaviour
         CinamaticBars = GameObject.Find("Cinematic Bars");
 
         state = Animation.MoveToCentre;
+
+        if (PlayerPrefs.GetString("showTutorial", "False") == "False")
+        {
+            CinamaticBars.SetActive(false);
+            this.enabled = false;
+
+            Puffy.GetComponent<PuffyController>().enabled = true;
+            GetComponent<WaterController>().enabled = true;
+            GetComponent<ObjectDropper>().enabled = true;
+
+            GetComponent<NEWLockBalancing>().state = NEWLockBalancing.GameState.Play;
+        }
+        else createText.GetComponent<TextMeshProUGUI>().text = "Intro Tutorial";
     }
 
     // Update is called once per frame
@@ -89,7 +103,7 @@ public class AnimationScript : MonoBehaviour
                         AudioPlayer.AddComponent<AudioSource>();
 
                         AudioPlayer.GetComponent<AudioSource>().clip = Create.GetComponent<AudioSource>().clip;
-                        AudioPlayer.GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume");
+                        AudioPlayer.GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume", 0.5f);
                         AudioPlayer.GetComponent<AudioSource>().Play();
 
                         Destroy(AudioPlayer, AudioPlayer.GetComponent<AudioSource>().clip.length);
@@ -131,7 +145,7 @@ public class AnimationScript : MonoBehaviour
                         AudioPlayer.AddComponent<AudioSource>();
 
                         AudioPlayer.GetComponent<AudioSource>().clip = Obstacle.GetComponent<AudioSource>().clip;
-                        AudioPlayer.GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume");
+                        AudioPlayer.GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume", 0.5f);
                         AudioPlayer.GetComponent<AudioSource>().Play();
 
                         Destroy(AudioPlayer, AudioPlayer.GetComponent<AudioSource>().clip.length);
@@ -141,8 +155,6 @@ public class AnimationScript : MonoBehaviour
                         Puffy.GetComponent<PuffyController>().enabled = true;
                         GetComponent<WaterController>().enabled = true;
                         GetComponent<ObjectDropper>().enabled = true;
-
-                        createText.gameObject.SetActive(true);
 
                         GetComponent<NEWLockBalancing>().state = NEWLockBalancing.GameState.Play;
 
