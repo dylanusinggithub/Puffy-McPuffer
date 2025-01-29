@@ -12,14 +12,12 @@ public class NEWLockBalancing : MonoBehaviour
     [SerializeField]
     GameObject GameOver, Win;
 
-    [SerializeField, Range(1f, 30f)]
-    public float createCompletion = 10;
-    float createCount;
+    [HideInInspector] public int createCompletion = 10;
+    int createCount;
 
     GameObject Puffy;
 
-    [SerializeField, Range(0, 100)]
-    float arrowStrength;
+    float arrowStrength = 50;
     GameObject arrowMovement;
 
     ParticleSystemForceField windForce;

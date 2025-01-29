@@ -2512,7 +2512,7 @@ MonoBehaviour:
       difficulty: 1
       showTutorial: 1
     - minigames: 1
-      difficulty: 0
+      difficulty: 1
       showTutorial: 1
     - minigames: 2
       difficulty: 0

@@ -48,7 +48,7 @@ public class AnimationScript : MonoBehaviour
             CinamaticBars.SetActive(false);
             this.enabled = false;
 
-            Puffy.GetComponent<PuffyController>().enabled = true;
+            StartCoroutine(WaitTillPlay());
             GetComponent<WaterController>().enabled = true;
             GetComponent<ObjectDropper>().enabled = true;
 
@@ -167,6 +167,11 @@ public class AnimationScript : MonoBehaviour
         }
     }
 
+    IEnumerator WaitTillPlay()
+    {
+        yield return new WaitForSeconds(1);
+        Puffy.GetComponent<PuffyController>().enabled = true;
+    }
 
     IEnumerator FadeOutBars()
     {

@@ -19,9 +19,9 @@ public class WaterController : MonoBehaviour
     [SerializeField, Range(0f, 200f)]
     float strengthR = 1;
 
-    public float boatTransformX;
-    public float boatTransformY;
-    public float boatRotation;
+    [HideInInspector] public float boatTransformX;
+    float boatTransformY;
+    float boatRotation;
 
     int perlinX = 0;
     int perlinY = 50;
@@ -42,7 +42,7 @@ public class WaterController : MonoBehaviour
     [SerializeField, Range(0f, 2f)]
     float waterOffset = 1;
 
-    public float waterHeight;
+    [HideInInspector] public float waterHeight;
     float waterPecentage = 0;
     #endregion
 

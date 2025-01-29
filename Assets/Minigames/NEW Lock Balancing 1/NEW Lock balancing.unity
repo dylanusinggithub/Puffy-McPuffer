@@ -306,7 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameOver: {fileID: 837196950}
   Win: {fileID: 355893874}
-  createCompletion: 10
+  createCompletion: 6.1
   arrowStrength: 50
   state: 0
 --- !u!114 &26882338
