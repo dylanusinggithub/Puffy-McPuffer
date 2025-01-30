@@ -1,61 +1,98 @@
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 public class ObjectDropper : MonoBehaviour
 {
-    [SerializeField, Range(0, 3)] 
-    float spawnfequency;
-    float timer;
+    [SerializeField, Range(0, 5)] 
+    float burstDelay;
+    float timerDelay;
+
+    [SerializeField, Range(0, 2)]
+    float burstSeparationDelay;
+    float timerSeparation;
+
+    [SerializeField, Range(1, 8)]
+    int burstMaxLimit;
+
+    [SerializeField, Range(1, 3)]
+    int burstMin;
+
+    int burstMax;
+    int burstCount;
+
     bool spawning = false;
 
     [SerializeField]
     GameObject[] Layouts;
-    GameObject GO;
+
+    List<GameObject> GO = new List<GameObject>();
 
     WaterController WC;
 
     private void Start()
     {
         WC = GetComponent<WaterController>();
-        timer = spawnfequency;
+        timerDelay = 2; // Start delay
+        burstMax = Random.Range(burstMin, burstMaxLimit);
+        spawning = true;
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (timer < 0 && !spawning)
+        if (timerDelay < 0)
         {
-            GO = Instantiate(Layouts[Random.Range(0, Layouts.Length)], new Vector2(0, 4), Quaternion.identity);
-            spawning = true;
-        }
-        else if(spawning)
-        {
-            if (GO.transform.childCount == 0)
+            if (!spawning || timerSeparation < 0)
             {
-                Destroy(GO);
-                timer = spawnfequency;
-                spawning = false;
+                if (burstCount == burstMax)
+                {
+                    burstMax = Random.Range(burstMin, burstMaxLimit);
+                    timerDelay = burstDelay;
+                    burstCount = 0;
+                    spawning = false;
+                    return;
+                }
+                burstCount++;
+
+                GO.Add(Instantiate(Layouts[Random.Range(0, Layouts.Length)], new Vector2(0, 4), Quaternion.identity));
+                timerSeparation = burstSeparationDelay;
+
+                spawning = true;
+                return;
+            }
+            else timerSeparation -= Time.deltaTime;
+        }
+        else timerDelay -= Time.deltaTime;
+
+        // Check to see if objects have hit water
+        
+        for (int i = 0; i < GO.Count; i++)
+        {
+            if (GO[i].transform.childCount == 0)
+            {
+                Destroy(GO[i]);
+                GO.Remove(GO[i]);
+
+                break;
             }
             else
             {
-                for (int i = 0; i < GO.transform.childCount; i++)
+                for (int j = 0; j < GO[i].transform.childCount; j++)
                 {
-                    if (GO.transform.GetChild(i).position.y < WC.waterHeight) // In the water
+                    if (GO[i].transform.GetChild(j).position.y < WC.waterHeight) // In the water
                     {
-                        GO.transform.GetChild(i).GetComponent<BoxCollider2D>().enabled = false;
-                        GO.transform.GetChild(i).GetComponent<Rigidbody2D>().gravityScale = 0.2f;
-                        GO.transform.GetChild(i).GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                        GO.transform.GetChild(i).GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-50, 50);
+                        GO[i].transform.GetChild(j).GetComponent<BoxCollider2D>().enabled = false;
+                        GO[i].transform.GetChild(j).GetComponent<Rigidbody2D>().gravityScale = 0.2f;
+                        GO[i].transform.GetChild(j).GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                        GO[i].transform.GetChild(j).GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-50, 50);
 
-                        Destroy(GO.transform.GetChild(i).gameObject, 4);
-                        GO.transform.GetChild(i).parent = null;
+                        Destroy(GO[i].transform.GetChild(j).gameObject, 4);
+                        GO[i].transform.GetChild(j).parent = null;
 
                     }
                 }
-
             }
         }
-        else timer -= Time.deltaTime;
-
     }
 }
