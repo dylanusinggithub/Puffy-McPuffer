@@ -56,6 +56,11 @@ public class ObjectDropper : MonoBehaviour
                 burstCount++;
 
                 GO.Add(Instantiate(Layouts[Random.Range(0, Layouts.Length)], new Vector2(0, 4), Quaternion.identity));
+
+                // Increases the sorting order each time and hides the previous so that the newest layout is on top and visable
+                foreach (Transform Dropper in GO[GO.Count - 1].transform) Dropper.GetComponent<SpriteRenderer>().sortingOrder = burstCount;
+                if(burstCount > 1) foreach (Transform Dropper in GO[GO.Count - 2].transform) Dropper.GetComponent<SpriteRenderer>().enabled = false;
+                
                 timerSeparation = burstSeparationDelay;
 
                 spawning = true;
@@ -85,7 +90,10 @@ public class ObjectDropper : MonoBehaviour
                         GO[i].transform.GetChild(j).GetComponent<BoxCollider2D>().enabled = false;
                         GO[i].transform.GetChild(j).GetComponent<Rigidbody2D>().gravityScale = 0.2f;
                         GO[i].transform.GetChild(j).GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                        GO[i].transform.GetChild(j).GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-50, 50);
+
+                        // When obstacles get hit they bounce and rotate so if i rotate them again it looks weird
+                        if(GO[i].transform.GetChild(j).GetComponent<Rigidbody2D>().angularVelocity != 0)
+                            GO[i].transform.GetChild(j).GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-50, 50);
 
                         Destroy(GO[i].transform.GetChild(j).gameObject, 4);
                         GO[i].transform.GetChild(j).parent = null;

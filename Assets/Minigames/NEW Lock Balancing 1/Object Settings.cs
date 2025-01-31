@@ -21,7 +21,12 @@ public class ObjectSettings : MonoBehaviour
 
     IEnumerator DropObject()
     {
-        yield return new WaitForSeconds(waitSeconds);
+        // Hides it for a split second so when it spawns in it's more visible
+        GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(0.25f);
+        GetComponent<SpriteRenderer>().enabled = true;
+
+        yield return new WaitForSeconds(waitSeconds - 0.25f);
 
         GameObject GO = Instantiate(objects[Random.Range(0, objects.Length)], transform.position + new Vector3(0, offset, 0), Quaternion.identity);
 
