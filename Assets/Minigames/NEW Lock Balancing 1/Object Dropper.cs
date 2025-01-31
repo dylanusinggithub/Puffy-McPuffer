@@ -3,27 +3,23 @@ using UnityEngine;
 
 public class ObjectDropper : MonoBehaviour
 {
-    [SerializeField, Range(0, 5)] 
-    float burstDelay;
+    
+    [HideInInspector] public float burstDelay;
     float timerDelay;
 
-    [SerializeField, Range(0, 2)]
-    float burstSeparationDelay;
+    [HideInInspector] public float burstSeparationDelay;
     float timerSeparation;
 
-    [SerializeField, Range(1, 8)]
-    int burstMaxLimit;
+    [HideInInspector] public int burstMaxLimit;
 
-    [SerializeField, Range(1, 3)]
-    int burstMin;
+    [HideInInspector] public int burstMin;
 
     int burstMax;
     int burstCount;
 
     bool spawning = false;
 
-    [SerializeField]
-    GameObject[] Layouts;
+    public List<GameObject> Layouts;
 
     List<GameObject> GO = new List<GameObject>();
 
@@ -55,7 +51,7 @@ public class ObjectDropper : MonoBehaviour
                 }
                 burstCount++;
 
-                GO.Add(Instantiate(Layouts[Random.Range(0, Layouts.Length)], new Vector2(0, 4), Quaternion.identity));
+                GO.Add(Instantiate(Layouts[Random.Range(0, Layouts.Count)], new Vector2(0, 4), Quaternion.identity));
 
                 // Increases the sorting order each time and hides the previous so that the newest layout is on top and visable
                 foreach (Transform Dropper in GO[GO.Count - 1].transform) Dropper.GetComponent<SpriteRenderer>().sortingOrder = burstCount;

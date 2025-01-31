@@ -4,23 +4,16 @@ using System.Collections;
 public class WaterController : MonoBehaviour
 {
     #region Water Movement
-    [SerializeField, Range(0f, 5f)]
-    float perlinStepSizeX = 1;
-
-    [SerializeField, Range(0f, 5f)]
-    float perlinStepSizeY = 1;
-
-    [SerializeField, Range(0f, 100f)]
-    float strengthX = 6;
-
-    [SerializeField, Range(0f, 100f)]
-    float strengthY = 1;
-
-    [SerializeField, Range(0f, 200f)]
-    float strengthR = 1;
+    [HideInInspector] public float perlinStepSizeX = 1;
+    [HideInInspector] public float strengthX = 6;
 
     [HideInInspector] public float boatTransformX;
+
+    float perlinStepSizeY = 1;
+    float strengthY = 0.5f;
     float boatTransformY;
+
+    float strengthR = 1;
     float boatRotation;
 
     int perlinX = 0;
@@ -28,22 +21,17 @@ public class WaterController : MonoBehaviour
 
     #endregion
 
-    #region Water Height
-    [Header("Water Settings")]
-    [SerializeField, Range(1f, 4f)]
-    float waterMaxHeight = 5;
-
-    [SerializeField, Range(1f, 4f)]
+    #region Water Height    
+    float waterMaxHeight = 2.5f;
     float waterMinHeight = 3.5f;
-
-    GameObject waterObject;
-    GameObject background;
-
-    [SerializeField, Range(0f, 2f)]
     float waterOffset = 1;
 
     [HideInInspector] public float waterHeight;
     float waterPecentage = 0;
+
+    GameObject waterObject;
+    GameObject background;
+
     #endregion
 
     AnimationScript AS;
