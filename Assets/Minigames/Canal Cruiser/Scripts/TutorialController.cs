@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class TutorialController : MonoBehaviour
 {
-    [SerializeField]
     int levelIndex;
 
     [SerializeField]

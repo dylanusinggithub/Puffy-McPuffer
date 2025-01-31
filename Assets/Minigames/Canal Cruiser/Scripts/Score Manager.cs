@@ -8,7 +8,7 @@ public class ScoreScript : MonoBehaviour
 
     [Header("Gameplay")]
     [SerializeField, Range(0f, 20f)]
-    int scoreWin;
+    public int scoreWin;
 
     [SerializeField]
     public int score = 1;
@@ -20,7 +20,7 @@ public class ScoreScript : MonoBehaviour
     GameObject gameOver;
 
     [SerializeField, Range(0f, 50f)]
-    int timeWin;
+    public int timeWin;
 
     [SerializeField]
     float timeTillWin = 0;

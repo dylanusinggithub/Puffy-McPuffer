@@ -1,18 +1,30 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    [SerializeField] MultidimensionalGameObject[] Levels;
-    int levelIndex;
+    [SerializeField] bool PressMeToSetLevelIndex;
+    [SerializeField] int levelIndex;
+
+    [SerializeField] LevelSettings[] Levels;
+    List<GameObject> CreatesLocation = new List<GameObject>();
 
     [SerializeField, Range(-5, 50)] float LayoutSeperation;
     float LevelWidth = 0;
+
+    private void OnValidate()
+    {
+        PressMeToSetLevelIndex = false;
+        PlayerPrefs.SetInt("difficulty", levelIndex);
+    }
 
     private void Start()
     {
         // sets the level index to minigameIndex which is provided by level desginer in menu screen
         levelIndex = PlayerPrefs.GetInt("difficulty", 0);
+
+        GameObject.Find("Game Manager").GetComponent<ScoreScript>().timeWin = Levels[levelIndex].GameplayTime;
+        GameObject.Find("Game Manager").GetComponent<ScoreScript>().scoreWin = Levels[levelIndex].CreateCompletion;
 
         // Places each layout in order
         for (int i = 0; i < Levels[levelIndex].Length; i++)
@@ -35,6 +47,28 @@ public class LevelGenerator : MonoBehaviour
 
             LevelWidth += LayoutSeperation;
         }
+
+        // Grabs all creates and disables them to later reenable a specific ones
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            for (int j = 0; j < transform.GetChild(i).childCount; j++)
+            {
+                if (transform.GetChild(i).GetChild(j).name.Contains("CratePrefab"))
+                {
+                    CreatesLocation.Add(transform.GetChild(i).GetChild(j).gameObject);
+                    transform.GetChild(i).GetChild(j).gameObject.SetActive(false);
+                }
+            }
+        }
+
+        // Goes through all create locations and chooses a random one to reenable "Spawn"
+        for (int i = 0; i < Levels[levelIndex].CreateCompletion + Levels[levelIndex].ExtraCreates; i++)
+        {
+            int randomIndex = Random.Range(0, CreatesLocation.Count);
+            CreatesLocation[randomIndex].SetActive(true);
+            CreatesLocation.RemoveAt(randomIndex);
+        }
+
     }
 }
 
@@ -44,8 +78,12 @@ public class LevelGenerator : MonoBehaviour
 // https://discussions.unity.com/t/how-to-declare-a-multidimensional-array-of-string-in-c/21138
 
 [System.Serializable]
-public class MultidimensionalGameObject
+class LevelSettings
 {
+    [Range(5, 30)] public int GameplayTime;
+    [Range(0, 10)] public int CreateCompletion;
+    [Range(0, 5)] public int ExtraCreates;
+
     public GameObject[] Layouts;
 
     public GameObject this[int index]
