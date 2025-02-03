@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        difficulty = PlayerPrefs.GetInt("Difficulty", 0);
+        difficulty = PlayerPrefs.GetInt("difficulty", 0);
         Debug.Log("Difficulty is now " + difficulty);
         if (difficulty > 0 & difficulty < 4)
         {
