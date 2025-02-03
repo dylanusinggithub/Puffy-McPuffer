@@ -32,13 +32,29 @@ public class GameManager : MonoBehaviour
     public GameObject layer;
     public GameObject confetti;
 
+    int difficulty;
+    int levelset;
     // Start is called before the first frame update
     void Start()
     {
+        difficulty = PlayerPrefs.GetInt("Difficulty", 0);
+        Debug.Log("Difficulty is now " + difficulty);
+        if (difficulty > 0 & difficulty < 4)
+        {
+            levelset = 1;
+        }
+        else if (difficulty >= 4 & difficulty < 7)
+        {
+            levelset = 2;
+        }
+        else if (difficulty >= 7 & difficulty < 11)
+        {
+            levelset = 3;
+        }
 
-        int rand1 = Random.Range(0, 3);
+            //int rand1 = Random.Range(0, 3);
         
-        if (rand1 == 1)
+        if (levelset == 1)
         {
             totalPipes = 0;
             PipeHolder.SetActive(true);
@@ -69,7 +85,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        else if (rand1 == 0)
+        else if (levelset == 3)
         {
             totalPipes = 0;
             PipeHolder.SetActive(false);
@@ -99,7 +115,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        else if (rand1 == 2)
+        else if (levelset == 2)
         {
             totalPipes = 0;
             PipeHolder.SetActive(false);
