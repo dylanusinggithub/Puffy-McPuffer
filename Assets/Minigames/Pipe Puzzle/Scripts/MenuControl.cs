@@ -24,6 +24,6 @@ public class MenuControl : MonoBehaviour
 
     void openmenu()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Level Select");
     }
 }

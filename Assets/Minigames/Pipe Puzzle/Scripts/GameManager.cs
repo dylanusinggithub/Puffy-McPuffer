@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -39,7 +40,7 @@ public class GameManager : MonoBehaviour
     {
         difficulty = PlayerPrefs.GetInt("difficulty", 0);
         Debug.Log("Difficulty is now " + difficulty);
-        if (difficulty > 0 & difficulty < 4)
+        if (difficulty >= 0 & difficulty < 4)
         {
             levelset = 1;
         }
@@ -151,7 +152,7 @@ public class GameManager : MonoBehaviour
     public void correctMove()
     {
         correctPipes++;
-
+        
         if (correctPipes == totalPipes)
         {
             Debug.Log("You win!");
@@ -159,6 +160,7 @@ public class GameManager : MonoBehaviour
             layer.SetActive(true);
             FindObjectOfType<AudioManager>().Play("Yippee");
             confetti.SetActive(true);
+            
         }
     }
 

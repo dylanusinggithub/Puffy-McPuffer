@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,9 +8,9 @@ public class Noise : MonoBehaviour
     float time_remaining;
     public float maxtime = 20f;
     GameManager gameManager;
+
+
     
-
-
     private void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -28,6 +28,7 @@ public class Noise : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (time_remaining > 0 )
         {
             time_remaining -= Time.deltaTime;
@@ -40,4 +41,4 @@ public class Noise : MonoBehaviour
             
         }
     }
-}
+} */

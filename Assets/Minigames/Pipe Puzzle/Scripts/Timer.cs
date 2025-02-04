@@ -19,7 +19,7 @@ public class Timer : MonoBehaviour
     public GameObject puffything2;
     public GameObject PuffyPic;
     public GameObject layer;
-    
+    bool played = true;
 
     private void Awake()
     {
@@ -53,14 +53,15 @@ public class Timer : MonoBehaviour
             time_remaining -= Time.deltaTime;
             timer_image.fillAmount = time_remaining / maxtime;
         }
-        else
+        else if (time_remaining < 0 && played )
         {
             FindObjectOfType<AudioManager>().Play("Sad");
+            Debug.Log("WHY THE SOUNg");
             youlose.SetActive(true);
             puffything2.SetActive(true);
             PuffyPic.GetComponent<Animation>().enabled = false;
             layer.SetActive(true);
-            
+            played = false;
             //pipeScript.enabled = false;
         }
     }
