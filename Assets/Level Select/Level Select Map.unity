@@ -2502,27 +2502,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PressMeToSaveLevelIndex: 0
   levelIndex: 0
-  minigameIndex: -2
+  VideoCanvas: {fileID: 8400000, guid: e94ce2ef1923df348b2c640fd76e5712, type: 2}
+  minigameIndex: -3
   Levels:
   - StartScreen:
-    - {fileID: 21300000, guid: 82853cdb1b1cd0d489d0fae2e01d10cd, type: 3}
+    - {fileID: 32900000, guid: 0269d63e2e8e1fe4db78ddc2b28b8dd7, type: 3}
     - {fileID: 21300000, guid: 202a326da8bca1e4e94a0b3f6aef9cb1, type: 3}
+    - {fileID: 5319863591091230046, guid: 3301afd6e9fc29242bfecd3dd67f3efe, type: 3}
     Sequence:
     - minigames: 0
       difficulty: 8
       showTutorial: 1
+      Cutscene: []
     - minigames: 0
       difficulty: 1
       showTutorial: 0
+      Cutscene: []
     - minigames: 2
       difficulty: 0
       showTutorial: 0
+      Cutscene: []
     - minigames: 0
       difficulty: 0
       showTutorial: 0
-    EndScreen:
-    - {fileID: 21300000, guid: b14a1ca0521083b4ba5766c3d7c29dde, type: 3}
-    - {fileID: 21300000, guid: 30df451cbda3a4c4592030ab985759df, type: 3}
+      Cutscene: []
   ErrorComic: {fileID: 21300000, guid: 907e21cdf8a598040aece49ff3ce0d66, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

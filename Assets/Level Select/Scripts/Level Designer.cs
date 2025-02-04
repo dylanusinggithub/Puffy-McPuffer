@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,13 +10,14 @@ public class LevelDesigner : MonoBehaviour
 {
     [Tooltip("I have to add a button to manually press as otherwise it'd be reset every single time")]
     [SerializeField] bool PressMeToSaveLevelIndex;
-
     [SerializeField] int levelIndex;
+
+    [SerializeField] RenderTexture VideoCanvas;
+
     [SerializeField] int minigameIndex;
     [SerializeField] LevelClass[] Levels;
 
     [SerializeField] Sprite ErrorComic;
-
 
     private void OnValidate()
     {
@@ -35,12 +37,17 @@ public class LevelDesigner : MonoBehaviour
         minigameIndex = PlayerPrefs.GetInt("minigameIndex", -Levels[levelIndex].StartScreen.Count);
     }
 
+    public void AdvanceToNextLevel()
+    {
+        minigameIndex++;
+        StartLevel();
+    }
+
     public void StartLevel()
     {
         if (minigameIndex < 0) // Displays the Starting comic before entering the level
         {
             CreateComicBackground(Levels[levelIndex].StartScreen[minigameIndex + Levels[levelIndex].StartScreen.Count]);
-            minigameIndex++;
             return;
         }
 
@@ -75,42 +82,80 @@ public class LevelDesigner : MonoBehaviour
         // Removes previous Comic
         for (int i = 0; i < this.transform.childCount; i++) Destroy(transform.GetChild(i).gameObject);
 
-        print(Comic.GetType());
-
         GameObject GOComic = new GameObject("Start GOComic");
         GOComic.transform.SetParent(this.transform);
 
-        // Checks comic's type and tries to display it accordingly
-        if (Comic is Texture2D)
+        // Finds the Comic's Type by finding the last instance of "." (plus 1 as it actually gives the location of the ".")
+        // Basically: UnityEngine.Video.VideoClip > .VideoClip > VideoClip
+        String ObjectType = Comic.GetType().ToString();
+        ObjectType = ObjectType.Substring(ObjectType.LastIndexOf(".") + 1);
+
+
+        switch (ObjectType)
         {
-            // Make image centred and fill screen
-            GOComic.AddComponent<RectTransform>();
-            GOComic.GetComponent<RectTransform>().sizeDelta = Vector2.zero;
-            GOComic.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-            GOComic.GetComponent<RectTransform>().anchorMax = Vector2.one;
-            GOComic.GetComponent<RectTransform>().anchorMin = Vector2.zero;
+            case "Texture2D":
+                {
+                    // Make image centred and fill screen
+                    GOComic.AddComponent<RectTransform>();
+                    GOComic.GetComponent<RectTransform>().sizeDelta = Vector2.zero;
+                    GOComic.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                    GOComic.GetComponent<RectTransform>().anchorMax = Vector2.one;
+                    GOComic.GetComponent<RectTransform>().anchorMin = Vector2.zero;
 
 
-            GOComic.AddComponent<Image>();
-            GOComic.GetComponent<Image>().sprite = Sprite.Create((Texture2D)Comic, GOComic.GetComponent<Rect>(), Vector2.zero);
+                    GOComic.AddComponent<RawImage>();
+                    GOComic.GetComponent<RawImage>().texture = (Texture2D)Comic;
 
-            // Makes GOComic advance whenever clicked
-            GOComic.AddComponent<Button>();
-            GOComic.GetComponent<Button>().onClick.AddListener(StartLevel);
-            GOComic.GetComponent<Button>().transition = Selectable.Transition.None;
+                    // Makes GOComic advance whenever clicked
+                    GOComic.AddComponent<Button>();
+                    GOComic.GetComponent<Button>().onClick.AddListener(AdvanceToNextLevel);
+                    GOComic.GetComponent<Button>().transition = Selectable.Transition.None;
+                }
+                break;
+
+            case "VideoClip":
+                {
+                    // Create Video Player
+                    GOComic.AddComponent<VideoPlayer>();
+                    VideoPlayer VP = GOComic.GetComponent<VideoPlayer>();
+                    VP.clip = (VideoClip)Comic;
+                    VP.isLooping = true;
+
+                    VP.SetDirectAudioVolume(0, PlayerPrefs.GetFloat("Volume", 1));
+                    VP.targetTexture = VideoCanvas;
+
+                    // Create the image the video will be playing to
+                    GOComic.AddComponent<RawImage>();
+                    GOComic.GetComponent<RawImage>().texture = VideoCanvas;
+
+                    GOComic.GetComponent<RectTransform>().sizeDelta = Vector2.zero;
+                    GOComic.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                    GOComic.GetComponent<RectTransform>().anchorMax = Vector2.one;
+                    GOComic.GetComponent<RectTransform>().anchorMin = Vector2.zero;
+
+                    // Makes GOComic advance whenever clicked
+                    GOComic.AddComponent<Button>();
+                    GOComic.GetComponent<Button>().onClick.AddListener(AdvanceToNextLevel);
+                    GOComic.GetComponent<Button>().transition = Selectable.Transition.None;
+                }
+                break;
+
+            case "GameObject":
+                {
+                    Destroy(GOComic);
+
+                    GOComic = Instantiate((GameObject)Comic);
+                    GOComic.transform.parent = transform;
+                }
+                break;
+
+            default:
+                {
+                    Destroy(GOComic);
+                    Debug.LogError("Invalid Type!");
+                }
+                break;
         }
-        else if(Comic.Equals(typeof(VideoClip)))
-        {
-            GOComic.AddComponent<VideoPlayer>();
-            GOComic.GetComponent<VideoPlayer>().clip = (VideoClip)Comic;
-            GOComic.GetComponent<VideoPlayer>().isLooping = true;
-
-            // Makes GOComic advance whenever clicked
-            GOComic.AddComponent<Button>();
-            GOComic.GetComponent<Button>().onClick.AddListener(StartLevel);
-            GOComic.GetComponent<Button>().transition = Selectable.Transition.None;
-        }
-
     }
 }
 
@@ -120,7 +165,7 @@ public class LevelDesigner : MonoBehaviour
 [System.Serializable]
 class LevelClass
 {
-    public List<Object> StartScreen;
+    public List<UnityEngine.Object> StartScreen;
     public MinigameSettings[] Sequence;
 }
 
@@ -133,5 +178,5 @@ class MinigameSettings
     [Range(1, 10)] public int difficulty;
     public bool showTutorial;
 
-    public List<Object> Cutscene;
+    public List<UnityEngine.Object> Cutscene;
 }
