@@ -1,6 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class LevelDesigner : MonoBehaviour
 {
@@ -19,7 +22,7 @@ public class LevelDesigner : MonoBehaviour
         if (PressMeToSaveLevelIndex)
         {
             PlayerPrefs.SetInt("levelIndex", levelIndex);
-            minigameIndex = -Levels[levelIndex].StartScreen.Length;
+            minigameIndex = -Levels[levelIndex].StartScreen.Count;
             PlayerPrefs.SetInt("minigameIndex", minigameIndex);
 
             PressMeToSaveLevelIndex = false;
@@ -29,36 +32,15 @@ public class LevelDesigner : MonoBehaviour
     void Start()
     {
         levelIndex = PlayerPrefs.GetInt("levelIndex", 0);
-        minigameIndex = PlayerPrefs.GetInt("minigameIndex", -Levels[levelIndex].StartScreen.Length);
+        minigameIndex = PlayerPrefs.GetInt("minigameIndex", -Levels[levelIndex].StartScreen.Count);
     }
 
     public void StartLevel()
     {
         if (minigameIndex < 0) // Displays the Starting comic before entering the level
         {
-            CreateComicBackground(Levels[levelIndex].StartScreen[minigameIndex + Levels[levelIndex].StartScreen.Length]);
+            CreateComicBackground(Levels[levelIndex].StartScreen[minigameIndex + Levels[levelIndex].StartScreen.Count]);
             minigameIndex++;
-            return;
-        }
-        else if (minigameIndex >= Levels[levelIndex].Sequence.Length)
-        {
-            // Go through each endscren untill you've seen them all, then reset the minigameIndex
-            // to the number of startscreen the next level has 
-            if (minigameIndex < Levels[levelIndex].Sequence.Length + Levels[levelIndex].EndScreen.Length)
-            {
-                CreateComicBackground(Levels[levelIndex].EndScreen[minigameIndex - (Levels[levelIndex].Sequence.Length)]);
-                minigameIndex++;
-                return;
-            }
-
-            levelIndex++;
-            if (levelIndex == Levels.Length)
-            {
-                CreateComicBackground(ErrorComic);
-                Debug.LogWarning("You have reached the last level");
-            }
-            else minigameIndex = -Levels[levelIndex].StartScreen.Length;
-
             return;
         }
 
@@ -88,29 +70,47 @@ public class LevelDesigner : MonoBehaviour
     }
 
     // Creates the background, I originally did gameobjects enabling and disabling but i wanted to make this as easy for desginers as possible
-    void CreateComicBackground(Sprite image)
+    void CreateComicBackground(object Comic)
     {
         // Removes previous Comic
         for (int i = 0; i < this.transform.childCount; i++) Destroy(transform.GetChild(i).gameObject);
 
-        GameObject Comic = new GameObject("Start Comic");
-        Comic.transform.SetParent(this.transform);
+        print(Comic.GetType());
 
-        // Make image centred and fill screen
-        Comic.AddComponent<RectTransform>();
-        Comic.GetComponent<RectTransform>().sizeDelta = Vector2.zero;
-        Comic.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-        Comic.GetComponent<RectTransform>().anchorMax = Vector2.one;
-        Comic.GetComponent<RectTransform>().anchorMin = Vector2.zero;
-  
+        GameObject GOComic = new GameObject("Start GOComic");
+        GOComic.transform.SetParent(this.transform);
 
-        Comic.AddComponent<Image>();
-        Comic.GetComponent<Image>().sprite = image;
+        // Checks comic's type and tries to display it accordingly
+        if (Comic is Texture2D)
+        {
+            // Make image centred and fill screen
+            GOComic.AddComponent<RectTransform>();
+            GOComic.GetComponent<RectTransform>().sizeDelta = Vector2.zero;
+            GOComic.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+            GOComic.GetComponent<RectTransform>().anchorMax = Vector2.one;
+            GOComic.GetComponent<RectTransform>().anchorMin = Vector2.zero;
 
-        // Makes comic advance whenever clicked
-        Comic.AddComponent<Button>();
-        Comic.GetComponent<Button>().onClick.AddListener(StartLevel);
-        Comic.GetComponent<Button>().transition = Selectable.Transition.None;
+
+            GOComic.AddComponent<Image>();
+            GOComic.GetComponent<Image>().sprite = Sprite.Create((Texture2D)Comic, GOComic.GetComponent<Rect>(), Vector2.zero);
+
+            // Makes GOComic advance whenever clicked
+            GOComic.AddComponent<Button>();
+            GOComic.GetComponent<Button>().onClick.AddListener(StartLevel);
+            GOComic.GetComponent<Button>().transition = Selectable.Transition.None;
+        }
+        else if(Comic.Equals(typeof(VideoClip)))
+        {
+            GOComic.AddComponent<VideoPlayer>();
+            GOComic.GetComponent<VideoPlayer>().clip = (VideoClip)Comic;
+            GOComic.GetComponent<VideoPlayer>().isLooping = true;
+
+            // Makes GOComic advance whenever clicked
+            GOComic.AddComponent<Button>();
+            GOComic.GetComponent<Button>().onClick.AddListener(StartLevel);
+            GOComic.GetComponent<Button>().transition = Selectable.Transition.None;
+        }
+
     }
 }
 
@@ -120,19 +120,18 @@ public class LevelDesigner : MonoBehaviour
 [System.Serializable]
 class LevelClass
 {
-    public Sprite[] StartScreen;
-
+    public List<Object> StartScreen;
     public MinigameSettings[] Sequence;
-
-    public Sprite[] EndScreen;
 }
 
 [System.Serializable]
 class MinigameSettings
 {
     public enum Minigames { LockBalancing, CanalCrusier, PipePuzzle }
-    [SerializeField] public Minigames minigames;
+    public Minigames minigames;
 
     [Range(1, 10)] public int difficulty;
-    [SerializeField] public bool showTutorial;
+    public bool showTutorial;
+
+    public List<Object> Cutscene;
 }
