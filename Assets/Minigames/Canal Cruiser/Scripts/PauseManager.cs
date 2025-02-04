@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PauseManager : MonoBehaviour
 {
@@ -13,24 +14,28 @@ public class PauseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isPaused) //If Space Bar is pressed
+        if (Input.GetKeyDown(KeyCode.Space)) //If Space Bar is pressed
         {
-            PauseGame(); //Pause Game function is called
+            TogglePause(); //Pause Game function is called
         }
     }
 
     //Pause Game Function
-    public void PauseGame()
+    public void TogglePause()
     {
-        isPaused = true;
-        pausePanel.SetActive(true);
-        Time.timeScale = 0;
+        isPaused = !isPaused;
+        pausePanel.SetActive(isPaused);
+        Time.timeScale = isPaused ? 0 : 1;
+
+        if (isPaused)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+        }
     }
 
     //Resume Game Function
     public void ResumeGame()
     {
-        UnityEngine.Debug.Log("ResumeGame() called!");
         isPaused = false;
         pausePanel.SetActive(false);
         Time.timeScale = 1;
