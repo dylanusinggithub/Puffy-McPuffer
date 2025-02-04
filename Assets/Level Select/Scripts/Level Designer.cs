@@ -15,6 +15,8 @@ public class LevelDesigner : MonoBehaviour
     [SerializeField] RenderTexture VideoCanvas;
 
     [SerializeField] int minigameIndex;
+    int comicIndex = 0;
+
     [SerializeField] LevelClass[] Levels;
 
     [SerializeField] Sprite ErrorComic;
@@ -24,7 +26,7 @@ public class LevelDesigner : MonoBehaviour
         if (PressMeToSaveLevelIndex)
         {
             PlayerPrefs.SetInt("levelIndex", levelIndex);
-            minigameIndex = -Levels[levelIndex].StartScreen.Count;
+            minigameIndex = -1;
             PlayerPrefs.SetInt("minigameIndex", minigameIndex);
 
             PressMeToSaveLevelIndex = false;
@@ -34,33 +36,67 @@ public class LevelDesigner : MonoBehaviour
     void Start()
     {
         levelIndex = PlayerPrefs.GetInt("levelIndex", 0);
-        minigameIndex = PlayerPrefs.GetInt("minigameIndex", -Levels[levelIndex].StartScreen.Count);
-    }
-
-    public void AdvanceToNextLevel()
-    {
-        minigameIndex++;
-        StartLevel();
+        minigameIndex = PlayerPrefs.GetInt("minigameIndex", 0);
     }
 
     public void StartLevel()
     {
-        if (minigameIndex < 0) // Displays the Starting comic before entering the level
+        // Displays the Starting comic before entering the level
+        if (minigameIndex == -1)
         {
-            CreateComicBackground(Levels[levelIndex].StartScreen[minigameIndex + Levels[levelIndex].StartScreen.Count]);
-            return;
+            if (Levels[levelIndex].StartScreen.Count > comicIndex)
+            {
+                CreateComicBackground(Levels[levelIndex].StartScreen[comicIndex]);
+                comicIndex++;
+            }
+            else
+            {
+                comicIndex = 0;
+                LoadLevel();
+            }
         }
+        else if (Levels[levelIndex].Sequence.Length > minigameIndex)
+        {
+            // Play Previous Minigame's Victory Cutscenes
+            //Checks to see if there is any comics or you've reached the last one
+            if (Levels[levelIndex].Sequence[minigameIndex].Cutscene.Count > comicIndex && Levels[levelIndex].Sequence[minigameIndex].Cutscene.Count > 0)
+            {
+                CreateComicBackground(Levels[levelIndex].Sequence[minigameIndex].Cutscene[comicIndex]);
+                comicIndex++;
+            }
+            else
+            {
+                comicIndex = 0;
+                LoadLevel();
+            }
+        }
+        else
+        {
+            levelIndex++;
+            if (levelIndex == Levels.Length)
+            {
+                Debug.LogWarning("You have reached the last level!");
+                CreateComicBackground(ErrorComic);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("minigameIndex", -Levels[levelIndex].StartScreen.Count);
+                PlayerPrefs.SetInt("levelIndex", levelIndex);
+            }
+        }
+    }
 
+    void LoadLevel()
+    {
         // Loads specific level given
+        minigameIndex++;
         PlayerPrefs.SetInt("difficulty", Levels[levelIndex].Sequence[minigameIndex].difficulty);
         PlayerPrefs.SetString("showTutorial", Levels[levelIndex].Sequence[minigameIndex].showTutorial.ToString()); // theres no SetBool??
-
-        minigameIndex++;
         PlayerPrefs.SetInt("minigameIndex", minigameIndex);
 
-        print("Difficulty: " + Levels[levelIndex].Sequence[minigameIndex - 1].difficulty + ", Sequence: " + ( minigameIndex - 1));
+        print("Difficulty: " + Levels[levelIndex].Sequence[minigameIndex].difficulty + ", Sequence: " + minigameIndex);
 
-        switch (Levels[levelIndex].Sequence[minigameIndex - 1].minigames) // Minus 1 as it incremenets before entering the minigame
+        switch (Levels[levelIndex].Sequence[minigameIndex].minigames)
         {
             case MinigameSettings.Minigames.LockBalancing:
                 SceneManager.LoadScene("New Lock Balancing");
@@ -76,7 +112,6 @@ public class LevelDesigner : MonoBehaviour
         }
     }
 
-    // Creates the background, I originally did gameobjects enabling and disabling but i wanted to make this as easy for desginers as possible
     void CreateComicBackground(object Comic)
     {
         // Removes previous Comic
@@ -108,7 +143,7 @@ public class LevelDesigner : MonoBehaviour
 
                     // Makes GOComic advance whenever clicked
                     GOComic.AddComponent<Button>();
-                    GOComic.GetComponent<Button>().onClick.AddListener(AdvanceToNextLevel);
+                    GOComic.GetComponent<Button>().onClick.AddListener(StartLevel);
                     GOComic.GetComponent<Button>().transition = Selectable.Transition.None;
                 }
                 break;
@@ -135,7 +170,7 @@ public class LevelDesigner : MonoBehaviour
 
                     // Makes GOComic advance whenever clicked
                     GOComic.AddComponent<Button>();
-                    GOComic.GetComponent<Button>().onClick.AddListener(AdvanceToNextLevel);
+                    GOComic.GetComponent<Button>().onClick.AddListener(StartLevel);
                     GOComic.GetComponent<Button>().transition = Selectable.Transition.None;
                 }
                 break;
@@ -152,13 +187,12 @@ public class LevelDesigner : MonoBehaviour
             default:
                 {
                     Destroy(GOComic);
-                    Debug.LogError("Invalid Type!");
+                    Debug.LogError("Invalid Type! " + ObjectType);
                 }
                 break;
         }
     }
 }
-
 
 
 // Same as Canal Cruiser's Level Generator thingy, the original link is in there
@@ -175,7 +209,7 @@ class MinigameSettings
     public enum Minigames { LockBalancing, CanalCrusier, PipePuzzle }
     public Minigames minigames;
 
-    [Range(1, 10)] public int difficulty;
+    [Range(0, 10)] public int difficulty;
     public bool showTutorial;
 
     public List<UnityEngine.Object> Cutscene;
