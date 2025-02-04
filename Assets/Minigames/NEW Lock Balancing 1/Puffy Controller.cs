@@ -153,7 +153,7 @@ public class PuffyController : MonoBehaviour
         AudioPlayer.AddComponent<AudioSource>();
 
         AudioPlayer.GetComponent<AudioSource>().clip = collision.gameObject.GetComponent<AudioSource>().clip;
-        AudioPlayer.GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume");
+        AudioPlayer.GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume", 1);
         AudioPlayer.GetComponent<AudioSource>().Play();
 
         Destroy(AudioPlayer, AudioPlayer.GetComponent<AudioSource>().clip.length);

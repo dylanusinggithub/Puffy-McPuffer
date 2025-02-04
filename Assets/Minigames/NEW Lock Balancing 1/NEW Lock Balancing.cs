@@ -128,7 +128,7 @@ public class NEWLockBalancing : MonoBehaviour
     public void BTN_Retry()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void BTN_Exit()
@@ -136,4 +136,9 @@ public class NEWLockBalancing : MonoBehaviour
         SceneManager.LoadScene("Level Select Map");
     }
 
+    public void BTN_NextLevel()
+    {
+        PlayerPrefs.SetString("advanceToNextLevel", "True");
+        BTN_Exit();
+    }
 }

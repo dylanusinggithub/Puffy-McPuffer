@@ -33,10 +33,19 @@ public class LevelDesigner : MonoBehaviour
         }
     }
 
-    void Start()
+    void Awake()
     {
+
         levelIndex = PlayerPrefs.GetInt("levelIndex", 0);
         minigameIndex = PlayerPrefs.GetInt("minigameIndex", 0);
+
+        if (PlayerPrefs.GetString("advanceToNextLevel", "False") == "True") StartLevel();
+    }
+
+    void NextLevel()
+    {
+        PlayerPrefs.SetString("advanceToNextLevel", "True");
+        StartLevel();
     }
 
     public void StartLevel()
@@ -55,7 +64,7 @@ public class LevelDesigner : MonoBehaviour
                 LoadLevel();
             }
         }
-        else if (Levels[levelIndex].Sequence.Length > minigameIndex)
+        else if (Levels[levelIndex].Sequence.Length - 1 > minigameIndex)
         {
             // Play Previous Minigame's Victory Cutscenes
             //Checks to see if there is any comics or you've reached the last one
@@ -89,7 +98,12 @@ public class LevelDesigner : MonoBehaviour
     void LoadLevel()
     {
         // Loads specific level given
-        minigameIndex++;
+        if (PlayerPrefs.GetString("advanceToNextLevel", "False") == "True")
+        {
+            minigameIndex++;
+            PlayerPrefs.SetString("advanceToNextLevel", "False");
+        }
+
         PlayerPrefs.SetInt("difficulty", Levels[levelIndex].Sequence[minigameIndex].difficulty);
         PlayerPrefs.SetString("showTutorial", Levels[levelIndex].Sequence[minigameIndex].showTutorial.ToString()); // theres no SetBool??
         PlayerPrefs.SetInt("minigameIndex", minigameIndex);
@@ -143,7 +157,7 @@ public class LevelDesigner : MonoBehaviour
 
                     // Makes GOComic advance whenever clicked
                     GOComic.AddComponent<Button>();
-                    GOComic.GetComponent<Button>().onClick.AddListener(StartLevel);
+                    GOComic.GetComponent<Button>().onClick.AddListener(NextLevel);
                     GOComic.GetComponent<Button>().transition = Selectable.Transition.None;
                 }
                 break;
@@ -170,7 +184,7 @@ public class LevelDesigner : MonoBehaviour
 
                     // Makes GOComic advance whenever clicked
                     GOComic.AddComponent<Button>();
-                    GOComic.GetComponent<Button>().onClick.AddListener(StartLevel);
+                    GOComic.GetComponent<Button>().onClick.AddListener(NextLevel);
                     GOComic.GetComponent<Button>().transition = Selectable.Transition.None;
                 }
                 break;

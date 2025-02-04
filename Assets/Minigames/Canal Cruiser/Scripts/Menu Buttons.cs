@@ -16,4 +16,10 @@ public class MenuButtons : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void BTN_NextLevel()
+    {
+        PlayerPrefs.SetString("advanceToNextLevel", "True");
+        BTN_Exit();
+    }
 }

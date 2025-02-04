@@ -1093,7 +1093,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1645979032}
         m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
-        m_MethodName: BTN_Exit
+        m_MethodName: BTN_NextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2275,7 +2275,7 @@ GameObject:
   - component: {fileID: 1130749676}
   - component: {fileID: 1130749675}
   m_Layer: 5
-  m_Name: Level Select
+  m_Name: Next Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2320,7 +2320,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level Select
+  m_text: Continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3522,7 +3522,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1645979032}
         m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
-        m_MethodName: BTN_Exit
+        m_MethodName: BTN_NextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
