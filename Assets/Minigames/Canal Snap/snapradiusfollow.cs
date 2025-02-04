@@ -3,10 +3,27 @@ using System.Collections;
 
 public class snapradiusfollow : MonoBehaviour
 {
-    void Update()
+    public Canvas parentCanvas;
+
+    public void Start()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = Camera.main.transform.position.z + Camera.main.nearClipPlane;
-        transform.position = mousePosition;
+        Vector2 pos;
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            parentCanvas.transform as RectTransform, Input.mousePosition,
+            parentCanvas.worldCamera,
+            out pos);
+    }
+
+    public void Update()
+    {
+        Vector2 movePos;
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            parentCanvas.transform as RectTransform,
+            Input.mousePosition, parentCanvas.worldCamera,
+            out movePos);
+
+        transform.position = parentCanvas.transform.TransformPoint(movePos);
     }
 }
