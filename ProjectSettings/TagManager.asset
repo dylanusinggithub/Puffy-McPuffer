@@ -8,6 +8,7 @@ TagManager:
   - Options
   - Obstacle
   - Collectable
+  - Pipe
   layers:
   - Default
   - TransparentFX

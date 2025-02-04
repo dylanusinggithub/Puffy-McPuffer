@@ -21,6 +21,8 @@ public class Timer : MonoBehaviour
     public GameObject layer;
     bool played = true;
 
+    GameObject pipes;
+
     private void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -31,6 +33,7 @@ public class Timer : MonoBehaviour
     {
         time_remaining = maxtime;
         //scoretext = GetComponent<Text>();
+        pipes = GameObject.FindWithTag("Pipe"); //grab pipes when home from another script wherever initialized // start here dylan !
     }
 
 
@@ -40,6 +43,8 @@ public class Timer : MonoBehaviour
     {
         if (gameManager.gamewon == true)
         {
+            
+            Time.timeScale = 0f;
             youwin.SetActive(true);
             score.SetActive(true);
             puffything.SetActive(true);
@@ -47,6 +52,8 @@ public class Timer : MonoBehaviour
             layer.SetActive(true);
             //I'll add a counter instead assuming we're making it warioware style so just ++ points here
             //scoretext.text=time_remaining.ToString("Your score is " + time_remaining);
+
+            pipes.GetComponent<PipeScript>().enabled = false;
         }
         else if (time_remaining > 0)
         {
@@ -55,14 +62,17 @@ public class Timer : MonoBehaviour
         }
         else if (time_remaining < 0 && played )
         {
+            
+            Time.timeScale = 0f;
             FindObjectOfType<AudioManager>().Play("Sad");
-            Debug.Log("WHY THE SOUNg");
+            //Debug.Log("WHY THE SOUNg");
             youlose.SetActive(true);
             puffything2.SetActive(true);
             PuffyPic.GetComponent<Animation>().enabled = false;
             layer.SetActive(true);
             played = false;
             //pipeScript.enabled = false;
+            pipes.GetComponent<PipeScript>().enabled = false;
         }
     }
 }
