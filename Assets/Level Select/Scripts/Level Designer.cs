@@ -22,6 +22,8 @@ public class LevelDesigner : MonoBehaviour
 
     void Awake()
     {
+        PlayerPrefs.SetString("Level 0 Unlocked", "True");
+
         levelIndex = PlayerPrefs.GetInt("levelIndex", 0);
         minigameIndex = PlayerPrefs.GetInt("minigameIndex", -1);
 
