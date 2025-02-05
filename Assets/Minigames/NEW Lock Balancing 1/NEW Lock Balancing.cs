@@ -7,7 +7,7 @@ public class NEWLockBalancing : MonoBehaviour
 {
 
     [Header("Gameplay")]
-    TextMeshProUGUI createText;
+    [HideInInspector] public TextMeshProUGUI createText;
 
     [SerializeField]
     GameObject GameOver, Win;
@@ -34,7 +34,6 @@ public class NEWLockBalancing : MonoBehaviour
         WB = GetComponent<WaterController>();
 
         createText = GameObject.Find("CreateText").GetComponent<TextMeshProUGUI>();
-        createText.text = "0 / " + createCompletion;
 
         Puffy = GameObject.Find("Player");
 
@@ -67,15 +66,15 @@ public class NEWLockBalancing : MonoBehaviour
                 break;
             case GameState.Complete:
                 {
-                    arrowMovement.SetActive(false);
-                    createText.enabled = false;
+                    if (Puffy.transform.position.x >= -18) Puffy.transform.Translate(new Vector2(cutsceneSpeed * 2f, 0));
+                    else BTN_NextLevel();
+                    
+                    if (Puffy.transform.position.x < -9) Win.SetActive(true);
 
-                    Puffy.GetComponent<PuffyController>().enabled = false;
-                    GetComponent<ObjectDropper>().enabled = false;
+                    if(Puffy.transform.position.x < -2) Camera.main.transform.position = new Vector3(Mathf.Clamp(Puffy.transform.position.x - 2, -18, 0), 6, -10);
 
-                    Win.SetActive(true);
+                    if (Camera.main.transform.position.x <= -18) Camera.main.transform.parent = null;
 
-                    Puffy.transform.Translate(new Vector2(cutsceneSpeed, 0));
                 }
                 break;
         }
@@ -109,6 +108,15 @@ public class NEWLockBalancing : MonoBehaviour
             createCount++;
             if (createCount >= createCompletion)
             {
+                arrowMovement.SetActive(false);
+                createText.enabled = false;
+
+                Puffy.GetComponent<PuffyController>().enabled = false;
+
+                Camera.main.transform.parent = Puffy.transform;
+
+                GameObject.Find("Durability").SetActive(false);
+
                 state = GameState.Complete;
                 Puffy.GetComponent<SpriteRenderer>().flipX = false;
             }

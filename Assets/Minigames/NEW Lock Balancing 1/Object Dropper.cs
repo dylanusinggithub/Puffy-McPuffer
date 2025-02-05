@@ -37,6 +37,12 @@ public class ObjectDropper : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (GetComponent<NEWLockBalancing>().state == NEWLockBalancing.GameState.Complete)
+        {
+            foreach (GameObject Dropper in GO) Destroy(Dropper);
+            this.enabled = false;
+        }
+
         if (timerDelay < 0)
         {
             if (!spawning || timerSeparation < 0)
@@ -55,7 +61,6 @@ public class ObjectDropper : MonoBehaviour
 
                 // Increases the sorting order each time and hides the previous so that the newest layout is on top and visable
                 foreach (Transform Dropper in GO[GO.Count - 1].transform) Dropper.GetComponent<SpriteRenderer>().sortingOrder = burstCount;
-                if(burstCount > 1) foreach (Transform Dropper in GO[GO.Count - 2].transform) Dropper.GetComponent<SpriteRenderer>().enabled = false;
                 
                 timerSeparation = burstSeparationDelay;
 

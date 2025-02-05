@@ -52,7 +52,7 @@ public class WaterController : MonoBehaviour
         Puffy.transform.position = new Vector2(Puffy.transform.position.x, -waterMinHeight);
 
         background = GameObject.Find("Lock Background");
-        background = background.transform.GetChild(background.transform.childCount - 1).gameObject;
+        background = background.transform.GetChild(0).GetChild(background.transform.childCount - 1).gameObject;
         background.transform.localScale = new Vector2(background.transform.localScale.x, waterMaxHeight + waterMinHeight + 1.5f);
     }
 
@@ -69,7 +69,7 @@ public class WaterController : MonoBehaviour
         waterObject.transform.localScale = new Vector2(waterObject.transform.localScale.x, waterOffset + waterHeight + waterMinHeight);
 
         background = GameObject.Find("Lock Background");
-        background = background.transform.GetChild(background.transform.childCount - 1).gameObject;
+        background = background.transform.GetChild(0).GetChild(background.transform.childCount - 1).gameObject;
         background.transform.localScale = new Vector2(background.transform.localScale.x, waterMaxHeight + waterMinHeight + 1.5f);
     }
 

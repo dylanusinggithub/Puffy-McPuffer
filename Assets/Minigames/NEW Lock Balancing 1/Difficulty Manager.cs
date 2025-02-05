@@ -22,12 +22,14 @@ public class DifficultyManager : MonoBehaviour
         WC.perlinStepSizeX = Levels[levelIndex].perlinStepSize;
 
         LB.createCompletion = Levels[levelIndex].CreateCompletion;
+        LB.createText.text = "0 / " + LB.createCompletion;
 
         OD.burstDelay = Levels[levelIndex].burstDelay;
         OD.burstSeparationDelay = Levels[levelIndex].burstSeparationDelay;
         OD.burstMaxLimit = Levels[levelIndex].burstMaxLimit;
         OD.burstMin = Levels[levelIndex].burstMin;
 
+        OD.Layouts.Clear();
         foreach (GameObject layout in Levels[levelIndex].Layouts) OD.Layouts.Add(layout);
     }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2669613427155601756}
   m_Layer: 0
-  m_Name: Cargo Both
+  m_Name: Cargo Double Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 836736575883188988, guid: 826a399fbe62bdc4380b9860776a0cb2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 836736575883188988, guid: 826a399fbe62bdc4380b9860776a0cb2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 836736575883188988, guid: 6e298be917d1b8746b7bd438816ecc63, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 836736575883188988, guid: 6e298be917d1b8746b7bd438816ecc63, type: 3}
       propertyPath: m_LocalPosition.y

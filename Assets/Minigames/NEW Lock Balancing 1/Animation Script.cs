@@ -85,7 +85,7 @@ public class AnimationScript : MonoBehaviour
                         Create.AddComponent<Rigidbody2D>();
                         Create.AddComponent<BoxCollider2D>().isTrigger = true;
 
-                        timeWait = Create.GetComponent<ObjectSettings>().waitSeconds * 0.9f;
+                        timeWait = 1.5f;
 
                         state = Animation.WaitCreate;
                     }
@@ -110,7 +110,7 @@ public class AnimationScript : MonoBehaviour
 
                         state = Animation.SpawnObstacle;
 
-                        timeWait = Obstacle.GetComponent<ObjectSettings>().waitSeconds * 0.9f;
+                        timeWait = 1.5f;
 
                         GetComponent<NEWLockBalancing>().CollectObject(Create);
 
