@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectSettings : MonoBehaviour
 {
     [SerializeField, Range(0, 3)]
-    float waitSeconds;
+    public float waitSeconds;
 
     [SerializeField]
     float offset;

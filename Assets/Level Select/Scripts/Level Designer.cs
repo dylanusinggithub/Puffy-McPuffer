@@ -8,44 +8,54 @@ using UnityEngine.Video;
 
 public class LevelDesigner : MonoBehaviour
 {
-    [Tooltip("I have to add a button to manually press as otherwise it'd be reset every single time")]
-    [SerializeField] bool PressMeToSaveLevelIndex;
-    [SerializeField] int levelIndex;
 
     [SerializeField] RenderTexture VideoCanvas;
 
+    [SerializeField] int levelIndex;
     [SerializeField] int minigameIndex;
     int comicIndex = 0;
 
     [SerializeField] LevelClass[] Levels;
-
     [SerializeField] Sprite ErrorComic;
 
-    private void OnValidate()
-    {
-        if (PressMeToSaveLevelIndex)
-        {
-            PlayerPrefs.SetInt("levelIndex", levelIndex);
-            minigameIndex = -1;
-            PlayerPrefs.SetInt("minigameIndex", minigameIndex);
-
-            PressMeToSaveLevelIndex = false;
-        }
-    }
+    static public bool AdvanceToNextLevel = false;
 
     void Awake()
     {
-
         levelIndex = PlayerPrefs.GetInt("levelIndex", 0);
-        minigameIndex = PlayerPrefs.GetInt("minigameIndex", 0);
+        minigameIndex = PlayerPrefs.GetInt("minigameIndex", -1);
 
-        if (PlayerPrefs.GetString("advanceToNextLevel", "False") == "True") StartLevel();
+        if (AdvanceToNextLevel) 
+        {
+            minigameIndex++;
+            PlayerPrefs.SetInt("minigameIndex", minigameIndex);
+            NextLevel();
+        }
     }
 
     void NextLevel()
     {
-        PlayerPrefs.SetString("advanceToNextLevel", "True");
+        // I would advance directly but then i would skip every comic after the 1st
+        PlayerPrefs.SetString("advanceToNextLevel", "True"); 
         StartLevel();
+    }
+
+    public void StartLevel(int LevelNumber)
+    {
+        if (LevelNumber >= Levels.Length) Debug.LogError("Invalid Level Index! This Level Does Not Exist");
+        else
+        {
+            // if you start a new level and resets
+            if (levelIndex != LevelNumber) PlayerPrefs.SetInt("minigameIndex", -1);
+
+            PlayerPrefs.SetInt("levelIndex", LevelNumber);
+
+            levelIndex = PlayerPrefs.GetInt("levelIndex", 0);
+            minigameIndex = PlayerPrefs.GetInt("minigameIndex", -1);
+
+            StartLevel();
+
+        }
     }
 
     public void StartLevel()
@@ -61,10 +71,11 @@ public class LevelDesigner : MonoBehaviour
             else
             {
                 comicIndex = 0;
+                PlayerPrefs.SetString("advanceToNextLevel", "True");
                 LoadLevel();
             }
         }
-        else if (Levels[levelIndex].Sequence.Length - 1 > minigameIndex)
+        else 
         {
             // Play Previous Minigame's Victory Cutscenes
             //Checks to see if there is any comics or you've reached the last one
@@ -76,21 +87,17 @@ public class LevelDesigner : MonoBehaviour
             else
             {
                 comicIndex = 0;
-                LoadLevel();
-            }
-        }
-        else
-        {
-            levelIndex++;
-            if (levelIndex == Levels.Length)
-            {
-                Debug.LogWarning("You have reached the last level!");
-                CreateComicBackground(ErrorComic);
-            }
-            else
-            {
-                PlayerPrefs.SetInt("minigameIndex", -Levels[levelIndex].StartScreen.Count);
-                PlayerPrefs.SetInt("levelIndex", levelIndex);
+
+                if (Levels[levelIndex].Sequence.Length - 1 <= minigameIndex)
+                {
+                    print("Level complete!");
+                    PlayerPrefs.SetString("Level " + (levelIndex + 1) + " Unlocked", "True");
+                    PlayerPrefs.SetInt("minigameIndex", -1);
+
+                    // Destroys last comic
+                    for (int i = 0; i < this.transform.childCount; i++) Destroy(transform.GetChild(i).gameObject);
+                }
+                else LoadLevel(); 
             }
         }
     }
@@ -100,15 +107,19 @@ public class LevelDesigner : MonoBehaviour
         // Loads specific level given
         if (PlayerPrefs.GetString("advanceToNextLevel", "False") == "True")
         {
+            // This is saved beforehand to not progress levels once quiting
+            PlayerPrefs.SetInt("minigameIndex", minigameIndex);
             minigameIndex++;
+
             PlayerPrefs.SetString("advanceToNextLevel", "False");
+            AdvanceToNextLevel = false;
         }
 
         PlayerPrefs.SetInt("difficulty", Levels[levelIndex].Sequence[minigameIndex].difficulty);
         PlayerPrefs.SetString("showTutorial", Levels[levelIndex].Sequence[minigameIndex].showTutorial.ToString()); // theres no SetBool??
-        PlayerPrefs.SetInt("minigameIndex", minigameIndex);
 
-        print("Difficulty: " + Levels[levelIndex].Sequence[minigameIndex].difficulty + ", Sequence: " + minigameIndex);
+
+        print("Level: " + levelIndex + ", Difficulty: " + Levels[levelIndex].Sequence[minigameIndex].difficulty + ", Sequence: " + minigameIndex);
 
         switch (Levels[levelIndex].Sequence[minigameIndex].minigames)
         {
@@ -142,6 +153,7 @@ public class LevelDesigner : MonoBehaviour
 
         switch (ObjectType)
         {
+            case "Sprite":
             case "Texture2D":
                 {
                     // Make image centred and fill screen
@@ -152,8 +164,17 @@ public class LevelDesigner : MonoBehaviour
                     GOComic.GetComponent<RectTransform>().anchorMin = Vector2.zero;
 
 
-                    GOComic.AddComponent<RawImage>();
-                    GOComic.GetComponent<RawImage>().texture = (Texture2D)Comic;
+                    // The images keep flip flopping between the 2 and i have no idea why
+                    if (ObjectType == "Sprite")
+                    {
+                        GOComic.AddComponent<Image>();
+                        GOComic.GetComponent<Image>().sprite = (Sprite)Comic;
+                    }
+                    else
+                    {
+                        GOComic.AddComponent<RawImage>();
+                        GOComic.GetComponent<RawImage>().texture = (Texture2D)Comic;
+                    }
 
                     // Makes GOComic advance whenever clicked
                     GOComic.AddComponent<Button>();

@@ -1093,7 +1093,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1645979032}
         m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
-        m_MethodName: BTN_NextLevel
+        m_MethodName: BTN_Exit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
