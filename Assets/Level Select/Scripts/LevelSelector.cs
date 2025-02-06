@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,6 +7,7 @@ public class LevelSelector : MonoBehaviour
 {
     [SerializeField, Range(0, 10)] int LevelIndex;
     LevelDesigner LD;
+    [SerializeField] Animator Fadetransition;
 
     private void Start()
     {
@@ -22,6 +24,21 @@ public class LevelSelector : MonoBehaviour
 
     public void BTN_PlayLevel()
     {
+        StartCoroutine(Fade());
         LD.StartLevel(LevelIndex);
+    }
+
+    IEnumerator Fade()
+    {
+        Fadetransition.SetTrigger("End");
+        yield return new WaitForSeconds(1);
+        Fadetransition.SetTrigger("Start");
+    }
+
+    IEnumerator FadeRetry()
+    {
+        Fadetransition.SetTrigger("End");
+        yield return new WaitForSeconds(0.5f);
+        Fadetransition.SetTrigger("Start");
     }
 }
