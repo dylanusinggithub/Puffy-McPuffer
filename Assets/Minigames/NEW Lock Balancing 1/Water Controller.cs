@@ -50,27 +50,15 @@ public class WaterController : MonoBehaviour
 
         Puffy = GameObject.Find("Player");
         Puffy.transform.position = new Vector2(Puffy.transform.position.x, -waterMinHeight);
-
-        background = GameObject.Find("Lock Background");
-        background = background.transform.GetChild(0).GetChild(background.transform.childCount - 1).gameObject;
-        background.transform.localScale = new Vector2(background.transform.localScale.x, waterMaxHeight + waterMinHeight + 1.5f);
     }
 
     void OnValidate() // Only activated outside of playmode
     {
-
-        GameObject Cill = GameObject.Find("Cill");
-        Cill.transform.position = new Vector2(Cill.transform.position.x, waterMaxHeight);
-
         Puffy = GameObject.Find("Player");
         Puffy.transform.position = new Vector2(Puffy.transform.position.x, -waterMinHeight);
 
         waterObject = GameObject.Find("WaterSimple");
         waterObject.transform.localScale = new Vector2(waterObject.transform.localScale.x, waterOffset + waterHeight + waterMinHeight);
-
-        background = GameObject.Find("Lock Background");
-        background = background.transform.GetChild(0).GetChild(background.transform.childCount - 1).gameObject;
-        background.transform.localScale = new Vector2(background.transform.localScale.x, waterMaxHeight + waterMinHeight + 1.5f);
     }
 
     // Update is called once per frame

@@ -50,6 +50,7 @@ public class NEWLockBalancing : MonoBehaviour
             case GameState.Play:
                 {
                     DisplayWaterMovement();
+                    if(Puffy.transform.position.y > 0) Camera.main.transform.position = new Vector3(0, Puffy.transform.position.y, -10);
                 }
                 break;
             case GameState.Fail:
@@ -71,7 +72,7 @@ public class NEWLockBalancing : MonoBehaviour
                     
                     if (Puffy.transform.position.x < -9) Win.SetActive(true);
 
-                    if(Puffy.transform.position.x < -2) Camera.main.transform.position = new Vector3(Mathf.Clamp(Puffy.transform.position.x - 2, -18, 0), 6, -10);
+                    Camera.main.transform.position = new Vector3(Mathf.Clamp(Puffy.transform.position.x - 2, -18, 0), 6, -10);
 
                     if (Camera.main.transform.position.x <= -18) Camera.main.transform.parent = null;
 

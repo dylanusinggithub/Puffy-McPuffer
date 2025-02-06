@@ -93,7 +93,7 @@ public class ObjectDropper : MonoBehaviour
                         GO[i].transform.GetChild(j).GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
                         // When obstacles get hit they bounce and rotate so if i rotate them again it looks weird
-                        if(GO[i].transform.GetChild(j).GetComponent<Rigidbody2D>().angularVelocity != 0)
+                        if(Mathf.Abs(GO[i].transform.GetChild(j).GetComponent<Rigidbody2D>().angularVelocity) < 1)
                             GO[i].transform.GetChild(j).GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-50, 50);
 
                         Destroy(GO[i].transform.GetChild(j).gameObject, 4);
