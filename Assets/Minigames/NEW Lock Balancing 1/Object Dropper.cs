@@ -57,11 +57,12 @@ public class ObjectDropper : MonoBehaviour
                 }
                 burstCount++;
 
-                GO.Add(Instantiate(Layouts[Random.Range(0, Layouts.Count)], new Vector2(0, 4), Quaternion.identity));
+                if (GO.Count > 0) foreach (Transform Dropper in GO[GO.Count - 1].transform)
+                {
+                    if(Dropper.GetComponent<ObjectSettings>() != null) Dropper.GetComponent<SpriteRenderer>().enabled = false;
+                }
 
-                // Increases the sorting order each time and hides the previous so that the newest layout is on top and visable
-                foreach (Transform Dropper in GO[GO.Count - 1].transform) Dropper.GetComponent<SpriteRenderer>().sortingOrder = burstCount;
-                
+                GO.Add(Instantiate(Layouts[Random.Range(0, Layouts.Count)], new Vector2(0, 4), Quaternion.identity));
                 timerSeparation = burstSeparationDelay;
 
                 spawning = true;

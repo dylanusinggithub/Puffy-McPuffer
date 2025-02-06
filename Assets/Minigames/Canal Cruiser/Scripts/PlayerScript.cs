@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -45,16 +46,24 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private ParticleSystem obstacleParticle;
     private ParticleSystem obstacleParticleInstance;
 
+    Material ScrollingBackground;
+    float scrolling = 0;
+
     private void Start()
     {
         SM = GameObject.Find("Game Manager").GetComponent<ScoreScript>();
         oldColor = GetComponent<SpriteRenderer>().color;
+
+        ScrollingBackground = GameObject.Find("background").GetComponent<SpriteRenderer>().material;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         transform.parent.Translate(new Vector3(startSpeed, 0, 0));
+
+        scrolling = startSpeed / 31;
+        ScrollingBackground.mainTextureOffset += new Vector2(scrolling, 0);
 
         if (Input.GetButton("Horizontal")) velocity += -Input.GetAxis("Horizontal") * (movementStrength / 10000);
         else if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
