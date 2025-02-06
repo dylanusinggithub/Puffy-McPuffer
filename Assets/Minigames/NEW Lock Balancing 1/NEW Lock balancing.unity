@@ -306,6 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   createText: {fileID: 0}
+  Fadetransition: {fileID: 0}
   GameOver: {fileID: 837196950}
   Win: {fileID: 355893874}
   createCompletion: 10
@@ -8476,13 +8477,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2011681808}
+  - {fileID: 70318437}
   - {fileID: 837196951}
   - {fileID: 355893877}
   - {fileID: 2070039472}
   - {fileID: 1240387836}
   - {fileID: 1848909732}
   - {fileID: 508292016}
-  - {fileID: 70318437}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

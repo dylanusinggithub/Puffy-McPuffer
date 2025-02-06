@@ -2,12 +2,15 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections;
 
 public class NEWLockBalancing : MonoBehaviour
 {
 
     [Header("Gameplay")]
     [HideInInspector] public TextMeshProUGUI createText;
+
+    [SerializeField] Animator Fadetransition;
 
     [SerializeField]
     GameObject GameOver, Win;
@@ -50,7 +53,7 @@ public class NEWLockBalancing : MonoBehaviour
             case GameState.Play:
                 {
                     DisplayWaterMovement();
-                    if(Puffy.transform.position.y > 0) Camera.main.transform.position = new Vector3(0, Puffy.transform.position.y, -10);
+                    if (Puffy.transform.position.y > 0) Camera.main.transform.position = new Vector3(0, Puffy.transform.position.y, -10);
                 }
                 break;
             case GameState.Fail:
@@ -69,7 +72,7 @@ public class NEWLockBalancing : MonoBehaviour
                 {
                     if (Puffy.transform.position.x >= -18) Puffy.transform.Translate(new Vector2(cutsceneSpeed * 2f, 0));
                     else BTN_NextLevel();
-                    
+
                     if (Puffy.transform.position.x < -9) Win.SetActive(true);
 
                     Camera.main.transform.position = new Vector3(Mathf.Clamp(Puffy.transform.position.x - 2, -18, 0), 6, -10);
@@ -137,17 +140,33 @@ public class NEWLockBalancing : MonoBehaviour
     public void BTN_Retry()
     {
         Time.timeScale = 1;
+        StartCoroutine(FadeRetry());
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void BTN_Exit()
     {
+        StartCoroutine(Fade());
         SceneManager.LoadScene("Level Select Map");
     }
 
     public void BTN_NextLevel()
     {
+        StartCoroutine(FadeRetry());
         LevelDesigner.AdvanceToNextLevel = true;
         BTN_Exit();
+    }
+    IEnumerator Fade()
+    {
+        Fadetransition.SetTrigger("End");
+        yield return new WaitForSeconds(1);
+        Fadetransition.SetTrigger("Start");
+    }
+
+    IEnumerator FadeRetry()
+    {
+        Fadetransition.SetTrigger("End");
+        yield return new WaitForSeconds(0.5f);
+        Fadetransition.SetTrigger("Start");
     }
 }
