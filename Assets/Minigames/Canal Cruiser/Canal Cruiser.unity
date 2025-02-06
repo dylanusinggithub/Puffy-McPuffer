@@ -3326,6 +3326,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 116118870}
   - {fileID: 1747313806}
   - {fileID: 1087146436}
   - {fileID: 1152073788}
@@ -3333,7 +3334,6 @@ RectTransform:
   - {fileID: 2128891535}
   - {fileID: 481199879}
   - {fileID: 1469052014}
-  - {fileID: 116118870}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3353,6 +3353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88141ffd1dbdfb94e9693fd22bc30d54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Fadetransition: {fileID: 0}
 --- !u!1 &1689112751
 GameObject:
   m_ObjectHideFlags: 0
