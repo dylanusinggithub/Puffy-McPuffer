@@ -2922,11 +2922,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1158577767}
   - {fileID: 1464459300}
   - {fileID: 84814877}
   - {fileID: 1319339711}
   - {fileID: 2049514495}
-  - {fileID: 1158577767}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -25952,7 +25952,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.2735849, g: 0.2735849, b: 0.6745098, a: 0.7176471}
   m_FlipX: 0
@@ -29082,7 +29082,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &727610297
 Transform:
   m_ObjectHideFlags: 0
@@ -37819,7 +37819,7 @@ SpriteRenderer:
   m_Size: {x: 1.76, y: 1.76}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1133465969
@@ -41509,6 +41509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restart: {fileID: 2068657787}
   menu: {fileID: 1402261254}
+  Fadetransition: {fileID: 0}
 --- !u!222 &1319339710
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -46333,7 +46334,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -53353,7 +53354,7 @@ SpriteRenderer:
   m_Size: {x: 2.36, y: 1.77}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2003446719
@@ -54081,6 +54082,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restart: {fileID: 986121915}
   menu: {fileID: 1147832722}
+  Fadetransition: {fileID: 0}
 --- !u!1 &2053963680
 GameObject:
   m_ObjectHideFlags: 0
