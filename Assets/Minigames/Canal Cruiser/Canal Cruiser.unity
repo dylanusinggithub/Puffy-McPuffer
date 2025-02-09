@@ -269,15 +269,12 @@ MonoBehaviour:
   PressMeToSetLevelIndex: 0
   levelIndex: 0
   Levels:
-  - GameplayTime: 30
+  - GameplayTime: 25
     CreateCompletion: 5
     ExtraCreates: 2
     Layouts:
     - {fileID: 7793173836862348141, guid: 312af510616b0604692d0524a29b24a5, type: 3}
-    - {fileID: 2357665773328269852, guid: 73788ba1807992248a40024b2ced088e, type: 3}
     - {fileID: 6392660177088936827, guid: 2a7ab806fb6ba684183c4044acfedbbe, type: 3}
-    - {fileID: 7159862058339159186, guid: b5fdcbbc5f7da88409aee0458cc8474b, type: 3}
-    - {fileID: 2357665773328269852, guid: 73788ba1807992248a40024b2ced088e, type: 3}
     - {fileID: 7159862058339159186, guid: b5fdcbbc5f7da88409aee0458cc8474b, type: 3}
   - GameplayTime: 20
     CreateCompletion: 6
@@ -287,6 +284,15 @@ MonoBehaviour:
     - {fileID: 7159862058339159186, guid: b5fdcbbc5f7da88409aee0458cc8474b, type: 3}
     - {fileID: 7793173836862348141, guid: 312af510616b0604692d0524a29b24a5, type: 3}
     - {fileID: 2357665773328269852, guid: 73788ba1807992248a40024b2ced088e, type: 3}
+  - GameplayTime: 30
+    CreateCompletion: 7
+    ExtraCreates: 5
+    Layouts:
+    - {fileID: 6922145835368533052, guid: 3f31a9e4bedc909498c065021fd90ec5, type: 3}
+    - {fileID: 7159862058339159186, guid: b5fdcbbc5f7da88409aee0458cc8474b, type: 3}
+    - {fileID: 7793173836862348141, guid: 312af510616b0604692d0524a29b24a5, type: 3}
+    - {fileID: 2357665773328269852, guid: 73788ba1807992248a40024b2ced088e, type: 3}
+    - {fileID: 6392660177088936827, guid: 2a7ab806fb6ba684183c4044acfedbbe, type: 3}
   LayoutSeperation: 20
 --- !u!1 &116118869
 GameObject:
@@ -3610,7 +3616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88141ffd1dbdfb94e9693fd22bc30d54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Fadetransition: {fileID: 0}
+  Fadetransition: {fileID: 116118871}
 --- !u!1 &1689112751
 GameObject:
   m_ObjectHideFlags: 0

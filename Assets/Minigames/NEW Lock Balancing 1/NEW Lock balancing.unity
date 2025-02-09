@@ -591,7 +591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   createText: {fileID: 0}
-  Fadetransition: {fileID: 0}
+  Fadetransition: {fileID: 70318438}
   GameOver: {fileID: 837196950}
   Win: {fileID: 355893874}
   createCompletion: 10
@@ -705,6 +705,23 @@ MonoBehaviour:
     - {fileID: 550664953553520682, guid: 1c99917b397d0464cbe8c817f9ed4dc8, type: 3}
     perlinStepSize: 0.5
     strength: 6
+  - CreateCompletion: 10
+    burstDelay: 5
+    burstSeparationDelay: 1
+    burstMaxLimit: 4
+    burstMin: 1
+    Layouts:
+    - {fileID: 550664953553520682, guid: 6def3057ae7d2ca4bb56de491fa3d7b1, type: 3}
+    - {fileID: 550664953553520682, guid: ce221b1beb368474b9ee9e46d9a680de, type: 3}
+    - {fileID: 5551459052684984698, guid: 911afc5303e520041b382a98f4aaa80d, type: 3}
+    - {fileID: 3163827342038594386, guid: 5ee480e6546496d4ca0b382b771d33f2, type: 3}
+    - {fileID: 3756458864428363491, guid: 6628e4a9665746e4b8df481d0b6b9a52, type: 3}
+    - {fileID: 3163827342038594386, guid: c6ad22e055300854b8df61874ccbdcac, type: 3}
+    - {fileID: 3163827342038594386, guid: 9874fe853fb48f945847106167ebd103, type: 3}
+    - {fileID: 3163827342038594386, guid: 8cad6db887ae4e54b9fd13726e4e9ff1, type: 3}
+    - {fileID: 550664953553520682, guid: 1c99917b397d0464cbe8c817f9ed4dc8, type: 3}
+    perlinStepSize: 0.7
+    strength: 5
 --- !u!1 &70318436
 GameObject:
   m_ObjectHideFlags: 0

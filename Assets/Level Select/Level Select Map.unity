@@ -160,7 +160,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -20.000008, y: 31.000002}
+  m_AnchoredPosition: {x: 88.1, y: -27.3}
   m_SizeDelta: {x: 20.7464, y: 19.7003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &330919660
@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelIndex: 0
+  Fadetransition: {fileID: 0}
 --- !u!1 &361312340
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +439,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -18}
+  m_AnchoredPosition: {x: 0, y: 18.3}
   m_SizeDelta: {x: 116.18, y: 20.1094}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &563908508
@@ -794,7 +795,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15.000016, y: -20.000008}
+  m_AnchoredPosition: {x: 20.2, y: -21.3}
   m_SizeDelta: {x: 20.7464, y: 19.7003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1032479652
@@ -904,6 +905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelIndex: 1
+  Fadetransition: {fileID: 0}
 --- !u!1 &1144902281
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,7 +940,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -40}
+  m_AnchoredPosition: {x: 0, y: -19.900005}
   m_SizeDelta: {x: 120, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1144902283
@@ -1467,7 +1469,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -18.553898}
+  m_AnchoredPosition: {x: 0, y: 18.3}
   m_SizeDelta: {x: 120, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1414516012
@@ -1604,7 +1606,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -40}
+  m_AnchoredPosition: {x: 0, y: -19.9}
   m_SizeDelta: {x: 116.18, y: 20.1094}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1433391197
@@ -1776,7 +1778,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 43.76}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 5}
+  m_AnchoredPosition: {x: 0.6, y: -4.1}
   m_SizeDelta: {x: 21.0408, y: 22.5154}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1750426818
@@ -2068,7 +2070,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 85.7, y: -27.4}
+  m_AnchoredPosition: {x: -21.8, y: 30.3}
   m_SizeDelta: {x: 20.7464, y: 19.7003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1875352176
@@ -2178,6 +2180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelIndex: 2
+  Fadetransition: {fileID: 0}
 --- !u!1 &1992337072
 GameObject:
   m_ObjectHideFlags: 0
@@ -2298,16 +2301,12 @@ MonoBehaviour:
   Levels:
   - StartScreen: []
     Sequence:
-    - minigames: 0
+    - minigames: 1
       difficulty: 0
       showTutorial: 1
       Cutscene: []
-    - minigames: 0
+    - minigames: 1
       difficulty: 1
-      showTutorial: 0
-      Cutscene: []
-    - minigames: 0
-      difficulty: 2
       showTutorial: 0
       Cutscene: []
   - StartScreen:
@@ -2320,11 +2319,23 @@ MonoBehaviour:
       Cutscene:
       - {fileID: 32900000, guid: db82d4b7bac7b7744a1e0c23ac80318a, type: 3}
       - {fileID: 2800000, guid: 907e21cdf8a598040aece49ff3ce0d66, type: 3}
+    - minigames: 0
+      difficulty: 0
+      showTutorial: 1
+      Cutscene:
+      - {fileID: 32900000, guid: 0269d63e2e8e1fe4db78ddc2b28b8dd7, type: 3}
+    - minigames: 0
+      difficulty: 1
+      showTutorial: 0
+      Cutscene: []
+    - minigames: 0
+      difficulty: 2
+      showTutorial: 0
+      Cutscene: []
     - minigames: 1
       difficulty: 0
       showTutorial: 0
-      Cutscene:
-      - {fileID: 32900000, guid: 0269d63e2e8e1fe4db78ddc2b28b8dd7, type: 3}
+      Cutscene: []
   ErrorComic: {fileID: 21300000, guid: 907e21cdf8a598040aece49ff3ce0d66, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
