@@ -16,10 +16,9 @@ public class LevelGenerator : MonoBehaviour
     {
         if (PressMeToSetLevelIndex)
         {
-
+            PressMeToSetLevelIndex = false;
+            PlayerPrefs.SetInt("difficulty", levelIndex);
         }
-        PressMeToSetLevelIndex = false;
-        PlayerPrefs.SetInt("difficulty", levelIndex);
     }
 
     private void Start()
