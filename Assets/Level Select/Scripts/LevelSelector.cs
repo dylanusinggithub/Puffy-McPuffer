@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +12,7 @@ public class LevelSelector : MonoBehaviour
     {
         LD = GameObject.Find("Comic Panels").GetComponent<LevelDesigner>();
 
-        if (PlayerPrefs.GetString("Level " + LevelIndex + " Unlocked", "False") == "False")
+        if (PlayerPrefs.GetInt("Levels Unlocked", 0) <= LevelIndex)
         {
             GetComponent<Button>().enabled = false;
 

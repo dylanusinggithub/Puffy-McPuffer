@@ -22,7 +22,8 @@ public class LevelDesigner : MonoBehaviour
 
     void Awake()
     {
-        PlayerPrefs.SetString("Level 0 Unlocked", "True");
+        // Sets Levels Unlocked to 0 if you're playing for the first time
+        if (PlayerPrefs.HasKey("Levels Unlocked")) PlayerPrefs.SetInt("Levels Unlocked", 0);
 
         levelIndex = PlayerPrefs.GetInt("levelIndex", 0);
         minigameIndex = PlayerPrefs.GetInt("minigameIndex", -1);
@@ -93,7 +94,7 @@ public class LevelDesigner : MonoBehaviour
                 if (Levels[levelIndex].Sequence.Length - 1 <= minigameIndex)
                 {
                     print("Level complete!");
-                    PlayerPrefs.SetString("Level " + (levelIndex + 1) + " Unlocked", "True");
+                    if(PlayerPrefs.GetInt("Levels Unlocked") < levelIndex) PlayerPrefs.SetInt("Levels Unlocked", levelIndex + 1);
                     PlayerPrefs.SetInt("minigameIndex", -1);
 
                     // Destroys last comic
