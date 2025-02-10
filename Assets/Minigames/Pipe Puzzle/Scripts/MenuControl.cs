@@ -28,7 +28,7 @@ public class MenuControl : MonoBehaviour
     void openmenu()
     {
         StartCoroutine(Fade());
-        SceneManager.LoadScene("Level Select");
+        SceneManager.LoadScene(1);
         Time.timeScale = 1f;
     }
 
