@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField, Range(0, 10)]
-    float startSpeed = 5;
+    public float startSpeed = 5;
 
     [SerializeField, Range(0, 100)]
     float movementStrength = 100;
@@ -60,9 +60,9 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.parent.Translate(new Vector3(startSpeed, 0, 0));
+        transform.parent.Translate(new Vector3(startSpeed/10, 0, 0));
 
-        scrolling = startSpeed / 31;
+        scrolling = startSpeed / 310;
         ScrollingBackground.mainTextureOffset += new Vector2(scrolling, 0);
 
         if (Input.GetButton("Horizontal")) velocity += -Input.GetAxis("Horizontal") * (movementStrength / 10000);

@@ -27,6 +27,7 @@ public class LevelGenerator : MonoBehaviour
         levelIndex = PlayerPrefs.GetInt("difficulty", 0);
 
         GameObject.Find("Game Manager").GetComponent<ScoreScript>().timeWin = Levels[levelIndex].GameplayTime;
+        GameObject.Find("Player").GetComponent<PlayerScript>().startSpeed = Levels[levelIndex].LevelSpeed;
         GameObject.Find("Game Manager").GetComponent<ScoreScript>().scoreWin = Levels[levelIndex].CreateCompletion;
 
         // Places each layout in order
@@ -86,6 +87,8 @@ class LevelSettings
     [Range(5, 30)] public int GameplayTime;
     [Range(0, 10)] public int CreateCompletion;
     [Range(0, 5)] public int ExtraCreates;
+
+    [Range(0, 4)] public float LevelSpeed;
 
     public GameObject[] Layouts;
 

@@ -272,6 +272,7 @@ MonoBehaviour:
   - GameplayTime: 25
     CreateCompletion: 5
     ExtraCreates: 4
+    LevelSpeed: 2
     Layouts:
     - {fileID: 7793173836862348141, guid: 312af510616b0604692d0524a29b24a5, type: 3}
     - {fileID: 6392660177088936827, guid: 2a7ab806fb6ba684183c4044acfedbbe, type: 3}
@@ -279,6 +280,7 @@ MonoBehaviour:
   - GameplayTime: 20
     CreateCompletion: 6
     ExtraCreates: 5
+    LevelSpeed: 4
     Layouts:
     - {fileID: 6922145835368533052, guid: 3f31a9e4bedc909498c065021fd90ec5, type: 3}
     - {fileID: 7159862058339159186, guid: b5fdcbbc5f7da88409aee0458cc8474b, type: 3}
@@ -287,6 +289,7 @@ MonoBehaviour:
   - GameplayTime: 30
     CreateCompletion: 8
     ExtraCreates: 5
+    LevelSpeed: 2
     Layouts:
     - {fileID: 6922145835368533052, guid: 3f31a9e4bedc909498c065021fd90ec5, type: 3}
     - {fileID: 7159862058339159186, guid: b5fdcbbc5f7da88409aee0458cc8474b, type: 3}
@@ -4022,7 +4025,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1385200710
