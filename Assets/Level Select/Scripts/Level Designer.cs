@@ -94,7 +94,7 @@ public class LevelDesigner : MonoBehaviour
                 if (Levels[levelIndex].Sequence.Length - 1 <= minigameIndex)
                 {
                     print("Level complete!");
-                    if(PlayerPrefs.GetInt("Levels Unlocked") < levelIndex) PlayerPrefs.SetInt("Levels Unlocked", levelIndex + 1);
+                    if(PlayerPrefs.GetInt("Levels Unlocked") <= levelIndex) PlayerPrefs.SetInt("Levels Unlocked", levelIndex + 1);
                     PlayerPrefs.SetInt("minigameIndex", -1);
 
                     // Destroys last comic
