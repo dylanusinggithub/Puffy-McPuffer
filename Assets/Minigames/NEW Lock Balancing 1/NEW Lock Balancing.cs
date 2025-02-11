@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections;
+using UnityEngine.UI;
 
 public class NEWLockBalancing : MonoBehaviour
 {
@@ -92,15 +93,11 @@ public class NEWLockBalancing : MonoBehaviour
         float arrowlength = WB.boatTransformX;
 
         arrowBody.transform.localScale = new Vector3(arrowlength * (float)arrowStrength / 100, 0.15f, 1);
-        arrowBody.transform.position = new Vector2((arrowlength) / 2 * ((float)arrowStrength / 100), arrowBody.transform.position.y);
-
-        arrowHead.transform.localScale = new Vector3(0.4f, arrowlength * (float)arrowStrength / 400, 1);
-        arrowHead.transform.position = new Vector2(arrowlength * ((float)arrowStrength / 100), arrowBody.transform.position.y);
-
+        arrowHead.transform.localScale = new Vector3(0.4f, arrowlength * (float)arrowStrength / 300, 1);
 
         Color arrowColour = Color.yellow + (Color.red - Color.yellow) * Mathf.Abs((arrowlength * (float)arrowStrength / 100) / 4);
-        arrowBody.GetComponent<SpriteRenderer>().color = arrowColour;
-        arrowHead.GetComponent<SpriteRenderer>().color = arrowColour;
+        arrowBody.GetComponent<Image>().color = arrowColour;
+        arrowHead.GetComponent<Image>().color = arrowColour;
 
         windForce.directionX = WB.boatTransformX;
     }
