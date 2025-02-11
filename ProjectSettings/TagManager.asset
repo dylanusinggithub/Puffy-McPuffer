@@ -9,6 +9,7 @@ TagManager:
   - Obstacle
   - Collectable
   - Pipe
+  - Particle
   layers:
   - Default
   - TransparentFX
