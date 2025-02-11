@@ -32,7 +32,7 @@ public class PipeScript : MonoBehaviour
     public GameObject broke2;
     public GameObject broke0;
 
-    
+    public float radialcheck = 0.1f;
 
     //Locate the game manager via the game manager object
     private void Awake()
@@ -97,9 +97,35 @@ public class PipeScript : MonoBehaviour
         }
     }
 
-   
 
     //1 is child, 3 is most parent0
+
+
+    public void stopthepart()
+    {
+        ParticleSystem[] allParticles = FindObjectsOfType<ParticleSystem>(); // Get all ParticleSystems in the scene
+        ParticleSystem closestParticle = null;
+        float closestDistance = Mathf.Infinity;
+        Vector3 currentPosition = transform.position;
+
+        foreach (ParticleSystem ps in allParticles)
+        {
+            float distance = Vector3.Distance(currentPosition, ps.transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestParticle = ps;
+            }
+        }
+
+        if (closestParticle != null)
+        {
+            closestParticle.Stop();
+            Debug.Log("Stopped closest particle system: " + closestParticle.name);
+
+        }
+    }
+
 
     private void OnMouseDown()
     {
@@ -108,9 +134,9 @@ public class PipeScript : MonoBehaviour
 
         clickcounter++;
         FindObjectOfType<AudioManager>().Play("Peeped");
-        
 
-        gameManager.drip.SetActive(false);
+        gameManager.StopParti();    
+        stopthepart();
 
         if (PossibleRotation > 1)
         {
@@ -154,7 +180,8 @@ public class PipeScript : MonoBehaviour
 
             clickcounter++;
 
-            gameManager.drip.SetActive(false);
+            gameManager.StopParti();
+            stopthepart();
 
             if (PossibleRotation > 1)
             {

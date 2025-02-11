@@ -33,23 +33,16 @@ public class GameManager : MonoBehaviour
     public GameObject layer;
     public GameObject confetti;
 
-    public GameObject drip;
-    public Vector3[] driploc;
-    int brokecounter;
+    public ParticleSystem drip;
+    
+    public int brokecounter;
 
     int difficulty;
     int levelset;
     // Start is called before the first frame update
     void Start()
     {
-        if (drip != null)
-        {
-            drip.SetActive(false);
-        }
-        else
-        {
-            Debug.Log("This sucks");
-        }
+        
 
         difficulty = PlayerPrefs.GetInt("difficulty", 0);
         Debug.Log("Difficulty is now " + difficulty);
@@ -96,15 +89,10 @@ public class GameManager : MonoBehaviour
                     BrokenObjects[i].SetActive(true);
                     brokecounter++;
                     
-                    Vector3 drippos = Pipes[i].transform.position;
-                    drip.SetActive(true);
-                    drip.transform.position = new Vector3(drippos.x, drippos.y, 0f);
-                    if (drip = null)
-                    {
-                        Debug.Log("What the sigma");
-                    }
-                    Debug.Log(drippos);
+                    Vector3 ham = Pipes[i].transform.position;
 
+                    PlayParti(ham);
+                    
                 }
                 
             }
@@ -169,6 +157,20 @@ public class GameManager : MonoBehaviour
                     Debug.Log("Worms");
                 }
             }
+        }
+    }
+
+    public void PlayParti(Vector3 drippos)
+    {
+        ParticleSystem newParticle = Instantiate(drip, drippos, Quaternion.identity);
+        newParticle.Play();
+    }
+
+    public void StopParti()
+    {
+        if (drip != null)
+        {
+            drip.Stop();
         }
     }
 
