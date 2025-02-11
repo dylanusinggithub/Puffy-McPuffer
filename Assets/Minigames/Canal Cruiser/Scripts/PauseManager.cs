@@ -9,6 +9,7 @@ using UnityEngine.EventSystems;
 public class PauseManager : MonoBehaviour
 {
     public GameObject pausePanel; //Pause Panel object
+    public GameObject optionsPanel; // Options Panel object
     private bool isPaused = false; //Paused bool is initially set to false
 
     // Update is called once per frame
@@ -39,6 +40,22 @@ public class PauseManager : MonoBehaviour
         isPaused = false;
         pausePanel.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    // Open Options Panel from Pause Panel
+    public void OpenOptions()
+    {
+        pausePanel.SetActive(false);  
+        optionsPanel.SetActive(true); 
+        Time.timeScale = 0;
+    }
+
+    // Close Options Panel back to Pause Panel
+    public void CloseOptions()
+    {
+        optionsPanel.SetActive(false); 
+        pausePanel.SetActive(true); 
+        Time.timeScale = 0;
     }
 
     //Quit Function
