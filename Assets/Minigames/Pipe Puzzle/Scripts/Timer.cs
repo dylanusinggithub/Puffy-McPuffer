@@ -44,7 +44,7 @@ public class Timer : MonoBehaviour
         if (gameManager.gamewon == true)
         {
             
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
             youwin.SetActive(true);
             score.SetActive(true);
             puffything.SetActive(true);
@@ -63,7 +63,7 @@ public class Timer : MonoBehaviour
         else if (time_remaining < 0 && played )
         {
             
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
             FindObjectOfType<AudioManager>().Play("Sad");
             //Debug.Log("WHY THE SOUNg");
             youlose.SetActive(true);

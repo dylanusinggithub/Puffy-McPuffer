@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Difficulty is now " + difficulty);
         if (difficulty >= 0 & difficulty < 4)
         {
-            levelset = 2;
+            levelset = 1;
         }
         else if (difficulty >= 4 & difficulty < 7)
         {
