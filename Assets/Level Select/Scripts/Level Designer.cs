@@ -23,7 +23,7 @@ public class LevelDesigner : MonoBehaviour
     void Awake()
     {
         // Sets Levels Unlocked to 0 if you're playing for the first time
-        if (PlayerPrefs.HasKey("Levels Unlocked")) PlayerPrefs.SetInt("Levels Unlocked", 0);
+        if (!PlayerPrefs.HasKey("Levels Unlocked")) PlayerPrefs.SetInt("Levels Unlocked", 0);
 
         levelIndex = PlayerPrefs.GetInt("levelIndex", 0);
         minigameIndex = PlayerPrefs.GetInt("minigameIndex", -1);
