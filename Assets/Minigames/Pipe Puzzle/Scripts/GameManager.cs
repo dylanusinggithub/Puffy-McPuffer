@@ -88,13 +88,17 @@ public class GameManager : MonoBehaviour
                     //condition = true;
                     BrokenObjects[i].SetActive(true);
                     brokecounter++;
-                    
+
+
+
+                }
+                else if (rand2 == 2)
+                {
                     Vector3 ham = Pipes[i].transform.position;
 
                     PlayParti(ham);
-                    
                 }
-                
+
             }
         }
         else if (levelset == 3)
@@ -125,6 +129,13 @@ public class GameManager : MonoBehaviour
                     BrokenObjectsForLayout2[i].SetActive(true);
                     Debug.Log("Worms");
                 }
+                else if (rand2 == 2)
+                {
+                    Vector3 ham = Pipes[i].transform.position;
+
+                    PlayParti(ham);
+                }
+
             }
         }
         else if (levelset == 2)
@@ -156,6 +167,13 @@ public class GameManager : MonoBehaviour
                     BrokenObjectsForLayout3[i].SetActive(true);
                     Debug.Log("Worms");
                 }
+                else if (rand2 == 2)
+                {
+                    Vector3 ham = Pipes[i].transform.position;
+
+                    PlayParti(ham);
+                }
+
             }
         }
     }
