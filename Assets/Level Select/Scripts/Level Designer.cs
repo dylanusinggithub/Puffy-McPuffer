@@ -20,6 +20,11 @@ public class LevelDesigner : MonoBehaviour
 
     static public bool AdvanceToNextLevel = false;
 
+    public void BTN_Exit()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
     void Awake()
     {
         // Sets Levels Unlocked to 0 if you're playing for the first time
