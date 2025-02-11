@@ -22,8 +22,8 @@ public class GameManager : MonoBehaviour
     public GameObject[] BrokenObjectsForLayout2;
     public GameObject[] BrokenObjectsForLayout3;
 
-    [SerializeField]
-    int totalPipes = 0;
+    //[SerializeField]
+    public int totalPipes = 0;
 
     [SerializeField]
     int correctPipes = 0;
@@ -33,11 +33,24 @@ public class GameManager : MonoBehaviour
     public GameObject layer;
     public GameObject confetti;
 
+    public GameObject drip;
+    public Vector3[] driploc;
+    int brokecounter;
+
     int difficulty;
     int levelset;
     // Start is called before the first frame update
     void Start()
     {
+        if (drip != null)
+        {
+            drip.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("This sucks");
+        }
+
         difficulty = PlayerPrefs.GetInt("difficulty", 0);
         Debug.Log("Difficulty is now " + difficulty);
         if (difficulty >= 0 & difficulty < 4)
@@ -81,9 +94,19 @@ public class GameManager : MonoBehaviour
                     //Pipes[i].GetComponent<Renderer>().material.color = Color.black;
                     //condition = true;
                     BrokenObjects[i].SetActive(true);
-                    Debug.Log("Worms");
+                    brokecounter++;
+                    
+                    Vector3 drippos = Pipes[i].transform.position;
+                    drip.SetActive(true);
+                    drip.transform.position = new Vector3(drippos.x, drippos.y, 0f);
+                    if (drip = null)
+                    {
+                        Debug.Log("What the sigma");
+                    }
+                    Debug.Log(drippos);
 
                 }
+                
             }
         }
         else if (levelset == 3)

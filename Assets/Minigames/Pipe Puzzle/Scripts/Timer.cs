@@ -53,7 +53,7 @@ public class Timer : MonoBehaviour
             //I'll add a counter instead assuming we're making it warioware style so just ++ points here
             //scoretext.text=time_remaining.ToString("Your score is " + time_remaining);
 
-            pipes.GetComponent<PipeScript>().enabled = false;
+            //pipes.GetComponent<PipeScript>().enabled = false;
         }
         else if (time_remaining > 0)
         {
@@ -72,7 +72,7 @@ public class Timer : MonoBehaviour
             layer.SetActive(true);
             played = false;
             //pipeScript.enabled = false;
-            pipes.GetComponent<PipeScript>().enabled = false;
+            //pipes.GetComponent<PipeScript>().enabled = false;
         }
     }
 }

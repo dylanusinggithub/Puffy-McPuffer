@@ -109,6 +109,9 @@ public class PipeScript : MonoBehaviour
         clickcounter++;
         FindObjectOfType<AudioManager>().Play("Peeped");
         
+
+        gameManager.drip.SetActive(false);
+
         if (PossibleRotation > 1)
         {
             if (transform.eulerAngles.z == correctRotation[0] || transform.eulerAngles.z == correctRotation[1] && isPlaced == false)
@@ -150,7 +153,9 @@ public class PipeScript : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
 
             clickcounter++;
-            
+
+            gameManager.drip.SetActive(false);
+
             if (PossibleRotation > 1)
             {
                 if (transform.eulerAngles.z == correctRotation[0] || transform.eulerAngles.z == correctRotation[1] && isPlaced == false)
