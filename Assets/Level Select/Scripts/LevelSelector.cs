@@ -12,7 +12,7 @@ public class LevelSelector : MonoBehaviour
     {
         LD = GameObject.Find("Comic Panels").GetComponent<LevelDesigner>();
 
-        if (PlayerPrefs.GetInt("Levels Unlocked", 0) <= LevelIndex)
+        if (PlayerPrefs.GetInt("Levels Unlocked", 0) >= LevelIndex)
         {
             GetComponent<Button>().enabled = false;
 
