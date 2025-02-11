@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
                 }
                 else if (rand2 == 2)
                 {
-                    Vector3 ham = Pipes[i].transform.position;
+                    Vector3 ham = Pipes2[i].transform.position;
 
                     PlayParti(ham);
                 }
@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour
                 }
                 else if (rand2 == 2)
                 {
-                    Vector3 ham = Pipes[i].transform.position;
+                    Vector3 ham = Pipes3[i].transform.position;
 
                     PlayParti(ham);
                 }
