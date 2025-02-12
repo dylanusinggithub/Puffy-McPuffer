@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ObjectSettings : MonoBehaviour
@@ -38,6 +37,7 @@ public class ObjectSettings : MonoBehaviour
 
         // Hides behind lock wall, which later gets undone 
         GO.GetComponent<BoxCollider2D>().enabled = false;
+        Physics2D.IgnoreLayerCollision(0, 0); // Disables Default Colliding with defualt
         GO.GetComponent<SpriteRenderer>().sortingOrder = -5;
 
         Destroy(transform.gameObject);

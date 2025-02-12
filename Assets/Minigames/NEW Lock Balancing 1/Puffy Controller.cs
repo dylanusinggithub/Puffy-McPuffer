@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class PuffyController : MonoBehaviour
 {
     NEWLockBalancing LB;
+    WheelSteering WS;
 
     [SerializeField, Range(0, 8)]
     float maxDist;
@@ -45,6 +46,8 @@ public class PuffyController : MonoBehaviour
     void Start()
     {
         LB = GameObject.Find("GameManager").GetComponent<NEWLockBalancing>();
+        WS = GameObject.Find("Wheel").GetComponent<WheelSteering>();
+
         DurabilityBar = GameObject.Find("Durability").transform.GetChild(1).gameObject;
         DurabilityBG = GameObject.Find("Durability").transform.GetChild(0).gameObject;
 
@@ -94,15 +97,7 @@ public class PuffyController : MonoBehaviour
         {
             Velocity += Input.GetAxis("Horizontal") * ((float)keyStrength / 1000);
         }
-        else if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
-        {
-            float mouseDist = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
-            Mathf.Clamp(mouseDist, -mouseMaxDist, mouseMaxDist);
-
-            if (mouseInverted) mouseDist *= -1;
-
-            Velocity += mouseDist * ((float)mouseStrength / 10000);
-        }
+        else if (WS.Angle != 0) Velocity += -WS.Angle/1000;
         else
         {
             // Decelerates by X amount (divided by 100 to make it more reasoanble)

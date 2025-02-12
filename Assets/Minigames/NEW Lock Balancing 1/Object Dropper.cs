@@ -107,8 +107,6 @@ public class ObjectDropper : MonoBehaviour
                         {
                             GO[i].transform.GetChild(j).GetComponent<SpriteRenderer>().sortingOrder = 0;
                             GO[i].transform.GetChild(j).GetComponent<BoxCollider2D>().enabled = true;
-
-
                         }
                     }
                 }
