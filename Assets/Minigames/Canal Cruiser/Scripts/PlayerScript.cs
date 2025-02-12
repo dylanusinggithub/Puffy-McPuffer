@@ -31,7 +31,7 @@ public class PlayerScript : MonoBehaviour
     float velocity = 0;
 
     ScoreScript SM;
-
+    SteeringController SC;
 
     [SerializeField]
     Color flashColor;
@@ -52,6 +52,8 @@ public class PlayerScript : MonoBehaviour
     private void Start()
     {
         SM = GameObject.Find("Game Manager").GetComponent<ScoreScript>();
+        SC = GameObject.Find("Wheel").GetComponent<SteeringController>();
+
         oldColor = GetComponent<SpriteRenderer>().color;
 
         ScrollingBackground = GameObject.Find("background").GetComponent<SpriteRenderer>().material;
@@ -66,20 +68,7 @@ public class PlayerScript : MonoBehaviour
         ScrollingBackground.mainTextureOffset += new Vector2(scrolling, 0);
 
         if (Input.GetButton("Horizontal")) velocity += -Input.GetAxis("Horizontal") * (movementStrength / 10000);
-        else if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
-        {
-            float mouseDist = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
-            mouseDist -= transform.localPosition.y;
-
-            // Clamp isn't working?? so im setting it manually
-            if (Mathf.Abs(mouseDist) > mouseMax)
-            {
-                if (mouseDist > 0) mouseDist = mouseMax;
-                else mouseDist = -mouseMax;
-            }
-
-            velocity += mouseDist / (mouseStrength * 10);
-        }
+        else if (SC.Angle != 0) velocity += SC.Angle / 8000;
         else if (Mathf.Abs(velocity) > movementDeceleration / 1000)
         {
             if (velocity > 0) velocity -= movementDeceleration / 1000;
