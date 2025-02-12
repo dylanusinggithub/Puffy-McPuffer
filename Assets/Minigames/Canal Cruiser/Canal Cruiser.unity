@@ -280,7 +280,7 @@ MonoBehaviour:
   - GameplayTime: 20
     CreateCompletion: 6
     ExtraCreates: 5
-    LevelSpeed: 4
+    LevelSpeed: 2
     Layouts:
     - {fileID: 6922145835368533052, guid: 3f31a9e4bedc909498c065021fd90ec5, type: 3}
     - {fileID: 7159862058339159186, guid: b5fdcbbc5f7da88409aee0458cc8474b, type: 3}

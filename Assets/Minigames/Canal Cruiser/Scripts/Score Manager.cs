@@ -32,7 +32,6 @@ public class ScoreScript : MonoBehaviour
         timeText = GameObject.Find("Time Limit").GetComponent<TextMeshProUGUI>();
 
         scoreText = GameObject.Find("Cargo Counter").GetComponent<TextMeshProUGUI>();
-        scoreText.text = "Cargo Collected: " + score.ToString() + "/ " + scoreWin.ToString();
     }
 
     void FixedUpdate()

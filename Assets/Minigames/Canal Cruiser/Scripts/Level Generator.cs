@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -29,6 +31,9 @@ public class LevelGenerator : MonoBehaviour
         GameObject.Find("Game Manager").GetComponent<ScoreScript>().timeWin = Levels[levelIndex].GameplayTime;
         GameObject.Find("Player").GetComponent<PlayerScript>().startSpeed = Levels[levelIndex].LevelSpeed;
         GameObject.Find("Game Manager").GetComponent<ScoreScript>().scoreWin = Levels[levelIndex].CreateCompletion;
+
+        TextMeshProUGUI scoreText = GameObject.Find("Cargo Counter").GetComponent<TextMeshProUGUI>();
+        scoreText.text = "Cargo Collected: 0 / " + Levels[levelIndex].CreateCompletion;
 
         // Places each layout in order
         for (int i = 0; i < Levels[levelIndex].Length; i++)
