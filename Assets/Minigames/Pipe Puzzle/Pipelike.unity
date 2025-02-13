@@ -29730,6 +29730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c796e25966e284240ac08334af8c3d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainmenu: {fileID: 0}
   pausePanel: {fileID: 576438412}
   optionsPanel: {fileID: 271697161}
 --- !u!4 &734263840
@@ -38931,7 +38932,7 @@ SpriteRenderer:
   m_Size: {x: 1.76, y: 1.76}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1133465969

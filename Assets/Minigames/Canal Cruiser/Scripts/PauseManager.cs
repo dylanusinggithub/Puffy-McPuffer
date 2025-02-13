@@ -8,6 +8,8 @@ using UnityEngine.EventSystems;
 
 public class PauseManager : MonoBehaviour
 {
+    public MainMenu mainmenu; // Main Menu reference
+
     public GameObject pausePanel; //Pause Panel object
     public GameObject optionsPanel; // Options Panel object
     private bool isPaused = false; //Paused bool is initially set to false
@@ -49,6 +51,21 @@ public class PauseManager : MonoBehaviour
         optionsPanel.SetActive(true); 
         Time.timeScale = 0;
     }
+
+    public void ResetVolume()
+    {
+        VolumeManager volumeManager = FindObjectOfType<VolumeManager>();
+        if (volumeManager != null)
+        {
+            volumeManager.ResetToDefault();
+        }
+
+        else
+        {
+            UnityEngine.Debug.LogWarning("VolumeManager not found in the scene!");
+        }
+    }
+
 
     // Close Options Panel back to Pause Panel
     public void CloseOptions()
