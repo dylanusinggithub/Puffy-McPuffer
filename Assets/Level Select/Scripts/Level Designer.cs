@@ -16,9 +16,19 @@ public class LevelDesigner : MonoBehaviour
     int comicIndex = 0;
 
     [SerializeField] LevelClass[] Levels;
-    [SerializeField] Sprite ErrorComic;
 
     static public bool AdvanceToNextLevel = false;
+
+    void Start()
+    {
+        StartCoroutine(RemoveFade());
+    }
+
+    IEnumerator RemoveFade()
+    {
+        yield return new WaitForSeconds(1);
+        GameObject.Find("Fadetransition").SetActive(false);
+    }
 
     public void BTN_Exit()
     {
