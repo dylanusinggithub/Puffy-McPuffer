@@ -28,6 +28,7 @@ public class TutorialController : MonoBehaviour
         if (PlayerPrefs.GetString("showTutorial", "False") == "False")
         {
             this.enabled = false;
+            GameObject.Find("Cinematic Bars").SetActive(false);
             GameObject.Find("Game Manager").GetComponent<ScoreScript>().score = 0;
             return;
         }
