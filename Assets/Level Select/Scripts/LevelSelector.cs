@@ -101,7 +101,11 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                     Destroy(Preview);
 
                     Preview = Instantiate((GameObject)LevelPreview);
-                    Preview.transform.parent = transform;
+                    Preview.transform.parent = ComicPanel.transform;
+
+                    // Make image centred and fill screen
+                    Preview.GetComponent<RectTransform>().anchoredPosition = new Vector2(-159, -30);
+                    Preview.transform.localScale = Vector2.one;
                 }
                 break;
 
