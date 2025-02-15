@@ -41,6 +41,7 @@ public class NEWLockBalancing : MonoBehaviour
 
         Puffy = GameObject.Find("Player");
 
+        StartCoroutine(RemoveFade());
 
         arrowMovement = GameObject.Find("Arrow Origin");
         windForce = transform.GetChild(0).GetChild(0).GetComponent<ParticleSystemForceField>();
@@ -137,33 +138,23 @@ public class NEWLockBalancing : MonoBehaviour
     public void BTN_Retry()
     {
         Time.timeScale = 1;
-        StartCoroutine(FadeRetry());
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void BTN_Exit()
     {
-        StartCoroutine(Fade());
         SceneManager.LoadScene("Level Select Map");
     }
 
     public void BTN_NextLevel()
     {
-        StartCoroutine(FadeRetry());
         LevelDesigner.AdvanceToNextLevel = true;
         BTN_Exit();
     }
-    IEnumerator Fade()
-    {
-        Fadetransition.SetTrigger("End");
-        yield return new WaitForSeconds(1);
-        Fadetransition.SetTrigger("Start");
-    }
 
-    IEnumerator FadeRetry()
+    IEnumerator RemoveFade()
     {
-        Fadetransition.SetTrigger("End");
-        yield return new WaitForSeconds(0.5f);
-        Fadetransition.SetTrigger("Start");
+        yield return new WaitForSeconds(1);
+        GameObject.Find("Fadetransition").SetActive(false);
     }
 }

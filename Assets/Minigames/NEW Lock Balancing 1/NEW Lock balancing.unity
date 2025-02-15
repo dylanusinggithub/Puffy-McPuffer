@@ -9431,6 +9431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c796e25966e284240ac08334af8c3d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainmenu: {fileID: 0}
   pausePanel: {fileID: 1848909729}
   optionsPanel: {fileID: 877125161}
 --- !u!4 &1012595359
@@ -10008,7 +10009,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2011681808}
-  - {fileID: 70318437}
   - {fileID: 837196951}
   - {fileID: 355893877}
   - {fileID: 2070039472}
@@ -10018,6 +10018,7 @@ RectTransform:
   - {fileID: 877125162}
   - {fileID: 555591334}
   - {fileID: 1997284578}
+  - {fileID: 70318437}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -12889,7 +12890,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Angle: 0
-  dragPoint: {x: 0, y: 0}
 --- !u!114 &1997284580
 MonoBehaviour:
   m_ObjectHideFlags: 0
