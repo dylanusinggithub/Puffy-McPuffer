@@ -3,7 +3,9 @@ guid: 0e989f9620332aa45889af2e59081186
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - LevelPreview: {instanceID: 0}
+  - VideoCanvas: {fileID: 8400000, guid: e94ce2ef1923df348b2c640fd76e5712, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

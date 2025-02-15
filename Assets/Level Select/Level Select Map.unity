@@ -380,7 +380,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelIndex: 0
-  Fadetransition: {fileID: 0}
+  LevelPreview: {fileID: 2800000, guid: 8ca0182d980056648953da34f865be98, type: 3}
+  VideoCanvas: {fileID: 8400000, guid: e94ce2ef1923df348b2c640fd76e5712, type: 2}
 --- !u!1 &563908506
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,7 +915,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelIndex: 1
-  Fadetransition: {fileID: 0}
+  LevelPreview: {fileID: 0}
+  VideoCanvas: {fileID: 8400000, guid: e94ce2ef1923df348b2c640fd76e5712, type: 2}
 --- !u!1 &1063657858
 GameObject:
   m_ObjectHideFlags: 0
@@ -2866,7 +2868,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelIndex: 2
-  Fadetransition: {fileID: 0}
+  LevelPreview: {fileID: 0}
+  VideoCanvas: {fileID: 8400000, guid: e94ce2ef1923df348b2c640fd76e5712, type: 2}
 --- !u!1 &1992337072
 GameObject:
   m_ObjectHideFlags: 0
@@ -3116,6 +3119,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1811805411}
-  - {fileID: 1403015743}
   - {fileID: 1992337076}
+  - {fileID: 1403015743}
   - {fileID: 650005577}
