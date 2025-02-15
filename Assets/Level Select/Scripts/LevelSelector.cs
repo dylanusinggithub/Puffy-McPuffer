@@ -23,21 +23,6 @@ public class LevelSelector : MonoBehaviour
 
     public void BTN_PlayLevel()
     {
-        StartCoroutine(Fade());
         LD.StartLevel(LevelIndex);
-    }
-
-    IEnumerator Fade()
-    {
-        Fadetransition.SetTrigger("End");
-        yield return new WaitForSeconds(1);
-        Fadetransition.SetTrigger("Start");
-    }
-
-    IEnumerator FadeRetry()
-    {
-        Fadetransition.SetTrigger("End");
-        yield return new WaitForSeconds(0.5f);
-        Fadetransition.SetTrigger("Start");
     }
 }

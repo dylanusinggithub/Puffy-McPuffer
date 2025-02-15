@@ -1,7 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -23,6 +23,12 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
+    IEnumerator RemoveFade()
+    {
+        yield return new WaitForSeconds(1);
+        GameObject.Find("Fadetransition").SetActive(false);
+    }
+
     private void Start()
     {
         // sets the level index to minigameIndex which is provided by level desginer in menu screen
@@ -31,6 +37,8 @@ public class LevelGenerator : MonoBehaviour
         GameObject.Find("Game Manager").GetComponent<ScoreScript>().timeWin = Levels[levelIndex].GameplayTime;
         GameObject.Find("Player").GetComponent<PlayerScript>().startSpeed = Levels[levelIndex].LevelSpeed;
         GameObject.Find("Game Manager").GetComponent<ScoreScript>().scoreWin = Levels[levelIndex].CreateCompletion;
+
+        StartCoroutine(RemoveFade());
 
         TextMeshProUGUI scoreText = GameObject.Find("Cargo Counter").GetComponent<TextMeshProUGUI>();
         scoreText.text = "Cargo Collected: 0 / " + Levels[levelIndex].CreateCompletion;
