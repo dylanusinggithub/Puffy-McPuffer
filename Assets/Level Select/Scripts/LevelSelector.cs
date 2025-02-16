@@ -1,8 +1,8 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.Video;
 
 public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -10,11 +10,9 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField, Range(0, 10)] int LevelIndex;
     LevelDesigner LD;
 
-    [SerializeField] UnityEngine.Object LevelPreview;
+    [SerializeField] GameObject LevelPreview;
     [SerializeField] RenderTexture VideoCanvas;
-    GameObject Preview;
-
-    GameObject ComicPanel;
+    GameObject ComicPanel, Preview;
 
     private void Start()
     {
@@ -37,90 +35,27 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Preview = new GameObject("Start Preview");
-        Preview.transform.SetParent(ComicPanel.transform);
+        if (!GetComponent<Button>().enabled) return; // If Button is disabled don't show
 
-        // Finds the LevelPreview's Type by finding the last instance of "." (plus 1 as it actually gives the location of the ".")
-        // Basically: UnityEngine.Video.VideoClip > .VideoClip > VideoClip
-        String ObjectType = LevelPreview.GetType().ToString();
-        ObjectType = ObjectType.Substring(ObjectType.LastIndexOf(".") + 1);
+        Destroy(Preview);
+        Preview = Instantiate(LevelPreview, ComicPanel.transform);
 
-        switch (ObjectType)
-        {
-            case "Sprite":
-            case "Texture2D":
-                {
-                    // Make image centred and fill screen
-                    Preview.AddComponent<RectTransform>();
-                    Preview.GetComponent<RectTransform>().sizeDelta = Vector2.zero;
-                    Preview.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-                    Preview.GetComponent<RectTransform>().anchorMax = Vector2.one;
-                    Preview.GetComponent<RectTransform>().anchorMin = Vector2.zero;
-
-
-                    // The images keep flip flopping between the 2 and i have no idea why
-                    if (ObjectType == "Sprite")
-                    {
-                        Preview.AddComponent<Image>();
-                        Preview.GetComponent<Image>().sprite = (Sprite)LevelPreview;
-                        Preview.GetComponent<Image>().raycastTarget = false;
-                    }
-                    else
-                    {
-                        Preview.AddComponent<RawImage>();
-                        Preview.GetComponent<RawImage>().texture = (Texture2D)LevelPreview;
-                        Preview.GetComponent<RawImage>().raycastTarget = false;
-                    }
-                }
-                break;
-
-            case "VideoClip":
-                {
-                    // Create Video Player
-                    Preview.AddComponent<VideoPlayer>();
-                    VideoPlayer VP = Preview.GetComponent<VideoPlayer>();
-                    VP.clip = (VideoClip)LevelPreview;
-                    VP.isLooping = true;
-
-                    VP.SetDirectAudioVolume(0, PlayerPrefs.GetFloat("Volume", 1));
-                    VP.targetTexture = VideoCanvas;
-
-                    // Create the image the video will be playing to
-                    Preview.AddComponent<RawImage>();
-                    Preview.GetComponent<RawImage>().texture = VideoCanvas;
-
-                    Preview.GetComponent<RectTransform>().sizeDelta = Vector2.zero;
-                    Preview.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-                    Preview.GetComponent<RectTransform>().anchorMax = Vector2.one;
-                    Preview.GetComponent<RectTransform>().anchorMin = Vector2.zero;
-                }
-                break;
-
-            case "GameObject":
-                {
-                    Destroy(Preview);
-
-                    Preview = Instantiate((GameObject)LevelPreview);
-                    Preview.transform.parent = ComicPanel.transform;
-
-                    // Make image centred and fill screen
-                    Preview.GetComponent<RectTransform>().anchoredPosition = new Vector2(-159, -30);
-                    Preview.transform.localScale = Vector2.one;
-                }
-                break;
-
-            default:
-                {
-                    Destroy(Preview);
-                    Debug.LogError("Invalid Type! " + ObjectType);
-                }
-                break;
-        }
+        Preview.GetComponent<RectTransform>().anchoredPosition = new Vector2(-159, -30);
+        Preview.transform.localScale = Vector2.one;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (!GetComponent<Button>().enabled) return; // If Button is disabled don't show
+        Animator anim = Preview.GetComponentInChildren<Animator>();
+
+        anim.SetFloat("Speed", -1);
+        if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1) anim.Play("Appear", 0, 1); // Replays Animation only after it completes
+
         // Removes previous LevelPreview
-        Destroy(Preview);
+        float clipLength = anim.runtimeAnimatorController.animationClips[0].length;
+        float PlaybackPercent = Mathf.Clamp01(anim.GetCurrentAnimatorStateInfo(0).normalizedTime); // Only care if it's midway
+        float DestoryTime = clipLength * PlaybackPercent;
+        Destroy(Preview, DestoryTime);
     }
 }
