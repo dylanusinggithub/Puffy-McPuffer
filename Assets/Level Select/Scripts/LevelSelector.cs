@@ -40,7 +40,7 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         Destroy(Preview);
         Preview = Instantiate(LevelPreview, ComicPanel.transform);
 
-        Preview.GetComponent<RectTransform>().anchoredPosition = new Vector2(-159, -55);
+        Preview.GetComponent<RectTransform>().anchoredPosition = new Vector2(-150, -20);
         Preview.transform.localScale = Vector2.one;
     }
 
