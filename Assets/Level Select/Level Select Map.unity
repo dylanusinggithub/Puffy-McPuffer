@@ -655,7 +655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e989f9620332aa45889af2e59081186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelIndex: 2
+  LevelIndex: 4
   LevelPreview: {fileID: 1081310224015781113, guid: 0ab694c71ef667541865dd3a437f7b40, type: 3}
   VideoCanvas: {fileID: 8400000, guid: e94ce2ef1923df348b2c640fd76e5712, type: 2}
 --- !u!114 &535209957
@@ -1057,7 +1057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e989f9620332aa45889af2e59081186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelIndex: 4
+  LevelIndex: 2
   LevelPreview: {fileID: 2800000, guid: 8ca0182d980056648953da34f865be98, type: 3}
   VideoCanvas: {fileID: 8400000, guid: e94ce2ef1923df348b2c640fd76e5712, type: 2}
 --- !u!114 &800668436
