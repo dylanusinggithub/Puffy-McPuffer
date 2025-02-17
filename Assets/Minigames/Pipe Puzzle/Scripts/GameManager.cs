@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
     public GameObject[] Pipes;
     public GameObject[] Pipes2;
     public GameObject[] Pipes3;
+    public GameObject Win1;
+    public GameObject Win2;
+    public GameObject Win3;
+
 
     public GameObject pipechange1; //for pipes (3)
     public GameObject pipechange2; //for pipes (4)
@@ -39,11 +43,16 @@ public class GameManager : MonoBehaviour
 
     int difficulty;
     int levelset;
+
+    bool isone;
+    bool istwo;
+    bool isthree;
     // Start is called before the first frame update
     void Start()
     {
-        
-
+        isone = false;
+        istwo = false;
+        isthree = false;
         difficulty = PlayerPrefs.GetInt("difficulty", 0);
         Debug.Log("Difficulty is now " + difficulty);
         if (difficulty >= 0 & difficulty < 4)
@@ -68,7 +77,7 @@ public class GameManager : MonoBehaviour
             PipeHolder2.SetActive(false);
             PipeHolder3.SetActive(false);
             pipechange3.SetActive(false);
-
+            isone = true;
             totalPipes = PipeHolder.transform.childCount;
 
             Pipes = new GameObject[totalPipes];
@@ -111,7 +120,7 @@ public class GameManager : MonoBehaviour
             pipechange3.SetActive(false);
             totalPipes = PipeHolder2.transform.childCount;
 
-            
+            istwo = true;
             pipechange1.SetActive(false);
 
             Pipes2 = new GameObject[totalPipes];
@@ -149,7 +158,7 @@ public class GameManager : MonoBehaviour
 
             totalPipes = PipeHolder3.transform.childCount;
 
-
+            isthree = true;
             pipechange1.SetActive(false);
 
             Pipes3 = new GameObject[totalPipes];
@@ -209,6 +218,16 @@ public class GameManager : MonoBehaviour
             PipeHolder3.SetActive(false);
             pipechange3.SetActive(false);
             pipechange1.SetActive(false);
+            if (isone == true)
+            {
+                Win1.SetActive(true);
+            } else if (istwo == true)
+            {
+                Win2.SetActive(true);
+            } else if (isthree == true)
+            {
+                Win3.SetActive(true);
+            }
         }
     }
 
