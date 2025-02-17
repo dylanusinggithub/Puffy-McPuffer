@@ -17,6 +17,7 @@ public class SliderController : MonoBehaviour
     void Start()
     {
         GetComponent<Slider>().value = PlayerPrefs.GetFloat(this.name, valueDefault / 100) * 100;
+        GetComponent<Slider>().maxValue = valueDefault * 2;
         GetComponent<Slider>().onValueChanged.AddListener(delegate { SliderChange(); }); //Do not ask what this actually does; I DO NOT KNOW
 
         SliderChange();
