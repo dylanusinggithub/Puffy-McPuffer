@@ -203,7 +203,12 @@ public class GameManager : MonoBehaviour
             layer.SetActive(true);
             FindObjectOfType<AudioManager>().Play("Yippee");
             confetti.SetActive(true);
-            
+            PipeHolder.SetActive(false);
+            PipeHolder2.SetActive(false);
+            pipechange2.SetActive(false);
+            PipeHolder3.SetActive(false);
+            pipechange3.SetActive(false);
+            pipechange1.SetActive(false);
         }
     }
 

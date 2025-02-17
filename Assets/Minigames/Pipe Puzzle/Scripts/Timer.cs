@@ -71,6 +71,12 @@ public class Timer : MonoBehaviour
             PuffyPic.GetComponent<Animation>().enabled = false;
             layer.SetActive(true);
             played = false;
+            gameManager.PipeHolder.SetActive(false);
+            gameManager.PipeHolder2.SetActive(false);
+            gameManager.pipechange2.SetActive(false);
+            gameManager.PipeHolder3.SetActive(false);
+            gameManager.pipechange3.SetActive(false);
+            gameManager.pipechange1.SetActive(false);
             //pipeScript.enabled = false;
             //pipes.GetComponent<PipeScript>().enabled = false;
         }
