@@ -45,8 +45,7 @@ public class MainMenu : MonoBehaviour
 
     public void BTN_Main()
     {
-        HideUI();
-        Main.SetActive(true);
+        StartCoroutine(FadeTime(Main));
     }
 
     public void BTN_HowTo()
