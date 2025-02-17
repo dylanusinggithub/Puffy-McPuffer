@@ -12995,7 +12995,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - nameOfSound: Sad
     clip: {fileID: 8300000, guid: fb1ee3f83cb5ec847bea19a7ec8e89d3, type: 3}
-    volume: 0
+    volume: 0.679
     pitch: 1
     source: {fileID: 0}
 --- !u!4 &219198363
