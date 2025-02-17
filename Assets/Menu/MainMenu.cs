@@ -95,7 +95,10 @@ public class MainMenu : MonoBehaviour
         else
         {
             HowToIndex = 0;
-            BTN_Main();
+
+            // Displays main manually to avoid double fade
+            HideUI();
+            Main.SetActive(true);
         }
     }
 
