@@ -68,7 +68,7 @@ public class PlayerScript : MonoBehaviour
         ScrollingBackground.mainTextureOffset += new Vector2(scrolling, 0);
 
         if (Input.GetButton("Horizontal")) velocity += -Input.GetAxis("Horizontal") * (movementStrength / 10000);
-        else if (SC.Angle != 0) velocity += -SC.Angle / 8000;
+        else if (SC.Angle != 0) velocity += (SC.Angle / 15000);
         else if (Mathf.Abs(velocity) > movementDeceleration / 1000)
         {
             if (velocity > 0) velocity -= movementDeceleration / 1000;
