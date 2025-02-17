@@ -1,91 +1,126 @@
+using System;
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
     int HowToIndex = 0;
 
     [SerializeField] Animator FadeTransition;
+    float FadeDelay = 1;
 
-    public void PlayGame()
+    GameObject Main, HowToPlay, Options;
+
+    private void Start()
     {
-        if (PlayerPrefs.HasKey("Volume")) PlayerPrefs.SetFloat("Volume", 1);
-        SceneManager.LoadScene("Level Select Map");
+        Main = transform.GetChild(0).gameObject;
+        HowToPlay = transform.GetChild(1).gameObject;
+        Options = transform.GetChild(2).gameObject;
+    }
 
+    void HideUI()
+    {
+        // Disable everything but the fade
+        foreach (Transform UI in transform) UI.gameObject.SetActive(false);
+        FadeTransition.gameObject.SetActive(true);
+    }
+
+
+    public void BTN_PlayGame()
+    {
+        StartCoroutine(FadeTime());
+        StartCoroutine(PlayGame());
+    }
+
+    IEnumerator PlayGame()
+    {
+        yield return new WaitForSeconds(FadeDelay);
+
+        // Sets volume to 100% on first time playing
+        if (!PlayerPrefs.HasKey("Volume")) PlayerPrefs.SetFloat("Volume", 1);
+        SceneManager.LoadScene("Level Select Map");
     }
 
     public void BTN_Main()
     {
-        HowToIndex = 0;
-        transform.GetChild(1).GetChild(5).gameObject.SetActive(false);
-        foreach (Transform Menu in this.transform) Menu.gameObject.SetActive(false);
-        transform.GetChild(0).gameObject.SetActive(true);
+        HideUI();
+        Main.SetActive(true);
     }
-
 
     public void BTN_HowTo()
     {
+        StartCoroutine(FadeTime(HowToPlay));
+        StartCoroutine(HowTo());
+    }
 
-        foreach (Transform Menu in this.transform) Menu.gameObject.SetActive(false);
-        StartCoroutine(FadeTime());
+    IEnumerator HowTo()
+    {
+        yield return new WaitForSeconds(FadeDelay);
 
-        transform.GetChild(1).gameObject.SetActive(true);
-        
-        transform.GetChild(1).GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text = "Next Page";
+        HowToPlay.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
+        HowToPlay.transform.GetChild(1).gameObject.SetActive(true); // Back
+        HowToPlay.transform.GetChild(2).gameObject.SetActive(true); // Exit
 
-        transform.GetChild(1).GetChild(2).gameObject.SetActive(true);
-        transform.GetChild(1).GetChild(3).gameObject.SetActive(true);
-        transform.GetChild(1).GetChild(4).gameObject.SetActive(false);
+        HowToPlay.transform.GetChild(3).gameObject.SetActive(false); // Centred Exit
+        HowToIndex = 0;
     }
 
     public void BTN_HowToNext()
     {
-        StartCoroutine(FadeTime());
+        StartCoroutine(FadeTime(HowToPlay));
+        StartCoroutine(HowToNext());
+    }
+
+    IEnumerator HowToNext()
+    {
+        yield return new WaitForSeconds(FadeDelay);
+
         HowToIndex++;
-        if (HowToIndex < 3 ) 
+        HowToPlay.transform.GetChild(0).GetChild(HowToIndex - 1).gameObject.SetActive(false);
+        if (HowToIndex < transform.childCount - 1)
         {
-            if (HowToIndex == 2)
+            // Remove buttons on last page
+            if (HowToIndex == transform.childCount - 2)
             {
+                HowToPlay.transform.GetChild(1).gameObject.SetActive(false); // Back
+                HowToPlay.transform.GetChild(2).gameObject.SetActive(false); // Exit
 
-                transform.GetChild(1).GetChild(2).gameObject.SetActive(false);
+                HowToPlay.transform.GetChild(3).gameObject.SetActive(true); // Centred Exit
             }
-            transform.GetChild(1).GetChild(HowToIndex + 2).gameObject.SetActive(false);
-            transform.GetChild(1).GetChild(HowToIndex + 3).gameObject.SetActive(true);
 
-            transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = "Exit";
+            
+            HowToPlay.transform.GetChild(0).GetChild(HowToIndex).gameObject.SetActive(true);
         }
         else
         {
-            StartCoroutine(FadeTime());
+            HowToIndex = 0;
             BTN_Main();
         }
     }
 
     public void BTN_Options()
     {
-        foreach (Transform Menu in this.transform) Menu.gameObject.SetActive(false);
-        StartCoroutine(FadeTime());
-        transform.GetChild(2).gameObject.SetActive(true);
+        StartCoroutine(FadeTime(Options));
     }
 
-    public void BTN_Default()
+    IEnumerator FadeTime(GameObject Menu)
     {
-        foreach (Slider Slider in transform.GetComponentsInChildren<Slider>()) 
-            Slider.value = Slider.GetComponent<SliderController>().valueDefault;
+        FadeTransition.SetTrigger("End");
+        yield return new WaitForSeconds(FadeDelay);
+        FadeTransition.SetTrigger("Start");
+
+        HideUI();
+        Menu.gameObject.SetActive(true);
     }
 
     IEnumerator FadeTime()
     {
-        FadeTransition.gameObject.SetActive(true);
-        //FadeTransition.GetComponent<Image>().color = new Color(0, 0, 0, 1);
         FadeTransition.SetTrigger("End");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(FadeDelay);
         FadeTransition.SetTrigger("Start");
+
+        HideUI();
     }
-
-
 }
