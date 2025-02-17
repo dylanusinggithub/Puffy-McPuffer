@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     public GameObject[] BrokenObjectsForLayout2;
     public GameObject[] BrokenObjectsForLayout3;
 
+    public GameObject pausebutt;
+
     //[SerializeField]
     public int totalPipes = 0;
 
@@ -218,6 +220,7 @@ public class GameManager : MonoBehaviour
             PipeHolder3.SetActive(false);
             pipechange3.SetActive(false);
             pipechange1.SetActive(false);
+            pausebutt.SetActive(false);
             if (isone == true)
             {
                 Win1.SetActive(true);

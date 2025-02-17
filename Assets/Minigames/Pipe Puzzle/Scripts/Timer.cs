@@ -20,6 +20,7 @@ public class Timer : MonoBehaviour
     public GameObject PuffyPic;
     public GameObject layer;
     bool played = true;
+    public GameObject pausebutt;
 
     GameObject pipes;
 
@@ -77,6 +78,7 @@ public class Timer : MonoBehaviour
             gameManager.PipeHolder3.SetActive(false);
             gameManager.pipechange3.SetActive(false);
             gameManager.pipechange1.SetActive(false);
+            pausebutt.SetActive(false);
             //pipeScript.enabled = false;
             //pipes.GetComponent<PipeScript>().enabled = false;
         }
