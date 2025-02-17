@@ -45,8 +45,7 @@ public class MainMenu : MonoBehaviour
 
     public void BTN_Main()
     {
-        HideUI();
-        Main.SetActive(true);
+        StartCoroutine(FadeTime(Main));
     }
 
     public void BTN_HowTo()
@@ -96,7 +95,10 @@ public class MainMenu : MonoBehaviour
         else
         {
             HowToIndex = 0;
-            BTN_Main();
+
+            // Displays main manually to avoid double fade
+            HideUI();
+            Main.SetActive(true);
         }
     }
 

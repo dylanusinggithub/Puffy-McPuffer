@@ -1123,8 +1123,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1572278886}
   - {fileID: 1373452628}
+  - {fileID: 1572278886}
   m_Father: {fileID: 615448765}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &164944448
@@ -6388,7 +6388,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 615448766}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: BTN_HowToExit
+        m_MethodName: BTN_Main
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
