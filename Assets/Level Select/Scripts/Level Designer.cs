@@ -176,11 +176,9 @@ public class LevelDesigner : MonoBehaviour
                 {
                     // Make image centred and fill screen
                     GOComic.AddComponent<RectTransform>();
-                    GOComic.GetComponent<RectTransform>().sizeDelta = Vector2.zero;
                     GOComic.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-                    GOComic.GetComponent<RectTransform>().anchorMax = Vector2.one;
-                    GOComic.GetComponent<RectTransform>().anchorMin = Vector2.zero;
-
+                    GOComic.GetComponent<RectTransform>().sizeDelta = new Vector2(1920, 1080);
+                    GOComic.GetComponent<RectTransform>().localScale = Vector2.one;
 
                     // The images keep flip flopping between the 2 and i have no idea why
                     if (ObjectType == "Sprite")

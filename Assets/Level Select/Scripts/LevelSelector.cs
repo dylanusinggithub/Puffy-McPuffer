@@ -35,18 +35,19 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!GetComponent<Button>().enabled) return; // If Button is disabled don't show
+        if (!GetComponent<Button>().enabled || Preview == null) return; // If Button is disabled or Preview doesn't exist don't show
 
         Destroy(Preview);
         Preview = Instantiate(LevelPreview, ComicPanel.transform);
 
-        Preview.GetComponent<RectTransform>().anchoredPosition = new Vector2(-150, -20);
-        Preview.transform.localScale = Vector2.one;
+        Preview.GetComponent<RectTransform>().anchoredPosition = new Vector2(-300, -60);
+        Preview.GetComponent<RectTransform>().localScale = Vector3.one * 2.5f;
+
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (!GetComponent<Button>().enabled) return; // If Button is disabled don't show
+        if (!GetComponent<Button>().enabled || Preview == null) return; // If Button is disabled or Preview doesn't exist don't show
         Animator anim = Preview.GetComponentInChildren<Animator>();
 
         anim.SetFloat("Speed", -1);
