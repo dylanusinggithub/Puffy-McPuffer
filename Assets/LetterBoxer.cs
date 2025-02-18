@@ -18,6 +18,7 @@ public class LetterBoxer : MonoBehaviour
     void OnValidate() // Also works for on start
     {   
         EditViewport();
+        PressMeToLetterBox = false;
     }
 
     void EditViewport()
