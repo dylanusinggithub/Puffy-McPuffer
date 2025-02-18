@@ -34024,7 +34024,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.09, y: 0.25028515}
   m_AnchorMax: {x: 0.2696063, y: 0.32585946}
-  m_AnchoredPosition: {x: 0.49986267, y: -1.5}
+  m_AnchoredPosition: {x: 0.49980164, y: -1.5}
   m_SizeDelta: {x: 8.400497, y: 9.373901}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &620298465
@@ -50414,9 +50414,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.125
+    y: 0
     width: 1
-    height: 0.75
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -59395,7 +59395,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 6, y: -16}
+  m_AnchoredPosition: {x: 6, y: -15.999992}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1330112007
@@ -79590,7 +79590,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 6, y: -11}
+  m_AnchoredPosition: {x: 6, y: -10.999992}
   m_SizeDelta: {x: 0, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2049514496
