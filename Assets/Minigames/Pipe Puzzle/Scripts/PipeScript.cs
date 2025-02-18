@@ -13,7 +13,7 @@ public class PipeScript : MonoBehaviour
 
     //A bool to check if the rotation is correct and upright
     [SerializeField]
-    bool isPlaced = false;
+    public bool isPlaced = false;
 
     //The number of possible correct rotations
     int PossibleRotation = 1;

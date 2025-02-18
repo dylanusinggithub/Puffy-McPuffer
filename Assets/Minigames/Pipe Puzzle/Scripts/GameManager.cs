@@ -189,6 +189,37 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (levelset == 1)
+        {
+
+            foreach (GameObject peeps in Pipes)
+            {
+                PipeScript peeper = peeps.GetComponent<PipeScript>();
+                if (peeper != null && peeper.isPlaced == false)
+                {
+                    Debug.Log("The pipe is not placed");
+                    //play animation here
+                }
+                else
+                {
+                    Debug.Log("The pipe is placed!");
+                }
+            } //move this out of update maybe? checks too many times but i guess it needs those checks
+
+        }
+        else if (levelset == 2)
+        {
+
+        }
+        else if (levelset == 3)
+        {
+
+        }
+    }
+
+
     public void PlayParti(Vector3 drippos)
     {
         ParticleSystem newParticle = Instantiate(drip, drippos, Quaternion.identity);
