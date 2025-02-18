@@ -2561,7 +2561,7 @@ GameObject:
   - component: {fileID: 56391668}
   - component: {fileID: 56391667}
   m_Layer: 0
-  m_Name: pipeGrey_26copy (2)
+  m_Name: Pipe6
   m_TagString: Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12003,7 +12003,7 @@ GameObject:
   - component: {fileID: 200423622}
   - component: {fileID: 200423621}
   m_Layer: 0
-  m_Name: pipeGrey_41
+  m_Name: Pipe13
   m_TagString: Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15144,7 +15144,7 @@ GameObject:
   - component: {fileID: 296467182}
   - component: {fileID: 296467181}
   m_Layer: 0
-  m_Name: pipeGrey_23 (1)
+  m_Name: Pipe14
   m_TagString: Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15972,7 +15972,7 @@ GameObject:
   - component: {fileID: 314478920}
   - component: {fileID: 314478919}
   m_Layer: 0
-  m_Name: pipeGrey_26copy (1)
+  m_Name: Pipe15
   m_TagString: Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34024,7 +34024,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.09, y: 0.25028515}
   m_AnchorMax: {x: 0.2696063, y: 0.32585946}
-  m_AnchoredPosition: {x: 0.5, y: -1.4999695}
+  m_AnchoredPosition: {x: 0.49998474, y: -1.4999695}
   m_SizeDelta: {x: 8.400497, y: 9.373901}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &620298465
@@ -38725,8 +38725,8 @@ Transform:
   m_GameObject: {fileID: 727610296}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.0920043, y: 2.061, z: 0.045889672}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalPosition: {x: 3.2572532, y: -0.22087789, z: -0.03127261}
+  m_LocalScale: {x: 0.84847003, y: 0.84847003, z: 0.84847003}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1917770001}
@@ -38752,7 +38752,7 @@ Transform:
   - {fileID: 1716956387}
   - {fileID: 1707088425}
   - {fileID: 726117863}
-  m_Father: {fileID: 1809271570}
+  m_Father: {fileID: 1814586824}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &727610298
 MonoBehaviour:
@@ -42233,7 +42233,7 @@ GameObject:
   - component: {fileID: 811842102}
   - component: {fileID: 811842101}
   m_Layer: 0
-  m_Name: pipeGrey_35 (1)
+  m_Name: Pipe9
   m_TagString: Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43999,7 +43999,7 @@ GameObject:
   - component: {fileID: 854358160}
   - component: {fileID: 854358159}
   m_Layer: 0
-  m_Name: pipeGrey_26 (1)
+  m_Name: Pipe10
   m_TagString: Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48522,7 +48522,7 @@ GameObject:
   - component: {fileID: 984177823}
   - component: {fileID: 984177822}
   m_Layer: 0
-  m_Name: pipeGrey_35
+  m_Name: Pipe12
   m_TagString: Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49751,7 +49751,7 @@ GameObject:
   - component: {fileID: 1009667684}
   - component: {fileID: 1009667683}
   m_Layer: 0
-  m_Name: pipeGrey_41 (8)
+  m_Name: Pipe1
   m_TagString: Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51322,7 +51322,7 @@ GameObject:
   - component: {fileID: 1050861736}
   - component: {fileID: 1050861735}
   m_Layer: 0
-  m_Name: pipeGrey_41 (7)
+  m_Name: Pipe7
   m_TagString: Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52167,7 +52167,7 @@ GameObject:
   - component: {fileID: 1081248909}
   - component: {fileID: 1081248908}
   m_Layer: 0
-  m_Name: pipeGrey_23 (2)
+  m_Name: Pipe8
   m_TagString: Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56537,7 +56537,7 @@ GameObject:
   - component: {fileID: 1211136916}
   - component: {fileID: 1211136915}
   m_Layer: 0
-  m_Name: pipeGrey_35 (2)
+  m_Name: Pipe3
   m_TagString: Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57466,7 +57466,7 @@ GameObject:
   - component: {fileID: 1238372221}
   - component: {fileID: 1238372220}
   m_Layer: 0
-  m_Name: pipeGrey_41 (2)
+  m_Name: Pipe5
   m_TagString: Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67060,7 +67060,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1606384411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67086,22 +67086,22 @@ Transform:
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 1858782217}
-  - {fileID: 200423620}
-  - {fileID: 1050861734}
   - {fileID: 1009667682}
-  - {fileID: 2006474469}
-  - {fileID: 1238372219}
-  - {fileID: 2101675346}
   - {fileID: 1653549010}
-  - {fileID: 296467180}
-  - {fileID: 1081248907}
-  - {fileID: 984177821}
   - {fileID: 1211136914}
-  - {fileID: 811842100}
-  - {fileID: 314478918}
+  - {fileID: 1858782217}
+  - {fileID: 1238372219}
   - {fileID: 56391666}
+  - {fileID: 1050861734}
+  - {fileID: 1081248907}
+  - {fileID: 811842100}
   - {fileID: 854358158}
+  - {fileID: 2006474469}
+  - {fileID: 984177821}
+  - {fileID: 200423620}
+  - {fileID: 296467180}
+  - {fileID: 314478918}
+  - {fileID: 2101675346}
   m_Father: {fileID: 1809271570}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1608813970
@@ -67954,7 +67954,7 @@ GameObject:
   - component: {fileID: 1653549012}
   - component: {fileID: 1653549011}
   m_Layer: 0
-  m_Name: pipeGrey_23
+  m_Name: Pipe2
   m_TagString: Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72546,7 +72546,6 @@ Transform:
   m_LocalScale: {x: 1.2121, y: 1.2121, z: 1.2121}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 727610297}
   - {fileID: 1606384412}
   - {fileID: 49628119}
   - {fileID: 516263180}
@@ -72805,6 +72804,7 @@ Transform:
   - {fileID: 2139559037}
   - {fileID: 429219669}
   - {fileID: 1273577892}
+  - {fileID: 727610297}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1816945699
@@ -73673,7 +73673,7 @@ GameObject:
   - component: {fileID: 1858782219}
   - component: {fileID: 1858782218}
   m_Layer: 0
-  m_Name: pipeGrey_02 (1)
+  m_Name: Pipe4
   m_TagString: Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78798,7 +78798,7 @@ GameObject:
   - component: {fileID: 2006474471}
   - component: {fileID: 2006474470}
   m_Layer: 0
-  m_Name: pipeGrey_41 (6)
+  m_Name: Pipe11
   m_TagString: Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81213,7 +81213,7 @@ GameObject:
   - component: {fileID: 2101675348}
   - component: {fileID: 2101675347}
   m_Layer: 0
-  m_Name: pipeGrey_41 (4)
+  m_Name: Pipe16
   m_TagString: Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
