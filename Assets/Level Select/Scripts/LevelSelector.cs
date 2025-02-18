@@ -35,7 +35,7 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!GetComponent<Button>().enabled || Preview == null) return; // If Button is disabled or Preview doesn't exist don't show
+        if (!GetComponent<Button>().enabled || LevelPreview == null) return; // If Button is disabled or Preview doesn't exist don't show
 
         Destroy(Preview);
         Preview = Instantiate(LevelPreview, ComicPanel.transform);
