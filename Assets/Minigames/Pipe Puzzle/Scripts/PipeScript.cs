@@ -126,12 +126,20 @@ public class PipeScript : MonoBehaviour
         }
     }
 
+    IEnumerator Pipespin()
+    {
+        transform.Rotate(new Vector3(0, 0, 45));
+        transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
+        transform.localScale *= 0.8f;
+        yield return new WaitForSeconds(0.09f);
+        transform.Rotate(new Vector3(0, 0, 45));
+        transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
+        transform.localScale *= 1.25f;
+    }
 
     private void OnMouseDown()
     {
-        transform.Rotate(new Vector3(0, 0, 90));
-        transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
-
+        StartCoroutine(Pipespin());
         clickcounter++;
         FindObjectOfType<AudioManager>().Play("Peeped");
 
