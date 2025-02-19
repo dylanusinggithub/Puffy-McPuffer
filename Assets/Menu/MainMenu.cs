@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,7 +7,7 @@ public class MainMenu : MonoBehaviour
     int HowToIndex = 0;
 
     [SerializeField] Animator FadeTransition;
-    float FadeDelay = 1;
+    [SerializeField, Range(0.1f, 2)] float FadeDelay;
 
     GameObject Main, HowToPlay, Options;
 
@@ -109,9 +107,15 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator FadeTime(GameObject Menu)
     {
+        // The fade takes 1s so if i want it to be half that - 0.5 - then i need to double it
+        FadeTransition.SetFloat("Speed", 1 / FadeDelay);
         FadeTransition.SetTrigger("End");
+
         yield return new WaitForSeconds(FadeDelay);
+
+        FadeTransition.SetFloat("Speed", 1 / FadeDelay);
         FadeTransition.SetTrigger("Start");
+        FadeTransition.SetFloat("Speed", 1 / FadeDelay);
 
         HideUI();
         Menu.gameObject.SetActive(true);
@@ -119,9 +123,15 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator FadeTime()
     {
+        // The fade takes 1s so if i want it to be half that - 0.5 - then i need to double it
+        FadeTransition.SetFloat("Speed", 1 / FadeDelay);
         FadeTransition.SetTrigger("End");
+
         yield return new WaitForSeconds(FadeDelay);
+
+        FadeTransition.SetFloat("Speed", 1 / FadeDelay);
         FadeTransition.SetTrigger("Start");
+        FadeTransition.SetFloat("Speed", 1 / FadeDelay);
 
         HideUI();
     }
