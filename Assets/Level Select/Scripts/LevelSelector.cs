@@ -1,5 +1,5 @@
 using System;
-using UnityEditor;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -30,6 +30,17 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void BTN_PlayLevel()
     {
+        StartCoroutine(PlayLevel());
+    }
+
+    IEnumerator PlayLevel()
+    {
+        Animator FadeTransition = GameObject.Find("Fadetransition").GetComponent<Animator>();
+
+        FadeTransition.SetTrigger("End");
+        yield return new WaitForSeconds(1);
+        FadeTransition.SetTrigger("Start");
+
         LD.StartLevel(LevelIndex);
     }
 
