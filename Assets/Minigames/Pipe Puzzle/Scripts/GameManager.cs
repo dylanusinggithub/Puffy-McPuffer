@@ -201,75 +201,94 @@ public class GameManager : MonoBehaviour
                 {
                     Debug.Log("The pipe is not placed");
                     //play animation here
-                }
-                else
-                {
-                    Debug.Log("The pipe is placed!");
-                }
-            } //move this out of update maybe? checks too many times but i guess it needs those checks
+/*using UnityEngine;
 
-        }
-        else if (levelset == 2)
-        {
+public class WhileLoopExample : MonoBehaviour
+{
+public bool conditionMet = false;
+private int count = 0;
 
-        }
-        else if (levelset == 3)
-        {
+void Update()
+{
+if (count < 5)
+{
+Debug.Log("Waiting for condition...");
+if (conditionMet)
+{
+Debug.Log("Condition met! Step: " + count);
+count++;
+conditionMet = false; // Reset condition
+}
+}
+}
+}
+*/
+}
 
-        }
-    }
+} //move this out of update maybe? checks too many times but i guess it needs those checks
+
+}
+else if (levelset == 2)
+{
+
+}
+else if (levelset == 3)
+{
+
+}
+}
 
 
-    public void PlayParti(Vector3 drippos)
-    {
-        ParticleSystem newParticle = Instantiate(drip, drippos, Quaternion.identity);
-        newParticle.Play();
-    }
+public void PlayParti(Vector3 drippos)
+{
+ParticleSystem newParticle = Instantiate(drip, drippos, Quaternion.identity);
+newParticle.Play();
+}
 
-    public void StopParti()
-    {
-        if (drip != null)
-        {
-            drip.Stop();
-        }
-    }
+public void StopParti()
+{
+if (drip != null)
+{
+drip.Stop();
+}
+}
 
-    public void correctMove()
-    {
-        correctPipes++;
-        
-        if (correctPipes == totalPipes)
-        {
-            Debug.Log("You win!");
-            gamewon = true;
-            layer.SetActive(true);
-            FindObjectOfType<AudioManager>().Play("Yippee");
-            confetti.SetActive(true);
-            PipeHolder.SetActive(false);
-            PipeHolder2.SetActive(false);
-            pipechange2.SetActive(false);
-            PipeHolder3.SetActive(false);
-            pipechange3.SetActive(false);
-            pipechange1.SetActive(false);
-            pausebutt.SetActive(false);
-            if (isone == true)
-            {
-                Win1.SetActive(true);
-            } else if (istwo == true)
-            {
-                Win2.SetActive(true);
-            } else if (isthree == true)
-            {
-                Win3.SetActive(true);
-            }
-        }
-    }
+public void correctMove()
+{
+correctPipes++;
 
-    public void wrongMove()
-    {
-        correctPipes--;
-    }
+if (correctPipes == totalPipes)
+{
+Debug.Log("You win!");
+gamewon = true;
+layer.SetActive(true);
+FindObjectOfType<AudioManager>().Play("Yippee");
+confetti.SetActive(true);
+PipeHolder.SetActive(false);
+PipeHolder2.SetActive(false);
+pipechange2.SetActive(false);
+PipeHolder3.SetActive(false);
+pipechange3.SetActive(false);
+pipechange1.SetActive(false);
+pausebutt.SetActive(false);
+if (isone == true)
+{
+Win1.SetActive(true);
+} else if (istwo == true)
+{
+Win2.SetActive(true);
+} else if (isthree == true)
+{
+Win3.SetActive(true);
+}
+}
+}
 
-    
+public void wrongMove()
+{
+correctPipes--;
+}
+
+
 
 }
