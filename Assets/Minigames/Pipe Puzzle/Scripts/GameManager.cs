@@ -253,41 +253,41 @@ drip.Stop();
 }
 }
 
-public void correctMove()
-{
-correctPipes++;
+    public void correctMove()
+        {
+            correctPipes++;
 
-if (correctPipes == totalPipes)
-{
-Debug.Log("You win!");
-gamewon = true;
-layer.SetActive(true);
-FindObjectOfType<AudioManager>().Play("Yippee");
-confetti.SetActive(true);
-PipeHolder.SetActive(false);
-PipeHolder2.SetActive(false);
-pipechange2.SetActive(false);
-PipeHolder3.SetActive(false);
-pipechange3.SetActive(false);
-pipechange1.SetActive(false);
-pausebutt.SetActive(false);
-if (isone == true)
-{
-Win1.SetActive(true);
-} else if (istwo == true)
-{
-Win2.SetActive(true);
-} else if (isthree == true)
-{
-Win3.SetActive(true);
-}
-}
-}
+            if (correctPipes == totalPipes)
+            {
+                Debug.Log("You win!");
+                gamewon = true;
+                layer.SetActive(true);
+                FindObjectOfType<AudioManager>().Play("Yippee");
+                confetti.SetActive(true);
+                PipeHolder.SetActive(false);
+                PipeHolder2.SetActive(false);
+                pipechange2.SetActive(false);
+                PipeHolder3.SetActive(false);
+                pipechange3.SetActive(false);
+                pipechange1.SetActive(false);
+                pausebutt.SetActive(false);
+                if (isone == true)
+                {
+                Win1.SetActive(true);
+                } else if (istwo == true)
+                {
+                Win2.SetActive(true);
+                } else if (isthree == true)
+                {
+                Win3.SetActive(true);
+                }
+            }
+    }
 
-public void wrongMove()
-{
-correctPipes--;
-}
+    public void wrongMove()
+    {
+        correctPipes--;
+    }
 
 
 
