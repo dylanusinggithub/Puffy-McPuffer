@@ -14,6 +14,8 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] RenderTexture VideoCanvas;
     GameObject ComicPanel, Preview;
 
+    bool openingLevel = false;
+
     private void Start()
     {
         ComicPanel = GameObject.Find("Comic Panels");
@@ -31,6 +33,7 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void BTN_PlayLevel()
     {
         StartCoroutine(PlayLevel());
+        openingLevel = true;
     }
 
     IEnumerator PlayLevel()
@@ -38,6 +41,7 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         Animator FadeTransition = GameObject.Find("Fadetransition").GetComponent<Animator>();
 
         FadeTransition.SetTrigger("End");
+        UnravelPreview();
         yield return new WaitForSeconds(1);
         FadeTransition.SetTrigger("Start");
 
@@ -46,7 +50,8 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!GetComponent<Button>().enabled || LevelPreview == null) return; // If Button is disabled or Preview doesn't exist don't show
+        // If Button is disabled or Preview doesn't exist don't show
+        if (!GetComponent<Button>().enabled || LevelPreview == null || openingLevel) return; 
 
         Destroy(Preview);
         Preview = Instantiate(LevelPreview, ComicPanel.transform);
@@ -58,11 +63,16 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        UnravelPreview();
+    }
+
+    void UnravelPreview()
+    {
         if (!GetComponent<Button>().enabled || Preview == null) return; // If Button is disabled or Preview doesn't exist don't show
         Animator anim = Preview.GetComponentInChildren<Animator>();
 
         anim.SetFloat("Speed", -1);
-        if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1) anim.Play("Appear", 0, 1); // Replays Animation only after it completes
+        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1) anim.Play("Appear", 0, 1); // Replays Animation only after it completes
 
         // Removes previous LevelPreview
         float clipLength = anim.runtimeAnimatorController.animationClips[0].length;
