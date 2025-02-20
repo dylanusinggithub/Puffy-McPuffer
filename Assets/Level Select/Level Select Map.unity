@@ -1160,7 +1160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelIndex: 2
-  LevelPreview: {fileID: 2800000, guid: 8ca0182d980056648953da34f865be98, type: 3}
+  LevelPreview: {fileID: 0}
   VideoCanvas: {fileID: 8400000, guid: e94ce2ef1923df348b2c640fd76e5712, type: 2}
 --- !u!114 &800668436
 MonoBehaviour:
@@ -3250,10 +3250,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0.00006815791
-    width: 1
-    height: 0.9998637
+    x: 0.0003874302
+    y: 0
+    width: 0.99922514
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
