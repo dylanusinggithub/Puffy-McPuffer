@@ -24,6 +24,7 @@ public class VolumeManager : MonoBehaviour
         }
     }
 
+    //Reset Default Volume function
     public void ResetToDefault()
     {
         volumeSlider.value = defaultVolume;

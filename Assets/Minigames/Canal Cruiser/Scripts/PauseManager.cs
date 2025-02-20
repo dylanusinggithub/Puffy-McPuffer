@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 
 public class PauseManager : MonoBehaviour
 {
+
     public GameObject pausePanel; //Pause Panel object
     public GameObject optionsPanel; // Options Panel object
     private bool isPaused = false; //Paused bool is initially set to false
@@ -26,7 +27,7 @@ public class PauseManager : MonoBehaviour
     {
         isPaused = !isPaused;
         pausePanel.SetActive(isPaused);
-        Time.timeScale = 0;
+        Time.timeScale = isPaused ? 0 : 1;
 
         if (isPaused)
         {
