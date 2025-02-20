@@ -79,7 +79,8 @@ public class LevelGenerator : MonoBehaviour
         }
 
         // Goes through all create locations and chooses a random one to reenable "Spawn"
-        for (int i = 0; i < Levels[levelIndex].CreateCompletion + Levels[levelIndex].ExtraCreates && i < CreatesLocation.Count; i++)
+        int initalCreateCount = CreatesLocation.Count;
+        for (int i = 0; i < Levels[levelIndex].CreateCompletion + Levels[levelIndex].ExtraCreates && i < initalCreateCount; i++)
         {
             int randomIndex = Random.Range(0, CreatesLocation.Count);
             CreatesLocation[randomIndex].SetActive(true);
