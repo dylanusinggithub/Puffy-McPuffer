@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 public class MenuButtons : MonoBehaviour
 {
     [SerializeField] Animator Fadetransition;
+    [SerializeField] GameObject OptionsPanel, PausePanel;
+    [SerializeField] GameObject PauseBTN;
 
     public void BTN_Exit()
     {
@@ -23,5 +25,24 @@ public class MenuButtons : MonoBehaviour
     {
         LevelDesigner.AdvanceToNextLevel = true;
         BTN_Exit();
+    }
+
+    public void BTN_PauseMenu()
+    {
+        PausePanel.SetActive(!PausePanel.activeInHierarchy); // Disables if enabled, and enables if disabled
+
+        if (PausePanel.activeInHierarchy) Time.timeScale = 0f;
+        else Time.timeScale = 1f;
+    }
+
+    public void BTN_OptionsMenu()
+    {
+        bool isEnabled = OptionsPanel.activeInHierarchy;
+
+        // Disables all children only if it is currently closed, renables em when opened
+        foreach (Transform child in PausePanel.GetComponentInChildren<Transform>()) child.gameObject.SetActive(isEnabled);
+
+        OptionsPanel.SetActive(!isEnabled);
+        PauseBTN.SetActive(isEnabled);
     }
 }
