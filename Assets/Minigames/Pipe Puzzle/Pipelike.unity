@@ -49919,6 +49919,7 @@ GameObject:
   - component: {fileID: 1026255024}
   - component: {fileID: 1026255023}
   - component: {fileID: 1026255026}
+  - component: {fileID: 1026255027}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -49962,9 +49963,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
+    y: 0.3577586
     width: 1
-    height: 1
+    height: 0.28448278
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -50044,6 +50045,19 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &1026255027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026255022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47bfdf258cae7f2408eab063458f1ae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PressMeToLetterBox: 0
 --- !u!1 &1027822281
 GameObject:
   m_ObjectHideFlags: 0
