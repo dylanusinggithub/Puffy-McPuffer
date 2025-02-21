@@ -11,11 +11,15 @@ public class MainMenu : MonoBehaviour
 
     GameObject Main, HowToPlay, Options;
 
+    AudioSource AS;
+
     private void Start()
     {
         Main = transform.GetChild(0).gameObject;
         HowToPlay = transform.GetChild(1).gameObject;
         Options = transform.GetChild(2).gameObject;
+
+        AS = GetComponent<AudioSource>();
     }
 
     void HideUI()
@@ -28,6 +32,7 @@ public class MainMenu : MonoBehaviour
 
     public void BTN_PlayGame()
     {
+        AS.Play();
         StartCoroutine(FadeTime());
         StartCoroutine(PlayGame());
     }
@@ -43,11 +48,13 @@ public class MainMenu : MonoBehaviour
 
     public void BTN_Main()
     {
+        AS.Play();
         StartCoroutine(FadeTime(Main));
     }
 
     public void BTN_HowTo()
     {
+        AS.Play();
         StartCoroutine(FadeTime(HowToPlay));
         StartCoroutine(HowTo());
     }
@@ -66,6 +73,7 @@ public class MainMenu : MonoBehaviour
 
     public void BTN_HowToNext()
     {
+        AS.Play();
         StartCoroutine(FadeTime(HowToPlay));
         StartCoroutine(HowToNext());
     }
@@ -102,6 +110,7 @@ public class MainMenu : MonoBehaviour
 
     public void BTN_Options()
     {
+        AS.Play();
         StartCoroutine(FadeTime(Options));
     }
 
