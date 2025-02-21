@@ -50,6 +50,7 @@ public class MenuControl : MonoBehaviour
 
     IEnumerator Fade()
     {
+        GameObject.Find("Fadetransition").GetComponent<AudioSource>().Play();
         Fadetransition.SetTrigger("End");
         yield return new WaitForSeconds(1);
         Fadetransition.SetTrigger("Start");
@@ -57,6 +58,7 @@ public class MenuControl : MonoBehaviour
 
     IEnumerator FadeRetry()
     {
+        GameObject.Find("Fadetransition").GetComponent<AudioSource>().Play();
         Fadetransition.SetTrigger("End");
         yield return new WaitForSeconds(0.5f);
         Fadetransition.SetTrigger("Start");
