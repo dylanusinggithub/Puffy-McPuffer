@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PressMeToSetLevelIndex: 0
-  levelIndex: 1
+  levelIndex: 3
   Levels:
   - GameplayTime: 25
     CreateCompletion: 5
@@ -333,6 +333,12 @@ MonoBehaviour:
     - {fileID: 7793173836862348141, guid: 312af510616b0604692d0524a29b24a5, type: 3}
     - {fileID: 2357665773328269852, guid: 73788ba1807992248a40024b2ced088e, type: 3}
     - {fileID: 6392660177088936827, guid: 2a7ab806fb6ba684183c4044acfedbbe, type: 3}
+  - GameplayTime: 30
+    CreateCompletion: 8
+    ExtraCreates: 5
+    LevelSpeed: 2
+    Layouts:
+    - {fileID: 5181176710913207728, guid: 7baa9994aca13bd4698912d7fef1d5ad, type: 3}
   LayoutSeperation: 20
 --- !u!1 &116118869
 GameObject:
@@ -1295,9 +1301,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.0005841255
+    y: 0
     width: 1
-    height: 0.99883175
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
