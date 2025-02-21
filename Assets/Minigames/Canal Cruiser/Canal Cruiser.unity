@@ -310,6 +310,7 @@ MonoBehaviour:
     CreateCompletion: 5
     ExtraCreates: 4
     LevelSpeed: 2
+    LayoutSeperation: 20
     Layouts:
     - {fileID: 7793173836862348141, guid: 312af510616b0604692d0524a29b24a5, type: 3}
     - {fileID: 6392660177088936827, guid: 2a7ab806fb6ba684183c4044acfedbbe, type: 3}
@@ -318,6 +319,7 @@ MonoBehaviour:
     CreateCompletion: 6
     ExtraCreates: 5
     LevelSpeed: 2
+    LayoutSeperation: 20
     Layouts:
     - {fileID: 6922145835368533052, guid: 3f31a9e4bedc909498c065021fd90ec5, type: 3}
     - {fileID: 7159862058339159186, guid: b5fdcbbc5f7da88409aee0458cc8474b, type: 3}
@@ -327,6 +329,7 @@ MonoBehaviour:
     CreateCompletion: 8
     ExtraCreates: 5
     LevelSpeed: 2
+    LayoutSeperation: 20
     Layouts:
     - {fileID: 6922145835368533052, guid: 3f31a9e4bedc909498c065021fd90ec5, type: 3}
     - {fileID: 7159862058339159186, guid: b5fdcbbc5f7da88409aee0458cc8474b, type: 3}
@@ -337,9 +340,9 @@ MonoBehaviour:
     CreateCompletion: 8
     ExtraCreates: 5
     LevelSpeed: 2
+    LayoutSeperation: 20
     Layouts:
-    - {fileID: 5181176710913207728, guid: 7baa9994aca13bd4698912d7fef1d5ad, type: 3}
-  LayoutSeperation: 20
+    - {fileID: 658318910959143042, guid: 2e22f93802da1074cac1c91e7ede2dcd, type: 3}
 --- !u!1 &116118869
 GameObject:
   m_ObjectHideFlags: 0
