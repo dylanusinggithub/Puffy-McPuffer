@@ -24,6 +24,9 @@ public class ObjectScript : MonoBehaviour
     float sinkSeconds = 3;
     Vector2 startScale;
 
+    [SerializeField, Range(0f, 100f)]
+    float volumeSpawn = 1;
+
     [SerializeField]
     AudioClip[] objectAudio;
 
@@ -112,6 +115,7 @@ public class ObjectScript : MonoBehaviour
             AudioPlayer.AddComponent<AudioSource>();
 
             AudioPlayer.GetComponent<AudioSource>().clip = objectAudio[Random.Range(0, objectAudio.Length)];
+            AudioPlayer.GetComponent<AudioSource>().volume *= (volumeSpawn / 100);
             AudioPlayer.GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume", 1);
             AudioPlayer.GetComponent<AudioSource>().Play();
 
