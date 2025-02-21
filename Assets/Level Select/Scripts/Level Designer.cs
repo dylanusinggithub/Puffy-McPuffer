@@ -26,6 +26,7 @@ public class LevelDesigner : MonoBehaviour
 
     void Awake()
     {
+        GameObject.Find("CLOUDS").GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume", 1);
         // Sets Levels Unlocked to 0 if you're playing for the first time
         if (!PlayerPrefs.HasKey("Levels Unlocked")) PlayerPrefs.SetInt("Levels Unlocked", 0);
 
