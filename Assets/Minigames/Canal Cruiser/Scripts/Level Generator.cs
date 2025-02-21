@@ -11,7 +11,6 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] LevelSettings[] Levels;
     List<GameObject> CreatesLocation = new List<GameObject>();
 
-    [SerializeField, Range(-5, 50)] float LayoutSeperation;
     float LevelWidth = 0;
 
     private void OnValidate()
@@ -23,12 +22,6 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    IEnumerator RemoveFade()
-    {
-        yield return new WaitForSeconds(1);
-        GameObject.Find("Fadetransition").SetActive(false);
-    }
-
     private void Start()
     {
         // sets the level index to minigameIndex which is provided by level desginer in menu screen
@@ -37,8 +30,6 @@ public class LevelGenerator : MonoBehaviour
         GameObject.Find("Game Manager").GetComponent<ScoreScript>().timeWin = Levels[levelIndex].GameplayTime;
         GameObject.Find("Player").GetComponent<PlayerScript>().startSpeed = Levels[levelIndex].LevelSpeed;
         GameObject.Find("Game Manager").GetComponent<ScoreScript>().scoreWin = Levels[levelIndex].CreateCompletion;
-
-        StartCoroutine(RemoveFade());
 
         TextMeshProUGUI scoreText = GameObject.Find("Cargo Counter").GetComponent<TextMeshProUGUI>();
         scoreText.text = "Cargo Collected: 0 / " + Levels[levelIndex].CreateCompletion;
@@ -62,7 +53,7 @@ public class LevelGenerator : MonoBehaviour
             Vector3 pos = new Vector3(LevelWidth, 0, 0);
             Instantiate(Levels[levelIndex][i], pos, Quaternion.identity, transform);
 
-            LevelWidth += LayoutSeperation;
+            LevelWidth += Levels[levelIndex].LayoutSeperation;
         }
 
         // Grabs all creates and disables them to later reenable a specific ones
@@ -103,6 +94,8 @@ class LevelSettings
     [Range(0, 5)] public int ExtraCreates;
 
     [Range(0, 4)] public float LevelSpeed;
+
+    public float LayoutSeperation;
 
     public GameObject[] Layouts;
 
