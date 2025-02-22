@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PipeLayout : MonoBehaviour
 {
-    [SerializeField] GameObject[] Layouts;
+    [SerializeField] LevelSettings[] Levels;
 
     void Awake()
     {
-        Instantiate(Layouts[PlayerPrefs.GetInt("difficulty", 0)], transform);
+        int LevelIndex = PlayerPrefs.GetInt("difficulty", 0);
+        Instantiate(Levels[LevelIndex].Layouts[Random.Range(0, Levels[LevelIndex].Layouts.Length)], transform);
 
         // Ignores first 2 (Start & End pipes)
         for (int i = 2; i < transform.GetChild(0).childCount; i++) 
@@ -27,5 +29,30 @@ public class PipeLayout : MonoBehaviour
         }
 
         print("Yipee");
+    }
+
+    [System.Serializable]
+    class LevelSettings
+    {
+        [Range(5, 30)] public int Timer;
+        public GameObject[] Layouts;
+
+        public GameObject this[int index]
+        {
+            get
+            {
+                return Layouts[index];
+            }
+
+            set
+            {
+                Layouts[index] = value;
+            }
+        }
+
+        public int Length
+        {
+            get { return Layouts.Length; }
+        }
     }
 }

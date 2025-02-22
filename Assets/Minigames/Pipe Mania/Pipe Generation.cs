@@ -16,8 +16,6 @@ public class PipeGeneration : MonoBehaviour
     [SerializeField] Sprite[] IPieces;
     GameObject PipeParent;
 
-    [SerializeField] Sprite test;
-
     [Header("Movement Cost")]
     [SerializeField] float movementCostX;
     [SerializeField] float movementCostY;

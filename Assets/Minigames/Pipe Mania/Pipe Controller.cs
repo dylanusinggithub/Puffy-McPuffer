@@ -47,14 +47,10 @@ public class PipeController : MonoBehaviour, IPointerClickHandler
         if (CorrectRotations.HasFlag(GetCorrectRotations((int)transform.eulerAngles.z))) solved = true;
     }
 
+    bool Rotating = false;
     public void OnPointerClick(PointerEventData eventData)
     {
-        // Check if the position its about to rotate to is correct
-        if (CorrectRotations.HasFlag(GetCorrectRotations((int)transform.eulerAngles.z + 90))) solved = true;
-        else solved = false;
-
         StartCoroutine(RotatePipe());
-
         transform.parent.parent.GetComponent<PipeLayout>().CheckPipes();
     }
 
@@ -94,5 +90,8 @@ public class PipeController : MonoBehaviour, IPointerClickHandler
             transform.Rotate(0, 0, RotationAmount * Direction);
             yield return new WaitForSeconds(0.001f); // Fastest possible
         }
+
+        if (CorrectRotations.HasFlag(GetCorrectRotations((int)transform.eulerAngles.z))) solved = true;
+        else solved = false;
     }
 }

@@ -241,7 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -321,9 +321,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.15963098
+    y: 0.16571677
     width: 1
-    height: 0.68073803
+    height: 0.66856647
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -496,7 +496,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1174764119
 RectTransform:
@@ -628,7 +628,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1784068073}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad49757cb2c6aff46bb977a9b2bf2692, type: 3}
   m_Name: 
@@ -642,7 +642,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: adf8ee14eff19b44baeac11d14e7e7cf, type: 3}
   IPieces:
   - {fileID: 21300000, guid: 934162d509d4bfb47bf0a9a9f7df4f21, type: 3}
-  test: {fileID: 21300000, guid: 58145fd17513e324b80707903334d4e2, type: 3}
   movementCostX: 6
   movementCostY: 2
 --- !u!114 &1784068079
@@ -657,8 +656,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c6067696b535ea4ca5d89ede9a99737, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Layouts:
-  - {fileID: 8613043084033918308, guid: b30540e17b07f9e46affcd13e047b538, type: 3}
+  Levels:
+  - Timer: 0
+    Layouts:
+    - {fileID: 7138037573933653132, guid: b30540e17b07f9e46affcd13e047b538, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
