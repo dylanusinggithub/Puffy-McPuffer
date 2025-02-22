@@ -44,7 +44,7 @@ public class PipeGeneration : MonoBehaviour
         PipeParent = new GameObject("Pipes");
         PipeParent.transform.parent = transform;
         PipeParent.transform.localScale = Vector3.one;
-        PipeParent.transform.localPosition = new Vector3(100, 0); // It's not centred normally?
+        PipeParent.transform.localPosition = new Vector3(50, 0); // It's not centred normally?
 
 
         // Can't use VectorInt directly in lists???
