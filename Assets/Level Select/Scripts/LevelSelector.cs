@@ -39,7 +39,7 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     IEnumerator PlayLevel()
     {
         Animator FadeTransition = GameObject.Find("Fadetransition").GetComponent<Animator>();
-
+        FadeTransition.gameObject.GetComponent<AudioSource>().Play();
         FadeTransition.SetTrigger("End");
         UnravelPreview();
         yield return new WaitForSeconds(1);

@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
         Options = transform.GetChild(2).gameObject;
 
         AS = GetComponent<AudioSource>();
+        GameObject.Find("Fadetransition").GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume", 1);
     }
 
     void HideUI()
@@ -116,6 +117,7 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator FadeTime(GameObject Menu)
     {
+        GameObject.Find("Fadetransition").GetComponent<AudioSource>().Play();
         // The fade takes 1s so if i want it to be half that - 0.5 - then i need to double it
         FadeTransition.SetFloat("Speed", 1 / FadeDelay);
         FadeTransition.SetTrigger("End");
@@ -132,7 +134,9 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator FadeTime()
     {
+
         // The fade takes 1s so if i want it to be half that - 0.5 - then i need to double it
+        GameObject.Find("Fadetransition").GetComponent<AudioSource>().Play();
         FadeTransition.SetFloat("Speed", 1 / FadeDelay);
         FadeTransition.SetTrigger("End");
 
