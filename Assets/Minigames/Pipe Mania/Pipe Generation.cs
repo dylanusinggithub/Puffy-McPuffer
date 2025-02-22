@@ -43,8 +43,7 @@ public class PipeGeneration : MonoBehaviour
         // Pipes holder for easy prefabing
         PipeParent = new GameObject("Pipes");
         PipeParent.transform.parent = transform;
-        PipeParent.transform.localScale = Vector3.one;
-        PipeParent.transform.localPosition = new Vector3(50, 0); // It's not centred normally?
+        PipeParent.transform.localScale = Vector3.one; // It's not centred normally?
 
 
         // Can't use VectorInt directly in lists???
@@ -85,14 +84,15 @@ public class PipeGeneration : MonoBehaviour
             i++;
         }
 
-        if (Attempts == 1000) Debug.LogError("Too many obstacles! Only " + Obstacles.Count + " were generated"); // While loops my detested </3
+        // While loops my detested </3s
+        if (Attempts == 1000) Debug.LogError("Too many obstacles! Only " + Obstacles.Count + " were generated");
+
 
         GenerateNodeGraph();
-
         List<Node> Path = ComputePathtoTarget(StartPos, EndPos);
 
-        Path.Add(new Node(GridX, EndPos));
 
+        Path.Add(new Node(GridX, EndPos));
         Vector2Int previousPipe = new Vector2Int(-1, StartPos);
         for (i = 0; i < Path.Count - 1; i++)
         {
@@ -105,7 +105,7 @@ public class PipeGeneration : MonoBehaviour
                     pipe.transform.Rotate(new Vector3(0, 0, 90));
 
                     // adds some variation by mirroring the pipes
-                    pipe.transform.localScale = new Vector3(Random.Range(0, 2) * 2 - 1, Random.Range(0, 2) * 2 - 1, 1);
+                    pipe.transform.localScale *= new Vector2(Random.Range(0, 2) * 2 - 1, Random.Range(0, 2) * 2 - 1);
                 }
                 else
                 {
@@ -126,7 +126,7 @@ public class PipeGeneration : MonoBehaviour
                 if (Path[i + 1].x == Path[i].x && previousPipe.x == Path[i].x)
                 {
                     GameObject pipe = CreatePipe(Path[i].x, Path[i].y, IPieces[Random.Range(0, IPieces.Length)]);
-                    pipe.transform.localScale = new Vector3(Random.Range(0, 2) * 2 - 1, Random.Range(0, 2) * 2 - 1, 1);
+                    pipe.transform.localScale *= new Vector2(Random.Range(0, 2) * 2 - 1, Random.Range(0, 2) * 2 - 1);
                 }
                 // If the next pipe is further down
                 else if (Path[i + 1].y < previousPipe.y)
@@ -140,6 +140,9 @@ public class PipeGeneration : MonoBehaviour
             }
             previousPipe = new Vector2Int(Path[i].x, Path[i].y);
         }
+
+        // Tries to fit the layout into the play area (880px)
+        PipeParent.transform.localScale = Vector3.one * ((8.8f - (10f / GridX))/ GridX);
     }
 
     void GenerateNodeGraph()
@@ -360,12 +363,10 @@ public class PipeGeneration : MonoBehaviour
         GameObject Obj = new GameObject("X: " + x + ", Y: " + y);
         Obj.transform.parent = PipeParent.transform;
 
-        Obj.transform.localPosition = new Vector2(x, y);
-        Obj.transform.localPosition -= new Vector3(GridArea.x, GridArea.y)/2; // Centres it
-        Obj.transform.localPosition *= 100;
+        Obj.transform.position = new Vector2(x, y);
+        Obj.transform.position -= new Vector3(GridArea.x - 1, GridArea.y - 1)/2; // Centres it
 
-        Obj.transform.localScale = Vector3.one;
-
+        Obj.transform.localScale = Vector3.one * 1.08f;
 
         Obj.AddComponent<Image>();
         Obj.GetComponent<Image>().sprite = Sprite;
