@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class PipeGeneration : MonoBehaviour
 {
     [SerializeField] Vector2Int GridArea;
-    [SerializeField] Vector2Int GridSize;
 
     List<Vector2Int> Obstacles = new List<Vector2Int>();
     [SerializeField] int ObstaclesCount;
@@ -15,6 +14,7 @@ public class PipeGeneration : MonoBehaviour
 
     [SerializeField] Sprite[] CornerPiece;
     [SerializeField] Sprite[] IPieces;
+    GameObject PipeParent;
 
     [SerializeField] Sprite test;
 
@@ -40,6 +40,13 @@ public class PipeGeneration : MonoBehaviour
         Obstacles.Clear();
         foreach (Transform child in GetComponentInChildren<Transform>()) Destroy(child.gameObject);
 
+        // Pipes holder for easy prefabing
+        PipeParent = new GameObject("Pipes");
+        PipeParent.transform.parent = transform;
+        PipeParent.transform.localScale = Vector3.one;
+        PipeParent.transform.localPosition = new Vector3(100, 0); // It's not centred normally?
+
+
         // Can't use VectorInt directly in lists???
         int GridX = GridArea.x;
         int GridY = GridArea.y;
@@ -51,9 +58,11 @@ public class PipeGeneration : MonoBehaviour
         CreatePipe(-1, StartPos, StartPipe);
         CreatePipe(GridX, EndPos, EndPipe);
 
-        int i = 0;
-        while (Obstacles.Count < ObstaclesCount)
+        int i = 0, Attempts = 0;
+        while (Obstacles.Count < ObstaclesCount && Attempts < 1000) 
         {
+            Attempts++;
+
             int x = Random.Range(0, GridX);
             int y = Random.Range(0, GridY);
 
@@ -76,6 +85,8 @@ public class PipeGeneration : MonoBehaviour
             i++;
         }
 
+        if (Attempts == 1000) Debug.LogError("Too many obstacles! Only " + Obstacles.Count + " were generated"); // While loops my detested </3
+
         GenerateNodeGraph();
 
         List<Node> Path = ComputePathtoTarget(StartPos, EndPos);
@@ -91,19 +102,22 @@ public class PipeGeneration : MonoBehaviour
                 if (Path[i + 1].y == Path[i].y)
                 {
                     GameObject pipe = CreatePipe(Path[i].x, Path[i].y, IPieces[Random.Range(0, IPieces.Length)]);
+                    pipe.transform.Rotate(new Vector3(0, 0, 90));
 
-                    int Direction;
-                    if (Random.Range(0, 1) == 0) Direction = 90;
-                    else Direction = 270;
-
-                    pipe.transform.Rotate(new Vector3(0, 0, Direction));
+                    // adds some variation by mirroring the pipes
+                    pipe.transform.localScale = new Vector3(Random.Range(0, 2) * 2 - 1, Random.Range(0, 2) * 2 - 1, 1);
                 }
                 else
                 {
                     GameObject pipe = CreatePipe(Path[i].x, Path[i].y, CornerPiece[Random.Range(0, CornerPiece.Length)]);
 
                     // if the next pipe faces downwards then rotate the pipe to connect it
-                    if ((Path[i].y - Path[i + 1].y) == 1) pipe.transform.Rotate(new Vector3(0, 0, 90));
+                    if ((Path[i].y - Path[i + 1].y) == 1)
+                    {
+                        if ((Path[i].x - Path[i + 1].x) == 0) pipe.transform.Rotate(0, 0, 90);
+                        else pipe.transform.Rotate(0, 0, 180);
+                    }
+                    if ((Path[i].x - Path[i + 1].x) == 1) pipe.transform.Rotate(0, 0, -90);
                 }
             }
             else
@@ -111,7 +125,8 @@ public class PipeGeneration : MonoBehaviour
                 // If the previous, current & next pipes are all in the same X
                 if (Path[i + 1].x == Path[i].x && previousPipe.x == Path[i].x)
                 {
-                    CreatePipe(Path[i].x, Path[i].y, IPieces[Random.Range(0, IPieces.Length)]);
+                    GameObject pipe = CreatePipe(Path[i].x, Path[i].y, IPieces[Random.Range(0, IPieces.Length)]);
+                    pipe.transform.localScale = new Vector3(Random.Range(0, 2) * 2 - 1, Random.Range(0, 2) * 2 - 1, 1);
                 }
                 // If the next pipe is further down
                 else if (Path[i + 1].y < previousPipe.y)
@@ -123,9 +138,6 @@ public class PipeGeneration : MonoBehaviour
                     CreatePipe(Path[i].x, Path[i].y, CornerPiece[Random.Range(0, CornerPiece.Length)]).transform.Rotate(0, 0, 180);
                 }
             }
-
-
-
             previousPipe = new Vector2Int(Path[i].x, Path[i].y);
         }
     }
@@ -346,15 +358,18 @@ public class PipeGeneration : MonoBehaviour
     GameObject CreatePipe(int x, int y, Sprite Sprite)
     {
         GameObject Obj = new GameObject("X: " + x + ", Y: " + y);
+        Obj.transform.parent = PipeParent.transform;
 
-        Obj.transform.parent = transform;
-        Obj.transform.position = new Vector2(x, y);
+        Obj.transform.localPosition = new Vector2(x, y);
+        Obj.transform.localPosition -= new Vector3(GridArea.x, GridArea.y)/2; // Centres it
+        Obj.transform.localPosition *= 100;
+
         Obj.transform.localScale = Vector3.one;
 
-        Obj.AddComponent<Image>();
 
+        Obj.AddComponent<Image>();
         Obj.GetComponent<Image>().sprite = Sprite;
 
-        return Obj; // the return only uses it for corner pipes
+        return Obj;
     }
 }

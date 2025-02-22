@@ -245,10 +245,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0.41427794
-    width: 1
-    height: 0.17144412
+    x: NaN
+    y: 0
+    width: NaN
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -455,6 +455,7 @@ GameObject:
   - component: {fileID: 1784068075}
   - component: {fileID: 1784068074}
   - component: {fileID: 1784068078}
+  - component: {fileID: 1784068079}
   m_Layer: 5
   m_Name: Layouts
   m_TagString: Untagged
@@ -556,16 +557,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad49757cb2c6aff46bb977a9b2bf2692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridArea: {x: 5, y: 4}
-  GridSize: {x: 0, y: 0}
-  ObstaclesCount: 7
+  GridArea: {x: 10, y: 8}
+  ObstaclesCount: 30
   ObstacleSprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   StartPipe: {fileID: 21300000, guid: 4e5b528e4dafa804f9f3cece2e5a3f8a, type: 3}
   EndPipe: {fileID: 21300000, guid: 4e5b528e4dafa804f9f3cece2e5a3f8a, type: 3}
-  LBPipe: []
-  HorizontalPipes: []
+  CornerPiece:
+  - {fileID: 21300000, guid: adf8ee14eff19b44baeac11d14e7e7cf, type: 3}
+  IPieces:
+  - {fileID: 21300000, guid: 934162d509d4bfb47bf0a9a9f7df4f21, type: 3}
+  test: {fileID: 21300000, guid: 58145fd17513e324b80707903334d4e2, type: 3}
   movementCostX: 6
   movementCostY: 2
+--- !u!114 &1784068079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784068073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c6067696b535ea4ca5d89ede9a99737, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
