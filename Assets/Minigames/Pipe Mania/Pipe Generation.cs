@@ -13,8 +13,8 @@ public class PipeGeneration : MonoBehaviour
 
     [SerializeField] Sprite ObstacleSprite, StartPipe, EndPipe;
 
-    [SerializeField] GameObject[] VerticalPipes;
-    [SerializeField] GameObject[] HorizontalPipes;
+    [SerializeField] Sprite[] CornerPiece;
+    [SerializeField] Sprite[] IPieces;
 
     [SerializeField] Sprite test;
 
@@ -26,12 +26,27 @@ public class PipeGeneration : MonoBehaviour
 
     void Start()
     {
+        GenerateLayout();
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyUp(KeyCode.Space)) GenerateLayout();
+    }
+
+    void GenerateLayout()
+    {
+        // Removes previous layout
+        Obstacles.Clear();
+        foreach (Transform child in GetComponentInChildren<Transform>()) Destroy(child.gameObject);
+
+        // Can't use VectorInt directly in lists???
         int GridX = GridArea.x;
         int GridY = GridArea.y;
 
         // Set Start & End Position
-        int StartPos = Random.Range(0, GridArea.y);
-        int EndPos = Random.Range(0, GridArea.y);
+        int StartPos = Random.Range(0, GridY);
+        int EndPos = Random.Range(0, GridY);
 
         CreatePipe(-1, StartPos, StartPipe);
         CreatePipe(GridX, EndPos, EndPipe);
@@ -39,14 +54,24 @@ public class PipeGeneration : MonoBehaviour
         int i = 0;
         while (Obstacles.Count < ObstaclesCount)
         {
-            // Can't use VectorInt directly in lists???
             int x = Random.Range(0, GridX);
             int y = Random.Range(0, GridY);
 
-            if (x == 0 && y == StartPos || x == GridY - 1 && y == EndPos) return; // In front of pipes
+            bool isValid = true;
+            if (x == 0 && y == StartPos || x == (GridX - 1) && y == EndPos) isValid = false; // In front of pipes
+            else
+            {
+                foreach (Vector2Int point in Obstacles)
+                {
+                    float dist = (point - new Vector2Int(x, y)).magnitude;
 
+                    if (dist < 1.42f && dist > 1) isValid = false; // Diagonal
+                    else if (dist == 0) isValid = false; // Obstacle already there
+                }
+            }
+
+            if (!isValid) continue;
             Obstacles.Add(new Vector2Int(x, y));
-            CreatePipe(Obstacles[i].x, Obstacles[i].y, ObstacleSprite);
 
             i++;
         }
@@ -55,7 +80,54 @@ public class PipeGeneration : MonoBehaviour
 
         List<Node> Path = ComputePathtoTarget(StartPos, EndPos);
 
-        foreach (Node pipe in Path) CreatePipe(pipe.x, pipe.y, test);
+        Path.Add(new Node(GridX, EndPos));
+
+        Vector2Int previousPipe = new Vector2Int(-1, StartPos);
+        for (i = 0; i < Path.Count - 1; i++)
+        {
+            if (Path[i].x != previousPipe.x) // Horizontal
+            {
+                // If the next pipe doesn't change height then it's straight
+                if (Path[i + 1].y == Path[i].y)
+                {
+                    GameObject pipe = CreatePipe(Path[i].x, Path[i].y, IPieces[Random.Range(0, IPieces.Length)]);
+
+                    int Direction;
+                    if (Random.Range(0, 1) == 0) Direction = 90;
+                    else Direction = 270;
+
+                    pipe.transform.Rotate(new Vector3(0, 0, Direction));
+                }
+                else
+                {
+                    GameObject pipe = CreatePipe(Path[i].x, Path[i].y, CornerPiece[Random.Range(0, CornerPiece.Length)]);
+
+                    // if the next pipe faces downwards then rotate the pipe to connect it
+                    if ((Path[i].y - Path[i + 1].y) == 1) pipe.transform.Rotate(new Vector3(0, 0, 90));
+                }
+            }
+            else
+            {
+                // If the previous, current & next pipes are all in the same X
+                if (Path[i + 1].x == Path[i].x && previousPipe.x == Path[i].x)
+                {
+                    CreatePipe(Path[i].x, Path[i].y, IPieces[Random.Range(0, IPieces.Length)]);
+                }
+                // If the next pipe is further down
+                else if (Path[i + 1].y < previousPipe.y)
+                {
+                    CreatePipe(Path[i].x, Path[i].y, CornerPiece[Random.Range(0, CornerPiece.Length)]).transform.Rotate(0, 0, 270);
+                }
+                else
+                {
+                    CreatePipe(Path[i].x, Path[i].y, CornerPiece[Random.Range(0, CornerPiece.Length)]).transform.Rotate(0, 0, 180);
+                }
+            }
+
+
+
+            previousPipe = new Vector2Int(Path[i].x, Path[i].y);
+        }
     }
 
     void GenerateNodeGraph()
@@ -247,7 +319,11 @@ public class PipeGeneration : MonoBehaviour
 
     List<Node> GetFoundPath(Node targetNode)
     {
-        if (targetNode == null) Debug.LogError("Invalid Path!");
+        // If invalid show why
+        if (targetNode == null)
+        {
+            foreach(Vector2Int point in Obstacles) CreatePipe(point.x, point.y, ObstacleSprite);
+        }
 
         List<Node> foundPath = new List<Node>();
         if (targetNode != null)
@@ -267,21 +343,18 @@ public class PipeGeneration : MonoBehaviour
         return foundPath;
     }
 
-    void CreatePipe(int x, int y, Sprite Sprite)
+    GameObject CreatePipe(int x, int y, Sprite Sprite)
     {
-        GameObject Obj;
-
-        // Names objects depending on their sprite (switch statement didn't work :'( )
-        if(Sprite == ObstacleSprite) Obj = new GameObject("Obstacle, X: " + x + ", Y: " + y);
-        else if(Sprite == EndPipe) Obj = new GameObject("End, X: " + x + ", Y: " + y);
-        else if(Sprite == StartPipe) Obj = new GameObject("Start, X: " + x + ", Y: " + y);
-        else Obj = new GameObject("X: " + x + ", Y: " + y);
+        GameObject Obj = new GameObject("X: " + x + ", Y: " + y);
 
         Obj.transform.parent = transform;
         Obj.transform.position = new Vector2(x, y);
         Obj.transform.localScale = Vector3.one;
 
         Obj.AddComponent<Image>();
+
         Obj.GetComponent<Image>().sprite = Sprite;
+
+        return Obj; // the return only uses it for corner pipes
     }
 }
