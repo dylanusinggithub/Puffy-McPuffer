@@ -11,7 +11,10 @@ public class MainMenu : MonoBehaviour
 
     GameObject Main, HowToPlay, Options;
 
-    AudioSource AS;
+    GameObject Fadetransition;
+    AudioSource AS, FadeAS;
+
+    float BTNVol, FadeVol;
 
     private void Start()
     {
@@ -19,8 +22,14 @@ public class MainMenu : MonoBehaviour
         HowToPlay = transform.GetChild(1).gameObject;
         Options = transform.GetChild(2).gameObject;
 
+        Fadetransition = GameObject.Find("Fadetransition");
+        Fadetransition.GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume", 1);
+        
         AS = GetComponent<AudioSource>();
-        GameObject.Find("Fadetransition").GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume", 1);
+        FadeAS = Fadetransition.GetComponent<AudioSource>();
+
+        BTNVol = AS.volume;
+        FadeVol = FadeAS.volume;
     }
 
     void HideUI()
@@ -33,6 +42,7 @@ public class MainMenu : MonoBehaviour
 
     public void BTN_PlayGame()
     {
+        AS.volume = BTNVol * PlayerPrefs.GetFloat("Volume", 1);
         AS.Play();
         StartCoroutine(FadeTime());
         StartCoroutine(PlayGame());
@@ -49,12 +59,14 @@ public class MainMenu : MonoBehaviour
 
     public void BTN_Main()
     {
+        AS.volume = BTNVol * PlayerPrefs.GetFloat("Volume", 1);
         AS.Play();
         StartCoroutine(FadeTime(Main));
     }
 
     public void BTN_HowTo()
     {
+        AS.volume = BTNVol * PlayerPrefs.GetFloat("Volume", 1);
         AS.Play();
         StartCoroutine(FadeTime(HowToPlay));
         StartCoroutine(HowTo());
@@ -74,6 +86,7 @@ public class MainMenu : MonoBehaviour
 
     public void BTN_HowToNext()
     {
+        AS.volume = BTNVol * PlayerPrefs.GetFloat("Volume", 1);
         AS.Play();
         StartCoroutine(FadeTime(HowToPlay));
         StartCoroutine(HowToNext());
@@ -111,13 +124,16 @@ public class MainMenu : MonoBehaviour
 
     public void BTN_Options()
     {
+        AS.volume = BTNVol * PlayerPrefs.GetFloat("Volume", 1);
         AS.Play();
         StartCoroutine(FadeTime(Options));
     }
 
     IEnumerator FadeTime(GameObject Menu)
     {
-        GameObject.Find("Fadetransition").GetComponent<AudioSource>().Play();
+        FadeAS.volume = FadeVol * PlayerPrefs.GetFloat("Volume", 1);
+        FadeAS.Play();
+
         // The fade takes 1s so if i want it to be half that - 0.5 - then i need to double it
         FadeTransition.SetFloat("Speed", 1 / FadeDelay);
         FadeTransition.SetTrigger("End");
@@ -134,9 +150,11 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator FadeTime()
     {
+        FadeAS.volume = FadeVol * PlayerPrefs.GetFloat("Volume", 1);
+        FadeAS.Play();
 
         // The fade takes 1s so if i want it to be half that - 0.5 - then i need to double it
-        GameObject.Find("Fadetransition").GetComponent<AudioSource>().Play();
+        Fadetransition.GetComponent<AudioSource>().Play();
         FadeTransition.SetFloat("Speed", 1 / FadeDelay);
         FadeTransition.SetTrigger("End");
 
