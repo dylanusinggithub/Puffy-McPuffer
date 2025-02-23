@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PipeLayout : MonoBehaviour
 {
+    [SerializeField] GameObject GameOverScreen, WinScren;
+    Slider Timer;
+
     [SerializeField] LevelSettings[] Levels;
+
 
     void Awake()
     {
@@ -18,6 +23,23 @@ public class PipeLayout : MonoBehaviour
             transform.GetChild(0).GetChild(i).gameObject.AddComponent<PipeController>();
             transform.GetChild(0).GetChild(i).gameObject.AddComponent<BoxCollider2D>();
         }
+
+        Timer = GameObject.Find("Timer").GetComponent<Slider>();
+        Timer.maxValue = Levels[LevelIndex].Timer;
+    }
+
+    private void Update()
+    {
+        if (Timer.value < Timer.maxValue)
+        {
+            Timer.value += Time.deltaTime;
+        }
+        else
+        {
+            Time.timeScale = 0;
+            GameOverScreen.SetActive(true);
+        }
+
     }
 
     public void CheckPipes()
@@ -28,7 +50,8 @@ public class PipeLayout : MonoBehaviour
             if (!transform.GetChild(0).GetChild(i).GetComponent<PipeController>().solved) return;
         }
 
-        print("Yipee");
+        Time.timeScale = 0;
+        WinScren.SetActive(true);
     }
 
     [System.Serializable]
