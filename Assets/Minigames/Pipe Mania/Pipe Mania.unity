@@ -3787,8 +3787,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameOverScreen: {fileID: 1885814168}
   WinScren: {fileID: 888064260}
+  ClickParticle: {fileID: 1536587473292895401, guid: e713cfc8bef3ee5428976cca95b7138b, type: 3}
+  BrokenPrefab: {fileID: 721699201364941823, guid: c4ea99f016e78a9428770387b1579f39, type: 3}
+  RegularPipe: {fileID: 8300000, guid: 756babea1dfec014eb07a1c6a62ace89, type: 3}
+  BrokenPipe: {fileID: 8300000, guid: eb10219782ae4f7419fb0c1859a9fd96, type: 3}
   Levels:
   - Timer: 30
+    BrokenPipesCount: 2
     Layouts:
     - {fileID: 7138037573933653132, guid: b30540e17b07f9e46affcd13e047b538, type: 3}
 --- !u!1 &1814028855
@@ -3883,7 +3888,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1885814169
 RectTransform:
   m_ObjectHideFlags: 0

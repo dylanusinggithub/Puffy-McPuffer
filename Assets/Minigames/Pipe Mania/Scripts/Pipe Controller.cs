@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -8,8 +9,17 @@ using Random = UnityEngine.Random;
 public class PipeController : MonoBehaviour, IPointerClickHandler
 {
     public bool solved = false;
+    public int broken = 0;
 
-    [Flags] enum Position {Zero = 1, Ninety = 2, OneHundredAndEighty = 4, TwoHundredandSeventy = 8 }
+    public GameObject BrokenPrefab;
+    GameObject Prefab;
+
+    public GameObject ClickParticle;
+
+    public AudioClip RegularPipe, BrokePipe;
+    float initalVolume;
+
+    [Flags] enum Position {Zero = 1, Ninety = 2, OneHundredAndEighty = 4, TwoHundredAndSeventy = 8 }
     [SerializeField] Position CorrectRotations;
 
     void Awake()
@@ -43,14 +53,51 @@ public class PipeController : MonoBehaviour, IPointerClickHandler
 
     void Start()
     {
+        initalVolume = GetComponent<AudioSource>().volume;
+
         transform.Rotate(0, 0, Random.Range(0, 3) * 90);
-        if (CorrectRotations.HasFlag(GetCorrectRotations((int)transform.eulerAngles.z))) solved = true;
+
+        if (broken == 0)
+        {
+            if (CorrectRotations.HasFlag(GetCorrectRotations((int)transform.eulerAngles.z))) solved = true;
+        }
+        else
+        {
+            Prefab = Instantiate(BrokenPrefab, transform);
+            Prefab.transform.rotation = Quaternion.Euler(0, 0, 0);
+            Prefab.transform.localScale *= new Vector2(transform.localScale.x, transform.localScale.y); // Corrects inverted scales
+
+            Prefab.GetComponentInChildren<TextMeshProUGUI>().text = broken.ToString();
+        }
     }
 
     bool Rotating = false;
     public void OnPointerClick(PointerEventData eventData)
     {
-        StartCoroutine(RotatePipe());
+        if (Time.timeScale == 0) return;
+
+        Destroy(Instantiate(ClickParticle, transform), 2);
+
+        if (broken > 0)
+        {
+            GetComponent<AudioSource>().clip = BrokePipe;
+
+            broken--;
+            Prefab.GetComponentInChildren<TextMeshProUGUI>().text = broken.ToString();
+            if (broken == 0)
+            {
+                Destroy(Prefab);
+                if (CorrectRotations.HasFlag(GetCorrectRotations((int)transform.eulerAngles.z))) solved = true;
+            }
+        }
+        else
+        {
+            GetComponent<AudioSource>().clip = RegularPipe;
+            StartCoroutine(RotatePipe());
+        }
+
+        GetComponent<AudioSource>().volume = initalVolume * PlayerPrefs.GetFloat("Volume", 1);
+        GetComponent<AudioSource>().Play();
     }
 
     Position GetCorrectRotations(int Direction)
@@ -66,7 +113,7 @@ public class PipeController : MonoBehaviour, IPointerClickHandler
             case 2:
                 return Position.OneHundredAndEighty;
             case 3:
-                return Position.TwoHundredandSeventy;
+                return Position.TwoHundredAndSeventy;
             case 4: // For 360
                 return Position.Zero;
             default:
@@ -87,6 +134,7 @@ public class PipeController : MonoBehaviour, IPointerClickHandler
         for (int i = 0; i < 90 / RotationAmount; i++)
         {
             transform.Rotate(0, 0, RotationAmount * Direction);
+            if(Prefab != null) Prefab.transform.rotation = Quaternion.Euler(0, 0, 0); // stops the text and such from rotating
             yield return new WaitForSeconds(0.001f); // Fastest possible
         }
 
