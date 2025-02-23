@@ -40,6 +40,8 @@ public class ObjectSettings : MonoBehaviour
         Physics2D.IgnoreLayerCollision(0, 0); // Disables Default Colliding with defualt
         GO.GetComponent<SpriteRenderer>().sortingOrder = -5;
 
+        GO.GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume", 1);
+
         Destroy(transform.gameObject);
     }
 
