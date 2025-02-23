@@ -147,6 +147,8 @@ MonoBehaviour:
   bobbingRotation: 0
   bobbingUpwards: 0
   startSpeed: 0
-  volumeSpawn: 100
+  isHardmode: 0
+  HardModeColor: {r: 0, g: 0, b: 0, a: 0}
   objectAudio:
   - {fileID: 8300000, guid: 14b3ebf25c9c2474a9e140b04147fe5b, type: 3}
+  volumeSpawn: 100

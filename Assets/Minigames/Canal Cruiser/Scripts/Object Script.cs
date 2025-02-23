@@ -1,12 +1,13 @@
 using System.Collections;
-using System.Collections.Specialized;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ObjectScript : MonoBehaviour
 {
     [SerializeField]
     bool randomiseScale;
+    Vector2 startScale;
+
+    [Header("Bobbing Animation")]
 
     [SerializeField]
     bool bobbingRotation;
@@ -18,18 +19,22 @@ public class ObjectScript : MonoBehaviour
     bool goUp;
     int bobbingUpwardsCount = 0;
 
+    [Header("Object Setting")]
+
     [SerializeField, Range(-0.5f, 0.5f)]
     float startSpeed = 0;
 
     float sinkSeconds = 3;
-    Vector2 startScale;
+
+    public bool isHardmode;
+    [SerializeField] Color HardModeColor = Color.white;
+
+    [Header("Audio Setting")]
+    [SerializeField]
+    AudioClip[] objectAudio;
 
     [SerializeField, Range(0f, 100f)]
     float volumeSpawn = 1;
-    float ObjVol;
-
-    [SerializeField]
-    AudioClip[] objectAudio;
 
     private void OnValidate()
     {
@@ -38,6 +43,9 @@ public class ObjectScript : MonoBehaviour
             transform.localScale = new Vector3(Random.Range(0.5f, 1.5f), transform.localScale.y, transform.localScale.z);
             randomiseScale = false;
         }
+
+        if (isHardmode) GetComponent<SpriteRenderer>().color = HardModeColor;
+        else GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     private void Start()

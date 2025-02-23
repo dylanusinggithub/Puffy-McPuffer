@@ -13,6 +13,8 @@ public class LevelGenerator : MonoBehaviour
 
     float LevelWidth = 0;
 
+    GameObject Puffy;
+
     private void OnValidate()
     {
         if (PressMeToSetLevelIndex)
@@ -24,6 +26,8 @@ public class LevelGenerator : MonoBehaviour
 
     private void Start()
     {
+        Puffy = GameObject.Find("Player");
+
         // sets the level index to minigameIndex which is provided by level desginer in menu screen
         levelIndex = PlayerPrefs.GetInt("difficulty", 0);
 
@@ -79,7 +83,20 @@ public class LevelGenerator : MonoBehaviour
         }
 
     }
+
+    float HardmodeCheckTime = 3;
+    void FixedUpdate()
+    {
+        if (HardmodeCheckTime > 0) HardmodeCheckTime -= Time.deltaTime;
+        else
+        {
+            HardmodeCheckTime = 3f;
+
+
+        }
+    }
 }
+
 
 
 // I Wanted to have multi-dimentional array of gameobjects so that desginers can just drag and drop

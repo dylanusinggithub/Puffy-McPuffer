@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Level Select/Level Select Map.unity
     guid: 04b92d8f4c201ca44acfb90615a9aa4b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Minigames/Pipe Puzzle/Pipelike.unity
     guid: b705abf477726ee419a0698fa8413992
   - enabled: 1

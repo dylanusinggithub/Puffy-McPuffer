@@ -19,7 +19,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"C:/Users/ewan2/Documents/GitHub/Puffy-McPuffer/Builds;C:/Users/eclark310/Documents/GitHub/Puffy-McPuffer/Builds;C:/Users/DYUEN300/Documents/GitHub/Puffy-McPuffer/bUILDS;C:/Users/TwinEwan/Documents/GitHub/Puffy-McPuffer/Builds;C:/Users/Dylan/Desktop/Projects/Puffy-McPuffer/WebGL Builds;;;;;\"}"
+                "value": "{\"m_Value\":\"C:/Users/TwinEwan/Documents/GitHub/Puffy-McPuffer/BUilds;C:/Users/ewan2/Documents/GitHub/Puffy-McPuffer/Builds;C:/Users/eclark310/Documents/GitHub/Puffy-McPuffer/Builds;C:/Users/DYUEN300/Documents/GitHub/Puffy-McPuffer/bUILDS;C:/Users/TwinEwan/Documents/GitHub/Puffy-McPuffer/Builds;C:/Users/Dylan/Desktop/Projects/Puffy-McPuffer/WebGL Builds;;;;\"}"
             }
         ]
     }
