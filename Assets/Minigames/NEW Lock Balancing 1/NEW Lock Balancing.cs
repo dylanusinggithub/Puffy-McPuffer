@@ -11,8 +11,6 @@ public class NEWLockBalancing : MonoBehaviour
     [Header("Gameplay")]
     [HideInInspector] public TextMeshProUGUI createText;
 
-    [SerializeField] Animator Fadetransition;
-
     [SerializeField]
     GameObject GameOver, Win;
 
@@ -71,7 +69,7 @@ public class NEWLockBalancing : MonoBehaviour
             case GameState.Complete:
                 {
                     if (Puffy.transform.position.x >= -18) Puffy.transform.Translate(new Vector2(cutsceneSpeed * 2f, 0));
-                    else BTN_NextLevel();
+                    else GameObject.Find("UI").GetComponent<MenuButtons>().BTN_NextLevel();
 
                     if (Puffy.transform.position.x < -9) Win.SetActive(true);
 
@@ -131,44 +129,5 @@ public class NEWLockBalancing : MonoBehaviour
         else return; // Tries to go into negatives
 
         createText.GetComponent<TextMeshProUGUI>().text = createCount + " / " + createCompletion;
-    }
-
-    public void BTN_Retry()
-    {
-        StartCoroutine(FadeNewLevel());
-        Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public void BTN_Exit()
-    {
-        StartCoroutine(FadeNewLevel());
-        SceneManager.LoadScene("Level Select Map");
-    }
-
-    public void BTN_NextLevel()
-    {
-        StartCoroutine(FadeNewLevel());
-        LevelDesigner.AdvanceToNextLevel = true;
-        BTN_Exit();
-    }
-
-    IEnumerator Fade()
-    {
-
-        Fadetransition.GetComponent<AudioSource>().Play();
-        Fadetransition.SetFloat("Speed", 1);
-        yield return new WaitForSeconds(1);
-        Fadetransition.SetTrigger("End");
-    }
-
-    IEnumerator FadeNewLevel()
-    {
-
-        Fadetransition.GetComponent<AudioSource>().Play();
-        Fadetransition.SetFloat("Speed", 1);
-        Fadetransition.SetTrigger("Start");
-        yield return new WaitForSeconds(1);
-        Fadetransition.SetTrigger("End");
     }
 }
