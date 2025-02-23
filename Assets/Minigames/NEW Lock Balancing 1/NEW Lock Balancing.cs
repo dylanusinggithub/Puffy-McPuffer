@@ -41,8 +41,6 @@ public class NEWLockBalancing : MonoBehaviour
 
         Puffy = GameObject.Find("Player");
 
-        StartCoroutine(Fade());
-
         arrowMovement = GameObject.Find("Arrow Origin");
         windForce = transform.GetChild(0).GetChild(0).GetComponent<ParticleSystemForceField>();
     }
