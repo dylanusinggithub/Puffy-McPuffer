@@ -134,13 +134,17 @@ public class LevelDesigner : MonoBehaviour
             case MinigameSettings.Minigames.LockBalancing:
                 SceneManager.LoadScene("New Lock Balancing");
                 break;
-
             case MinigameSettings.Minigames.CanalCrusier:
                 SceneManager.LoadScene("Canal Cruiser");
                 break;
-
-            case MinigameSettings.Minigames.PipePuzzle:
-                SceneManager.LoadScene("Pipelike");
+            case MinigameSettings.Minigames.PipeMania:
+                SceneManager.LoadScene("PipeMania");
+                break;
+            case MinigameSettings.Minigames.CanalSnap:
+                SceneManager.LoadScene("CanalSnap");
+                break;
+            case MinigameSettings.Minigames.CoalHaul:
+                SceneManager.LoadScene("CoalHaul");
                 break;
         }
     }
@@ -247,7 +251,7 @@ class LevelClass
 [System.Serializable]
 class MinigameSettings
 {
-    public enum Minigames { LockBalancing, CanalCrusier, PipePuzzle }
+    public enum Minigames { LockBalancing, CanalCrusier, PipeMania, CanalSnap, CoalHaul }
     public Minigames minigames;
 
     [Range(0, 10)] public int difficulty;
