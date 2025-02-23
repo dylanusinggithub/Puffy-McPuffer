@@ -38,6 +38,7 @@ public class PipeLayout : MonoBehaviour
         {
             Time.timeScale = 0;
             GameOverScreen.SetActive(true);
+            GameObject.Find("Pause Button").SetActive(false);
         }
 
     }
@@ -52,6 +53,7 @@ public class PipeLayout : MonoBehaviour
 
         Time.timeScale = 0;
         WinScren.SetActive(true);
+        GameObject.Find("Pause Button").SetActive(false);
     }
 
     [System.Serializable]
