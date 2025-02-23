@@ -90,7 +90,7 @@ public class PipeController : MonoBehaviour, IPointerClickHandler
             yield return new WaitForSeconds(0.001f); // Fastest possible
         }
 
-        if (CorrectRotations.HasFlag(GetCorrectRotations((int)transform.eulerAngles.z)))
+        if (CorrectRotations.HasFlag(GetCorrectRotations(Mathf.RoundToInt(transform.eulerAngles.z))))
         {
             solved = true;
             transform.parent.parent.GetComponent<PipeLayout>().CheckPipes();
