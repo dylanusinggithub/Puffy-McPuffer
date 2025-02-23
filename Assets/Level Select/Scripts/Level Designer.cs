@@ -138,7 +138,7 @@ public class LevelDesigner : MonoBehaviour
                 SceneManager.LoadScene("Canal Cruiser");
                 break;
             case MinigameSettings.Minigames.PipeMania:
-                SceneManager.LoadScene("PipeMania");
+                SceneManager.LoadScene("Pipe Mania");
                 break;
             case MinigameSettings.Minigames.CanalSnap:
                 SceneManager.LoadScene("CanalSnap");
