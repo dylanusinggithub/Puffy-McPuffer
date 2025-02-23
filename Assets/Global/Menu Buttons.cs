@@ -79,9 +79,6 @@ public class MenuButtons : MonoBehaviour
 
     IEnumerator FadeLoadScene(string Scene)
     {
-        FadeAS.volume = FadeVol * PlayerPrefs.GetFloat("Volume", 1);
-        FadeAS.Play();
-
         BTNAS.volume = BTNVol * PlayerPrefs.GetFloat("Volume", 1);
         BTNAS.Play();
 
