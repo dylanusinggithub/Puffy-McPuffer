@@ -393,7 +393,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2013631104}
         m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: BTN_Retry
         m_Mode: 1
@@ -906,9 +906,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.00052908063
     y: 0
-    width: 1
+    width: 0.99894184
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -1127,7 +1127,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2013631104}
         m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: BTN_Exit
         m_Mode: 1
@@ -3001,7 +3001,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2013631104}
         m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: BTN_NextLevel
         m_Mode: 1
@@ -3464,6 +3464,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010675061}
   m_CullTransparentMesh: 1
+--- !u!114 &2013631104 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 815219396660836475, guid: 9bf79aafec83e324592c31a93ef1de41, type: 3}
+  m_PrefabInstance: {fileID: 1916942557}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88141ffd1dbdfb94e9693fd22bc30d54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2040204490
 GameObject:
   m_ObjectHideFlags: 0
