@@ -14,6 +14,7 @@ public class PipeLayout : MonoBehaviour
     [SerializeField] GameObject BrokenPrefab;
     [SerializeField] AudioClip RegularPipe, BrokenPipe;
     Slider Timer;
+    RawImage TimerWater;
 
     [SerializeField] LevelSettings[] Levels;
 
@@ -53,6 +54,9 @@ public class PipeLayout : MonoBehaviour
 
         Timer = GameObject.Find("Timer").GetComponent<Slider>();
         Timer.maxValue = Levels[LevelIndex].Timer;
+        Timer.value = 0;
+
+        TimerWater = Timer.GetComponentInChildren<RawImage>();
     }
 
     private void FixedUpdate()
@@ -60,6 +64,7 @@ public class PipeLayout : MonoBehaviour
         if (Timer.value < Timer.maxValue)
         {
             Timer.value += Time.deltaTime;
+            TimerWater.uvRect = new Rect(TimerWater.uvRect.position + new Vector2(0.1f, 0) * Time.deltaTime, TimerWater.uvRect.size);
         }
         else
         {

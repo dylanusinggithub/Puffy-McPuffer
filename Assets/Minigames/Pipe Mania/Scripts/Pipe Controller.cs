@@ -39,7 +39,7 @@ public class PipeController : MonoBehaviour, IPointerClickHandler
         {
             CorrectRotations |= GetCorrectRotations((int)transform.eulerAngles.z);
             CorrectRotations |= GetCorrectRotations((int)(transform.eulerAngles.z + 90));
-            CorrectRotations |= GetCorrectRotations((int)(transform.eulerAngles.z + 180));
+            CorrectRotations |= GetCorrectRotations((int)(transform.eulerAngles.z + 270));
         }
         else if (Sprite.Contains("Cross Piece"))
         {
@@ -134,7 +134,6 @@ public class PipeController : MonoBehaviour, IPointerClickHandler
         for (int i = 0; i < 90 / RotationAmount; i++)
         {
             transform.Rotate(0, 0, RotationAmount * Direction);
-            if(Prefab != null) Prefab.transform.rotation = Quaternion.Euler(0, 0, 0); // stops the text and such from rotating
             yield return new WaitForSeconds(0.001f); // Fastest possible
         }
 
