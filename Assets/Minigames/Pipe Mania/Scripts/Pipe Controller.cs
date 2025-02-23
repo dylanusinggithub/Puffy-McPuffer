@@ -57,10 +57,7 @@ public class PipeController : MonoBehaviour, IPointerClickHandler
 
         transform.Rotate(0, 0, Random.Range(0, 3) * 90);
 
-        if (broken == 0)
-        {
-            if (CorrectRotations.HasFlag(GetCorrectRotations((int)transform.eulerAngles.z))) solved = true;
-        }
+        if (broken == 0) CheckIfCorrect();
         else
         {
             Prefab = Instantiate(BrokenPrefab, transform);
@@ -87,7 +84,7 @@ public class PipeController : MonoBehaviour, IPointerClickHandler
             if (broken == 0)
             {
                 Destroy(Prefab);
-                if (CorrectRotations.HasFlag(GetCorrectRotations((int)transform.eulerAngles.z))) solved = true;
+                CheckIfCorrect();
             }
         }
         else
@@ -124,6 +121,21 @@ public class PipeController : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    void CheckIfCorrect(int Direction)
+    {
+        if (CorrectRotations.HasFlag(GetCorrectRotations(Direction)))
+        {
+            solved = true;
+            transform.parent.parent.GetComponent<PipeLayout>().CheckPipes();
+        }
+        else solved = false;
+    }
+
+    void CheckIfCorrect()
+    {
+        CheckIfCorrect(Mathf.RoundToInt(transform.eulerAngles.z));
+    }
+
     int RotationAmount = 6;
     IEnumerator RotatePipe()
     {
@@ -137,11 +149,6 @@ public class PipeController : MonoBehaviour, IPointerClickHandler
             yield return new WaitForSeconds(0.001f); // Fastest possible
         }
 
-        if (CorrectRotations.HasFlag(GetCorrectRotations(Mathf.RoundToInt(transform.eulerAngles.z))))
-        {
-            solved = true;
-            transform.parent.parent.GetComponent<PipeLayout>().CheckPipes();
-        }
-        else solved = false;
+        CheckIfCorrect();
     }
 }
