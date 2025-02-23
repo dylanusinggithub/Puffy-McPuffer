@@ -147,5 +147,6 @@ MonoBehaviour:
   bobbingRotation: 0
   bobbingUpwards: 0
   startSpeed: 0
+  volumeSpawn: 100
   objectAudio:
   - {fileID: 8300000, guid: a2baca82cbf95cf448d79ed13b7093b8, type: 3}

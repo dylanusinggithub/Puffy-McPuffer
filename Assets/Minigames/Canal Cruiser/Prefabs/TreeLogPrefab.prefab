@@ -144,6 +144,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomiseScale: 0
+  bobbingRotation: 0
+  bobbingUpwards: 0
   startSpeed: 0
+  volumeSpawn: 100
   objectAudio:
   - {fileID: 8300000, guid: c6ecf6cde1801334b91537ff33410a0a, type: 3}

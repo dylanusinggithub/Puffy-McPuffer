@@ -591,7 +591,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   createText: {fileID: 0}
-  Fadetransition: {fileID: 619533496}
   GameOver: {fileID: 837196950}
   Win: {fileID: 355893874}
   createCompletion: 10
@@ -6657,8 +6656,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1174308485}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+      - m_Target: {fileID: 1174308487}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: BTN_PauseMenu
         m_Mode: 1
         m_Arguments:
@@ -6806,10 +6805,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0.0003926158
-    width: 1
-    height: 0.99921477
+    x: 0.00052908063
+    y: 0
+    width: 0.99894184
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -7356,11 +7355,6 @@ CanvasRenderer:
 --- !u!224 &619533494 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3580917119617794468, guid: f7dc5c6928cdaee499e99b95b352cdd3, type: 3}
-  m_PrefabInstance: {fileID: 1426151855}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &619533496 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 38536656030985783, guid: f7dc5c6928cdaee499e99b95b352cdd3, type: 3}
   m_PrefabInstance: {fileID: 1426151855}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &657176262
@@ -8333,8 +8327,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1174308485}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+      - m_Target: {fileID: 1174308487}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: BTN_Retry
         m_Mode: 1
         m_Arguments:
@@ -8466,8 +8460,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 26882337}
-        m_TargetAssemblyTypeName: NEWLockBalancing, Assembly-CSharp
+      - m_Target: {fileID: 1174308487}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: BTN_Retry
         m_Mode: 1
         m_Arguments:
@@ -9074,8 +9068,8 @@ GameObject:
   - component: {fileID: 1174308483}
   - component: {fileID: 1174308482}
   - component: {fileID: 1174308481}
-  - component: {fileID: 1174308485}
   - component: {fileID: 1174308486}
+  - component: {fileID: 1174308487}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -9174,22 +9168,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1174308485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1174308480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f62fea578557684ca50ba3e4d21e1d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Fadetransition: {fileID: 619533496}
-  OptionsPanel: {fileID: 242123819}
-  PausePanel: {fileID: 406423265}
-  PauseBTN: {fileID: 508292015}
 --- !u!82 &1174308486
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9286,6 +9264,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1174308487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174308480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88141ffd1dbdfb94e9693fd22bc30d54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OptionsPanel: {fileID: 242123819}
+  PausePanel: {fileID: 406423265}
+  PauseBTN: {fileID: 508292015}
 --- !u!1 &1206201713
 GameObject:
   m_ObjectHideFlags: 0
@@ -9369,8 +9362,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1174308485}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+      - m_Target: {fileID: 1174308487}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: BTN_OptionsMenu
         m_Mode: 1
         m_Arguments:
@@ -9636,8 +9629,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 26882337}
-        m_TargetAssemblyTypeName: NEWLockBalancing, Assembly-CSharp
+      - m_Target: {fileID: 1174308487}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: BTN_Exit
         m_Mode: 1
         m_Arguments:
@@ -10024,8 +10017,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1174308485}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+      - m_Target: {fileID: 1174308487}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: BTN_Exit
         m_Mode: 1
         m_Arguments:
@@ -10450,8 +10443,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 26882337}
-        m_TargetAssemblyTypeName: NEWLockBalancing, Assembly-CSharp
+      - m_Target: {fileID: 1174308487}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: BTN_NextLevel
         m_Mode: 1
         m_Arguments:
@@ -11320,8 +11313,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1174308485}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+      - m_Target: {fileID: 1174308487}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: BTN_OptionsMenu
         m_Mode: 1
         m_Arguments:
@@ -11866,8 +11859,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1174308485}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+      - m_Target: {fileID: 1174308487}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: BTN_PauseMenu
         m_Mode: 1
         m_Arguments:

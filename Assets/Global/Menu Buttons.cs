@@ -86,7 +86,7 @@ public class MenuButtons : MonoBehaviour
         BTNAS.Play();
 
         FadeTransition.SetFloat("Speed", 1);
-        FadeTransition.SetTrigger("Start");
+        FadeTransition.SetTrigger("End");
         yield return new WaitForSecondsRealtime(1);
 
         Time.timeScale = 1;
