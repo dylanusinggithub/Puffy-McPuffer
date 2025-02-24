@@ -272,7 +272,7 @@ MonoBehaviour:
   - GameplayTime: 25
     CreateCompletion: 5
     ExtraCreates: 4
-    LevelSpeed: 1.76
+    LevelSpeed: 1.79
     LayoutSeperation: 20
     Layouts:
     - {fileID: 7793173836862348141, guid: 312af510616b0604692d0524a29b24a5, type: 3}
@@ -281,7 +281,7 @@ MonoBehaviour:
   - GameplayTime: 20
     CreateCompletion: 6
     ExtraCreates: 5
-    LevelSpeed: 1.41
+    LevelSpeed: 1.84
     LayoutSeperation: 20
     Layouts:
     - {fileID: 6922145835368533052, guid: 3f31a9e4bedc909498c065021fd90ec5, type: 3}
@@ -291,7 +291,7 @@ MonoBehaviour:
   - GameplayTime: 30
     CreateCompletion: 8
     ExtraCreates: 5
-    LevelSpeed: 1.12
+    LevelSpeed: 1.84
     LayoutSeperation: 20
     Layouts:
     - {fileID: 6922145835368533052, guid: 3f31a9e4bedc909498c065021fd90ec5, type: 3}
@@ -302,7 +302,7 @@ MonoBehaviour:
   - GameplayTime: 30
     CreateCompletion: 5
     ExtraCreates: 5
-    LevelSpeed: 1.76
+    LevelSpeed: 1.81
     LayoutSeperation: 20
     Layouts:
     - {fileID: 658318910959143042, guid: 2e22f93802da1074cac1c91e7ede2dcd, type: 3}
