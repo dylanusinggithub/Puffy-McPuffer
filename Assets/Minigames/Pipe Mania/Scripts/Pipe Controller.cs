@@ -145,8 +145,13 @@ public class PipeController : MonoBehaviour, IPointerClickHandler
 
         for (int i = 0; i < 90 / RotationAmount; i++)
         {
-            transform.Rotate(0, 0, RotationAmount * Direction);
-            yield return new WaitForSeconds(0.001f); // Fastest possible
+            transform.Rotate(new Vector3(0, 0, (RotationAmount * Direction) / 2));
+            transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
+            transform.localScale *= 0.8f;
+            yield return new WaitForSeconds(0.0001f);
+            transform.Rotate(new Vector3(0, 0, (RotationAmount * Direction) / 2));
+            transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
+            transform.localScale *= 1.25f;
         }
 
         CheckIfCorrect();
