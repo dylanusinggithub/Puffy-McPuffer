@@ -23,6 +23,7 @@ public class PuffyController : MonoBehaviour
 
     [SerializeField]
     GameObject HitParticle;
+    Animator Player;
 
     [SerializeField]
     Color StartColour, EndColour;
@@ -132,6 +133,8 @@ public class PuffyController : MonoBehaviour
         GetComponent<AudioSource>().volume = HitVol * PlayerPrefs.GetFloat("Volume", 1);
         GetComponent<AudioSource>().Play();
 
+        GetComponent<Animator>().SetTrigger("Hit"); //plays animation when hit :)
+
         Destroy(Instantiate(HitParticle, transform.localPosition + new Vector3(-1.2f, -0.2f), Quaternion.identity, transform), 1);
 
         int Smoothness = 60;
@@ -173,6 +176,7 @@ public class PuffyController : MonoBehaviour
 
         if (collision.gameObject.tag == "Obstacle")
         {
+            GetComponent<Animator>().SetTrigger("Hit"); //plays animation when hit :)
             collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 5);
             collision.gameObject.GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-30, 30);
