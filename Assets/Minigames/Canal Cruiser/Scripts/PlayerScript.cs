@@ -110,7 +110,7 @@ public class PlayerScript : MonoBehaviour
         {
             points = -1;
             StartCoroutine(DamageFlash());
-            HitCruiser.SetTrigger("Hit");
+            HitCruiser.SetTrigger("Hit"); //plays the hit animation when hit by an object
             SpawnObstacleParticles();
         }
 

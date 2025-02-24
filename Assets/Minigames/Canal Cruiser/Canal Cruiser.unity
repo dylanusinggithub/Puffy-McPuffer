@@ -272,7 +272,7 @@ MonoBehaviour:
   - GameplayTime: 25
     CreateCompletion: 5
     ExtraCreates: 4
-    LevelSpeed: 2
+    LevelSpeed: 1.76
     LayoutSeperation: 20
     Layouts:
     - {fileID: 7793173836862348141, guid: 312af510616b0604692d0524a29b24a5, type: 3}
@@ -281,7 +281,7 @@ MonoBehaviour:
   - GameplayTime: 20
     CreateCompletion: 6
     ExtraCreates: 5
-    LevelSpeed: 2
+    LevelSpeed: 1.41
     LayoutSeperation: 20
     Layouts:
     - {fileID: 6922145835368533052, guid: 3f31a9e4bedc909498c065021fd90ec5, type: 3}
@@ -291,7 +291,7 @@ MonoBehaviour:
   - GameplayTime: 30
     CreateCompletion: 8
     ExtraCreates: 5
-    LevelSpeed: 2
+    LevelSpeed: 1.12
     LayoutSeperation: 20
     Layouts:
     - {fileID: 6922145835368533052, guid: 3f31a9e4bedc909498c065021fd90ec5, type: 3}
@@ -302,7 +302,7 @@ MonoBehaviour:
   - GameplayTime: 30
     CreateCompletion: 5
     ExtraCreates: 5
-    LevelSpeed: 2
+    LevelSpeed: 1.76
     LayoutSeperation: 20
     Layouts:
     - {fileID: 658318910959143042, guid: 2e22f93802da1074cac1c91e7ede2dcd, type: 3}
@@ -511,6 +511,7 @@ GameObject:
   - component: {fileID: 186730353}
   - component: {fileID: 186730356}
   - component: {fileID: 186730357}
+  - component: {fileID: 186730358}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -526,7 +527,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186730350}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.72610986, w: 0.68757874}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -663,8 +664,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810b3ce3a25d5e64793a962e95bc732d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 0.3
-  movementStrength: 55.6
+  startSpeed: 0.2
+  movementStrength: 43.9
   mouseStrength: 40.9
   mouseMax: 1.79
   mouseInverted: 0
@@ -675,7 +676,7 @@ MonoBehaviour:
   flashSeconds: 0.5
   flashAmount: 10
   obstacleParticle: {fileID: 6697274238594370868, guid: 791a1898a21a4e442b8dfbba505373f1, type: 3}
-  HitCruiser: {fileID: 117552036}
+  HitCruiser: {fileID: 186730358}
 --- !u!82 &186730357
 AudioSource:
   m_ObjectHideFlags: 0
@@ -772,6 +773,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &186730358
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186730350}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 72ecfd698a899db46b22d2eab6dab08b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &320555154
 GameObject:
   m_ObjectHideFlags: 0
@@ -962,9 +984,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.125
+    y: 0
     width: 1
-    height: 0.75
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
