@@ -1,8 +1,6 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
-using System.Collections;
 using UnityEngine.UI;
 
 public class NEWLockBalancing : MonoBehaviour
@@ -69,7 +67,7 @@ public class NEWLockBalancing : MonoBehaviour
             case GameState.Complete:
                 {
                     if (Puffy.transform.position.x >= -18) Puffy.transform.Translate(new Vector2(cutsceneSpeed * 2f, 0));
-                    else GameObject.Find("UI").GetComponent<MenuButtons>().BTN_NextLevel();
+                    else GameObject.Find("Pause Menu").GetComponent<MenuButtons>().BTN_NextLevel();
 
                     if (Puffy.transform.position.x < -9) Win.SetActive(true);
 

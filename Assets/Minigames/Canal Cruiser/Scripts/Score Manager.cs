@@ -52,12 +52,12 @@ public class ScoreScript : MonoBehaviour
         else if (score == 0)
         {
             gameOver.SetActive(true);
-            gameOver.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "You have crashed and sunk to the bottom of the canal.";
+            gameOver.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "You have crashed and sunk to the bottom of the canal.";
         }
         else
         {
             gameOver.SetActive(true);
-            gameOver.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "You have failed to retrieve the requested amount of cargo.";
+            gameOver.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "You have failed to retrieve the requested amount of cargo.";
         }
 
         Time.timeScale = 0;

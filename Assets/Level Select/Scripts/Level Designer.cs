@@ -19,14 +19,23 @@ public class LevelDesigner : MonoBehaviour
 
     static public bool AdvanceToNextLevel = false;
 
+    AudioSource BTNAS;
+    float BTNVol;
+
     public void BTN_Exit()
     {
+        BTNAS.volume = BTNVol * PlayerPrefs.GetFloat("Volume", 1);
+        BTNAS.Play();
         SceneManager.LoadScene("Menu");
     }
 
     void Awake()
     {
+        BTNAS = GetComponent<AudioSource>();
+        BTNVol = BTNAS.volume;
+
         GameObject.Find("CLOUDS").GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume", 1);
+
         // Sets Levels Unlocked to 0 if you're playing for the first time
         if (!PlayerPrefs.HasKey("Levels Unlocked")) PlayerPrefs.SetInt("Levels Unlocked", 0);
 
