@@ -24,9 +24,21 @@ public class LevelDesigner : MonoBehaviour
 
     public void BTN_Exit()
     {
+        StartCoroutine(FadeLoadScene("Menu"));
+    }
+    IEnumerator FadeLoadScene(string Scene)
+    {
         BTNAS.volume = BTNVol * PlayerPrefs.GetFloat("Volume", 1);
         BTNAS.Play();
-        SceneManager.LoadScene("Menu");
+
+        Animator FadeTransition = GameObject.Find("Fadetransition").GetComponent<Animator>();
+
+        FadeTransition.SetFloat("Speed", 1);
+        FadeTransition.SetTrigger("End");
+        yield return new WaitForSecondsRealtime(1);
+
+        Time.timeScale = 1;
+        SceneManager.LoadScene(Scene);
     }
 
     void Awake()
