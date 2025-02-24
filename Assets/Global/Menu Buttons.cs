@@ -28,6 +28,7 @@ public class MenuButtons : MonoBehaviour
 
     public void BTN_Exit()
     {
+        Physics2D.gravity = new Vector2(0, -9.81f); // Canal crusier changes it
         StartCoroutine(FadeLoadScene("Level Select Map"));
     }
 
