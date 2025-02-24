@@ -67,11 +67,13 @@ public class LevelGenerator : MonoBehaviour
         {
             for (int j = 0; j < transform.GetChild(i).childCount; j++)
             {
-                if (transform.GetChild(i).GetChild(j).name.Contains("CratePrefab"))
+                Transform OBJ = transform.GetChild(i).GetChild(j);
+                if (OBJ.name.Contains("CratePrefab"))
                 {
-                    CreatesLocation.Add(transform.GetChild(i).GetChild(j).gameObject);
-                    transform.GetChild(i).GetChild(j).gameObject.SetActive(false);
+                    CreatesLocation.Add(OBJ.gameObject);
+                    OBJ.gameObject.SetActive(false);
                 }
+                else if(OBJ.GetComponent<ObjectScript>().isHardmode) OBJ.gameObject.SetActive(false);
             }
         }
 
@@ -96,7 +98,7 @@ public class LevelGenerator : MonoBehaviour
 
             if (SS.score < Levels[levelIndex].CreateCompletion) return;
 
-            float closestLayout = 100;
+            float closestLayout = 1000;
             Transform closestLayoutObject = transform.GetChild(0);
             foreach (Transform layout in GetComponentInChildren<Transform>())
             {
@@ -108,7 +110,7 @@ public class LevelGenerator : MonoBehaviour
                 }
             }
 
-            if (closestLayoutObject.GetSiblingIndex() < transform.childCount)
+            if (closestLayoutObject.GetSiblingIndex() < transform.childCount - 1)
             {
                 GameObject NextLayout = transform.GetChild(closestLayoutObject.GetSiblingIndex() + 1).gameObject;
 
