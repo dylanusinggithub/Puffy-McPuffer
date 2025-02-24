@@ -10,6 +10,8 @@ public class PuffyController : MonoBehaviour
     [SerializeField, Range(0, 8)]
     float maxDist;
 
+    float HitVol;
+
     #region Health
     [Header("Health")]
     [SerializeField, Range(1, 5)]
@@ -19,8 +21,15 @@ public class PuffyController : MonoBehaviour
     float percentage = 0;
     bool isHit, isRed = false;
 
+    [SerializeField]
+    GameObject HitParticle;
+    Animator Player;
+
+    [SerializeField]
+    Color StartColour, EndColour;
+
+
     GameObject DurabilityBar;
-    GameObject DurabilityBG;
     #endregion
 
     #region Controls
@@ -45,13 +54,19 @@ public class PuffyController : MonoBehaviour
 
     void Start()
     {
+        HitVol = GetComponent<AudioSource>().volume;
+
         LB = GameObject.Find("GameManager").GetComponent<NEWLockBalancing>();
         WS = GameObject.Find("Wheel").GetComponent<WheelSteering>();
 
-        DurabilityBar = GameObject.Find("Durability").transform.GetChild(1).gameObject;
-        DurabilityBG = GameObject.Find("Durability").transform.GetChild(0).gameObject;
+        DurabilityBar = GameObject.Find("Durability").transform.GetChild(0).gameObject;
 
         health = healthMax;
+    }
+
+    private void OnValidate()
+    {
+        GameObject.Find("Health Bar").GetComponent<Image>().color = StartColour;
     }
 
     private void FixedUpdate()
@@ -80,14 +95,16 @@ public class PuffyController : MonoBehaviour
         // Damage Puffy for hitting walls
         if (Mathf.Abs(transform.position.x) > maxDist)
         {
-            // makes it so it cannot get hurt again until decreasedDurability is finished
-            if (!isHit) StartCoroutine(decreaseDurability());
-
-            if(health < 0) LB.state = NEWLockBalancing.GameState.Fail;
-
             // Stops puffy from going past the movement area
             if (transform.position.x > 0) transform.position = new Vector2(maxDist, transform.position.y);
             else transform.position = new Vector2(-maxDist, transform.position.y);
+
+            // makes it so it cannot get hurt again until decreasedDurability is finished
+            if (!isHit)
+            {
+                StartCoroutine(decreaseDurability());
+                if (health < 0) LB.state = NEWLockBalancing.GameState.Fail;
+            }
         }
     }
 
@@ -113,8 +130,12 @@ public class PuffyController : MonoBehaviour
 
     IEnumerator decreaseDurability()
     {
-        GetComponent<AudioSource>().volume = 1;
+        GetComponent<AudioSource>().volume = HitVol * PlayerPrefs.GetFloat("Volume", 1);
         GetComponent<AudioSource>().Play();
+
+        GetComponent<Animator>().SetTrigger("Hit"); //plays animation when hit :)
+
+        Destroy(Instantiate(HitParticle, transform.localPosition + new Vector3(-1.2f, -0.2f), Quaternion.identity, transform), 1);
 
         int Smoothness = 60;
         float Seconds = 1;
@@ -126,11 +147,11 @@ public class PuffyController : MonoBehaviour
             yield return new WaitForSeconds(Seconds / Smoothness);
             percentage += Seconds / Smoothness;
 
-            float duraHeight = Mathf.Lerp(200, 0, percentage / healthMax);
+            float duraHeight = Mathf.Lerp(160, 0, percentage / healthMax);
 
             if(i % 15 == 0) isRed = !isRed; //inverts every multiple of X (Make sure it's a factor of Smootheness)
 
-            DurabilityBG.GetComponent<Image>().color = Color.white + (Color.red - Color.white) * (percentage / healthMax);
+            DurabilityBar.GetComponent<Image>().color = StartColour + (EndColour - StartColour) * (percentage / healthMax);
             DurabilityBar.GetComponent<RectTransform>().sizeDelta = new Vector2(100, duraHeight);
         }
         isHit = false;
@@ -155,6 +176,7 @@ public class PuffyController : MonoBehaviour
 
         if (collision.gameObject.tag == "Obstacle")
         {
+            GetComponent<Animator>().SetTrigger("Hit"); //plays animation when hit :)
             collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 5);
             collision.gameObject.GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-30, 30);

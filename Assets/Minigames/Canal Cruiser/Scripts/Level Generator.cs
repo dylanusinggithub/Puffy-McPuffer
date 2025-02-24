@@ -13,6 +13,7 @@ public class LevelGenerator : MonoBehaviour
 
     float LevelWidth = 0;
 
+    ScoreScript SS;
     GameObject Puffy;
 
     private void OnValidate()
@@ -26,7 +27,8 @@ public class LevelGenerator : MonoBehaviour
 
     private void Start()
     {
-        Puffy = GameObject.Find("Player");
+        Puffy = GameObject.Find("Moving Thing");
+        SS = GameObject.Find("Game Manager").GetComponent<ScoreScript>();
 
         // sets the level index to minigameIndex which is provided by level desginer in menu screen
         levelIndex = PlayerPrefs.GetInt("difficulty", 0);
@@ -65,11 +67,13 @@ public class LevelGenerator : MonoBehaviour
         {
             for (int j = 0; j < transform.GetChild(i).childCount; j++)
             {
-                if (transform.GetChild(i).GetChild(j).name.Contains("CratePrefab"))
+                Transform OBJ = transform.GetChild(i).GetChild(j);
+                if (OBJ.name.Contains("CratePrefab"))
                 {
-                    CreatesLocation.Add(transform.GetChild(i).GetChild(j).gameObject);
-                    transform.GetChild(i).GetChild(j).gameObject.SetActive(false);
+                    CreatesLocation.Add(OBJ.gameObject);
+                    OBJ.gameObject.SetActive(false);
                 }
+                else if(OBJ.GetComponent<ObjectScript>().isHardmode) OBJ.gameObject.SetActive(false);
             }
         }
 
@@ -84,15 +88,41 @@ public class LevelGenerator : MonoBehaviour
 
     }
 
-    float HardmodeCheckTime = 3;
+    float HardmodeCheckTime = 1;
     void FixedUpdate()
     {
         if (HardmodeCheckTime > 0) HardmodeCheckTime -= Time.deltaTime;
         else
         {
-            HardmodeCheckTime = 3f;
+            HardmodeCheckTime = 1f;
 
+            if (SS.score < Levels[levelIndex].CreateCompletion) return;
 
+            float closestLayout = 1000;
+            Transform closestLayoutObject = transform.GetChild(0);
+            foreach (Transform layout in GetComponentInChildren<Transform>())
+            {
+                float dist = (layout.position - Puffy.transform.position).magnitude;
+                if (dist < closestLayout)
+                {
+                    closestLayout = dist;
+                    closestLayoutObject = layout;
+                }
+            }
+
+            if (closestLayoutObject.GetSiblingIndex() < transform.childCount - 1)
+            {
+                GameObject NextLayout = transform.GetChild(closestLayoutObject.GetSiblingIndex() + 1).gameObject;
+
+                foreach (Transform layout in NextLayout.GetComponentInChildren<Transform>())
+                {
+                    if (layout.GetComponent<ObjectScript>().isHardmode)
+                    {
+                        layout.gameObject.SetActive(true);
+                    }
+                }
+
+            }
         }
     }
 }

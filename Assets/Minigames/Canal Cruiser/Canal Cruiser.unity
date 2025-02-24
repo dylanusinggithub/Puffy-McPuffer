@@ -310,6 +310,7 @@ MonoBehaviour:
     - {fileID: 2723156374974615379, guid: 3e6dd6ff2d2608743ac69c7bdc7ef71c, type: 3}
     - {fileID: 6392660177088936827, guid: 2a7ab806fb6ba684183c4044acfedbbe, type: 3}
     - {fileID: 7159862058339159186, guid: b5fdcbbc5f7da88409aee0458cc8474b, type: 3}
+    - {fileID: 2357665773328269852, guid: 73788ba1807992248a40024b2ced088e, type: 3}
 --- !u!1 &185722507
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,13 +610,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810b3ce3a25d5e64793a962e95bc732d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 0.2
+  startSpeed: 0.3
   movementStrength: 55.6
   mouseStrength: 40.9
   mouseMax: 1.79
   mouseInverted: 0
-  movementDeceleration: 0.75
-  rotationStrength: 25
+  movementDeceleration: 0.74
+  rotationStrength: 25.3
   movementArea: 5.4
   flashColor: {r: 0, g: 0, b: 0, a: 0}
   flashSeconds: 0.5
@@ -906,9 +907,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.0850237
+    x: 0
     y: 0
-    width: 0.8299526
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -1102,7 +1103,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5c86d8e579d6f1b43bdf69faf163d7ac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 30c983b2bbebed946ab75d35943f9638, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

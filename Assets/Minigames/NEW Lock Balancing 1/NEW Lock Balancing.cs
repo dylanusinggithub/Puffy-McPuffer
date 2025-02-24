@@ -61,7 +61,7 @@ public class NEWLockBalancing : MonoBehaviour
                     GetComponent<ObjectDropper>().enabled = false;
 
                     GameOver.SetActive(true);
-
+                    Time.timeScale = 0;
                 }
                 break;
             case GameState.Complete:
