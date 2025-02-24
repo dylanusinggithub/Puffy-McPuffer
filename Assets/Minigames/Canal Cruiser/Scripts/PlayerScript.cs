@@ -46,6 +46,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private ParticleSystem obstacleParticle;
     private ParticleSystem obstacleParticleInstance;
 
+    [SerializeField]
+    Animator HitCruiser;
+
     Material ScrollingBackground;
     float scrolling = 0;
 
@@ -107,6 +110,7 @@ public class PlayerScript : MonoBehaviour
         {
             points = -1;
             StartCoroutine(DamageFlash());
+            HitCruiser.SetTrigger("Hit");
             SpawnObstacleParticles();
         }
 
