@@ -13,6 +13,7 @@ public class LevelGenerator : MonoBehaviour
 
     float LevelWidth = 0;
 
+    ScoreScript SS;
     GameObject Puffy;
 
     private void OnValidate()
@@ -26,7 +27,8 @@ public class LevelGenerator : MonoBehaviour
 
     private void Start()
     {
-        Puffy = GameObject.Find("Player");
+        Puffy = GameObject.Find("Moving Thing");
+        SS = GameObject.Find("Game Manager").GetComponent<ScoreScript>();
 
         // sets the level index to minigameIndex which is provided by level desginer in menu screen
         levelIndex = PlayerPrefs.GetInt("difficulty", 0);
@@ -84,15 +86,41 @@ public class LevelGenerator : MonoBehaviour
 
     }
 
-    float HardmodeCheckTime = 3;
+    float HardmodeCheckTime = 1;
     void FixedUpdate()
     {
         if (HardmodeCheckTime > 0) HardmodeCheckTime -= Time.deltaTime;
         else
         {
-            HardmodeCheckTime = 3f;
+            HardmodeCheckTime = 1f;
 
+            if (SS.score < Levels[levelIndex].CreateCompletion) return;
 
+            float closestLayout = 100;
+            Transform closestLayoutObject = transform.GetChild(0);
+            foreach (Transform layout in GetComponentInChildren<Transform>())
+            {
+                float dist = (layout.position - Puffy.transform.position).magnitude;
+                if (dist < closestLayout)
+                {
+                    closestLayout = dist;
+                    closestLayoutObject = layout;
+                }
+            }
+
+            if (closestLayoutObject.GetSiblingIndex() < transform.childCount)
+            {
+                GameObject NextLayout = transform.GetChild(closestLayoutObject.GetSiblingIndex() + 1).gameObject;
+
+                foreach (Transform layout in NextLayout.GetComponentInChildren<Transform>())
+                {
+                    if (layout.GetComponent<ObjectScript>().isHardmode)
+                    {
+                        layout.gameObject.SetActive(true);
+                    }
+                }
+
+            }
         }
     }
 }
