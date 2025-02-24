@@ -215,6 +215,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4284007308367184644, guid: 7369b602682e59c42a9512b02d377bc2, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447554949277443383, guid: 7369b602682e59c42a9512b02d377bc2, type: 3}
+      propertyPath: useUnscaledTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8499638324137475430, guid: 7369b602682e59c42a9512b02d377bc2, type: 3}
       propertyPath: m_Name
       value: Drip Effect
