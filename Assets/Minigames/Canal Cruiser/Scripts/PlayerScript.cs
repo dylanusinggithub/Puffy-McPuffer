@@ -110,8 +110,9 @@ public class PlayerScript : MonoBehaviour
         {
             points = -1;
             StartCoroutine(DamageFlash());
-            HitCruiser.SetTrigger("Hit"); //plays the hit animation when hit by an object
+            StartCoroutine(AnimOn());
             SpawnObstacleParticles();
+            
         }
 
         if (points + SM.score > -1) SM.score += points;
@@ -124,10 +125,19 @@ public class PlayerScript : MonoBehaviour
         {
             if (i % 2 == 0) GetComponent<SpriteRenderer>().color = flashColor; // changes colour every other time
             else GetComponent<SpriteRenderer>().color = oldColor;
-
+            
             yield return new WaitForSeconds(flashSeconds / flashAmount);
         }
         GetComponent<SpriteRenderer>().color = oldColor;
+        
+    }
+
+    IEnumerator AnimOn()
+    {
+        HitCruiser.enabled = true;
+        HitCruiser.SetTrigger("Hit"); //plays the hit animation when hit by an object
+        yield return new WaitForSeconds(10f);
+        HitCruiser.enabled = false;
     }
 
     private void SpawnObstacleParticles()
