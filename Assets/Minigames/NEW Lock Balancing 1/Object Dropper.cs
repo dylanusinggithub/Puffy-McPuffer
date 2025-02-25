@@ -76,7 +76,7 @@ public class ObjectDropper : MonoBehaviour
                         if (Mathf.Abs(OBJ.position.x) > furthestPoint) furthestPoint = Mathf.Abs(OBJ.position.x);
                     }
 
-                    spawnOffset = Random.Range(furthestPoint - LockSize + 2, furthestPoint + LockSize - 2);
+                    spawnOffset = Random.Range(furthestPoint - LockSize + 2, LockSize - furthestPoint - 2);
                 }
 
                 GO.Add(Instantiate(Layouts[randomIndex], new Vector2(spawnOffset, 4), Quaternion.identity));
