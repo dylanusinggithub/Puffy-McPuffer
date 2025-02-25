@@ -330,6 +330,12 @@ public class PipeGeneration : MonoBehaviour
         return GetFoundPath(null);
     }
 
+    /* please ignore this List<Node> SecondaryPath(Node fish)
+    {
+        List<Node> fishy = new List<Node>();
+        return fishy;
+    }*/
+
     List<Node> GetFoundPath(Node targetNode)
     {
         // If invalid show why
