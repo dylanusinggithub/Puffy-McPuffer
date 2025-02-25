@@ -20,6 +20,7 @@ public class ObjectDropper : MonoBehaviour
     bool spawning = false;
 
     public List<GameObject> Layouts;
+    float LockSize;
 
     List<GameObject> GO = new List<GameObject>();
 
@@ -28,6 +29,9 @@ public class ObjectDropper : MonoBehaviour
     private void Start()
     {
         WC = GetComponent<WaterController>();
+        LockSize = GetComponent<NEWLockBalancing>().LockSize;
+        LockSize *= 7; // Lock is always 7 wide at scale 1
+
         timerDelay = 2; // Start delay
         burstMax = Random.Range(burstMin, burstMaxLimit);
         spawning = true;
@@ -61,8 +65,21 @@ public class ObjectDropper : MonoBehaviour
                 {
                     if(Dropper.GetComponent<ObjectSettings>() != null) Dropper.GetComponent<SpriteRenderer>().enabled = false;
                 }
+                int randomIndex = Random.Range(0, Layouts.Count);
+                float spawnOffset = 0;
 
-                GO.Add(Instantiate(Layouts[Random.Range(0, Layouts.Count)], new Vector2(0, 4), Quaternion.identity));
+                if (!Layouts[randomIndex].name.Contains("Sequence"))
+                {
+                    float furthestPoint = 0;
+                    foreach(Transform OBJ in Layouts[randomIndex].GetComponentInChildren<Transform>())     
+                    {
+                        if (Mathf.Abs(OBJ.position.x) > furthestPoint) furthestPoint = Mathf.Abs(OBJ.position.x);
+                    }
+
+                    spawnOffset = Random.Range(furthestPoint - LockSize + 2, LockSize - furthestPoint - 2);
+                }
+
+                GO.Add(Instantiate(Layouts[randomIndex], new Vector2(spawnOffset, 4), Quaternion.identity));
                 timerSeparation = burstSeparationDelay;
 
                 spawning = true;
