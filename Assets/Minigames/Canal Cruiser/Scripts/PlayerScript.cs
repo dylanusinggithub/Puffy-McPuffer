@@ -136,7 +136,7 @@ public class PlayerScript : MonoBehaviour
     {
         HitCruiser.enabled = true;
         HitCruiser.SetTrigger("Hit"); //plays the hit animation when hit by an object
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(1.01f);
         HitCruiser.enabled = false;
     }
 
