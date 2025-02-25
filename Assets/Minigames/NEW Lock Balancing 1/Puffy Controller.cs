@@ -54,6 +54,9 @@ public class PuffyController : MonoBehaviour
 
     void Start()
     {
+        float LockSize = GameObject.Find("GameManager").GetComponent<NEWLockBalancing>().LockSize;
+        maxDist *= LockSize + Mathf.Lerp(0, 0.35f, LockSize - 1);
+
         HitVol = GetComponent<AudioSource>().volume;
 
         LB = GameObject.Find("GameManager").GetComponent<NEWLockBalancing>();

@@ -15,6 +15,8 @@ public class NEWLockBalancing : MonoBehaviour
     [HideInInspector] public int createCompletion = 10;
     int createCount;
 
+    [SerializeField, Range(1, 2)] public float LockSize;
+
     GameObject Puffy;
 
     float arrowStrength = 50;
@@ -39,8 +41,40 @@ public class NEWLockBalancing : MonoBehaviour
 
         arrowMovement = GameObject.Find("Arrow Origin");
         windForce = transform.GetChild(0).GetChild(0).GetComponent<ParticleSystemForceField>();
+
+        ScaleLock();
     }
 
+    private void OnValidate()
+    {
+        ScaleLock();
+    }
+
+    void ScaleLock()
+    {
+        GameObject LockBackground = GameObject.Find("Lock Background");
+
+        for (int i = 0; i < 2; i++)
+        {
+            GameObject Lock = LockBackground.transform.GetChild(i).gameObject;
+
+            Lock.transform.localScale = new Vector3(LockSize, 1, 1);
+            Lock.transform.GetChild(0).localScale = new Vector3(1 / LockSize, Lock.transform.GetChild(0).localScale.y, 1); // Left Wall
+            Lock.transform.GetChild(1).localScale = new Vector3(1 / LockSize, Lock.transform.GetChild(1).localScale.y, 1); // Right Wall
+
+            Lock.transform.GetChild(1).GetChild(1).transform.localPosition = new Vector2(-7 * LockSize, 3); // Cill Line
+            Lock.transform.GetChild(1).GetChild(1).transform.localScale = new Vector2(LockSize + Mathf.Lerp(0, 0.35f, LockSize - 1), 0.5f);
+
+            Lock.transform.GetChild(2).localScale = new Vector3(1 / LockSize, 0.9f, 1); // Back Wall
+            Lock.transform.GetChild(2).GetComponent<SpriteRenderer>().size = new Vector2(14 * LockSize, 9);
+        }
+
+        LockBackground.transform.GetChild(1).position = new Vector3(LockSize * -14 - 6, 6, 0); // Fake Lock
+        LockBackground.transform.GetChild(1).GetChild(1).GetChild(1).localPosition = new Vector2(-7 * LockSize, 3.75f); // Fake Lock's Cill Line 
+
+        LockBackground.transform.GetChild(2).position = new Vector3(LockSize * -21 - 7, -5, 0); // Fake Water
+        LockBackground.transform.GetChild(2).localScale = new Vector3(Mathf.Lerp(1.1f, 1.8f, LockSize - 1), 7, 0); // Fake Water
+    }
 
     void FixedUpdate()
     {
@@ -49,7 +83,10 @@ public class NEWLockBalancing : MonoBehaviour
             case GameState.Play:
                 {
                     DisplayWaterMovement();
-                    if (Puffy.transform.position.y > 0) Camera.main.transform.position = new Vector3(0, Puffy.transform.position.y, -10);
+
+                    if(Puffy.transform.position.y > 0) Camera.main.transform.position = new Vector3(Puffy.transform.position.x, Puffy.transform.position.y, -10);
+                    else if (Mathf.Abs(Puffy.transform.position.x) < LockSize * 5 - 3) Camera.main.transform.position = new Vector3(Puffy.transform.position.x, Camera.main.transform.position.y, -10);
+
                 }
                 break;
             case GameState.Fail:
@@ -66,15 +103,8 @@ public class NEWLockBalancing : MonoBehaviour
                 break;
             case GameState.Complete:
                 {
-                    if (Puffy.transform.position.x >= -18) Puffy.transform.Translate(new Vector2(cutsceneSpeed * 2f, 0));
+                    if (Puffy.transform.position.x >= LockSize * -17) Puffy.transform.Translate(new Vector2(cutsceneSpeed * 2f, 0));
                     else GameObject.Find("Pause Menu").GetComponent<MenuButtons>().BTN_NextLevel();
-
-                    if (Puffy.transform.position.x < -9) Win.SetActive(true);
-
-                    Camera.main.transform.position = new Vector3(Mathf.Clamp(Puffy.transform.position.x - 2, -18, 0), 6, -10);
-
-                    if (Camera.main.transform.position.x <= -18) Camera.main.transform.parent = null;
-
                 }
                 break;
         }
@@ -112,6 +142,7 @@ public class NEWLockBalancing : MonoBehaviour
                 Camera.main.transform.parent = Puffy.transform;
 
                 GameObject.Find("Durability").SetActive(false);
+                Win.SetActive(true);
 
                 state = GameState.Complete;
                 Puffy.GetComponent<SpriteRenderer>().flipX = false;

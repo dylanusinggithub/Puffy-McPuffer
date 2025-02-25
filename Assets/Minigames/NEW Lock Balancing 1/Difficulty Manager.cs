@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class DifficultyManager : MonoBehaviour
@@ -10,7 +11,7 @@ public class DifficultyManager : MonoBehaviour
     NEWLockBalancing LB;
     ObjectDropper OD;
 
-    private void Start()
+    private void Awake()
     {
         levelIndex = PlayerPrefs.GetInt("difficulty", 0);
 
@@ -21,8 +22,9 @@ public class DifficultyManager : MonoBehaviour
         WC.strengthX = Levels[levelIndex].strength;
         WC.perlinStepSizeX = Levels[levelIndex].perlinStepSize;
 
+        LB.LockSize = Levels[levelIndex].LockSize;
         LB.createCompletion = Levels[levelIndex].CreateCompletion;
-        LB.createText.text = "0 / " + LB.createCompletion;
+        GameObject.Find("CreateText").GetComponent<TextMeshProUGUI>().text = "0 / " + Levels[levelIndex].CreateCompletion;
 
         OD.burstDelay = Levels[levelIndex].burstDelay;
         OD.burstSeparationDelay = Levels[levelIndex].burstSeparationDelay;
@@ -37,6 +39,10 @@ public class DifficultyManager : MonoBehaviour
 [System.Serializable]
 class GameplaySettings
 {
+
+    [Tooltip("This is how big the lock will be")]
+    [Range(1, 2)] public float LockSize = 1;
+
     [Tooltip("Neccessary amount of creates needed to complete")]
     [Range(0, 10)] public int CreateCompletion;
 
