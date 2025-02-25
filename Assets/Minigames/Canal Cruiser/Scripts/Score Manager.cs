@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ScoreScript : MonoBehaviour
 {
@@ -21,25 +22,26 @@ public class ScoreScript : MonoBehaviour
 
     [SerializeField, Range(0f, 50f)]
     public int timeWin;
-
-    [SerializeField]
-    float timeTillWin = 0;
+    Slider timeSlider;
+    RawImage timerWater;
 
     void Start()
     {
-        timeTillWin = timeWin;
+        timeSlider = GameObject.Find("Timer").GetComponent<Slider>();
+        timeSlider.value = timeWin;
+        timeSlider.maxValue = timeWin;
 
-        timeText = GameObject.Find("Time Limit").GetComponent<TextMeshProUGUI>();
+        timerWater = GameObject.Find("Timer").transform.GetChild(0).GetChild(1).GetComponent<RawImage>();
 
         scoreText = GameObject.Find("Cargo Counter").GetComponent<TextMeshProUGUI>();
     }
 
     void FixedUpdate()
     {
-        if (timeTillWin > 0)
+        if (timeSlider.value > 0)
         {
-            timeTillWin -= Time.deltaTime;
-            timeText.text = "Time Remaining: " + timeTillWin.ToString("F2"); // "F2" means 2 sig figures
+            timeSlider.value -= Time.deltaTime;
+            timerWater.uvRect = new Rect(timerWater.uvRect.position + new Vector2(0.1f, 0) * Time.deltaTime, timerWater.uvRect.size);
         }
         else Die();
 

@@ -13,6 +13,8 @@ public class LevelGenerator : MonoBehaviour
 
     float LevelWidth = 0;
 
+    [SerializeField] Sprite FinishLine;
+
     ScoreScript SS;
     GameObject Puffy;
 
@@ -61,6 +63,14 @@ public class LevelGenerator : MonoBehaviour
 
             LevelWidth += Levels[levelIndex].LayoutSeperation;
         }
+
+        GameObject finish = new GameObject("FinishLine");
+
+        float dist = 4.6f * Levels[levelIndex].LevelSpeed;
+        finish.transform.position = new Vector3(dist * Levels[levelIndex].GameplayTime, 0);
+        finish.transform.localScale = Vector3.one * 0.9f;
+
+        finish.AddComponent<SpriteRenderer>().sprite = FinishLine;
 
         // Grabs all creates and disables them to later reenable a specific ones
         for (int i = 0; i < transform.childCount; i++)
