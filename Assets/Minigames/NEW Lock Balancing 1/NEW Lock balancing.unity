@@ -566,12 +566,10 @@ MonoBehaviour:
     CreateCompletion: 3
     burstDelay: 5
     burstSeparationDelay: 2
-    burstMaxLimit: 3
-    burstMin: 2
+    burstMaxLimit: 1
+    burstMin: 1
     Layouts:
     - {fileID: 3163827342038594386, guid: 9874fe853fb48f945847106167ebd103, type: 3}
-    - {fileID: 3163827342038594386, guid: c6ad22e055300854b8df61874ccbdcac, type: 3}
-    - {fileID: 3163827342038594386, guid: 8cad6db887ae4e54b9fd13726e4e9ff1, type: 3}
     perlinStepSize: 0
     strength: 0
   - LockSize: 1
@@ -581,8 +579,6 @@ MonoBehaviour:
     burstMaxLimit: 3
     burstMin: 2
     Layouts:
-    - {fileID: 3163827342038594386, guid: c6ad22e055300854b8df61874ccbdcac, type: 3}
-    - {fileID: 3163827342038594386, guid: 8cad6db887ae4e54b9fd13726e4e9ff1, type: 3}
     - {fileID: 550664953553520682, guid: 6def3057ae7d2ca4bb56de491fa3d7b1, type: 3}
     - {fileID: 550664953553520682, guid: ce221b1beb368474b9ee9e46d9a680de, type: 3}
     - {fileID: 550664953553520682, guid: 1c99917b397d0464cbe8c817f9ed4dc8, type: 3}
@@ -597,13 +593,11 @@ MonoBehaviour:
     Layouts:
     - {fileID: 550664953553520682, guid: 6def3057ae7d2ca4bb56de491fa3d7b1, type: 3}
     - {fileID: 550664953553520682, guid: ce221b1beb368474b9ee9e46d9a680de, type: 3}
-    - {fileID: 5551459052684984698, guid: 911afc5303e520041b382a98f4aaa80d, type: 3}
     - {fileID: 3163827342038594386, guid: 5ee480e6546496d4ca0b382b771d33f2, type: 3}
     - {fileID: 3756458864428363491, guid: 6628e4a9665746e4b8df481d0b6b9a52, type: 3}
-    - {fileID: 3163827342038594386, guid: c6ad22e055300854b8df61874ccbdcac, type: 3}
     - {fileID: 3163827342038594386, guid: 9874fe853fb48f945847106167ebd103, type: 3}
-    - {fileID: 3163827342038594386, guid: 8cad6db887ae4e54b9fd13726e4e9ff1, type: 3}
     - {fileID: 550664953553520682, guid: 1c99917b397d0464cbe8c817f9ed4dc8, type: 3}
+    - {fileID: 5551459052684984698, guid: 911afc5303e520041b382a98f4aaa80d, type: 3}
     perlinStepSize: 0.5
     strength: 6
   - LockSize: 1
@@ -618,9 +612,7 @@ MonoBehaviour:
     - {fileID: 5551459052684984698, guid: 911afc5303e520041b382a98f4aaa80d, type: 3}
     - {fileID: 3163827342038594386, guid: 5ee480e6546496d4ca0b382b771d33f2, type: 3}
     - {fileID: 3756458864428363491, guid: 6628e4a9665746e4b8df481d0b6b9a52, type: 3}
-    - {fileID: 3163827342038594386, guid: c6ad22e055300854b8df61874ccbdcac, type: 3}
     - {fileID: 3163827342038594386, guid: 9874fe853fb48f945847106167ebd103, type: 3}
-    - {fileID: 3163827342038594386, guid: 8cad6db887ae4e54b9fd13726e4e9ff1, type: 3}
     - {fileID: 550664953553520682, guid: 1c99917b397d0464cbe8c817f9ed4dc8, type: 3}
     perlinStepSize: 0.7
     strength: 5
@@ -6415,16 +6407,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-<<<<<<< Updated upstream
-    x: 0.2677732
-    y: 0
-    width: 0.46445355
-=======
-    x: 0.0850237
-    y: 0
-    width: 0.8299526
->>>>>>> Stashed changes
-    height: 1
+    x: 0
+    y: 0.125
+    width: 1
+    height: 0.75
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -6704,7 +6690,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -22}
+  m_AnchoredPosition: {x: 0, y: -35}
   m_SizeDelta: {x: 450, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &561329376
