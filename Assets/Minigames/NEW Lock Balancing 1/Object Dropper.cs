@@ -68,7 +68,7 @@ public class ObjectDropper : MonoBehaviour
                 int randomIndex = Random.Range(0, Layouts.Count);
                 float spawnOffset = 0;
 
-                if (!Layouts[randomIndex].name.Contains("Sequence"))
+                if (!Layouts[randomIndex].name.ToUpper().Contains("SEQUENCE"))
                 {
                     float furthestPoint = 0;
                     foreach(Transform OBJ in Layouts[randomIndex].GetComponentInChildren<Transform>())     
