@@ -98,6 +98,8 @@ public class ObjectDropper : MonoBehaviour
                 Destroy(GO[i]);
                 GO.Remove(GO[i]);
 
+                
+
                 break;
             }
             else

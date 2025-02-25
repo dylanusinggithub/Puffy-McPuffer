@@ -42,6 +42,14 @@ public class ObjectSettings : MonoBehaviour
 
         GO.GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume", 1);
 
+        // activtates the next layout in sequence if there is one
+        if (transform.parent.GetSiblingIndex() < transform.parent.parent.childCount - 1)
+        {
+            transform.parent.parent.GetChild(transform.parent.GetSiblingIndex() + 1).gameObject.SetActive(true);
+        }
+
+        if(transform.parent.parent != null) transform.parent.SetParent(null); // Unparent the sequence
+
         Destroy(transform.gameObject);
     }
 
