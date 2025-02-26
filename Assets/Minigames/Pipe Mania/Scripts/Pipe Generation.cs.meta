@@ -3,7 +3,11 @@ guid: ad49757cb2c6aff46bb977a9b2bf2692
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - waterLeakSound: {fileID: 8300000, guid: 8cccfd43288052a4ea5bda8c16fd5afb, type: 3}
+  - ObstacleSprite: {instanceID: 0}
+  - StartPipe: {instanceID: 0}
+  - EndPipe: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

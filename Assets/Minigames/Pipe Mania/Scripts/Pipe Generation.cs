@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class PipeGeneration : MonoBehaviour
 {
+    private AudioSource audioSource;
+    public AudioClip waterLeakSound;
+
     [SerializeField] Vector2Int GridArea;
 
     List<Vector2Int> Obstacles = new List<Vector2Int>();
@@ -25,11 +28,50 @@ public class PipeGeneration : MonoBehaviour
     void Start()
     {
         GenerateLayout();
+        PlayLeakingSound();
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            // If no AudioSource is attached to GameObject, add one
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     void Update()
     {
         if(Input.GetKeyUp(KeyCode.Space)) GenerateLayout();
+    }
+
+    void PlayLeakingSound()
+    {
+        if (waterLeakSound == null) return;
+
+        audioSource.clip = waterLeakSound;
+        audioSource.loop = true;
+        audioSource.Play();
+    }
+
+    void StopLeakingSound()
+    {
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+    }
+
+    bool IsAnyPipeLeaking()
+    {
+        // Logic to check if any pipes are still leaking (modify based on how leaks are tracked)
+        return false;
+    }
+
+    public void CheckLeakAndStopSound()
+    {
+        if (!IsAnyPipeLeaking()) // If no leaks remain
+        {
+            StopLeakingSound();
+            bool isLeaking = false;
+        }
     }
 
     void GenerateLayout()

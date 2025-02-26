@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,8 @@ public class PipeLayout : MonoBehaviour
     RawImage TimerWater;
 
     [SerializeField] LevelSettings[] Levels;
+
+    public AudioSource leakSound;
 
 
     void Awake()
@@ -59,6 +62,16 @@ public class PipeLayout : MonoBehaviour
         TimerWater = Timer.GetComponentInChildren<RawImage>();
     }
 
+    private void Start()
+    {
+        // Start leaking SFX when minigame starts
+        if (leakSound != null)
+        {
+            leakSound.loop = true; // loop sound
+            leakSound.Play(); // play sound
+        }
+    }
+
     private void FixedUpdate()
     {
         if (Timer.value < Timer.maxValue)
@@ -74,6 +87,34 @@ public class PipeLayout : MonoBehaviour
             this.enabled = false;
         }
 
+    }
+
+    // Called when a pipe is fixed
+    public void OnPipeFixed()
+    {
+        CheckLeaksAndStopSound();
+    }
+
+    // Check whether all pipes are fixed and stop sound if they are
+    void CheckLeaksAndStopSound()
+    {
+        bool allPipesFixed = true;
+        // Ignores first 2 (Start and End pipes)
+        for (int i = 2; i < transform.GetChild(0).childCount; i++)
+        {
+            PipeController pipeController = transform.GetChild(0).GetChild(i).GetComponent<PipeController>();
+            if (!pipeController.solved) // If any pipe is not fixed, set to false
+            {
+                allPipesFixed = false;
+                break;
+            }
+        }
+
+        // If all pipes are solved, stop leaking sound
+        if (allPipesFixed && leakSound.isPlaying)
+        {
+            leakSound.Stop(); // Stop leak sound when all pipes are fixed
+        }
     }
 
     public void CheckPipes()

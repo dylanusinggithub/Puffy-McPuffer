@@ -134,6 +134,16 @@ public class PipeController : MonoBehaviour, IPointerClickHandler
     void CheckIfCorrect()
     {
         CheckIfCorrect(Mathf.RoundToInt(transform.eulerAngles.z));
+
+        if (solved)
+        {
+            // Notify the Pipe Layout that this pipe is fixed
+            PipeLayout pipeLayout = FindObjectOfType<PipeLayout>(); // Get Pipe Layout instance
+            if (pipeLayout != null)
+            {
+                pipeLayout.OnPipeFixed(); // Call method in Pipe Layout
+            }
+        }
     }
 
     int RotationAmount = 6;
