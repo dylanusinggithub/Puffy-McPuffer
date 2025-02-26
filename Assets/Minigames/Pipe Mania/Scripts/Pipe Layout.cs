@@ -15,8 +15,6 @@ public class PipeLayout : MonoBehaviour
 
     [SerializeField] LevelSettings[] Levels;
 
-    public AudioSource leakSound;
-
     void Awake()
     {
         int LevelIndex = PlayerPrefs.GetInt("difficulty", 0);
@@ -61,16 +59,6 @@ public class PipeLayout : MonoBehaviour
         TimerWater = Timer.GetComponentInChildren<RawImage>();
     }
 
-    private void Start()
-    {
-        // Start leaking SFX when minigame starts
-        if (leakSound != null)
-        {
-            leakSound.loop = true; // loop sound
-            leakSound.Play(); // play sound
-        }
-    }
-
     private void FixedUpdate()
     {
         if (Timer.value < Timer.maxValue)
@@ -88,46 +76,18 @@ public class PipeLayout : MonoBehaviour
 
     }
 
-    // Called when a pipe is fixed
-    public void OnPipeFixed()
-    {
-        CheckLeaksAndStopSound();
-    }
-
-    // Check whether all pipes are fixed and stop sound if they are
-    void CheckLeaksAndStopSound()
-    {
-        bool allPipesFixed = true;
-        // Ignores first 2 (Start and End pipes)
-        for (int i = 0; i < transform.GetChild(0).childCount; i++)
-        {
-            if (transform.GetChild(0).GetChild(i).GetComponent<PipeController>() != null) 
-            {
-                PipeController pipeController = transform.GetChild(0).GetChild(i).GetComponent<PipeController>();
-
-                if (!pipeController.solved) // If any pipe is not fixed, set to false
-                {
-                    allPipesFixed = false;
-                    break;
-                }
-            }
-
-        }
-
-        // If all pipes are solved, stop leaking sound
-        if (allPipesFixed && leakSound.isPlaying)
-        {
-            leakSound.Stop(); // Stop leak sound when all pipes are fixed
-        }
-    }
-
     public void CheckPipes()
     {
-        // Ignores first 2 (Start & End pipes)
-        for (int i = 2; i < transform.GetChild(0).childCount; i++)
+        // Goes through every pipe and if they're all solved then complete the game
+        foreach(Transform child in transform.GetChild(0).GetComponentInChildren<Transform>())
         {
-            if (!transform.GetChild(0).GetChild(i).GetComponent<PipeController>().solved) return;
+            if (child.GetComponent<PipeController>() != null)
+            {
+                if (!child.GetComponent<PipeController>().solved) return;
+            }
         }
+
+        GetComponent<AudioSource>().Stop(); // Stops leak sound
 
         Time.timeScale = 0;
         WinScren.SetActive(true);

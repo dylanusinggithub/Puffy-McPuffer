@@ -173,11 +173,16 @@ PrefabInstance:
       propertyPath: useUnscaledTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6447554949277443383, guid: 7369b602682e59c42a9512b02d377bc2, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8499638324137475430, guid: 7369b602682e59c42a9512b02d377bc2, type: 3}
       propertyPath: m_Name
       value: Drip Effect
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -4990701557727592526, guid: 7369b602682e59c42a9512b02d377bc2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
