@@ -1,12 +1,10 @@
 using System;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class PipeController : MonoBehaviour, IPointerClickHandler
+public class PipeController : MonoBehaviour
 {
     public bool solved = false;
     public int broken = 0;
@@ -24,7 +22,7 @@ public class PipeController : MonoBehaviour, IPointerClickHandler
 
     void Awake()
     {
-        string Sprite = GetComponent<Image>().sprite.name;
+        string Sprite = GetComponent<SpriteRenderer>().sprite.name;
 
         if (Sprite.Contains("Corner"))
         {
@@ -38,8 +36,6 @@ public class PipeController : MonoBehaviour, IPointerClickHandler
         else if (Sprite.Contains("T Piece"))
         {
             CorrectRotations |= GetCorrectRotations((int)transform.eulerAngles.z);
-            CorrectRotations |= GetCorrectRotations((int)(transform.eulerAngles.z + 90));
-            CorrectRotations |= GetCorrectRotations((int)(transform.eulerAngles.z + 270));
         }
         else if (Sprite.Contains("Cross Piece"))
         {
@@ -63,43 +59,45 @@ public class PipeController : MonoBehaviour, IPointerClickHandler
             Prefab = Instantiate(BrokenPrefab, transform);
             Prefab.transform.rotation = Quaternion.Euler(0, 0, 0);
             Prefab.transform.localScale *= new Vector2(transform.localScale.x, transform.localScale.y); // Corrects inverted scales
-
-            Prefab.GetComponentInChildren<TextMeshProUGUI>().text = broken.ToString();
         }
     }
 
-    bool Rotating = false;
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnMouseOver()
     {
-        if (Time.timeScale == 0) return;
-
-        Destroy(Instantiate(ClickParticle, transform), 2);
-
-        if (broken > 0)
+        // OnMouseDown doesn't support right clicks for some reason
+        if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
         {
-            GetComponent<AudioSource>().clip = BrokePipe;
+            if (Time.timeScale == 0) return;
 
-            broken--;
-            Prefab.GetComponentInChildren<TextMeshProUGUI>().text = broken.ToString();
-            if (broken == 0)
+            Destroy(Instantiate(ClickParticle, transform), 2);
+
+            if (broken > 0)
             {
-                Destroy(Prefab);
-                CheckIfCorrect();
-            }
-        }
-        else
-        {
-            GetComponent<AudioSource>().clip = RegularPipe;
-            StartCoroutine(RotatePipe());
-        }
+                GetComponent<AudioSource>().clip = BrokePipe;
 
-        GetComponent<AudioSource>().volume = initalVolume * PlayerPrefs.GetFloat("Volume", 1);
-        GetComponent<AudioSource>().Play();
+                broken--;
+                if (broken == 0)
+                {
+                    Destroy(Prefab);
+                    CheckIfCorrect();
+                }
+            }
+            else
+            {
+                GetComponent<AudioSource>().clip = RegularPipe;
+                StartCoroutine(RotatePipe());
+            }
+
+            GetComponent<AudioSource>().volume = initalVolume * PlayerPrefs.GetFloat("Volume", 1);
+            GetComponent<AudioSource>().Play();
+        }
     }
 
     Position GetCorrectRotations(int Direction)
     {
         Direction /= 90;
+
+        Direction = Direction % 4;
 
         switch (Direction)
         {
@@ -111,11 +109,10 @@ public class PipeController : MonoBehaviour, IPointerClickHandler
                 return Position.OneHundredAndEighty;
             case 3:
                 return Position.TwoHundredAndSeventy;
-            case 4: // For 360
-                return Position.Zero;
             default:
                 {
-                    Debug.LogError("Invalid Rotation" + Direction);
+                    // Impossible but here to stop it from shouting at me
+                    Debug.LogError("Invalid Rotation " + Direction);
                     return Position.Zero;
                 }
         }

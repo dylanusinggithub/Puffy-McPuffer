@@ -1,10 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class PipeLayout : MonoBehaviour
 {
@@ -21,7 +17,6 @@ public class PipeLayout : MonoBehaviour
 
     public AudioSource leakSound;
 
-
     void Awake()
     {
         int LevelIndex = PlayerPrefs.GetInt("difficulty", 0);
@@ -30,19 +25,23 @@ public class PipeLayout : MonoBehaviour
         List<GameObject> Pipes = new List<GameObject>();
 
         // Ignores first 2 (Start & End pipes)
-        for (int i = 2; i < transform.GetChild(0).childCount; i++) 
+        for (int i = 0; i < transform.GetChild(0).childCount; i++) 
         {
             GameObject Pipe = transform.GetChild(0).GetChild(i).gameObject;
-            Pipe.AddComponent<PipeController>();
-            Pipe.AddComponent<BoxCollider2D>();
 
-            Pipe.AddComponent<AudioSource>();
-            Pipe.GetComponent<PipeController>().RegularPipe = RegularPipe;
-            Pipe.GetComponent<PipeController>().BrokePipe = BrokenPipe;
+            if (!Pipe.GetComponent<SpriteRenderer>().name.Contains("End") && !Pipe.GetComponent<SpriteRenderer>().name.Contains("Start"))
+            {
+                Pipe.AddComponent<BoxCollider2D>();
 
-            Pipe.GetComponent<PipeController>().ClickParticle = ClickParticle;
+                Pipe.AddComponent<AudioSource>();
+                Pipe.GetComponent<PipeController>().RegularPipe = RegularPipe;
+                Pipe.GetComponent<PipeController>().BrokePipe = BrokenPipe;
 
-            Pipes.Add(transform.GetChild(0).GetChild(i).gameObject);
+                Pipe.GetComponent<PipeController>().ClickParticle = ClickParticle;
+
+                Pipes.Add(transform.GetChild(0).GetChild(i).gameObject);
+            }
+
         }
 
         // Goes through all pupes and chooses a random one to be broken
@@ -100,14 +99,19 @@ public class PipeLayout : MonoBehaviour
     {
         bool allPipesFixed = true;
         // Ignores first 2 (Start and End pipes)
-        for (int i = 2; i < transform.GetChild(0).childCount; i++)
+        for (int i = 0; i < transform.GetChild(0).childCount; i++)
         {
-            PipeController pipeController = transform.GetChild(0).GetChild(i).GetComponent<PipeController>();
-            if (!pipeController.solved) // If any pipe is not fixed, set to false
+            if (transform.GetChild(0).GetChild(i).GetComponent<PipeController>() != null) 
             {
-                allPipesFixed = false;
-                break;
+                PipeController pipeController = transform.GetChild(0).GetChild(i).GetComponent<PipeController>();
+
+                if (!pipeController.solved) // If any pipe is not fixed, set to false
+                {
+                    allPipesFixed = false;
+                    break;
+                }
             }
+
         }
 
         // If all pipes are solved, stop leaking sound
