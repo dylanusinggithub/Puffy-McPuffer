@@ -98,13 +98,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IPieces:
-  - {fileID: 21300000, guid: 934162d509d4bfb47bf0a9a9f7df4f21, type: 3}
+  - Normal: {fileID: 0}
+    Broken: {fileID: 0}
+    Fixed: {fileID: 0}
   Corner:
-  - {fileID: 21300000, guid: adf8ee14eff19b44baeac11d14e7e7cf, type: 3}
+  - Normal: {fileID: 0}
+    Broken: {fileID: 0}
+    Fixed: {fileID: 0}
   TPieces:
-  - {fileID: 21300000, guid: 409a7896be1f0ec45a36813f2375304b, type: 3}
-  - {fileID: 21300000, guid: 838ded2aec00c634c990618546810d42, type: 3}
-  - {fileID: 21300000, guid: ec24f99993235984abc7592c71bd3303, type: 3}
-  - {fileID: 21300000, guid: 7f6e13c10e699b54a9735590d7a933df, type: 3}
+  - Normal: {fileID: 0}
+    Broken: {fileID: 0}
+    Fixed: {fileID: 0}
+  - Normal: {fileID: 0}
+    Broken: {fileID: 0}
+    Fixed: {fileID: 0}
+  - Normal: {fileID: 0}
+    Broken: {fileID: 0}
+    Fixed: {fileID: 0}
+  - Normal: {fileID: 0}
+    Broken: {fileID: 0}
+    Fixed: {fileID: 0}
   Crosses:
-  - {fileID: 21300000, guid: 58145fd17513e324b80707903334d4e2, type: 3}
+  - Normal: {fileID: 21300000, guid: 58145fd17513e324b80707903334d4e2, type: 3}
+    Broken: {fileID: 21300000, guid: 2454877284f48104d853b3d10c260252, type: 3}
+    Fixed: {fileID: 21300000, guid: a92acd14b325cbf47b17b36eb9859073, type: 3}
+  Broken: {fileID: 0}
+  Fixed: {fileID: 0}

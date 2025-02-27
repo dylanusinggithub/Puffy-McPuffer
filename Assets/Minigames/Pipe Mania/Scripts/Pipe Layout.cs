@@ -8,7 +8,6 @@ public class PipeLayout : MonoBehaviour
 
     [Header("Pipe Settings")] 
     [SerializeField] GameObject ClickParticle;
-    [SerializeField] GameObject BrokenPrefab;
     [SerializeField] AudioClip RegularPipe, BrokenPipe;
     Slider Timer;
     RawImage TimerWater;
@@ -48,7 +47,6 @@ public class PipeLayout : MonoBehaviour
         {
             int randomIndex = Random.Range(0, Pipes.Count);
             Pipes[randomIndex].GetComponent<PipeController>().broken = 3;
-            Pipes[randomIndex].GetComponent<PipeController>().BrokenPrefab = BrokenPrefab;
             Pipes.RemoveAt(randomIndex);
         }
 

@@ -9,19 +9,23 @@ public class PipeController : MonoBehaviour
     public bool solved = false;
     public int broken = 0;
 
-    public GameObject BrokenPrefab;
-    GameObject Prefab;
-
-    public GameObject ClickParticle;
+    Sprite BrokenSprite, FixedSprite;
 
     public AudioClip RegularPipe, BrokePipe;
     float initalVolume;
+
+
+    public GameObject ClickParticle;
+
 
     [Flags] enum Position {Zero = 1, Ninety = 2, OneHundredAndEighty = 4, TwoHundredAndSeventy = 8 }
     [SerializeField] Position CorrectRotations;
 
     void Awake()
     {
+        BrokenSprite = GetComponent<PipeEditor>().Broken;
+        FixedSprite = GetComponent<PipeEditor>().Fixed;
+
         string Sprite = GetComponent<SpriteRenderer>().sprite.name;
 
         if (Sprite.Contains("Corner"))
@@ -54,12 +58,7 @@ public class PipeController : MonoBehaviour
         transform.Rotate(0, 0, Random.Range(0, 3) * 90);
 
         if (broken == 0) CheckIfCorrect();
-        else
-        {
-            Prefab = Instantiate(BrokenPrefab, transform);
-            Prefab.transform.rotation = Quaternion.Euler(0, 0, 0);
-            Prefab.transform.localScale *= new Vector2(transform.localScale.x, transform.localScale.y); // Corrects inverted scales
-        }
+        else GetComponent<SpriteRenderer>().sprite = BrokenSprite;
     }
 
     public void OnMouseOver()
@@ -78,7 +77,7 @@ public class PipeController : MonoBehaviour
                 broken--;
                 if (broken == 0)
                 {
-                    Destroy(Prefab);
+                    GetComponent<SpriteRenderer>().sprite = FixedSprite;
                     CheckIfCorrect();
                 }
             }

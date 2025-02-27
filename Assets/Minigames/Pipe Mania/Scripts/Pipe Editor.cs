@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -5,10 +6,20 @@ public class PipeEditor : MonoBehaviour
 {
     Vector3 oldPos = Vector2.zero;
 
-    [SerializeField] Sprite[] IPieces;
-    [SerializeField] Sprite[] Corner;
-    [SerializeField] Sprite[] TPieces;
-    [SerializeField] Sprite[] Crosses;
+    [System.Serializable]
+    public class Pieces
+    {
+        public Sprite Normal;
+        public Sprite Broken;
+        public Sprite Fixed;
+    }
+
+    [SerializeField] Pieces[] IPieces;
+    [SerializeField] Pieces[] Corner;
+    [SerializeField] Pieces[] TPieces;
+    [SerializeField] Pieces[] Crosses;
+
+    public Sprite Broken, Fixed;
 
     private void Awake()
     {
@@ -17,21 +28,39 @@ public class PipeEditor : MonoBehaviour
 
         if (sprite.Contains("I Piece"))
         {
-            SP.sprite = IPieces[Random.Range(0, IPieces.Length)];
+            int randomIndex = Random.Range(0, IPieces.Length);
+
+            SP.sprite = IPieces[randomIndex].Normal;
+            Broken = IPieces[randomIndex].Broken;
+            Fixed = IPieces[randomIndex].Fixed;
+
             transform.localScale = new Vector3(transform.localScale.x * RandomPos(), transform.localScale.y * RandomPos(), 1); // Pos/Neg scale in both axises
         }
         else if (sprite.Contains("Corner"))
         {
-            SP.sprite = Corner[Random.Range(0, Corner.Length)];
+            int randomIndex = Random.Range(0, Corner.Length);
+
+            SP.sprite = Corner[randomIndex].Normal;
+            Broken = Corner[randomIndex].Broken;
+            Fixed = Corner[randomIndex].Fixed;
         }
-        else if (sprite.Contains("TPiece"))
+        else if (sprite.Contains("T Piece"))
         {
-            SP.sprite = TPieces[Random.Range(0, TPieces.Length)];
-            transform.localScale = new Vector3(transform.localScale.x * RandomPos(), 1, 1); // Pos/Neg scale only horizontally
+            int randomIndex = Random.Range(0, TPieces.Length);
+
+            SP.sprite = TPieces[randomIndex].Normal;
+            Broken = TPieces[randomIndex].Broken;
+            Fixed = TPieces[randomIndex].Fixed;
+
+            transform.localScale = new Vector3(transform.localScale.x * RandomPos(), transform.localScale.y, 1); // Pos/Neg scale only horizontally
         }
         else if (sprite.Contains("Cross"))
         {
-            SP.sprite = Crosses[Random.Range(0, Crosses.Length)];
+            int randomIndex = Random.Range(0, Crosses.Length);
+            
+            SP.sprite = Crosses[randomIndex].Normal;
+            Broken = Crosses[randomIndex].Broken;
+            Fixed = Crosses[randomIndex].Fixed;
 
             // Pos/Neg scale in both axises & rotate in any direction
             transform.localScale *= RandomPos();
@@ -76,5 +105,60 @@ public class PipeEditor : MonoBehaviour
                 oldPos = transform.position;
             }
         }
+    }
+}
+
+// Displays only the relevent varaibles; IPieces when its the IPiece
+[CustomEditor(typeof(PipeEditor))]
+class PipeEditorInspector : Editor
+{
+    SerializedProperty IPieces;
+    SerializedProperty Corner;
+    SerializedProperty TPieces;
+    SerializedProperty Crosses;
+
+    void OnEnable()
+    {
+        IPieces = serializedObject.FindProperty("IPieces");
+        Corner = serializedObject.FindProperty("Corner");
+        TPieces = serializedObject.FindProperty("TPieces");
+        Crosses = serializedObject.FindProperty("Crosses");
+    }
+
+    public override void OnInspectorGUI()
+    {
+        serializedObject.Update();
+        serializedObject.ApplyModifiedProperties();
+
+        EditorGUILayout.LabelField("Piece Specific Sprites");
+
+
+        string Sprite = this.target.name.ToLower();
+
+
+        if (Sprite.Contains("i piece"))
+        {
+            EditorGUILayout.PropertyField(IPieces, true);
+            IPieces.serializedObject.ApplyModifiedProperties();
+        }
+        else if (Sprite.Contains("corner"))
+        {
+            EditorGUILayout.PropertyField(Corner, true);
+            Corner.serializedObject.ApplyModifiedProperties();
+        }
+        else if (Sprite.Contains("t piece"))
+        {
+            EditorGUILayout.PropertyField(TPieces, true);
+            TPieces.serializedObject.ApplyModifiedProperties();
+        }
+        else if (Sprite.Contains("cross"))
+        {
+            EditorGUILayout.PropertyField(Crosses, true);
+            IPieces.serializedObject.ApplyModifiedProperties();
+        }
+        else EditorGUILayout.LabelField("No Sprites to Change or Add");
+
+        serializedObject.Update();
+        serializedObject.ApplyModifiedProperties();
     }
 }

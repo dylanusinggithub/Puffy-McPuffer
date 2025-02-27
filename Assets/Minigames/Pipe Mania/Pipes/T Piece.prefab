@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5120085424519992649}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.7, y: -0.2, z: 0}
+  m_LocalPosition: {x: -2.9, y: -1.4000001, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -98,13 +98,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IPieces:
-  - {fileID: 21300000, guid: 934162d509d4bfb47bf0a9a9f7df4f21, type: 3}
+  - Normal: {fileID: 0}
+    Broken: {fileID: 0}
+    Fixed: {fileID: 0}
   Corner:
-  - {fileID: 21300000, guid: adf8ee14eff19b44baeac11d14e7e7cf, type: 3}
+  - Normal: {fileID: 0}
+    Broken: {fileID: 0}
+    Fixed: {fileID: 0}
   TPieces:
-  - {fileID: 21300000, guid: 7f6e13c10e699b54a9735590d7a933df, type: 3}
-  - {fileID: 21300000, guid: ec24f99993235984abc7592c71bd3303, type: 3}
-  - {fileID: 21300000, guid: 838ded2aec00c634c990618546810d42, type: 3}
-  - {fileID: 21300000, guid: 409a7896be1f0ec45a36813f2375304b, type: 3}
+  - Normal: {fileID: 21300000, guid: 7f6e13c10e699b54a9735590d7a933df, type: 3}
+    Broken: {fileID: 21300000, guid: 428fc00fffa257a40a59f4077d733681, type: 3}
+    Fixed: {fileID: 21300000, guid: aad61c8bcff712b4bb72ed97ec699e49, type: 3}
+  - Normal: {fileID: 21300000, guid: ec24f99993235984abc7592c71bd3303, type: 3}
+    Broken: {fileID: 21300000, guid: 0a5456d0e3b9c3d41a00eaa56e7e4b97, type: 3}
+    Fixed: {fileID: 21300000, guid: bdca864bee25a0845a9caf3cd5f95189, type: 3}
+  - Normal: {fileID: 21300000, guid: 838ded2aec00c634c990618546810d42, type: 3}
+    Broken: {fileID: 21300000, guid: b4bc0d76db8b7a8468394618d7012051, type: 3}
+    Fixed: {fileID: 21300000, guid: 9f5542cd7558dc14394d6979bec6d321, type: 3}
+  - Normal: {fileID: 21300000, guid: 409a7896be1f0ec45a36813f2375304b, type: 3}
+    Broken: {fileID: 21300000, guid: 40e79862016a27c4b89c86138518c1bb, type: 3}
+    Fixed: {fileID: 21300000, guid: 1486e500206297e43b33be519f9eeb2e, type: 3}
   Crosses:
-  - {fileID: 21300000, guid: 58145fd17513e324b80707903334d4e2, type: 3}
+  - Normal: {fileID: 0}
+    Broken: {fileID: 0}
+    Fixed: {fileID: 0}
+  Broken: {fileID: 0}
+  Fixed: {fileID: 0}
