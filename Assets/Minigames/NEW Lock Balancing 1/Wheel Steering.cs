@@ -8,6 +8,13 @@ public class WheelSteering : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
     public float Angle = 0;
     Vector2 dragPoint;
 
+    private AudioSource audioSource; //Wooden Wheel Steer AudioSource reference
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>(); // Get AudioSource component
+    }
+
     public void OnDrag(PointerEventData eventData)
     {
         Vector2 Mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -16,11 +23,24 @@ public class WheelSteering : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         Angle = Vector2.SignedAngle(Mouse, dragPoint);
 
         GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, Angle);
+
+        //Play sound if not already playing
+        if (!audioSource.isPlaying)
+        {
+            audioSource.loop = true; // Sound should loop while turning
+            audioSource.Play();
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         Angle = 0;
+
+        //Stop sound when dragging ends
+        if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
     }
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
