@@ -11,9 +11,12 @@ public class SteeringController : MonoBehaviour, IDragHandler, IBeginDragHandler
 
     GameObject MovingThing;
 
+    private AudioSource audioSource; // Steering SFX AudioSource reference
+
     private void Start()
     {
         MovingThing = GameObject.Find("Moving Thing");
+        audioSource = GetComponent<AudioSource>(); // Get AudioSource component
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -24,11 +27,24 @@ public class SteeringController : MonoBehaviour, IDragHandler, IBeginDragHandler
         Angle = Vector2.SignedAngle(Mouse - new Vector2(MovingThing.transform.position.x, 0), dragPoint);
         
         GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, Angle);
+
+        // Play Steer SFX if not already playing
+        if (!audioSource.isPlaying)
+        {
+            audioSource.loop = true; // Keep looping while turning
+            audioSource.Play();
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         Angle = 0;
+
+        //Stop Steer SFX when dragging ends
+        if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
