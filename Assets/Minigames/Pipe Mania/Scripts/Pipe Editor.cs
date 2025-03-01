@@ -59,6 +59,7 @@ public class PipeEditor : MonoBehaviour
             int randomIndex = Random.Range(0, Crosses.Length);
             
             SP.sprite = Crosses[randomIndex].Normal;
+
             Broken = Crosses[randomIndex].Broken;
             Fixed = Crosses[randomIndex].Fixed;
 
@@ -109,6 +110,8 @@ public class PipeEditor : MonoBehaviour
 }
 
 // Displays only the relevent varaibles; IPieces when its the IPiece
+
+#if UNITY_EDITOR // It will not build otherwise
 [CustomEditor(typeof(PipeEditor))]
 class PipeEditorInspector : Editor
 {
@@ -162,3 +165,4 @@ class PipeEditorInspector : Editor
         serializedObject.ApplyModifiedProperties();
     }
 }
+#endif
