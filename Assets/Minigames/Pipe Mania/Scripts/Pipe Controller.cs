@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
 public class PipeController : MonoBehaviour
@@ -14,9 +13,8 @@ public class PipeController : MonoBehaviour
     public AudioClip RegularPipe, BrokePipe;
     float initalVolume;
 
-
-    public GameObject ClickParticle;
-
+    public GameObject ClickParticle, BrokenParticle;
+    GameObject BrokenObject;
 
     [Flags] enum Position {Zero = 1, Ninety = 2, OneHundredAndEighty = 4, TwoHundredAndSeventy = 8 }
     [SerializeField] Position CorrectRotations;
@@ -58,7 +56,11 @@ public class PipeController : MonoBehaviour
         transform.Rotate(0, 0, Random.Range(0, 3) * 90);
 
         if (broken == 0) CheckIfCorrect();
-        else GetComponent<SpriteRenderer>().sprite = BrokenSprite;
+        else
+        {
+            GetComponent<SpriteRenderer>().sprite = BrokenSprite;
+            BrokenObject = Instantiate(BrokenParticle, transform);
+        }
     }
 
     public void OnMouseOver()
@@ -78,6 +80,8 @@ public class PipeController : MonoBehaviour
                 if (broken == 0)
                 {
                     GetComponent<SpriteRenderer>().sprite = FixedSprite;
+                    BrokenObject.GetComponent<ParticleSystem>().Stop();
+
                     CheckIfCorrect();
                 }
             }

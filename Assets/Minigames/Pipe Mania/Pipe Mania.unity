@@ -1499,9 +1499,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.00052908063
     y: 0
-    width: 1
+    width: 0.99894184
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -2188,17 +2188,18 @@ MonoBehaviour:
   GameOverScreen: {fileID: 817137731}
   WinScren: {fileID: 990270507}
   ClickParticle: {fileID: 684170006893336315, guid: 303f0969a3c34f043b04334c432379e5, type: 3}
+  BrokenParticle: {fileID: 2702827215666277195, guid: c9b2bbc75338b9f4a9a8044841193909, type: 3}
   RegularPipe: {fileID: 8300000, guid: 756babea1dfec014eb07a1c6a62ace89, type: 3}
   BrokenPipe: {fileID: 8300000, guid: eb10219782ae4f7419fb0c1859a9fd96, type: 3}
   Levels:
   - Timer: 30
     BrokenPipesCount: 2
     Layouts:
-    - {fileID: 8924090505540722710, guid: 99abd27e67b545c4e98087bcd4caf580, type: 3}
+    - {fileID: 8924090505540722710, guid: a459ecb3ae155a9448f1b2644cd915e7, type: 3}
   - Timer: 30
     BrokenPipesCount: 2
     Layouts:
-    - {fileID: 6540631540591328940, guid: eb11d64e6894ef24d9e3cf8bf2e48ff2, type: 3}
+    - {fileID: 6540631540591328940, guid: 261e739c34e7a3342938999f6a70659f, type: 3}
   - Timer: 30
     BrokenPipesCount: 2
     Layouts:

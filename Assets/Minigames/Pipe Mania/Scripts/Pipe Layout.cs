@@ -8,6 +8,7 @@ public class PipeLayout : MonoBehaviour
 
     [Header("Pipe Settings")] 
     [SerializeField] GameObject ClickParticle;
+    [SerializeField] GameObject BrokenParticle;
     [SerializeField] AudioClip RegularPipe, BrokenPipe;
     Slider Timer;
     RawImage TimerWater;
@@ -35,6 +36,7 @@ public class PipeLayout : MonoBehaviour
                 Pipe.GetComponent<PipeController>().BrokePipe = BrokenPipe;
 
                 Pipe.GetComponent<PipeController>().ClickParticle = ClickParticle;
+                Pipe.GetComponent<PipeController>().BrokenParticle = BrokenParticle;
 
                 Pipes.Add(transform.GetChild(0).GetChild(i).gameObject);
             }
