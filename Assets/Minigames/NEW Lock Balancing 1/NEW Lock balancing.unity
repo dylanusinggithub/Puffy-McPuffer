@@ -579,9 +579,10 @@ MonoBehaviour:
     burstMaxLimit: 3
     burstMin: 2
     Layouts:
-    - {fileID: 550664953553520682, guid: 6def3057ae7d2ca4bb56de491fa3d7b1, type: 3}
-    - {fileID: 550664953553520682, guid: ce221b1beb368474b9ee9e46d9a680de, type: 3}
+    - {fileID: 3756458864428363491, guid: 6628e4a9665746e4b8df481d0b6b9a52, type: 3}
+    - {fileID: 3163827342038594386, guid: 5ee480e6546496d4ca0b382b771d33f2, type: 3}
     - {fileID: 550664953553520682, guid: 1c99917b397d0464cbe8c817f9ed4dc8, type: 3}
+    - {fileID: 5551459052684984698, guid: 911afc5303e520041b382a98f4aaa80d, type: 3}
     perlinStepSize: 0.2
     strength: 15
   - LockSize: 1
