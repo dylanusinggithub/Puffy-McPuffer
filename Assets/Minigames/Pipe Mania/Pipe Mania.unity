@@ -1499,9 +1499,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.00052908063
+    x: 0
     y: 0
-    width: 0.99894184
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -2187,33 +2187,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameOverScreen: {fileID: 817137731}
   WinScren: {fileID: 990270507}
-  BrokenIPiece:
-  - {fileID: 21300000, guid: 3e68466cf21799d46895f3e87b50809b, type: 3}
-  FixedIPiece:
-  - {fileID: 21300000, guid: cf391b5fc16aa2c4e849068c5b9a1912, type: 3}
-  BrokenCorner: []
-  FixedCorner: []
-  BrokenTPiece: []
-  FixedTPiece: []
-  BrokenCross: []
-  FixedCross: []
   ClickParticle: {fileID: 684170006893336315, guid: 303f0969a3c34f043b04334c432379e5, type: 3}
-  BrokenPrefab: {fileID: 721699201364941823, guid: c4ea99f016e78a9428770387b1579f39, type: 3}
   RegularPipe: {fileID: 8300000, guid: 756babea1dfec014eb07a1c6a62ace89, type: 3}
   BrokenPipe: {fileID: 8300000, guid: eb10219782ae4f7419fb0c1859a9fd96, type: 3}
   Levels:
   - Timer: 30
     BrokenPipesCount: 2
     Layouts:
-    - {fileID: 5729910574901632495, guid: a459ecb3ae155a9448f1b2644cd915e7, type: 3}
-  - Timer: 30
-    BrokenPipesCount: 2
-    Layouts:
-    - {fileID: 7387030902302611445, guid: 4dbee1ad54981b04289c7fc02a2822c4, type: 3}
-  - Timer: 30
-    BrokenPipesCount: 2
-    Layouts:
     - {fileID: 8924090505540722710, guid: d605851baa4527d4d89e8bc65b288e35, type: 3}
+  - Timer: 30
+    BrokenPipesCount: 2
+    Layouts:
+    - {fileID: 6540631540591328940, guid: a459ecb3ae155a9448f1b2644cd915e7, type: 3}
+  - Timer: 30
+    BrokenPipesCount: 2
+    Layouts:
+    - {fileID: 5704593439265035008, guid: 7fe0387f916c36c42abd3db937eb3441, type: 3}
+  - Timer: 30
+    BrokenPipesCount: 2
+    Layouts:
+    - {fileID: 208479561653903717, guid: 4dbee1ad54981b04289c7fc02a2822c4, type: 3}
+  - Timer: 30
+    BrokenPipesCount: 2
+    Layouts:
+    - {fileID: 4855246425472736739, guid: b1af7d574eb654043990692f2eba97c9, type: 3}
 --- !u!82 &1784068080
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2226,7 +2223,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8cccfd43288052a4ea5bda8c16fd5afb, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.355
   m_Pitch: 1
   Loop: 1
   Mute: 0
