@@ -66,10 +66,11 @@ public class ObjectDropper : MonoBehaviour
                     if(Dropper.GetComponent<ObjectSettings>() != null) Dropper.GetComponent<SpriteRenderer>().enabled = false;
                 }
                 int randomIndex = Random.Range(0, Layouts.Count);
-                float spawnOffset = 0;
+                
 
                 if (!Layouts[randomIndex].name.ToUpper().Contains("SEQUENCE"))
                 {
+                    float spawnOffset = 0;
                     float furthestPoint = 0;
                     foreach(Transform OBJ in Layouts[randomIndex].GetComponentInChildren<Transform>())     
                     {
@@ -77,9 +78,19 @@ public class ObjectDropper : MonoBehaviour
                     }
 
                     spawnOffset = Random.Range(furthestPoint - LockSize + 2, LockSize - furthestPoint - 2);
+
+                    GO.Add(Instantiate(Layouts[randomIndex], new Vector2(spawnOffset, 4), Quaternion.identity));
+                }
+                else
+                {
+                    GameObject Sequence = Instantiate(Layouts[randomIndex], new Vector3(0, 4), Quaternion.identity);
+                    foreach (Transform Layout in Sequence.GetComponentInChildren<Transform>())
+                    {
+                        GO.Add(Layout.gameObject);
+                    }
                 }
 
-                GO.Add(Instantiate(Layouts[randomIndex], new Vector2(spawnOffset, 4), Quaternion.identity));
+
                 timerSeparation = burstSeparationDelay;
 
                 spawning = true;

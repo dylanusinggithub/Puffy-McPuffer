@@ -569,7 +569,7 @@ MonoBehaviour:
     burstMaxLimit: 1
     burstMin: 1
     Layouts:
-    - {fileID: 3163827342038594386, guid: 9874fe853fb48f945847106167ebd103, type: 3}
+    - {fileID: 75467923570884998, guid: 8e4078802489c1f48af5ecb5f39b573e, type: 3}
     perlinStepSize: 0
     strength: 0
   - LockSize: 1
@@ -6185,9 +6185,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.00052908063
     y: 0
-    width: 1
+    width: 0.99894184
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
