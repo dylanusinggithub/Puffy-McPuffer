@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 
 // adapted from https://www.youtube.com/watch?v=kWRyZ3hb1Vc, "Drag and Drop in Unity UI"

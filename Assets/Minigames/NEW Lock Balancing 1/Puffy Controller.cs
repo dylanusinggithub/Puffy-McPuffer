@@ -12,6 +12,8 @@ public class PuffyController : MonoBehaviour
 
     float HitVol;
 
+    GameObject Wheel;
+
     #region Health
     [Header("Health")]
     [SerializeField, Range(1, 5)]
@@ -60,7 +62,8 @@ public class PuffyController : MonoBehaviour
         HitVol = GetComponent<AudioSource>().volume;
 
         LB = GameObject.Find("GameManager").GetComponent<NEWLockBalancing>();
-        WS = GameObject.Find("Wheel").GetComponent<WheelSteering>();
+        Wheel = GameObject.Find("Wheel");
+        WS = Wheel.GetComponent<WheelSteering>();
 
         DurabilityBar = GameObject.Find("Durability").transform.GetChild(0).gameObject;
 
@@ -85,12 +88,6 @@ public class PuffyController : MonoBehaviour
         if(isRed) GetComponent<SpriteRenderer>().color = Color.red;
         else GetComponent <SpriteRenderer>().color = Color.white;
 
-    }
-
-    void OnDrawGizmos() // Displays puffy movement area
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(Vector2.zero, new Vector2(maxDist, 10));
     }
 
     void CheckCollison()
@@ -129,6 +126,8 @@ public class PuffyController : MonoBehaviour
             else Velocity = 0;
         }
         transform.position += new Vector3(Velocity, 0, 0);
+
+        Wheel.transform.eulerAngles = new Vector3(0, 0, -Velocity * 10); 
     }
 
     IEnumerator decreaseDurability()

@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -31,6 +30,8 @@ public class PlayerScript : MonoBehaviour
     float velocity = 0;
 
     ScoreScript SM;
+
+    GameObject Wheel;
     SteeringController SC;
 
     [SerializeField]
@@ -52,10 +53,15 @@ public class PlayerScript : MonoBehaviour
     Material ScrollingBackground;
     float scrolling = 0;
 
+    GameObject MovingThing;
+
     private void Start()
     {
         SM = GameObject.Find("Game Manager").GetComponent<ScoreScript>();
-        SC = GameObject.Find("Wheel").GetComponent<SteeringController>();
+        Wheel = GameObject.Find("Wheel");
+        SC = Wheel.GetComponent<SteeringController>();
+
+        MovingThing = GameObject.Find("Moving Thing");
 
         oldColor = GetComponent<SpriteRenderer>().color;
 
@@ -65,12 +71,21 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.parent.Translate(new Vector3(startSpeed/10, 0, 0));
+        MovingThing.transform.Translate(new Vector3(startSpeed/10, 0, 0));
 
         scrolling = startSpeed / 310;
         ScrollingBackground.mainTextureOffset += new Vector2(scrolling, 0);
 
-        if (Input.GetButton("Horizontal")) velocity += -Input.GetAxis("Horizontal") * (movementStrength / 10000);
+        if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+        {
+            if (Input.GetButton("Horizontal"))
+            {
+                velocity += -Input.GetAxis("Horizontal") * (movementStrength / 10000);
+            }
+            else velocity += Input.GetAxis("Vertical") * (movementStrength / 10000);
+
+            Wheel.transform.eulerAngles = new Vector3(0, 0, velocity * 100);
+        }
         else if (SC.Angle != 0) velocity += (SC.Angle / 15000);
         else if (Mathf.Abs(velocity) > movementDeceleration / 1000)
         {
@@ -87,7 +102,6 @@ public class PlayerScript : MonoBehaviour
 
             GetComponent<AudioSource>().volume = 1;
             GetComponent<AudioSource>().Play();
-
             velocity = 0;
         }
 
