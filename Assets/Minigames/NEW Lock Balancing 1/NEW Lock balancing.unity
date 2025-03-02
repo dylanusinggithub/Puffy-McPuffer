@@ -6185,9 +6185,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.0006188154
+    y: 0
     width: 1
-    height: 0.99876237
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -8165,9 +8165,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2108912652}
     m_Modifications:
+    - target: {fileID: 1218837640083766885, guid: 9bf79aafec83e324592c31a93ef1de41, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317351696811765542, guid: 9bf79aafec83e324592c31a93ef1de41, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0000076293945
+      objectReference: {fileID: 0}
     - target: {fileID: 4022123281186613650, guid: 9bf79aafec83e324592c31a93ef1de41, type: 3}
       propertyPath: m_Name
       value: Pause Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 4884305597437989762, guid: 9bf79aafec83e324592c31a93ef1de41, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6602588095252212164, guid: 9bf79aafec83e324592c31a93ef1de41, type: 3}
       propertyPath: m_Pivot.x
@@ -8247,6 +8259,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6602588095252212164, guid: 9bf79aafec83e324592c31a93ef1de41, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6636326532394933166, guid: 9bf79aafec83e324592c31a93ef1de41, type: 3}
+      propertyPath: m_fontStyle
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6817085154948338122, guid: 9bf79aafec83e324592c31a93ef1de41, type: 3}
@@ -9135,7 +9151,7 @@ PrefabInstance:
     - target: {fileID: 270394267970809002, guid: 3fe42846fb4bc414b84401e88f8f9532, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1688636372}
+      objectReference: {fileID: 1628326685}
     - target: {fileID: 270394267970809003, guid: 3fe42846fb4bc414b84401e88f8f9532, type: 3}
       propertyPath: waveSpeed
       value: 3
@@ -9320,7 +9336,7 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1050993066}
   m_SourcePrefab: {fileID: 100100000, guid: 3fe42846fb4bc414b84401e88f8f9532, type: 3}
---- !u!43 &1688636372
+--- !u!43 &1628326685
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10208,12 +10224,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2020830503}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b557e724dc45bb84ba7f16ae82cec1b7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.01
   m_Pitch: 1
   Loop: 1
   Mute: 0
