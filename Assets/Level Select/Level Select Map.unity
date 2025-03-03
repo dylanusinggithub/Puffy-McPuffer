@@ -4028,7 +4028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VideoCanvas: {fileID: 8400000, guid: e94ce2ef1923df348b2c640fd76e5712, type: 2}
   levelIndex: 0
-  minigameIndex: -1
+  minigameIndex: 0
   Levels:
   - StartScreen: []
     Sequence:

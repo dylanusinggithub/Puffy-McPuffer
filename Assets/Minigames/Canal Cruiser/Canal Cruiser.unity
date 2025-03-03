@@ -267,34 +267,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PressMeToSetLevelIndex: 0
-  levelIndex: 0
+  levelIndex: 3
   Levels:
   - GameplayTime: 25
     CreateCompletion: 5
     ExtraCreates: 4
-    LevelSpeed: 2
+    LevelSpeed: 1.9
     LayoutSeperation: 40
     Layouts:
     - {fileID: 7793173836862348141, guid: 312af510616b0604692d0524a29b24a5, type: 3}
     - {fileID: 6392660177088936827, guid: 2a7ab806fb6ba684183c4044acfedbbe, type: 3}
     - {fileID: 7159862058339159186, guid: b5fdcbbc5f7da88409aee0458cc8474b, type: 3}
-  - GameplayTime: 20
+  - GameplayTime: 25
     CreateCompletion: 6
     ExtraCreates: 5
     LevelSpeed: 2
     LayoutSeperation: 20
     Layouts:
-    - {fileID: 6922145835368533052, guid: 3f31a9e4bedc909498c065021fd90ec5, type: 3}
+    - {fileID: 658318910959143042, guid: 2e22f93802da1074cac1c91e7ede2dcd, type: 3}
     - {fileID: 7159862058339159186, guid: b5fdcbbc5f7da88409aee0458cc8474b, type: 3}
     - {fileID: 7793173836862348141, guid: 312af510616b0604692d0524a29b24a5, type: 3}
-    - {fileID: 2357665773328269852, guid: 73788ba1807992248a40024b2ced088e, type: 3}
+    - {fileID: 2723156374974615379, guid: 3e6dd6ff2d2608743ac69c7bdc7ef71c, type: 3}
   - GameplayTime: 27
     CreateCompletion: 8
     ExtraCreates: 5
-    LevelSpeed: 2.05
+    LevelSpeed: 1.9
     LayoutSeperation: 20
     Layouts:
-    - {fileID: 7793173836862348141, guid: 312af510616b0604692d0524a29b24a5, type: 3}
+    - {fileID: 658318910959143042, guid: 2e22f93802da1074cac1c91e7ede2dcd, type: 3}
     - {fileID: 7159862058339159186, guid: b5fdcbbc5f7da88409aee0458cc8474b, type: 3}
     - {fileID: 6922145835368533052, guid: 3f31a9e4bedc909498c065021fd90ec5, type: 3}
     - {fileID: 2357665773328269852, guid: 73788ba1807992248a40024b2ced088e, type: 3}
@@ -666,11 +666,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSpeed: 0.2
-  movementStrength: 43.9
+  movementStrength: 40.4
   mouseStrength: 40.9
   mouseMax: 1.79
   mouseInverted: 0
-  movementDeceleration: 0.74
+  movementDeceleration: 0.45
   rotationStrength: 25.3
   movementArea: 5.4
   flashColor: {r: 0, g: 0, b: 0, a: 0}
@@ -1290,7 +1290,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &481199879
 RectTransform:
   m_ObjectHideFlags: 0
