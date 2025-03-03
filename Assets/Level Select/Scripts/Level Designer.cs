@@ -15,9 +15,10 @@ public class LevelDesigner : MonoBehaviour
     [SerializeField] int minigameIndex;
     int comicIndex = 0;
 
-    [SerializeField] LevelClass[] Levels;
+    [SerializeField] public LevelClass[] Levels;
 
-    static public bool AdvanceToNextLevel = false;
+    static public LevelDesigner Instance;
+    public bool AdvanceToNextLevel = false;
 
     AudioSource BTNAS;
     float BTNVol;
@@ -26,6 +27,11 @@ public class LevelDesigner : MonoBehaviour
     {
         StartCoroutine(FadeLoadScene("Menu"));
     }
+    public void BTN_ComicViewer()
+    {
+        StartCoroutine(FadeLoadScene("Cinematic Viewer"));
+    }
+
     IEnumerator FadeLoadScene(string Scene)
     {
         BTNAS.volume = BTNVol * PlayerPrefs.GetFloat("Volume", 1);
@@ -43,6 +49,8 @@ public class LevelDesigner : MonoBehaviour
 
     void Awake()
     {
+        Instance = this; // To Be accessed with Cinimatic Viewer
+
         BTNAS = GetComponent<AudioSource>();
         BTNVol = BTNAS.volume;
 
@@ -263,14 +271,14 @@ public class LevelDesigner : MonoBehaviour
 
 // Same as Canal Cruiser's Level Generator thingy, the original link is in there
 [System.Serializable]
-class LevelClass
+public class LevelClass
 {
     public List<UnityEngine.Object> StartScreen;
     public MinigameSettings[] Sequence;
 }
 
 [System.Serializable]
-class MinigameSettings
+public class MinigameSettings
 {
     public enum Minigames { LockBalancing, CanalCrusier, PipeMania, CanalSnap, CoalHaul }
     public Minigames minigames;
