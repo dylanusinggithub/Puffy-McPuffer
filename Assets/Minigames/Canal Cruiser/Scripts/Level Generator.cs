@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -145,7 +146,7 @@ public class LevelGenerator : MonoBehaviour
 [System.Serializable]
 class LevelSettings
 {
-    [Range(5, 30)] public int GameplayTime;
+    [Range(5, 50)] public int GameplayTime;
     [Range(0, 10)] public int CreateCompletion;
     [Range(0, 5)] public int ExtraCreates;
 
