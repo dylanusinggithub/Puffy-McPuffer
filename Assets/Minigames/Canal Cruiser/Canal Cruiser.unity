@@ -1090,9 +1090,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.05639416
+    x: 0.00068587065
     y: 0
-    width: 0.8872117
+    width: 0.99862826
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -1332,7 +1332,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ac293ce14962a6b4e86468cd334e02d1, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.01
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
