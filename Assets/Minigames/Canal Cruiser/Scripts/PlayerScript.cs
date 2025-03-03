@@ -53,6 +53,8 @@ public class PlayerScript : MonoBehaviour
     Material ScrollingBackground;
     float scrolling = 0;
 
+  
+
     GameObject MovingThing;
 
     private void Start()
@@ -66,7 +68,11 @@ public class PlayerScript : MonoBehaviour
         oldColor = GetComponent<SpriteRenderer>().color;
 
         ScrollingBackground = GameObject.Find("background").GetComponent<SpriteRenderer>().material;
+
+     
     }
+
+
 
     // Update is called once per frame
     void FixedUpdate()
@@ -75,6 +81,8 @@ public class PlayerScript : MonoBehaviour
 
         scrolling = startSpeed / 310;
         ScrollingBackground.mainTextureOffset += new Vector2(scrolling, 0);
+
+
 
         if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
         {
