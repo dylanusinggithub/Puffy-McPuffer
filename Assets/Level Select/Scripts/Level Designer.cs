@@ -242,6 +242,8 @@ public class LevelDesigner : MonoBehaviour
                     GOComic.GetComponent<RectTransform>().anchorMax = Vector2.one;
                     GOComic.GetComponent<RectTransform>().anchorMin = Vector2.zero;
 
+                    GOComic.transform.localScale = Vector3.one;
+
                     // Makes GOComic advance whenever clicked
                     GOComic.AddComponent<Button>();
                     GOComic.GetComponent<Button>().onClick.AddListener(NextLevel);

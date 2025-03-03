@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.Video;
 using Object = UnityEngine.Object;
 
 public class FilmController : MonoBehaviour, IPointerClickHandler
 {
-    public List<Object> Comics;
     public GameObject ComicViewer;
+    public List<Object> Comics;
     int ComicIndex = 0;
 
+    public RenderTexture PreviewVideo, FullscreenVideo;
+
+    public AnimationClip AppearAnimation;
     Vector2 Size = new Vector2(1500, 844);
 
     public void CreatePreview()
@@ -32,6 +36,22 @@ public class FilmController : MonoBehaviour, IPointerClickHandler
                 {
                     gameObject.AddComponent<Image>();
                     GetComponent<Image>().sprite = (Sprite)Comics[0];
+                }
+                break;
+            case "VideoClip":
+                {
+                    // Create Video Player
+                    gameObject.AddComponent<VideoPlayer>();
+                    VideoPlayer VP = GetComponent<VideoPlayer>();
+                    VP.clip = (VideoClip)Comics[ComicIndex];
+                    VP.isLooping = true;
+
+                    VP.SetDirectAudioVolume(0, 0); // Mutes it
+                    VP.targetTexture = PreviewVideo;
+
+                    // Create the image the video will be playing to
+                    gameObject.AddComponent<RawImage>();
+                    GetComponent<RawImage>().texture = PreviewVideo;
                 }
                 break;
         }
@@ -84,13 +104,42 @@ public class FilmController : MonoBehaviour, IPointerClickHandler
                         GOComic.AddComponent<RawImage>();
                         GOComic.GetComponent<RawImage>().texture = (Texture2D)Comics[ComicIndex];
                     }
-
-                    // Makes GOComic advance whenever clicked
-                    GOComic.AddComponent<Button>();
-                    GOComic.GetComponent<Button>().onClick.AddListener(DisplayComic);
-                    GOComic.GetComponent<Button>().transition = Selectable.Transition.None;
                 }
-            break;
+                break;
+            case "VideoClip":
+                {
+                    // Create Video Player
+                    GOComic.AddComponent<VideoPlayer>();
+                    VideoPlayer VP = GOComic.GetComponent<VideoPlayer>();
+                    VP.clip = (VideoClip)Comics[ComicIndex];
+                    VP.isLooping = true;
+
+                    VP.SetDirectAudioVolume(0, PlayerPrefs.GetFloat("Volume", 1));
+                    VP.targetTexture = FullscreenVideo;
+
+                    // Create the image the video will be playing to
+                    GOComic.AddComponent<RawImage>();
+                    GOComic.GetComponent<RawImage>().texture = FullscreenVideo;
+
+                    GOComic.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                    GOComic.GetComponent<RectTransform>().sizeDelta = Size;
+                    GOComic.GetComponent<RectTransform>().localScale = Vector2.one;
+
+                    GOComic.transform.localScale = Vector3.one;
+                }
+                break;
+        }
+
+        // Makes GOComic advance whenever clicked
+        GOComic.AddComponent<Button>();
+        GOComic.GetComponent<Button>().onClick.AddListener(DisplayComic);
+        GOComic.GetComponent<Button>().transition = Selectable.Transition.None;
+
+        if (ComicIndex == 0)
+        {
+            GOComic.AddComponent<Animation>();
+            GOComic.GetComponent<Animation>().AddClip(AppearAnimation, "Appear");
+            GOComic.GetComponent<Animation>().Play("Appear"); // Play Automatically doesn't play automatically :/
         }
 
         ComicIndex++;

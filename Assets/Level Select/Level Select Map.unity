@@ -3491,9 +3491,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.00052908063
     y: 0
-    width: 1
+    width: 0.99894184
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -4026,11 +4026,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c387af2496070e48b6185969e4c4938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VideoCanvas: {fileID: 8400000, guid: e94ce2ef1923df348b2c640fd76e5712, type: 2}
+  VideoCanvas: {fileID: 8400000, guid: ac2f8304323519943921572ea43d485d, type: 2}
   levelIndex: 0
   minigameIndex: 0
   Levels:
-  - StartScreen: []
+  - StartScreen:
+    - {fileID: 32900000, guid: db82d4b7bac7b7744a1e0c23ac80318a, type: 3}
     Sequence:
     - minigames: 1
       difficulty: 0
@@ -4084,7 +4085,6 @@ MonoBehaviour:
       difficulty: 3
       showTutorial: 0
       Cutscene: []
-  AdvanceToNextLevel: 0
 --- !u!82 &1992337078
 AudioSource:
   m_ObjectHideFlags: 0
