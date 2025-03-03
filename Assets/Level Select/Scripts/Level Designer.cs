@@ -18,7 +18,7 @@ public class LevelDesigner : MonoBehaviour
     [SerializeField] public LevelClass[] Levels;
 
     static public LevelDesigner Instance;
-    public bool AdvanceToNextLevel = false;
+    static public bool AdvanceToNextLevel = false;
 
     AudioSource BTNAS;
     float BTNVol;

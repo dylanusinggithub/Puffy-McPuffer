@@ -25,7 +25,7 @@ public class MainMenu : MonoBehaviour
         Fadetransition = GameObject.Find("Fadetransition");
         Fadetransition.GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume", 1);
         
-        AS = GetComponent<AudioSource>();
+        AS = GameObject.Find("UI").GetComponent<AudioSource>();
         FadeAS = Fadetransition.GetComponent<AudioSource>();
 
         BTNVol = AS.volume;

@@ -39,7 +39,7 @@ public class MenuButtons : MonoBehaviour
 
     public void BTN_NextLevel()
     {
-        LevelDesigner.Instance.AdvanceToNextLevel = true;
+        LevelDesigner.AdvanceToNextLevel = true;
         BTN_Exit();
     }
 
