@@ -291,7 +291,7 @@ MonoBehaviour:
   - GameplayTime: 27
     CreateCompletion: 8
     ExtraCreates: 5
-    LevelSpeed: 1.9
+    LevelSpeed: 2
     LayoutSeperation: 20
     Layouts:
     - {fileID: 658318910959143042, guid: 2e22f93802da1074cac1c91e7ede2dcd, type: 3}
@@ -1174,10 +1174,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0.00006815791
-    width: 1
-    height: 0.9998637
+    x: 0.00052908063
+    y: 0
+    width: 0.99894184
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60

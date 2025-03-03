@@ -39,6 +39,9 @@ public class LevelGenerator : MonoBehaviour
         GameObject.Find("Player").GetComponent<PlayerScript>().startSpeed = Levels[levelIndex].LevelSpeed;
         GameObject.Find("Game Manager").GetComponent<ScoreScript>().scoreWin = Levels[levelIndex].CreateCompletion;
 
+        // 2 is the speed it is pegged at so if the levelSpeed is 1.75f then it'll play at 75% speed
+        GameObject.Find("Water Swiggles").GetComponent<Animator>().SetFloat("Speed", Levels[levelIndex].LevelSpeed / 2); 
+
         TextMeshProUGUI scoreText = GameObject.Find("Cargo Counter").GetComponent<TextMeshProUGUI>();
         scoreText.text = "Cargo Collected: 0 / " + Levels[levelIndex].CreateCompletion;
 
