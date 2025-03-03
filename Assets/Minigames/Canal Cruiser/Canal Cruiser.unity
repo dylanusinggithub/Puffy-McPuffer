@@ -269,7 +269,7 @@ MonoBehaviour:
   PressMeToSetLevelIndex: 0
   levelIndex: 3
   Levels:
-  - GameplayTime: 25
+  - GameplayTime: 50
     CreateCompletion: 5
     ExtraCreates: 4
     LevelSpeed: 1.52
@@ -4277,7 +4277,7 @@ GameObject:
   - component: {fileID: 1754644367}
   - component: {fileID: 1754644369}
   m_Layer: 5
-  m_Name: Background
+  m_Name: Timer Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4825,9 +4825,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 803317976}
   m_Direction: 1
   m_MinValue: 0
-  m_MaxValue: 30
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 30
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
