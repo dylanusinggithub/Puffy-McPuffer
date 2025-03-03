@@ -82,7 +82,8 @@ public class PipeController : MonoBehaviour
                     GetComponent<SpriteRenderer>().sprite = FixedSprite;
                     BrokenObject.GetComponent<ParticleSystem>().Stop();
 
-                    CheckIfCorrect();
+                    // Checks if solved & stops audio when fixed
+                    transform.parent.parent.GetComponent<PipeLayout>().CheckPipes();
                 }
             }
             else

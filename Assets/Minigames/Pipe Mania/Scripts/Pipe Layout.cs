@@ -80,15 +80,20 @@ public class PipeLayout : MonoBehaviour
     public void CheckPipes()
     {
         // Goes through every pipe and if they're all solved then complete the game
+        bool Solved = true, Fixed = true;
         foreach(Transform child in transform.GetChild(0).GetComponentInChildren<Transform>())
         {
             if (child.GetComponent<PipeController>() != null)
             {
-                if (!child.GetComponent<PipeController>().solved) return;
+                if (!child.GetComponent<PipeController>().solved) Solved = false;
+
+                if (child.GetComponent<PipeController>().broken > 0) Fixed = false;
             }
         }
 
-        GetComponent<AudioSource>().Stop(); // Stops leak sound
+        if(Fixed) GetComponent<AudioSource>().Stop(); // Stops leak sound
+
+        if (!Solved) return;
 
         Time.timeScale = 0;
         WinScren.SetActive(true);
