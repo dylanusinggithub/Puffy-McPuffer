@@ -9,13 +9,14 @@ public class TutorialController : MonoBehaviour
     GameObject animationObject;
     GameObject Puffy;
 
+    float puffyGamePos;
     float puffyStart = -17;
-    float moveSpeed = 0.05f;
+    float moveSpeed = 0.07f;
 
     [SerializeField, Range(0.1f, 2)]
     float CinimaticSeconds;
 
-    GameObject CinamaticBars;
+    GameObject CinamaticBars, Timer;
 
     enum startAnimationState { DriveOnScreen, JumpBack, GameStart }
     [SerializeField]startAnimationState Animation;
@@ -33,11 +34,18 @@ public class TutorialController : MonoBehaviour
             return;
         }
 
-        Instantiate(animationObject, new Vector2(-9,0), Quaternion.Euler(0, 0, -90));
-
         Puffy = GameObject.Find("Player");
         Puffy.GetComponent<PlayerScript>().enabled = false;
+
+        puffyGamePos = Puffy.transform.position.x;
+        Instantiate(animationObject, new Vector2(puffyGamePos + 1.5f, 0), Quaternion.Euler(0, 0, -90));
+
         Puffy.transform.position = new Vector2(puffyStart, 0);
+
+        Timer = GameObject.Find("Timer");
+        Timer.SetActive(false);
+
+        GameObject.Find("Water Swiggles").GetComponent<Animator>().enabled = false;
 
         GameObject Cargo = GameObject.Find("Cargo Objects").transform.GetChild(0).gameObject; 
         Cargo.transform.position = new Vector2(puffyStart - 2, 0); // moves cargo behind puffy
@@ -53,7 +61,7 @@ public class TutorialController : MonoBehaviour
         {
             case startAnimationState.DriveOnScreen:
                 {
-                    if (Puffy.transform.position.x > -10f)
+                    if (Puffy.transform.position.x > puffyGamePos + 1f)
                     {
                         GameObject.Find("Game Manager").GetComponent<ScoreScript>().score--;
                         Animation = startAnimationState.JumpBack;
@@ -64,15 +72,18 @@ public class TutorialController : MonoBehaviour
                 break;
             case startAnimationState.JumpBack:
                 {
-                    if (Puffy.transform.position.x < -11) Animation = startAnimationState.GameStart;
-                    else Puffy.transform.Translate(new Vector2(0, -moveSpeed * 2));
+                    if (Puffy.transform.position.x < puffyGamePos) Animation = startAnimationState.GameStart;
+                    else Puffy.transform.Translate(new Vector2(0, -moveSpeed * 1.5f));
                 }
                 break;
             case startAnimationState.GameStart:
                 {
-                    Puffy.transform.position = new Vector2(-11, 0);
+                    Puffy.transform.position = new Vector2(puffyGamePos, 0);
                     GameObject.Find("Game Manager").GetComponent<ScoreScript>().enabled = true;
                     Puffy.GetComponent<PlayerScript>().enabled = true;
+
+                    Timer.SetActive(true);
+                    GameObject.Find("Water Swiggles").GetComponent<Animator>().enabled = true;
 
                     StartCoroutine(FadeOutBars());
 
