@@ -62,8 +62,6 @@ public class FilmViewer : MonoBehaviour
         Comic.GetComponent<FilmController>().ComicViewer = ComicViewer; 
         Comic.GetComponent<FilmController>().Comics = Element;
 
-        Comic.GetComponent<FilmController>().FullscreenVideo = FullScreenVideo;
-        Comic.GetComponent<FilmController>().PreviewVideo = PreviewVideo;
         Comic.GetComponent<FilmController>().CreatePreview();
 
         Comic.GetComponent<FilmController>().AppearAnimation = AppearAnimation;
