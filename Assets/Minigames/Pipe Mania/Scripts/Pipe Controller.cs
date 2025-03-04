@@ -47,6 +47,8 @@ public class PipeController : MonoBehaviour
             CorrectRotations |= GetCorrectRotations((int)(transform.eulerAngles.z + 270));
         }
         else Debug.LogError("Invalid Sprite? " + Sprite.ToString());
+
+        transform.parent.parent.GetComponent<PipeLayout>().OrderedLeaks();
     }
 
     void Start()
@@ -84,6 +86,7 @@ public class PipeController : MonoBehaviour
                     CheckIfCorrect();
                     // Checks if solved & stops audio when fixed
                     transform.parent.parent.GetComponent<PipeLayout>().CheckPipes();
+                    
                 }
             }
             else
@@ -128,6 +131,7 @@ public class PipeController : MonoBehaviour
         {
             solved = true;
             transform.parent.parent.GetComponent<PipeLayout>().CheckPipes();
+            transform.parent.parent.GetComponent<PipeLayout>().OrderedLeaks();
         }
         else solved = false;
     }

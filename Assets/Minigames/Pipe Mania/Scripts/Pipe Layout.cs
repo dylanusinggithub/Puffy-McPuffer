@@ -15,6 +15,8 @@ public class PipeLayout : MonoBehaviour
 
     [SerializeField] LevelSettings[] Levels;
 
+    public ParticleSystem drip;
+    private Dictionary<Transform, ParticleSystem> activeLeaks = new Dictionary<Transform, ParticleSystem>();
     void Awake()
     {
         int LevelIndex = PlayerPrefs.GetInt("difficulty", 0);
@@ -99,6 +101,39 @@ public class PipeLayout : MonoBehaviour
         WinScren.SetActive(true);
         GameObject.Find("Pause Icon").SetActive(false);
         this.enabled = false;
+    }
+
+    public void OrderedLeaks()
+    {
+        bool Solved = true;
+        foreach (Transform child in transform.GetChild(0).GetComponentInChildren<Transform>())
+        {
+            PipeController pipe = child.GetComponent<PipeController>();
+            if (pipe != null)
+            {
+                
+                if (!pipe.solved)
+                {
+                    Solved = false;
+                    if (!activeLeaks.ContainsKey(child)) 
+                    {
+                        ParticleSystem newParticle = Instantiate(drip, child.position + new Vector3(0.8f, 0f, 0f), Quaternion.identity);
+                        newParticle.Play();
+                        activeLeaks.Add(child, newParticle); 
+                    }
+                    return; 
+                }
+               
+                else if (pipe.solved && activeLeaks.ContainsKey(child))
+                {
+                    activeLeaks[child].Stop();
+                    Destroy(activeLeaks[child].gameObject); 
+                    activeLeaks.Remove(child);
+                }
+            }
+        }
+
+        if (!Solved) return;
     }
 
     [System.Serializable]

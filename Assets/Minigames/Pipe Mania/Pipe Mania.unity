@@ -1499,10 +1499,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.00052908063
-    y: 0
-    width: 0.99894184
-    height: 1
+    x: 0
+    y: 0.0004911721
+    width: 1
+    height: 0.99901766
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -2212,6 +2212,7 @@ MonoBehaviour:
     BrokenPipesCount: 2
     Layouts:
     - {fileID: 4855246425472736739, guid: b1af7d574eb654043990692f2eba97c9, type: 3}
+  drip: {fileID: 5521459353906145027, guid: 12f2e5e20b7c47948b885f0d8a002c08, type: 3}
 --- !u!82 &1784068080
 AudioSource:
   m_ObjectHideFlags: 0
