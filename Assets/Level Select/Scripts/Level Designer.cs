@@ -1,17 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.Video;
 
 public class LevelDesigner : MonoBehaviour
 {
-
-    [SerializeField] RenderTexture VideoCanvas;
-
     [SerializeField] int levelIndex;
     [SerializeField] int minigameIndex;
     int comicIndex = 0;
@@ -225,36 +220,7 @@ public class LevelDesigner : MonoBehaviour
 
             case "VideoClip":
                 {
-                    Debug.LogError("Please Put the video into StreamingAssets Folder!");
-                }
-                break;
-
-            case "DefaultAsset":
-                {
-                    // Create Video Player
-                    GOComic.AddComponent<VideoPlayer>();
-                    VideoPlayer VP = GOComic.GetComponent<VideoPlayer>();
-                    VP.url = AssetDatabase.GetAssetPath((UnityEngine.Object)Comic); // Grabs the file location of the clip
-                    VP.isLooping = true;
-
-                    VP.SetDirectAudioVolume(0, PlayerPrefs.GetFloat("Volume", 1));
-                    VP.targetTexture = VideoCanvas;
-
-                    // Create the image the video will be playing to
-                    GOComic.AddComponent<RawImage>();
-                    GOComic.GetComponent<RawImage>().texture = VideoCanvas;
-
-                    GOComic.GetComponent<RectTransform>().sizeDelta = Vector2.zero;
-                    GOComic.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-                    GOComic.GetComponent<RectTransform>().anchorMax = Vector2.one;
-                    GOComic.GetComponent<RectTransform>().anchorMin = Vector2.zero;
-
-                    GOComic.transform.localScale = Vector3.one;
-
-                    // Makes GOComic advance whenever clicked
-                    GOComic.AddComponent<Button>();
-                    GOComic.GetComponent<Button>().onClick.AddListener(NextLevel);
-                    GOComic.GetComponent<Button>().transition = Selectable.Transition.None;
+                    Debug.LogError("Video is no longer supported </3");
                 }
                 break;
 

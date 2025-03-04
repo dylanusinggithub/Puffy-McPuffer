@@ -10,8 +10,6 @@ public class FilmViewer : MonoBehaviour
     [SerializeField] GameObject Film;
     [SerializeField] AnimationClip AppearAnimation;
 
-    [SerializeField] RenderTexture FullScreenVideo, PreviewVideo;
-
     GameObject Level, ComicViewer;
 
 

@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.Video;
 using Object = UnityEngine.Object;
 
 public class FilmController : MonoBehaviour, IPointerClickHandler
@@ -12,8 +10,6 @@ public class FilmController : MonoBehaviour, IPointerClickHandler
     public GameObject ComicViewer;
     public List<Object> Comics;
     int ComicIndex = 0;
-
-    public RenderTexture PreviewVideo, FullscreenVideo;
 
     public AnimationClip AppearAnimation;
     Vector2 Size = new Vector2(1500, 844);
@@ -41,23 +37,7 @@ public class FilmController : MonoBehaviour, IPointerClickHandler
                 break;
             case "VideoClip":
                 {
-                    Debug.LogError("Please Use StreamingAssets! WebGL can't play videos otherwise");
-                }
-                break;
-            case "DefaultAsset":
-                {
-                    // Create Video Player
-                    gameObject.AddComponent<VideoPlayer>();
-                    VideoPlayer VP = GetComponent<VideoPlayer>();
-                    VP.url = AssetDatabase.GetAssetPath(Comics[ComicIndex]);
-                    VP.isLooping = true;
-
-                    VP.SetDirectAudioVolume(0, 0); // Mutes it
-                    VP.targetTexture = PreviewVideo;
-
-                    // Create the image the video will be playing to
-                    gameObject.AddComponent<RawImage>();
-                    GetComponent<RawImage>().texture = PreviewVideo;
+                    Debug.LogError("Video is no longer supported </3");
                 }
                 break;
         }
@@ -114,29 +94,7 @@ public class FilmController : MonoBehaviour, IPointerClickHandler
                 break;
             case "VideoClip":
                 {
-                    Debug.LogError("Please Use StreamingAssets! WebGL Cannot Play videos Otherwise!");
-                }
-                break;
-            case "DefaultAsset":
-                {
-                    // Create Video Player
-                    GOComic.AddComponent<VideoPlayer>();
-                    VideoPlayer VP = GOComic.GetComponent<VideoPlayer>();
-                    VP.url = AssetDatabase.GetAssetPath(Comics[ComicIndex]);
-                    VP.isLooping = true;
-
-                    VP.SetDirectAudioVolume(0, PlayerPrefs.GetFloat("Volume", 1));
-                    VP.targetTexture = FullscreenVideo;
-
-                    // Create the image the video will be playing to
-                    GOComic.AddComponent<RawImage>();
-                    GOComic.GetComponent<RawImage>().texture = FullscreenVideo;
-
-                    GOComic.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-                    GOComic.GetComponent<RectTransform>().sizeDelta = Size;
-                    GOComic.GetComponent<RectTransform>().localScale = Vector2.one;
-
-                    GOComic.transform.localScale = Vector3.one;
+                    Debug.LogError("Video is no longer supported </3");
                 }
                 break;
         }
