@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PressMeToSetLevelIndex: 0
-  levelIndex: 1
+  levelIndex: 2
   Levels:
   - GameplayTime: 30
     CreateCompletion: 5
@@ -289,17 +289,18 @@ MonoBehaviour:
     - {fileID: 7793173836862348141, guid: 312af510616b0604692d0524a29b24a5, type: 3}
     - {fileID: 2723156374974615379, guid: 3e6dd6ff2d2608743ac69c7bdc7ef71c, type: 3}
     - {fileID: 5117915890332995674, guid: 1ec9720cee40dc24d98e63fe137ab146, type: 3}
-  - GameplayTime: 27
+  - GameplayTime: 35
     CreateCompletion: 8
     ExtraCreates: 5
     LevelSpeed: 2
-    LayoutSeperation: 20
+    LayoutSeperation: 25
     Layouts:
-    - {fileID: 658318910959143042, guid: 2e22f93802da1074cac1c91e7ede2dcd, type: 3}
     - {fileID: 7159862058339159186, guid: b5fdcbbc5f7da88409aee0458cc8474b, type: 3}
+    - {fileID: 658318910959143042, guid: 2e22f93802da1074cac1c91e7ede2dcd, type: 3}
     - {fileID: 6922145835368533052, guid: 3f31a9e4bedc909498c065021fd90ec5, type: 3}
-    - {fileID: 2357665773328269852, guid: 73788ba1807992248a40024b2ced088e, type: 3}
+    - {fileID: 2357665773328269852, guid: 12f6c86d2fe08e843908681c57e054a8, type: 3}
     - {fileID: 6392660177088936827, guid: 4d9498cdf9e0a524d939f25efe7adc17, type: 3}
+    - {fileID: 2357665773328269852, guid: 73788ba1807992248a40024b2ced088e, type: 3}
   - GameplayTime: 25
     CreateCompletion: 5
     ExtraCreates: 5
@@ -1175,9 +1176,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.0850237
     y: 0
-    width: 1
+    width: 0.8299526
     height: 1
   near clip plane: 0.3
   far clip plane: 1000

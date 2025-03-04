@@ -145,7 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomiseScale: 0
   bobbingRotation: 0
-  bobbingUpwards: 0
+  bobbingUpwards: 1
   startSpeed: 0
   isHardmode: 0
   HardModeColor: {r: 1, g: 1, b: 1, a: 1}
