@@ -3491,9 +3491,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.00052908063
+    x: 0.0850237
     y: 0
-    width: 0.99894184
+    width: 0.8299526
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -4031,7 +4031,7 @@ MonoBehaviour:
   minigameIndex: 0
   Levels:
   - StartScreen:
-    - {fileID: 32900000, guid: db82d4b7bac7b7744a1e0c23ac80318a, type: 3}
+    - {fileID: 102900000, guid: db82d4b7bac7b7744a1e0c23ac80318a, type: 3}
     Sequence:
     - minigames: 1
       difficulty: 0
