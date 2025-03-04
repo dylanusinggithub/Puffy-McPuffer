@@ -1175,9 +1175,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.00068587065
     y: 0
-    width: 1
+    width: 0.99862826
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -2726,7 +2726,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 21, y: 23}
+  m_AnchoredPosition: {x: 21.000015, y: 23}
   m_SizeDelta: {x: 814.33, y: 94}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1087146437
@@ -2758,8 +2758,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4611,12 +4611,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 1645979031}
     m_Modifications:
     - target: {fileID: 3034071828518028748, guid: 9bf79aafec83e324592c31a93ef1de41, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.9458751
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034071828518028748, guid: 9bf79aafec83e324592c31a93ef1de41, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.88900006
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034071828518028748, guid: 9bf79aafec83e324592c31a93ef1de41, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.90356255
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034071828518028748, guid: 9bf79aafec83e324592c31a93ef1de41, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.82900006
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034071828518028748, guid: 9bf79aafec83e324592c31a93ef1de41, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 38.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034071828518028748, guid: 9bf79aafec83e324592c31a93ef1de41, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034071828518028748, guid: 9bf79aafec83e324592c31a93ef1de41, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -150
+      value: 4.25
       objectReference: {fileID: 0}
     - target: {fileID: 3034071828518028748, guid: 9bf79aafec83e324592c31a93ef1de41, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -100
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 4022123281186613650, guid: 9bf79aafec83e324592c31a93ef1de41, type: 3}
       propertyPath: m_Name
