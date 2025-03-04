@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -40,10 +41,15 @@ public class FilmController : MonoBehaviour, IPointerClickHandler
                 break;
             case "VideoClip":
                 {
+                    Debug.LogError("Please Use StreamingAssets! WebGL can't play videos otherwise");
+                }
+                break;
+            case "DefaultAsset":
+                {
                     // Create Video Player
                     gameObject.AddComponent<VideoPlayer>();
                     VideoPlayer VP = GetComponent<VideoPlayer>();
-                    VP.clip = (VideoClip)Comics[ComicIndex];
+                    VP.url = AssetDatabase.GetAssetPath(Comics[ComicIndex]);
                     VP.isLooping = true;
 
                     VP.SetDirectAudioVolume(0, 0); // Mutes it
@@ -108,10 +114,15 @@ public class FilmController : MonoBehaviour, IPointerClickHandler
                 break;
             case "VideoClip":
                 {
+                    Debug.LogError("Please Use StreamingAssets! WebGL Cannot Play videos Otherwise!");
+                }
+                break;
+            case "DefaultAsset":
+                {
                     // Create Video Player
                     GOComic.AddComponent<VideoPlayer>();
                     VideoPlayer VP = GOComic.GetComponent<VideoPlayer>();
-                    VP.clip = (VideoClip)Comics[ComicIndex];
+                    VP.url = AssetDatabase.GetAssetPath(Comics[ComicIndex]);
                     VP.isLooping = true;
 
                     VP.SetDirectAudioVolume(0, PlayerPrefs.GetFloat("Volume", 1));

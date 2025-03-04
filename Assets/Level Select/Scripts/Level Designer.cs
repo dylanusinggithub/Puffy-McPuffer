@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -224,10 +225,16 @@ public class LevelDesigner : MonoBehaviour
 
             case "VideoClip":
                 {
+                    Debug.LogError("Please Put the video into StreamingAssets Folder!");
+                }
+                break;
+
+            case "DefaultAsset":
+                {
                     // Create Video Player
                     GOComic.AddComponent<VideoPlayer>();
                     VideoPlayer VP = GOComic.GetComponent<VideoPlayer>();
-                    VP.clip = (VideoClip)Comic;
+                    VP.url = AssetDatabase.GetAssetPath((UnityEngine.Object)Comic); // Grabs the file location of the clip
                     VP.isLooping = true;
 
                     VP.SetDirectAudioVolume(0, PlayerPrefs.GetFloat("Volume", 1));
