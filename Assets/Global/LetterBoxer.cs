@@ -1,24 +1,18 @@
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEngine.UI.CanvasScaler;
 
 // Taken Entirely From https://www.youtube.com/watch?v=PClWqhfQlpU
 // Would've done something myself but this is perfect
 public class LetterBoxer : MonoBehaviour
 {
     Vector2 OldScreenRes = Vector2.zero;
-
-    [SerializeField] bool PressMeToLetterBox;
-
     void FixedUpdate()
     {
         if (OldScreenRes != new Vector2(Screen.width, Screen.height)) EditViewport();
     }
 
-    void OnValidate() // Also works for on start
-    {   
-        EditViewport();
-        PressMeToLetterBox = false;
+    private void Awake()
+    {
+        this.enabled = true;
     }
 
     void EditViewport()

@@ -1176,9 +1176,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.19031864
+    x: 0
     y: 0
-    width: 0.6193627
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -1266,12 +1266,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 431539282}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47bfdf258cae7f2408eab063458f1ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PressMeToLetterBox: 0
 --- !u!4 &445607703 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9131509017495206388, guid: b39fb99a320afa74aba945288cac7e3a, type: 3}
@@ -2727,7 +2726,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 20.999924, y: 39}
+  m_AnchoredPosition: {x: 21, y: 39}
   m_SizeDelta: {x: 814.33, y: 94}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1087146437

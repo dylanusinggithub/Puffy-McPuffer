@@ -4589,9 +4589,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.2677732
+    x: 0
     y: 0
-    width: 0.46445355
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -4679,12 +4679,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1811805408}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47bfdf258cae7f2408eab063458f1ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PressMeToLetterBox: 0
 --- !u!1 &1850577135
 GameObject:
   m_ObjectHideFlags: 0
