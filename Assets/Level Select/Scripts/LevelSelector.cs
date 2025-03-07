@@ -21,8 +21,6 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     bool openingLevel = false;
     [HideInInspector] public bool MouseMoved = false;
 
-    float UnravelCountdown;
-
     private void Start()
     {
         ComicPanel = GameObject.Find("Comic Panels");
@@ -108,7 +106,6 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void OnPointerEnter(PointerEventData eventData)
     {
         MouseMoved = false;
-        UnravelCountdown = 1;
 
         // If Button is disabled or Preview doesn't exist don't show
         if (!GetComponent<Button>().enabled || LevelPreview == null || openingLevel) return; 
