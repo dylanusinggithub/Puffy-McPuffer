@@ -10,6 +10,7 @@ TagManager:
   - Collectable
   - Pipe
   - Particle
+  - Wall
   layers:
   - Default
   - TransparentFX
