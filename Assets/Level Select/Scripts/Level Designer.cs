@@ -73,6 +73,19 @@ public class LevelDesigner : MonoBehaviour
         StartLevel();
     }
 
+    public void StartMinigame(int MinigameIndex, int LevelIndex)
+    {
+        if (LevelIndex >= Levels.Length) Debug.LogError("Invalid Level Index! This Level Does Not Exist");
+        else if (MinigameIndex >= Levels[LevelIndex].Sequence.Length) Debug.LogError("Invalid Minigame Index!");
+        else
+        {
+            minigameIndex = MinigameIndex;
+            levelIndex = LevelIndex;
+
+            LoadLevel();
+        }
+    }
+
     public void StartLevel(int LevelNumber)
     {
         if (LevelNumber >= Levels.Length) Debug.LogError("Invalid Level Index! This Level Does Not Exist");
