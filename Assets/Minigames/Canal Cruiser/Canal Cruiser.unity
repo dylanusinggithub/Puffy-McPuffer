@@ -1176,9 +1176,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.0850237
+    x: 0.19031864
     y: 0
-    width: 0.8299526
+    width: 0.6193627
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -3887,7 +3887,7 @@ GameObject:
   - component: {fileID: 1687105926}
   - component: {fileID: 1687105925}
   m_Layer: 5
-  m_Name: Retry
+  m_Name: Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
