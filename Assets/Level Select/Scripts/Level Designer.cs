@@ -230,6 +230,12 @@ public class LevelDesigner : MonoBehaviour
 
                     GOComic = Instantiate((GameObject)Comic);
                     GOComic.transform.parent = transform;
+
+                    GOComic.AddComponent<PopupController>();
+
+                    GOComic.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                    GOComic.GetComponent<RectTransform>().sizeDelta = new Vector2(1920, 1080);
+                    GOComic.GetComponent<RectTransform>().localScale = Vector2.one;
                 }
                 break;
 

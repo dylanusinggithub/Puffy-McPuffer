@@ -90,8 +90,6 @@ public class ObjectScript : MonoBehaviour
             else if (bobbingUpwardsCount < -100) goUp = false;
 
             transform.position += new Vector3(0, (float)bobbingUpwardsCount / 10000, 0);
-
-            print(bobbingUpwardsCount);
         }
     }
 
