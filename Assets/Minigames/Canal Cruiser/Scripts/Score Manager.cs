@@ -8,11 +8,24 @@ public class ScoreScript : MonoBehaviour
     TextMeshProUGUI scoreText, timeText;
 
     [Header("Gameplay")]
+
+    [SerializeField, Range(0f, 50f)]
+    public int timeWin;
+
     [SerializeField, Range(0f, 20f)]
     public int scoreWin;
 
     [SerializeField]
     public int score = 1;
+    int oldScore = -1; // So on start it generates the Ui
+
+    [Header("Score UI")]
+    Transform ScoreUI;
+
+    [SerializeField]
+    GameObject NormalCreate, DisabledCreate;
+
+    [Header("UI")]
 
     [SerializeField]
     GameObject youWin;
@@ -20,8 +33,6 @@ public class ScoreScript : MonoBehaviour
     [SerializeField]
     GameObject gameOver;
 
-    [SerializeField, Range(0f, 50f)]
-    public int timeWin;
     Slider timeSlider;
     RawImage timerWater;
 
@@ -33,7 +44,7 @@ public class ScoreScript : MonoBehaviour
 
         timerWater = GameObject.Find("Timer").transform.GetChild(0).GetChild(1).GetComponent<RawImage>();
 
-        scoreText = GameObject.Find("Cargo Counter").GetComponent<TextMeshProUGUI>();
+        ScoreUI = GameObject.Find("Score Counter").transform.GetChild(0);
     }
 
     void FixedUpdate()
@@ -45,7 +56,39 @@ public class ScoreScript : MonoBehaviour
         }
         else Die();
 
-        scoreText.text = "Cargo Collected: " + score.ToString() + "/ " + scoreWin.ToString();
+        // If Score has Changed
+        if (score != oldScore)
+        {
+
+            foreach (Transform child in ScoreUI.GetComponentInChildren<Transform>()) Destroy(child.gameObject);
+
+            for (int i = 0; i < score && i < scoreWin; i++) Instantiate(NormalCreate, ScoreUI);
+
+            for (int i = score; i < scoreWin; i++) Instantiate(DisabledCreate, ScoreUI);
+
+            // If score is greater than the completition threshold then display bonus text
+            // else hide bonus text and play the creates animation
+            if (score > scoreWin) 
+            {
+                ScoreUI.parent.GetChild(1).gameObject.SetActive(true);
+                ScoreUI.parent.GetComponentInChildren<TextMeshProUGUI>().text = (score - scoreWin).ToString() + "+";
+            }
+            else
+            {
+                ScoreUI.parent.GetChild(1).gameObject.SetActive(false);
+
+                if (0 < oldScore)
+                {
+                    if (ScoreUI.GetChild(oldScore).name.Contains("Disabled"))
+                    {
+                        ScoreUI.GetChild(oldScore).GetComponent<Animator>().SetTrigger("Disappear");
+                    }
+                    else ScoreUI.GetChild(score - 1).GetComponent<Animator>().SetTrigger("Appear");
+                }
+            }
+
+            oldScore = score;
+        }
     }
 
     public void Die()

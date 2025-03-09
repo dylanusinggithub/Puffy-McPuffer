@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -41,9 +40,6 @@ public class LevelGenerator : MonoBehaviour
 
         // 2 is the speed it is pegged at so if the levelSpeed is 1.75f then it'll play at 75% speed
         GameObject.Find("Water Swiggles").GetComponent<Animator>().SetFloat("Speed", Levels[levelIndex].LevelSpeed / 2); 
-
-        TextMeshProUGUI scoreText = GameObject.Find("Cargo Counter").GetComponent<TextMeshProUGUI>();
-        scoreText.text = "Cargo Collected: 0 / " + Levels[levelIndex].CreateCompletion;
 
         // Places each layout in order
         for (int i = 0; i < Levels[levelIndex].Length; i++)
