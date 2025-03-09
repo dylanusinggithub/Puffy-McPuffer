@@ -83,7 +83,7 @@ public class ScoreScript : MonoBehaviour
                     {
                         ScoreUI.GetChild(oldScore).GetComponent<Animator>().SetTrigger("Disappear");
                     }
-                    else ScoreUI.GetChild(score - 1).GetComponent<Animator>().SetTrigger("Appear");
+                    else ScoreUI.GetChild(oldScore).GetComponent<Animator>().SetTrigger("Appear");
                 }
             }
 
