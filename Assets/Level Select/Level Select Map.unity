@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 133492528}
   - component: {fileID: 133492527}
   m_Layer: 5
-  m_Name: SmallCloud TL
+  m_Name: SmallCloud01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -611,6 +611,7 @@ MonoBehaviour:
   LevelIndex: 0
   LevelPreview: {fileID: 1081310224015781113, guid: 0ab694c71ef667541865dd3a437f7b40, type: 3}
   LevelButton: {fileID: 2123323418384179155, guid: a5b7c782365d1074d8f319bc20058a25, type: 3}
+  MouseMoved: 0
 --- !u!114 &319708814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -759,6 +760,7 @@ MonoBehaviour:
   LevelIndex: 4
   LevelPreview: {fileID: 1081310224015781113, guid: 0ab694c71ef667541865dd3a437f7b40, type: 3}
   LevelButton: {fileID: 2123323418384179155, guid: a5b7c782365d1074d8f319bc20058a25, type: 3}
+  MouseMoved: 0
 --- !u!114 &535209957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1338,6 +1340,7 @@ MonoBehaviour:
   LevelIndex: 2
   LevelPreview: {fileID: 0}
   LevelButton: {fileID: 2123323418384179155, guid: a5b7c782365d1074d8f319bc20058a25, type: 3}
+  MouseMoved: 0
 --- !u!114 &800668436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1981,6 +1984,7 @@ MonoBehaviour:
   LevelIndex: 1
   LevelPreview: {fileID: 0}
   LevelButton: {fileID: 2123323418384179155, guid: a5b7c782365d1074d8f319bc20058a25, type: 3}
+  MouseMoved: 0
 --- !u!1 &1063657858
 GameObject:
   m_ObjectHideFlags: 0
@@ -2087,7 +2091,7 @@ GameObject:
   - component: {fileID: 1152966202}
   - component: {fileID: 1152966201}
   m_Layer: 5
-  m_Name: SmallCloud TR
+  m_Name: SmallCloud03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2368,7 +2372,7 @@ GameObject:
   - component: {fileID: 1195978910}
   - component: {fileID: 1195978909}
   m_Layer: 5
-  m_Name: SmallCloud0 BL
+  m_Name: SmallCloud02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3630,6 +3634,7 @@ MonoBehaviour:
   LevelIndex: 3
   LevelPreview: {fileID: 2800000, guid: 8ca0182d980056648953da34f865be98, type: 3}
   LevelButton: {fileID: 2123323418384179155, guid: a5b7c782365d1074d8f319bc20058a25, type: 3}
+  MouseMoved: 0
 --- !u!114 &1730227574
 MonoBehaviour:
   m_ObjectHideFlags: 0
