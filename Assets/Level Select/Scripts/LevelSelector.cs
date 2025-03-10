@@ -117,7 +117,7 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         Preview.AddComponent<PreviewController>();
 
-        Preview.GetComponent<RectTransform>().anchoredPosition = new Vector2(-300, -60);
+        Preview.GetComponent<RectTransform>().anchoredPosition = new Vector2(-300, -100);
         Preview.GetComponent<RectTransform>().localScale = Vector3.one * 2.5f;
 
         if (PlayerPrefs.GetInt("Levels Unlocked", 0) > LevelIndex) StartCoroutine(DisplayButton());
