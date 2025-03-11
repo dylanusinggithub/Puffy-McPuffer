@@ -54,7 +54,11 @@ public class AnimationScript : MonoBehaviour
 
             GetComponent<NEWLockBalancing>().state = NEWLockBalancing.GameState.Play;
         }
-        else createText.GetComponent<TextMeshProUGUI>().text = "Intro Tutorial";
+        else
+        {
+            createText.GetComponent<TextMeshProUGUI>().text = "Intro Tutorial";
+            createText.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -200, 0);
+        }
     }
 
     // Update is called once per frame
@@ -111,6 +115,8 @@ public class AnimationScript : MonoBehaviour
                         state = Animation.SpawnObstacle;
 
                         timeWait = 1.5f;
+
+                        createText.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -130, 0);
 
                         GetComponent<NEWLockBalancing>().CollectObject(Create);
 

@@ -81,7 +81,7 @@ public class PuffyController : MonoBehaviour
         CheckCollison();
 
         // Flip Puffy depenidng on where they're facing
-        if (transform.position.x < 0) GetComponent<SpriteRenderer>().flipX = false;
+        if (transform.position.x < 0.1f) GetComponent<SpriteRenderer>().flipX = false;
         else GetComponent<SpriteRenderer>().flipX = true;
 
         // Flashes Puffy whenever hurt
@@ -135,9 +135,9 @@ public class PuffyController : MonoBehaviour
         GetComponent<AudioSource>().volume = HitVol * PlayerPrefs.GetFloat("Volume", 1);
         GetComponent<AudioSource>().Play();
 
-        GetComponent<Animator>().SetTrigger("Hit"); //plays animation when hit :)
-
         Destroy(Instantiate(HitParticle, transform.localPosition + new Vector3(-1.2f, -0.2f), Quaternion.identity, transform), 1);
+
+        StartCoroutine(PlayAnimation());
 
         int Smoothness = 60;
         float Seconds = 1;
@@ -159,6 +159,14 @@ public class PuffyController : MonoBehaviour
         isHit = false;
     }
 
+    IEnumerator PlayAnimation()
+    {
+        transform.parent.GetComponent<Animator>().enabled = true;
+        transform.parent.GetComponent<Animator>().SetTrigger("Hit");
+        yield return new WaitForSeconds(1);
+        transform.parent.GetComponent<Animator>().enabled = false;
+    }
+
     // Hit by obstacle
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -178,9 +186,10 @@ public class PuffyController : MonoBehaviour
 
         if (collision.gameObject.tag == "Obstacle")
         {
-            GetComponent<Animator>().SetTrigger("Hit"); //plays animation when hit :)
+            StartCoroutine(PlayAnimation());
+
             collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 5);
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 3);
             collision.gameObject.GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-30, 30);
         }
         else Destroy(collision.gameObject);

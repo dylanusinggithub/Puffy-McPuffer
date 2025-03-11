@@ -81,7 +81,7 @@ public class WaterController : MonoBehaviour
         boatRotation = -Puffy.transform.position.x * ((float)strengthR / 100);
 
         Puffy.transform.position = new Vector2(boatTransformX , boatTransformY + waterHeight);
-        Puffy.transform.eulerAngles = new Vector3(0, 0, boatRotation);
+        Puffy.transform.eulerAngles += new Vector3(0, 0, boatRotation);
     }
 
     // get called from Puffy Controller
