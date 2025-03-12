@@ -97,12 +97,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99806650f432976458c580a4a1c09726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFixed: 0
   IPieces:
   - Normal: {fileID: 21300000, guid: 934162d509d4bfb47bf0a9a9f7df4f21, type: 3}
     Broken: {fileID: 21300000, guid: 3e68466cf21799d46895f3e87b50809b, type: 3}
-    Fixed: {fileID: 21300000, guid: cf391b5fc16aa2c4e849068c5b9a1912, type: 3}
+    Repaired: {fileID: 21300000, guid: cf391b5fc16aa2c4e849068c5b9a1912, type: 3}
+    Fixed: {fileID: 0}
   Corner: []
   TPieces: []
   Crosses: []
   Broken: {fileID: 0}
-  Fixed: {fileID: 0}
+  Repaired: {fileID: 0}

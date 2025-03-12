@@ -6,11 +6,14 @@ public class PipeEditor : MonoBehaviour
 {
     Vector3 oldPos = Vector2.zero;
 
+    [SerializeField] public bool isFixed;
+
     [System.Serializable]
     public class Pieces
     {
         public Sprite Normal;
         public Sprite Broken;
+        public Sprite Repaired;
         public Sprite Fixed;
     }
 
@@ -19,7 +22,7 @@ public class PipeEditor : MonoBehaviour
     [SerializeField] Pieces[] TPieces;
     [SerializeField] Pieces[] Crosses;
 
-    public Sprite Broken, Fixed;
+    public Sprite Broken, Repaired;
 
     private void Awake()
     {
@@ -30,9 +33,11 @@ public class PipeEditor : MonoBehaviour
         {
             int randomIndex = Random.Range(0, IPieces.Length);
 
-            SP.sprite = IPieces[randomIndex].Normal;
+            if(isFixed) SP.sprite = IPieces[randomIndex].Fixed;
+            else SP.sprite = IPieces[randomIndex].Normal;
+
             Broken = IPieces[randomIndex].Broken;
-            Fixed = IPieces[randomIndex].Fixed;
+            Repaired = IPieces[randomIndex].Repaired;
 
             transform.localScale = new Vector3(transform.localScale.x * RandomPos(), transform.localScale.y * RandomPos(), 1); // Pos/Neg scale in both axises
         }
@@ -40,28 +45,33 @@ public class PipeEditor : MonoBehaviour
         {
             int randomIndex = Random.Range(0, Corner.Length);
 
-            SP.sprite = Corner[randomIndex].Normal;
+            if (isFixed) SP.sprite = IPieces[randomIndex].Fixed;
+            else SP.sprite = IPieces[randomIndex].Normal;
+
             Broken = Corner[randomIndex].Broken;
-            Fixed = Corner[randomIndex].Fixed;
+            Repaired = Corner[randomIndex].Repaired;
         }
         else if (sprite.Contains("T Piece"))
         {
             int randomIndex = Random.Range(0, TPieces.Length);
 
-            SP.sprite = TPieces[randomIndex].Normal;
+            if (isFixed) SP.sprite = IPieces[randomIndex].Fixed;
+            else SP.sprite = IPieces[randomIndex].Normal;
+
             Broken = TPieces[randomIndex].Broken;
-            Fixed = TPieces[randomIndex].Fixed;
+            Repaired = TPieces[randomIndex].Repaired;
 
             transform.localScale = new Vector3(transform.localScale.x * RandomPos(), transform.localScale.y, 1); // Pos/Neg scale only horizontally
         }
         else if (sprite.Contains("Cross"))
         {
             int randomIndex = Random.Range(0, Crosses.Length);
-            
-            SP.sprite = Crosses[randomIndex].Normal;
+
+            if (isFixed) SP.sprite = IPieces[randomIndex].Fixed;
+            else SP.sprite = IPieces[randomIndex].Normal;
 
             Broken = Crosses[randomIndex].Broken;
-            Fixed = Crosses[randomIndex].Fixed;
+            Repaired = Crosses[randomIndex].Repaired;
 
             // Pos/Neg scale in both axises & rotate in any direction
             transform.localScale *= RandomPos();
@@ -120,12 +130,16 @@ class PipeEditorInspector : Editor
     SerializedProperty TPieces;
     SerializedProperty Crosses;
 
+    SerializedProperty isFixed;
+
     void OnEnable()
     {
         IPieces = serializedObject.FindProperty("IPieces");
         Corner = serializedObject.FindProperty("Corner");
         TPieces = serializedObject.FindProperty("TPieces");
         Crosses = serializedObject.FindProperty("Crosses");
+
+        isFixed = serializedObject.FindProperty("isFixed");
     }
 
     public override void OnInspectorGUI()
@@ -138,6 +152,8 @@ class PipeEditorInspector : Editor
 
         string Sprite = this.target.name.ToLower();
 
+        EditorGUILayout.PropertyField(isFixed, true);
+        isFixed.serializedObject.ApplyModifiedProperties();
 
         if (Sprite.Contains("i piece"))
         {

@@ -8,7 +8,9 @@ public class PipeController : MonoBehaviour
     public bool solved = false;
     public int broken = 0;
 
-    Sprite BrokenSprite, FixedSprite;
+    public bool isFixed;
+
+    Sprite BrokenSprite, RepairedSprite;
 
     public AudioClip RegularPipe, BrokePipe;
     float initalVolume;
@@ -22,7 +24,9 @@ public class PipeController : MonoBehaviour
     void Awake()
     {
         BrokenSprite = GetComponent<PipeEditor>().Broken;
-        FixedSprite = GetComponent<PipeEditor>().Fixed;
+        RepairedSprite = GetComponent<PipeEditor>().Repaired;
+
+        isFixed = GetComponent<PipeEditor>().isFixed;
 
         string Sprite = GetComponent<SpriteRenderer>().sprite.name;
 
@@ -55,7 +59,7 @@ public class PipeController : MonoBehaviour
     {
         initalVolume = GetComponent<AudioSource>().volume;
 
-        transform.Rotate(0, 0, Random.Range(0, 3) * 90);
+        if (!isFixed) transform.Rotate(0, 0, Random.Range(0, 3) * 90);
 
         if (broken == 0) CheckIfCorrect();
         else
@@ -81,10 +85,10 @@ public class PipeController : MonoBehaviour
                 broken--;
                 if (broken == 0)
                 {
-                    GetComponent<SpriteRenderer>().sprite = FixedSprite;
+                    GetComponent<SpriteRenderer>().sprite = RepairedSprite;
                     BrokenObject.GetComponent<ParticleSystem>().Stop();
                     CheckIfCorrect();
-                    // Checks if solved & stops audio when fixed
+                    // Checks if solved & stops audio when Repaired
                     transform.parent.parent.GetComponent<PipeLayout>().CheckPipes();
                     
                 }

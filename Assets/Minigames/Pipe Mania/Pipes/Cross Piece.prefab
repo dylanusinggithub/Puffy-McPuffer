@@ -97,30 +97,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99806650f432976458c580a4a1c09726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFixed: 0
   IPieces:
   - Normal: {fileID: 0}
     Broken: {fileID: 0}
+    Repaired: {fileID: 0}
     Fixed: {fileID: 0}
   Corner:
   - Normal: {fileID: 0}
     Broken: {fileID: 0}
+    Repaired: {fileID: 0}
     Fixed: {fileID: 0}
   TPieces:
   - Normal: {fileID: 0}
     Broken: {fileID: 0}
+    Repaired: {fileID: 0}
     Fixed: {fileID: 0}
   - Normal: {fileID: 0}
     Broken: {fileID: 0}
+    Repaired: {fileID: 0}
     Fixed: {fileID: 0}
   - Normal: {fileID: 0}
     Broken: {fileID: 0}
+    Repaired: {fileID: 0}
     Fixed: {fileID: 0}
   - Normal: {fileID: 0}
     Broken: {fileID: 0}
+    Repaired: {fileID: 0}
     Fixed: {fileID: 0}
   Crosses:
   - Normal: {fileID: 21300000, guid: 58145fd17513e324b80707903334d4e2, type: 3}
     Broken: {fileID: 21300000, guid: 2454877284f48104d853b3d10c260252, type: 3}
-    Fixed: {fileID: 21300000, guid: a92acd14b325cbf47b17b36eb9859073, type: 3}
+    Repaired: {fileID: 21300000, guid: a92acd14b325cbf47b17b36eb9859073, type: 3}
+    Fixed: {fileID: 0}
   Broken: {fileID: 0}
-  Fixed: {fileID: 0}
+  Repaired: {fileID: 0}
