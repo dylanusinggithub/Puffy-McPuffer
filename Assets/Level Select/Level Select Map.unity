@@ -3544,10 +3544,6 @@ MonoBehaviour:
       difficulty: 2
       showTutorial: 0
       Cutscene: []
-    - minigames: 1
-      difficulty: 3
-      showTutorial: 0
-      Cutscene: []
 --- !u!82 &1992337078
 AudioSource:
   m_ObjectHideFlags: 0
