@@ -362,6 +362,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fake Water
       objectReference: {fileID: 0}
+    - target: {fileID: 270394267970809006, guid: 3fe42846fb4bc414b84401e88f8f9532, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -483,7 +487,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26882332}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbc3b80a468fe2440854ed4140026ae8, type: 3}
   m_Name: 
@@ -6571,7 +6575,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 663669624}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e8da72638a849494390634d3e8fd0397, type: 2}
   m_CullingMode: 0
@@ -8532,7 +8536,7 @@ Transform:
   m_GameObject: {fileID: 1408217715}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4, y: -3.5, z: 0}
+  m_LocalPosition: {x: 4.2, y: -3.5, z: 0}
   m_LocalScale: {x: 0.365833, y: 0.365833, z: 1.8291651}
   m_ConstrainProportionsScale: 0
   m_Children:

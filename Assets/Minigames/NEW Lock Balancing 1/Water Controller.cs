@@ -13,9 +13,6 @@ public class WaterController : MonoBehaviour
     float strengthY = 0.5f;
     float boatTransformY;
 
-    float strengthR = 1;
-    float boatRotation;
-
     int perlinX = 0;
     int perlinY = 50;
 
@@ -30,7 +27,6 @@ public class WaterController : MonoBehaviour
     float waterPecentage = 0;
 
     GameObject waterObject;
-    GameObject background;
 
     #endregion
 
@@ -78,10 +74,7 @@ public class WaterController : MonoBehaviour
 
         boatTransformY *= strengthY;
 
-        boatRotation = -Puffy.transform.position.x * ((float)strengthR / 100);
-
         Puffy.transform.position = new Vector2(boatTransformX , boatTransformY + waterHeight);
-        Puffy.transform.eulerAngles += new Vector3(0, 0, boatRotation);
     }
 
     // get called from Puffy Controller
