@@ -45,8 +45,8 @@ public class PipeEditor : MonoBehaviour
         {
             int randomIndex = Random.Range(0, Corner.Length);
 
-            if (isFixed) SP.sprite = IPieces[randomIndex].Fixed;
-            else SP.sprite = IPieces[randomIndex].Normal;
+            if (isFixed) SP.sprite = Corner[randomIndex].Fixed;
+            else SP.sprite = Corner[randomIndex].Normal;
 
             Broken = Corner[randomIndex].Broken;
             Repaired = Corner[randomIndex].Repaired;
@@ -55,8 +55,8 @@ public class PipeEditor : MonoBehaviour
         {
             int randomIndex = Random.Range(0, TPieces.Length);
 
-            if (isFixed) SP.sprite = IPieces[randomIndex].Fixed;
-            else SP.sprite = IPieces[randomIndex].Normal;
+            if (isFixed) SP.sprite = TPieces[randomIndex].Fixed;
+            else SP.sprite = TPieces[randomIndex].Normal;
 
             Broken = TPieces[randomIndex].Broken;
             Repaired = TPieces[randomIndex].Repaired;
@@ -67,8 +67,8 @@ public class PipeEditor : MonoBehaviour
         {
             int randomIndex = Random.Range(0, Crosses.Length);
 
-            if (isFixed) SP.sprite = IPieces[randomIndex].Fixed;
-            else SP.sprite = IPieces[randomIndex].Normal;
+            if (isFixed) SP.sprite = Crosses[randomIndex].Fixed;
+            else SP.sprite = Crosses[randomIndex].Normal;
 
             Broken = Crosses[randomIndex].Broken;
             Repaired = Crosses[randomIndex].Repaired;
