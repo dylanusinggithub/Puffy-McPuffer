@@ -2364,23 +2364,23 @@ MonoBehaviour:
   RegularPipe: {fileID: 8300000, guid: 756babea1dfec014eb07a1c6a62ace89, type: 3}
   BrokenPipe: {fileID: 8300000, guid: eb10219782ae4f7419fb0c1859a9fd96, type: 3}
   Levels:
-  - Timer: 30
+  - Timer: 15
     BrokenPipesCount: 2
     Layouts:
     - {fileID: 7032088594832221168, guid: 5ff5e5240ff1e5f4091538a2f9364fad, type: 3}
-  - Timer: 30
+  - Timer: 15
     BrokenPipesCount: 3
     Layouts:
     - {fileID: 5631998103555013080, guid: 0e6adf6482e7f7e4099b82e66d3c7408, type: 3}
-  - Timer: 30
+  - Timer: 18
     BrokenPipesCount: 4
     Layouts:
     - {fileID: 784578062553504973, guid: 55ce69a8ebcc4434a9b64697e7863b44, type: 3}
-  - Timer: 30
+  - Timer: 20
     BrokenPipesCount: 6
     Layouts:
     - {fileID: 586886907954599750, guid: a3206ec7333e330418ed2e92b4138651, type: 3}
-  - Timer: 30
+  - Timer: 22
     BrokenPipesCount: 2
     Layouts:
     - {fileID: 4855246425472736739, guid: b1af7d574eb654043990692f2eba97c9, type: 3}
