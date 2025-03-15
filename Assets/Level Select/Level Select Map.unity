@@ -855,6 +855,7 @@ GameObject:
   - component: {fileID: 631560369}
   - component: {fileID: 631560371}
   - component: {fileID: 631560370}
+  - component: {fileID: 631560372}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -919,6 +920,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 631560368}
   m_CullTransparentMesh: 1
+--- !u!95 &631560372
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631560368}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 92918f7063b0612408e8cdcbb34236bc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &650005574
 GameObject:
   m_ObjectHideFlags: 0
@@ -2152,6 +2174,7 @@ GameObject:
   - component: {fileID: 1502222581}
   - component: {fileID: 1502222583}
   - component: {fileID: 1502222582}
+  - component: {fileID: 1502222584}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -2216,6 +2239,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502222580}
   m_CullTransparentMesh: 1
+--- !u!95 &1502222584
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502222580}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4567a4e45dcc59f4787692085f56d039, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1533568359
 GameObject:
   m_ObjectHideFlags: 0
@@ -2995,7 +3039,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.364}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.7, y: 51.9}
+  m_AnchoredPosition: {x: 13, y: 44.6}
   m_SizeDelta: {x: 60, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1850577137
