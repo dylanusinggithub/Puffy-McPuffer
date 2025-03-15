@@ -31,7 +31,7 @@ public class NEWLockBalancing : MonoBehaviour
 
     float cutsceneSpeed = -0.03f;
 
-    private void Start()
+    private void Awake()
     {
         WB = GetComponent<WaterController>();
 

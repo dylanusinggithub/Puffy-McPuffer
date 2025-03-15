@@ -112,11 +112,11 @@ public class AnimationScript : MonoBehaviour
 
                         Destroy(AudioPlayer, AudioPlayer.GetComponent<AudioSource>().clip.length);
 
+                        createText.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -130, 0);
+
                         state = Animation.SpawnObstacle;
 
                         timeWait = 1.5f;
-
-                        createText.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -130, 0);
 
                         GetComponent<NEWLockBalancing>().CollectObject(Create);
 
