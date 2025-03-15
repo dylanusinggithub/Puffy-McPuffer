@@ -30,8 +30,9 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
             GetComponent<Button>().enabled = false;
 
-            Image[] Children = GetComponentsInChildren<Image>(); // Automatically change the icon to the disabled colour
-            foreach (Image colours in Children) colours.color = GetComponent<Button>().colors.disabledColor;
+            // Disables signs
+            transform.parent.GetComponentInChildren<Animator>().enabled = false;
+            transform.parent.GetComponentInChildren<Image>().color = GetComponent<Button>().colors.disabledColor;
         }
     }
 
