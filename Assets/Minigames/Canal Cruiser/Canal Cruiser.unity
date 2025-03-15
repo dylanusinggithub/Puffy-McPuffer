@@ -659,7 +659,7 @@ MonoBehaviour:
   rotationStrength: 25.3
   movementArea: 5.4
   flashColor: {r: 0, g: 0, b: 0, a: 0}
-  flashSeconds: 0.5
+  flashSeconds: 1
   flashAmount: 10
   obstacleParticle: {fileID: 6697274238594370868, guid: 791a1898a21a4e442b8dfbba505373f1, type: 3}
   HitCruiser: {fileID: 186730358}

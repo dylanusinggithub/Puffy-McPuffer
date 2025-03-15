@@ -41,6 +41,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField, Range(0, 50)]
     float flashAmount;
 
+    bool Invulnerable;
+
     [SerializeField] private ParticleSystem obstacleParticle;
     private ParticleSystem obstacleParticleInstance;
 
@@ -94,13 +96,13 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        int points;
+        int points = 0;
         if (collision.tag == "Collectable")
         {
             points = 1;
             Destroy(collision.gameObject);
         }
-        else
+        else if(!Invulnerable)
         {
             points = -1;
             StartCoroutine(DamageFlash());
@@ -115,6 +117,8 @@ public class PlayerScript : MonoBehaviour
 
     IEnumerator DamageFlash()
     {
+        Invulnerable = true;
+
         for (int i = 0; i < flashSeconds * flashAmount; i++)
         {
             if (i % 2 == 0) GetComponent<SpriteRenderer>().color = flashColor; // changes colour every other time
@@ -123,7 +127,8 @@ public class PlayerScript : MonoBehaviour
             yield return new WaitForSeconds(flashSeconds / flashAmount);
         }
         GetComponent<SpriteRenderer>().color = oldColor;
-        
+
+        Invulnerable = false;
     }
 
     IEnumerator AnimOn()
