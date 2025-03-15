@@ -24,13 +24,8 @@ public class AnimationScript : MonoBehaviour
     float startSpeed = -0.04f;
     Vector2 spawnPos = new Vector2(0, 2);
 
-    [SerializeField, Range(0.1f, 2)]
-    float CinimaticSeconds;
-
-    GameObject CinamaticBars;
-
-    public enum Animation { MoveToCentre, SpawnCreate, WaitCreate, SpawnObstacle, WaitObstacle}
-    public Animation state;
+    public enum AnimationState { MoveToCentre, SpawnCreate, WaitCreate, SpawnObstacle, WaitObstacle}
+    public AnimationState state;
 
     private void Start()
     {
@@ -39,20 +34,18 @@ public class AnimationScript : MonoBehaviour
 
         createText = GameObject.Find("CreateText");
 
-        CinamaticBars = GameObject.Find("Cinematic Bars");
-
-        state = Animation.MoveToCentre;
+        state = AnimationState.MoveToCentre;
 
         if (PlayerPrefs.GetString("showTutorial", "False") == "False")
         {
-            CinamaticBars.SetActive(false);
-            this.enabled = false;
+            GameObject.Find("Cinematic Bars").SetActive(false);
 
-            StartCoroutine(WaitTillPlay());
             GetComponent<WaterController>().enabled = true;
             GetComponent<ObjectDropper>().enabled = true;
 
             GetComponent<NEWLockBalancing>().state = NEWLockBalancing.GameState.Play;
+
+            this.enabled = false;
         }
         else
         {
@@ -66,7 +59,7 @@ public class AnimationScript : MonoBehaviour
     {
         switch (state)
         {
-            case Animation.MoveToCentre:
+            case AnimationState.MoveToCentre:
                 {
                     if (Puffy.transform.position.x < 0)
                     {
@@ -75,12 +68,12 @@ public class AnimationScript : MonoBehaviour
 
                         timeWait = 1.5f;
 
-                        state = Animation.SpawnCreate;
+                        state = AnimationState.SpawnCreate;
                     }
                     Puffy.transform.Translate(new Vector2(startSpeed, 0));
                 }
                 break;
-            case Animation.SpawnCreate:
+            case AnimationState.SpawnCreate:
                 {
                     if (timeWait < 0)
                     {
@@ -91,12 +84,12 @@ public class AnimationScript : MonoBehaviour
 
                         timeWait = 1.5f;
 
-                        state = Animation.WaitCreate;
+                        state = AnimationState.WaitCreate;
                     }
                     else timeWait -= Time.deltaTime;
                 }
                 break;
-            case Animation.WaitCreate:
+            case AnimationState.WaitCreate:
                 {
                     if (Puffy.GetComponent<Collider2D>().OverlapPoint(Create.transform.position)) // Hits puffy
                     {
@@ -114,7 +107,7 @@ public class AnimationScript : MonoBehaviour
 
                         createText.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -130, 0);
 
-                        state = Animation.SpawnObstacle;
+                        state = AnimationState.SpawnObstacle;
 
                         timeWait = 1.5f;
 
@@ -123,7 +116,7 @@ public class AnimationScript : MonoBehaviour
                     }
                 }
                 break;
-            case Animation.SpawnObstacle:
+            case AnimationState.SpawnObstacle:
                 {
                     if (timeWait < 0)
                     {
@@ -132,12 +125,12 @@ public class AnimationScript : MonoBehaviour
                         Obstacle.AddComponent<Rigidbody2D>();
                         Obstacle.AddComponent<BoxCollider2D>().isTrigger = true;
 
-                        state = Animation.WaitObstacle;
+                        state = AnimationState.WaitObstacle;
                     }
                     else timeWait -= Time.deltaTime;
                 }
                 break;
-            case Animation.WaitObstacle:
+            case AnimationState.WaitObstacle:
 
                 {
                     if (Puffy.GetComponent<Collider2D>().OverlapPoint(Obstacle.transform.position)) // Hits puffy
@@ -164,30 +157,12 @@ public class AnimationScript : MonoBehaviour
 
                         GetComponent<NEWLockBalancing>().state = NEWLockBalancing.GameState.Play;
 
-                        StartCoroutine(FadeOutBars());
 
+                        GameObject.Find("Cinematic Bars").GetComponent<Animation>().Play();
                         this.enabled = false;
                     }
                 }
                 break;
-        }
-    }
-
-    IEnumerator WaitTillPlay()
-    {
-        yield return new WaitForSeconds(1);
-        Puffy.GetComponent<PuffyController>().enabled = true;
-    }
-
-    IEnumerator FadeOutBars()
-    {
-        float smootheness = 100;
-        for (int i = 0; i < smootheness; i++)
-        {
-            yield return new WaitForSeconds(CinimaticSeconds / smootheness);
-            float scale = Mathf.Lerp(0, 2 / CinamaticBars.transform.GetChild(0).GetComponent<RectTransform>().rect.height, i / smootheness);
-
-            CinamaticBars.transform.localScale += new Vector3(0, scale, 0);
         }
     }
 }
