@@ -10056,14 +10056,6 @@ PrefabInstance:
       value: 2.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2124172712110933406, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2124172712110933406, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2124172712110933406, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.18
       objectReference: {fileID: 0}
@@ -10115,6 +10107,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: abf08f12d770f11438612129989af86d, type: 3}
+    - target: {fileID: 4091480502870199507, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6287479890062828946, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
       propertyPath: m_audioClip
       value: 
@@ -10147,14 +10143,6 @@ PrefabInstance:
     - target: {fileID: 1976474173942067537, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 2.3333333
-      objectReference: {fileID: 0}
-    - target: {fileID: 2124172712110933406, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2124172712110933406, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2124172712110933406, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
       propertyPath: m_LocalPosition.x

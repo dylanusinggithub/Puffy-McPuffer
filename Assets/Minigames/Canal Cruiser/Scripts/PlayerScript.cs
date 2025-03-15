@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    [SerializeField, Range(0, 10)]
-    public float startSpeed = 5;
-
     [SerializeField, Range(0, 100)]
     float movementStrength = 100;
 
@@ -50,40 +47,18 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]
     Animator HitCruiser;
 
-    Material ScrollingBackground;
-    float scrolling = 0;
-
-  
-
-    GameObject MovingThing;
-
-    private void Start()
+    private void Awake()
     {
         SM = GameObject.Find("Game Manager").GetComponent<ScoreScript>();
         Wheel = GameObject.Find("Wheel");
         SC = Wheel.GetComponent<SteeringController>();
 
-        MovingThing = GameObject.Find("Moving Thing");
-
         oldColor = GetComponent<SpriteRenderer>().color;
-
-        ScrollingBackground = GameObject.Find("background").GetComponent<SpriteRenderer>().material;
-
-     
     }
-
-
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        MovingThing.transform.Translate(new Vector3(startSpeed/10, 0, 0));
-
-        scrolling = startSpeed / 310;
-        ScrollingBackground.mainTextureOffset += new Vector2(scrolling, 0);
-
-
-
         if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
         {
             if (Input.GetButton("Horizontal"))
@@ -119,10 +94,7 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!this.enabled) return; // Disabled scripts aren't fully disabled? <3 unity
-
         int points;
-
         if (collision.tag == "Collectable")
         {
             points = 1;

@@ -33,29 +33,13 @@ public class ScoreScript : MonoBehaviour
     [SerializeField]
     GameObject gameOver;
 
-    Slider timeSlider;
-    RawImage timerWater;
-
     void Start()
     {
-        timeSlider = GameObject.Find("Timer").GetComponent<Slider>();
-        timeSlider.value = timeWin;
-        timeSlider.maxValue = timeWin;
-
-        timerWater = GameObject.Find("Timer").transform.GetChild(0).GetChild(1).GetComponent<RawImage>();
-
         ScoreUI = GameObject.Find("Score Counter").transform.GetChild(0);
     }
 
     void FixedUpdate()
     {
-        if (timeSlider.value > 0)
-        {
-            timeSlider.value -= Time.deltaTime;
-            timerWater.uvRect = new Rect(timerWater.uvRect.position + new Vector2(0.1f, 0) * Time.deltaTime, timerWater.uvRect.size);
-        }
-        else Die();
-
         // If Score has Changed
         if (score != oldScore)
         {

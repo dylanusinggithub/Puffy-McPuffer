@@ -1,6 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -17,6 +18,13 @@ public class LevelGenerator : MonoBehaviour
     ScoreScript SS;
     GameObject Puffy;
 
+    float startSpeed;
+    Material ScrollingBackground;
+    bool PlayAnimation; 
+
+    Slider timeSlider;
+    RawImage timerWater;
+
     private void OnValidate()
     {
         if (PressMeToSetLevelIndex)
@@ -28,15 +36,23 @@ public class LevelGenerator : MonoBehaviour
 
     private void Start()
     {
+        Physics2D.gravity = new Vector2(-9.81f, 0); // Left (behind player)
+
         Puffy = GameObject.Find("Moving Thing");
         SS = GameObject.Find("Game Manager").GetComponent<ScoreScript>();
+        ScrollingBackground = GameObject.Find("background").GetComponent<SpriteRenderer>().material;
+        timerWater = GameObject.Find("Timer").transform.GetChild(0).GetChild(1).GetComponent<RawImage>();
 
         // sets the level index to minigameIndex which is provided by level desginer in menu screen
         levelIndex = PlayerPrefs.GetInt("difficulty", 0);
 
-        GameObject.Find("Game Manager").GetComponent<ScoreScript>().timeWin = Levels[levelIndex].GameplayTime;
-        GameObject.Find("Player").GetComponent<PlayerScript>().startSpeed = Levels[levelIndex].LevelSpeed;
-        GameObject.Find("Game Manager").GetComponent<ScoreScript>().scoreWin = Levels[levelIndex].CreateCompletion;
+        SS.scoreWin = Levels[levelIndex].CreateCompletion;
+
+        timeSlider = GameObject.Find("Timer").GetComponent<Slider>();
+        timeSlider.maxValue = Levels[levelIndex].GameplayTime;
+        timeSlider.value = Levels[levelIndex].GameplayTime;
+
+        startSpeed = Levels[levelIndex].LevelSpeed;
 
         // 2 is the speed it is pegged at so if the levelSpeed is 1.75f then it'll play at 75% speed
         GameObject.Find("Water Swiggles").GetComponent<Animator>().SetFloat("Speed", Levels[levelIndex].LevelSpeed / 2); 
@@ -95,44 +111,96 @@ public class LevelGenerator : MonoBehaviour
             CreatesLocation.RemoveAt(randomIndex);
         }
 
+        StartCoroutine(PlayTutorial());
+
+    }
+
+    IEnumerator PlayTutorial()
+    {
+        PlayAnimation = true;
+
+        GameObject Timer = GameObject.Find("Timer Holder");
+        Timer.SetActive(false);
+
+        float Delay;
+        if (PlayerPrefs.GetString("showTutorial", "False") == "True")
+        {
+            Delay = Puffy.GetComponent<Animator>().runtimeAnimatorController.animationClips[0].length;
+            Puffy.GetComponent<Animator>().Play("Crusier Tutorial", 0, 0);
+        }
+        else
+        {
+            GameObject.Find("Tutorial Assets").SetActive(false);
+            Delay = Puffy.GetComponent<Animator>().runtimeAnimatorController.animationClips[1].length;
+            Puffy.GetComponent<Animator>().Play("Crusier Opening", 0, 0);
+        }
+
+        yield return new WaitForSeconds(Delay);
+        Puffy.GetComponent<Animator>().enabled = false;
+
+
+        PlayAnimation = false;
+
+        GameObject.Find("Player").GetComponent<PlayerScript>().enabled = true;
+        GameObject.Find("Water Swiggles").GetComponent<Animator>().enabled = true;
+
+        GameObject.Find("Cinematic Bars").GetComponent<Animation>().Play();
+
+        yield return new WaitForSeconds(0.5f);
+
+        Timer.SetActive(true);
     }
 
     float HardmodeCheckTime = 1;
     void FixedUpdate()
     {
-        if (HardmodeCheckTime > 0) HardmodeCheckTime -= Time.deltaTime;
-        else
+        if (!PlayAnimation)
         {
-            HardmodeCheckTime = 1f;
-
-            if (SS.score < Levels[levelIndex].CreateCompletion) return;
-
-            float closestLayout = 1000;
-            Transform closestLayoutObject = transform.GetChild(0);
-            foreach (Transform layout in GetComponentInChildren<Transform>())
+            if (timeSlider.value > 0)
             {
-                float dist = (layout.position - Puffy.transform.position).magnitude;
-                if (dist < closestLayout)
-                {
-                    closestLayout = dist;
-                    closestLayoutObject = layout;
-                }
+                timeSlider.value -= Time.deltaTime;
+                timerWater.uvRect = new Rect(timerWater.uvRect.position + new Vector2(0.1f, 0) * Time.deltaTime, timerWater.uvRect.size);
             }
+            else GameObject.Find("Game Manager").GetComponent<ScoreScript>().Die();
 
-            if (closestLayoutObject.GetSiblingIndex() < transform.childCount - 1)
+            Puffy.transform.Translate(new Vector3(startSpeed / 10, 0, 0));
+            ScrollingBackground.mainTextureOffset += new Vector2(startSpeed / 310, 0);
+
+            if (HardmodeCheckTime > 0) HardmodeCheckTime -= Time.deltaTime;
+            else
             {
-                GameObject NextLayout = transform.GetChild(closestLayoutObject.GetSiblingIndex() + 1).gameObject;
+                HardmodeCheckTime = 1f;
 
-                foreach (Transform layout in NextLayout.GetComponentInChildren<Transform>())
+                if (SS.score < Levels[levelIndex].CreateCompletion) return;
+
+                float closestLayout = 1000;
+                Transform closestLayoutObject = transform.GetChild(0);
+                foreach (Transform layout in GetComponentInChildren<Transform>())
                 {
-                    if (layout.GetComponent<ObjectScript>().isHardmode)
+                    float dist = (layout.position - Puffy.transform.position).magnitude;
+                    if (dist < closestLayout)
                     {
-                        layout.gameObject.SetActive(true);
+                        closestLayout = dist;
+                        closestLayoutObject = layout;
                     }
                 }
 
+                if (closestLayoutObject.GetSiblingIndex() < transform.childCount - 1)
+                {
+                    GameObject NextLayout = transform.GetChild(closestLayoutObject.GetSiblingIndex() + 1).gameObject;
+
+                    foreach (Transform layout in NextLayout.GetComponentInChildren<Transform>())
+                    {
+                        if (layout.GetComponent<ObjectScript>().isHardmode)
+                        {
+                            layout.gameObject.SetActive(true);
+                        }
+                    }
+
+                }
             }
         }
+
     }
 }
 
