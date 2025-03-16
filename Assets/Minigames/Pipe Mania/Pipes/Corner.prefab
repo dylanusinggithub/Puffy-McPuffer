@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7638488966156194640}
   - component: {fileID: 1491664734579360740}
   - component: {fileID: 2638210968771733685}
+  - component: {fileID: 4028721755047077000}
   m_Layer: 0
   m_Name: Corner
   m_TagString: Untagged
@@ -130,5 +131,26 @@ MonoBehaviour:
     Broken: {fileID: 0}
     Repaired: {fileID: 0}
     Fixed: {fileID: 0}
-  Broken: {fileID: 0}
-  Repaired: {fileID: 0}
+  Broken: {fileID: 21300000, guid: 6f3d91263a904bb48a1e4add1f18e2f3, type: 3}
+  Repaired: {fileID: 21300000, guid: 01a2545083993974ab6d8da0d7f40773, type: 3}
+--- !u!95 &4028721755047077000
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5605332065616493389}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 553abf6b5c9679a40aad0fe4a7d0e424, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

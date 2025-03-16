@@ -23,6 +23,8 @@ public class PipeController : MonoBehaviour
 
     void Awake()
     {
+        GetComponent<Animator>().enabled = false;
+
         BrokenSprite = GetComponent<PipeEditor>().Broken;
         RepairedSprite = GetComponent<PipeEditor>().Repaired;
 
@@ -77,6 +79,8 @@ public class PipeController : MonoBehaviour
             if (Time.timeScale == 0) return;
 
             Destroy(Instantiate(ClickParticle, transform), 2);
+
+            GetComponent<Animator>().enabled = false;
 
             if (broken > 0)
             {

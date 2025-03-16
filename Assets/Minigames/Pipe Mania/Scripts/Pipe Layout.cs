@@ -119,6 +119,7 @@ public class PipeLayout : MonoBehaviour
                     {
                         ParticleSystem newParticle = Instantiate(drip, child.position + new Vector3(0.8f, 0f, 0f), Quaternion.identity);
                         newParticle.Play();
+
                         activeLeaks.Add(child, newParticle); 
                     }
                     return; 
@@ -127,6 +128,9 @@ public class PipeLayout : MonoBehaviour
                 else if (pipe.solved && activeLeaks.ContainsKey(child))
                 {
                     activeLeaks[child].Stop();
+
+                    child.GetComponent<Animator>().enabled = true;
+
                     Destroy(activeLeaks[child].gameObject); 
                     activeLeaks.Remove(child);
                 }
