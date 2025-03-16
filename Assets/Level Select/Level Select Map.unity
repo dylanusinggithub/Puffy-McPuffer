@@ -508,7 +508,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 319708813}
         m_TargetAssemblyTypeName: LevelSelector, Assembly-CSharp
-        m_MethodName: BTN_PlayLevel
+        m_MethodName: BTN_Preview
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -657,7 +657,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 535209956}
         m_TargetAssemblyTypeName: LevelSelector, Assembly-CSharp
-        m_MethodName: BTN_PlayLevel
+        m_MethodName: BTN_Preview
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1182,7 +1182,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 800668435}
         m_TargetAssemblyTypeName: LevelSelector, Assembly-CSharp
-        m_MethodName: BTN_PlayLevel
+        m_MethodName: BTN_Preview
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1593,7 +1593,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1032479655}
         m_TargetAssemblyTypeName: LevelSelector, Assembly-CSharp
-        m_MethodName: BTN_PlayLevel
+        m_MethodName: BTN_Preview
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2806,7 +2806,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1730227573}
         m_TargetAssemblyTypeName: LevelSelector, Assembly-CSharp
-        m_MethodName: BTN_PlayLevel
+        m_MethodName: BTN_Preview
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -19,6 +19,7 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     bool openingLevel = false;
     [HideInInspector] public bool MouseMoved = false;
+    bool ButtonPressed = false;
 
     private void Start()
     {
@@ -35,7 +36,7 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }
     }
 
-    public void BTN_PlayLevel()
+    void StartLevel()
     {
         StartCoroutine(PlayLevel());
         openingLevel = true;
@@ -102,13 +103,48 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         LD.StartMinigame(int.Parse(Button.GetComponentInChildren<TextMeshProUGUI>().text) - 1, LevelIndex);
     }
 
-
     public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (!ButtonPressed)
+        {
+            GetComponent<Button>().interactable = false;
+            DisplayPreview();
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (!ButtonPressed)
+        {
+            GetComponent<Button>().interactable = true;
+
+            MouseMoved = true;
+            StartCoroutine(UnravelCheck(1));
+        }
+    }
+
+    public void BTN_Preview()
+    {
+        StartCoroutine(BTNPressed());
+
+        if (PreviewUI != null) UnravelPreview();
+        else DisplayPreview();
+    }
+
+    IEnumerator BTNPressed()
+    {
+        ButtonPressed = true;
+        yield return new WaitForSeconds(1);
+        ButtonPressed = false;
+    }
+
+    void DisplayPreview()
     {
         MouseMoved = false;
 
         // If Button is disabled or Preview doesn't exist don't show
-        if (!GetComponent<Button>().enabled || LevelPreview == null || openingLevel) return; 
+        if (!GetComponent<Button>().enabled || LevelPreview == null || openingLevel) return;
+
 
         Destroy(Preview);
         Preview = Instantiate(LevelPreview, ComicPanel.transform);
@@ -123,16 +159,8 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (PlayerPrefs.GetInt("Levels Unlocked", 0) > LevelIndex) StartCoroutine(DisplayButton());
         else
         {
-            PreviewUI.GetComponentInChildren<Button>().onClick.AddListener(delegate { BTN_PlayLevel(); });
+            PreviewUI.GetComponentInChildren<Button>().onClick.AddListener(delegate { StartLevel(); });
         }
-
-        
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        MouseMoved = true;
-        StartCoroutine(UnravelCheck(1));
     }
 
     public IEnumerator UnravelCheck(float Delay)
