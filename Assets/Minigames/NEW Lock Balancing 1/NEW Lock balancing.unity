@@ -8043,6 +8043,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cinematic Bars
       objectReference: {fileID: 0}
+    - target: {fileID: 6553937393803009024, guid: 362df32e4d11ad74f8c8281cea6ad2b2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
