@@ -13,6 +13,8 @@ public class UnionController : MonoBehaviour
     int oldScore = 0;
     float waterPecentage = 0;
 
+    public float chaseDistance;
+
     void Start()
     {
         SS = GameObject.Find("Game Manager").GetComponent<ScoreScript>();
@@ -26,6 +28,14 @@ public class UnionController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (Wave.transform.position.x > chaseDistance)
+        {
+            transform.SetParent(null);
+            GetComponent<Animator>().enabled = false;
+            this.enabled = false;
+            return;
+        }
+
         float dist = (Puffy.transform.position.y - Wave.transform.localPosition.y) / 20;
         if (Mathf.Abs(dist) * 20 > 0.1f) Velocity += dist; // Stops moving wave if not far away enough to stop oscillating
 

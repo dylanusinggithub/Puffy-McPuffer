@@ -13,7 +13,7 @@ public class LevelGenerator : MonoBehaviour
 
     float LevelWidth = 0;
 
-    [SerializeField] Sprite FinishLine;
+    [SerializeField] GameObject FinishLine;
 
     ScoreScript SS;
     GameObject Puffy;
@@ -79,13 +79,13 @@ public class LevelGenerator : MonoBehaviour
             LevelWidth += Levels[levelIndex].LayoutSeperation;
         }
 
-        GameObject finish = new GameObject("FinishLine");
+        GameObject finish = Instantiate(FinishLine);
 
-        float dist = 4.6f * Levels[levelIndex].LevelSpeed;
-        finish.transform.position = new Vector3(dist * Levels[levelIndex].GameplayTime, 0);
-        finish.transform.localScale = Vector3.one * 0.9f;
+        float dist = 4.63f * Levels[levelIndex].LevelSpeed;
+        dist *= Levels[levelIndex].GameplayTime;
 
-        finish.AddComponent<SpriteRenderer>().sprite = FinishLine;
+        finish.transform.position = new Vector3(dist, 0);
+        GameObject.Find("UnionChaseMain").GetComponent<UnionController>().chaseDistance = dist - 4;
 
         // Grabs all creates and disables them to later reenable a specific ones
         for (int i = 0; i < transform.childCount; i++)
@@ -119,6 +119,7 @@ public class LevelGenerator : MonoBehaviour
     {
         PlayAnimation = true;
 
+        GameObject.Find("UnionChaseMain").GetComponent<UnionController>().enabled = false;
         GameObject Timer = GameObject.Find("Timer Holder");
         Timer.SetActive(false);
 
@@ -143,6 +144,7 @@ public class LevelGenerator : MonoBehaviour
 
         GameObject.Find("Player").GetComponent<PlayerScript>().enabled = true;
         GameObject.Find("Water Swiggles").GetComponent<Animator>().enabled = true;
+        GameObject.Find("UnionChaseMain").GetComponent<UnionController>().enabled = true;
 
         GameObject.Find("Cinematic Bars").GetComponent<Animation>().Play();
 
