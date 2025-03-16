@@ -112,6 +112,16 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }
     }
 
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        ButtonPressed = true;
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        ButtonPressed = false;
+    }
+
     public void OnPointerExit(PointerEventData eventData)
     {
         if (!ButtonPressed)
