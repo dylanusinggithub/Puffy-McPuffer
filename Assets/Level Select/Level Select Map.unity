@@ -1133,7 +1133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelIndex: 2
-  LevelPreview: {fileID: 0}
+  LevelPreview: {fileID: 1081310224015781113, guid: cb2cadfcd97ff75438a8c8143a176f85, type: 3}
   LevelButton: {fileID: 2123323418384179155, guid: a5b7c782365d1074d8f319bc20058a25, type: 3}
   MouseMoved: 0
 --- !u!114 &800668436
