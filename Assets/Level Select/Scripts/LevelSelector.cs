@@ -29,6 +29,7 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (PlayerPrefs.GetInt("Levels Unlocked", 0) < LevelIndex)
         {
             GetComponent<Button>().enabled = false;
+            GetComponent<Image>().color = GetComponent<Button>().colors.disabledColor; ;
 
             // Disables signs
             transform.parent.GetComponentInChildren<Animator>().enabled = false;
