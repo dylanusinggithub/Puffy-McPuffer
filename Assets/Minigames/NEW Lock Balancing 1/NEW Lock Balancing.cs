@@ -145,6 +145,7 @@ public class NEWLockBalancing : MonoBehaviour
                 Puffy.GetComponent<PuffyController>().enabled = false;
 
                 Camera.main.transform.parent = Puffy.transform;
+                Camera.main.transform.localPosition += new Vector3(0, 8);
 
                 GameObject.Find("Durability").SetActive(false);
                 Win.SetActive(true);
