@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Cinematic Viewer/Cinematic Viewer.unity
     guid: ef48d6d815fdf804b92f58ac1ed3e97e
-  - enabled: 0
+  - enabled: 1
     path: Assets/Minigames/NEW Lock Balancing 1/NEW Lock balancing.unity
     guid: 41f479a90975b6c4faa952ef1e790f44
   - enabled: 1
