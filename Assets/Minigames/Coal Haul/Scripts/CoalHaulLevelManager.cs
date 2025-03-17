@@ -1,36 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CoalHaulLevelManager : MonoBehaviour
 {
-    [SerializeField] GameObject GameOverPanel, YouWinPanel;
+    [SerializeField] private GameObject GameOverPanel, YouWinPanel;
 
     [SerializeField] private CoalHaulLevelSettings[] Levels; 
     private int currentLevelIndex;
 
-    GameObject startZone, endZone, wallParent;
+    private GameObject endZone, wallParent;
+    private GameObject activeLayout;
 
     private void Awake()
     {
         currentLevelIndex = PlayerPrefs.GetInt("difficulty", 0);
 
-        startZone = GameObject.Find("StartZone");
         endZone = GameObject.Find("EndZone");
-        wallParent = GameObject.Find("WallsParent");
+        wallParent = GameObject.Find("WallParent");
 
         LoadLevelSettings();
     }
 
     private void LoadLevelSettings()
     {
+        if (Levels == null || Levels.Length == 0)
+        {
+            UnityEngine.Debug.LogError("Levels array is null or empty in CoalHaulLevelManager!");
+            return;
+        }
+
         if (currentLevelIndex >= Levels.Length) return;
 
         CoalHaulLevelSettings level = Levels[currentLevelIndex];
 
-        startZone.transform.position = level.startZonePosition;
+        if (level == null)
+        {
+            UnityEngine.Debug.LogError("Level settings for index " + currentLevelIndex + " is null!");
+            return;
+        }
+
         endZone.transform.position = level.endZonePosition;
 
         SetWallPositions(level.wallPositions);
@@ -51,8 +64,14 @@ public class CoalHaulLevelManager : MonoBehaviour
 
     void ActivateLevelLayouts(GameObject[] layouts)
     {
-        foreach (GameObject layout in layouts)
-            layout.SetActive(true);
+        if (activeLayout != null)
+            activeLayout.SetActive(false);
+
+        if (layouts.Length > currentLevelIndex)
+        {
+            activeLayout = layouts[currentLevelIndex];
+            activeLayout.SetActive(true);
+        }
     }
 
     public void AdvanceToNextLevel()
@@ -61,7 +80,21 @@ public class CoalHaulLevelManager : MonoBehaviour
         if (currentLevelIndex < Levels.Length)
         {
             PlayerPrefs.SetInt("difficulty", currentLevelIndex);
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Level Select");
+            LoadLevelSettings();
+            YouWinPanel.SetActive(false);
+        }
+
+        else
+        {
+            UnityEngine.Debug.Log("All Levels Completed!");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            YouWinPanel.SetActive(true);
         }
     }
 }
@@ -71,11 +104,10 @@ class CoalHaulLevelSettings
 {
     [Header("Level Difficulty")]
     public int levelIndex;
-    public float puffinSpeed;
-    public float wallGapSize;
 
     [Header("Layout Settings")]
     public GameObject[] levelLayouts;
+    public GameObject activeLayout;
 
     [Header("Position Settings")]
     public Vector3 startZonePosition;
