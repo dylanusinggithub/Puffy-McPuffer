@@ -58,8 +58,8 @@ public class NEWLockBalancing : MonoBehaviour
         {
             GameObject Lock = LockBackground.transform.GetChild(i).gameObject;
 
-            Lock.transform.GetChild(0).localPosition = new Vector3(Mathf.Lerp(-7.25f, -14.5f, LockSize - 1), Mathf.Lerp(-1, -3.5f, LockSize - 1)); // Left Wall
-            Lock.transform.GetChild(1).localPosition = new Vector3(Mathf.Lerp(7.25f, 14.5f, LockSize - 1), Mathf.Lerp(-1, -3.5f, LockSize - 1)); // Right Wall
+            Lock.transform.GetChild(0).localPosition = new Vector3(Mathf.Lerp(-7.25f, -14.5f, LockSize - 1), Mathf.Lerp(-1, -3.5f, i)); // Left Wall
+            Lock.transform.GetChild(1).localPosition = new Vector3(Mathf.Lerp(7.25f, 14.5f, LockSize - 1), Mathf.Lerp(-1, -3.5f, i)); // Right Wall
 
             Lock.transform.GetChild(2).GetChild(0).transform.localScale = new Vector2(LockSize * 12, 0.1f); // Cill Line
             Lock.transform.GetChild(2).GetChild(1).transform.localPosition = new Vector2(LockSize * 6.6f, 0); // Cill Mark
