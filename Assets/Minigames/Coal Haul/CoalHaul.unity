@@ -363,9 +363,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 884669808}
-        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
-        m_MethodName: BTN_Retry
+      - m_Target: {fileID: 429058388}
+        m_TargetAssemblyTypeName: CoalHaulLevelManager, Assembly-CSharp
+        m_MethodName: RetryLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -476,6 +476,10 @@ PrefabInstance:
     - target: {fileID: 999029618016793391, guid: 597128b04c9da1d4b818abc86045c042, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1038086775338248645, guid: 597128b04c9da1d4b818abc86045c042, type: 3}
+      propertyPath: m_TagString
+      value: Finish Zone
       objectReference: {fileID: 0}
     - target: {fileID: 1080658303856179843, guid: 597128b04c9da1d4b818abc86045c042, type: 3}
       propertyPath: m_LocalScale.x
@@ -661,6 +665,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3794518458079198818, guid: 597128b04c9da1d4b818abc86045c042, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3799804780755443492, guid: 597128b04c9da1d4b818abc86045c042, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.5275592
@@ -700,6 +708,10 @@ PrefabInstance:
     - target: {fileID: 5336834498197408695, guid: 597128b04c9da1d4b818abc86045c042, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 89.749
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030068951657047081, guid: 597128b04c9da1d4b818abc86045c042, type: 3}
+      propertyPath: m_Constraints
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6149796067725732631, guid: 597128b04c9da1d4b818abc86045c042, type: 3}
       propertyPath: m_LocalScale.x
@@ -1491,37 +1503,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameOverPanel: {fileID: 1894167808}
   YouWinPanel: {fileID: 199961067}
-  Levels:
-  - levelIndex: 0
-    levelLayouts: []
-    activeLayout: {fileID: 7330682482970207322}
-    startZonePosition: {x: -20.3, y: 6.8, z: 0}
-    endZonePosition: {x: 15.3, y: -7.4, z: 0}
-    wallPositions: []
-  - levelIndex: 0
-    levelLayouts: []
-    activeLayout: {fileID: 1957614824}
-    startZonePosition: {x: 15.3, y: -7.4, z: 0}
-    endZonePosition: {x: -19.5, y: -6.9, z: 0}
-    wallPositions: []
-  - levelIndex: 0
-    levelLayouts: []
-    activeLayout: {fileID: 1631705473}
-    startZonePosition: {x: -19.5, y: -6.9, z: 0}
-    endZonePosition: {x: 20.27, y: -0.9, z: 0}
-    wallPositions: []
-  - levelIndex: 0
-    levelLayouts: []
-    activeLayout: {fileID: 1335049799}
-    startZonePosition: {x: 20.27, y: -0.9, z: 0}
-    endZonePosition: {x: 0.7, y: -0.5, z: 0}
-    wallPositions: []
-  - levelIndex: 0
-    levelLayouts: []
-    activeLayout: {fileID: 198161153}
-    startZonePosition: {x: 0.7, y: -0.5, z: 0}
-    endZonePosition: {x: 16.25, y: -7.5, z: 0}
-    wallPositions: []
+  layouts:
+  - {fileID: 7330682482970207322}
+  - {fileID: 1957614824}
+  - {fileID: 1631705473}
+  - {fileID: 1335049799}
+  - {fileID: 198161153}
+  puffinController: {fileID: 1796459978}
 --- !u!1 &430051654
 GameObject:
   m_ObjectHideFlags: 0
@@ -3889,13 +3877,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 429058388}
+        m_TargetAssemblyTypeName: CoalHaulLevelManager, Assembly-CSharp
+        m_MethodName: NextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4117,7 +4105,7 @@ GameObject:
   - component: {fileID: 1796459979}
   m_Layer: 0
   m_Name: Puffin Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4183,7 +4171,7 @@ Transform:
   m_GameObject: {fileID: 1796459975}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.18, y: 6.81, z: 0}
+  m_LocalPosition: {x: -20.85, y: 7.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4202,6 +4190,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverPanel: {fileID: 1894167808}
+  youWinPanel: {fileID: 199961067}
+  levelManager: {fileID: 429058388}
 --- !u!58 &1796459979
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4655,6 +4645,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3556650986854385027, guid: f79ddf6ba9d53f34e8652ce012250ea8, type: 3}
+      propertyPath: m_TagString
+      value: Finish Zone
+      objectReference: {fileID: 0}
     - target: {fileID: 3744792488656615492, guid: f79ddf6ba9d53f34e8652ce012250ea8, type: 3}
       propertyPath: m_Constraints
       value: 7
@@ -4731,6 +4725,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 8354780368717436990, guid: f79ddf6ba9d53f34e8652ce012250ea8, type: 3}
+      propertyPath: m_Constraints
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8404916647549551347, guid: f79ddf6ba9d53f34e8652ce012250ea8, type: 3}
       propertyPath: m_Constraints
       value: 7
@@ -4745,7 +4743,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8529414443968790047, guid: f79ddf6ba9d53f34e8652ce012250ea8, type: 3}
       propertyPath: m_Size.y
-      value: 0.61766005
+      value: 0.7916259
       objectReference: {fileID: 0}
     - target: {fileID: 8529414443968790047, guid: f79ddf6ba9d53f34e8652ce012250ea8, type: 3}
       propertyPath: m_Offset.x
@@ -4753,7 +4751,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8529414443968790047, guid: f79ddf6ba9d53f34e8652ce012250ea8, type: 3}
       propertyPath: m_Offset.y
-      value: 0.19116999
+      value: 0.10418704
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529414443968790047, guid: f79ddf6ba9d53f34e8652ce012250ea8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8623466555555239095, guid: f79ddf6ba9d53f34e8652ce012250ea8, type: 3}
       propertyPath: m_Constraints
@@ -4795,6 +4797,10 @@ PrefabInstance:
     - target: {fileID: 999029618016793391, guid: 597128b04c9da1d4b818abc86045c042, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1038086775338248645, guid: 597128b04c9da1d4b818abc86045c042, type: 3}
+      propertyPath: m_TagString
+      value: Finish Zone
       objectReference: {fileID: 0}
     - target: {fileID: 1042471437981907234, guid: 597128b04c9da1d4b818abc86045c042, type: 3}
       propertyPath: m_Constraints
@@ -4856,6 +4862,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3794518458079198818, guid: 597128b04c9da1d4b818abc86045c042, type: 3}
+      propertyPath: m_Size.y
+      value: 0.48647422
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794518458079198818, guid: 597128b04c9da1d4b818abc86045c042, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.2567629
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794518458079198818, guid: 597128b04c9da1d4b818abc86045c042, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4118587867392109047, guid: 597128b04c9da1d4b818abc86045c042, type: 3}
       propertyPath: m_Constraints
       value: 7
@@ -4881,6 +4899,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5768838850374568241, guid: 597128b04c9da1d4b818abc86045c042, type: 3}
+      propertyPath: m_Constraints
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030068951657047081, guid: 597128b04c9da1d4b818abc86045c042, type: 3}
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
@@ -4985,6 +5007,18 @@ PrefabInstance:
     - target: {fileID: 4631845864058938224, guid: 11901d8c5bfd9244bbd7d6dd2cb6ad68, type: 3}
       propertyPath: m_Constraints
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5119748141907160992, guid: 11901d8c5bfd9244bbd7d6dd2cb6ad68, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7813188455201773751, guid: 11901d8c5bfd9244bbd7d6dd2cb6ad68, type: 3}
+      propertyPath: m_Constraints
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8052774625828523756, guid: 11901d8c5bfd9244bbd7d6dd2cb6ad68, type: 3}
+      propertyPath: m_TagString
+      value: Finish Zone
       objectReference: {fileID: 0}
     - target: {fileID: 8162251178936787471, guid: 11901d8c5bfd9244bbd7d6dd2cb6ad68, type: 3}
       propertyPath: m_Constraints
@@ -5144,6 +5178,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.23377852
       objectReference: {fileID: 0}
+    - target: {fileID: 4872408697709118047, guid: de333c8d33e7bcd48ae0f727cdb4bd24, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4923669293117572584, guid: de333c8d33e7bcd48ae0f727cdb4bd24, type: 3}
       propertyPath: m_LocalScale.x
       value: 20.58488
@@ -5188,7 +5226,15 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6490338997172167958, guid: de333c8d33e7bcd48ae0f727cdb4bd24, type: 3}
+      propertyPath: m_TagString
+      value: Finish Zone
+      objectReference: {fileID: 0}
     - target: {fileID: 7401319431022476977, guid: de333c8d33e7bcd48ae0f727cdb4bd24, type: 3}
+      propertyPath: m_Constraints
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410614493088737445, guid: de333c8d33e7bcd48ae0f727cdb4bd24, type: 3}
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
@@ -5206,8 +5252,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 429058387}
-  - {fileID: 389190500}
   - {fileID: 1796459977}
+  - {fileID: 389190500}
   - {fileID: 716916024}
   - {fileID: 993711769}
   - {fileID: 7330682482970207321}

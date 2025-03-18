@@ -3,114 +3,71 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Security.Cryptography;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CoalHaulLevelManager : MonoBehaviour
 {
     [SerializeField] private GameObject GameOverPanel, YouWinPanel;
+    [SerializeField] private GameObject[] layouts;
+    [SerializeField] private PuffinController puffinController;
 
-    [SerializeField] private CoalHaulLevelSettings[] Levels; 
-    private int currentLevelIndex;
+    private int currentLevel = 0;
+    private Vector3 lastPuffinPosition;
 
-    private GameObject endZone, wallParent;
-    private GameObject activeLayout;
-
-    private void Awake()
+    void Start()
     {
-        currentLevelIndex = PlayerPrefs.GetInt("difficulty", 0);
-
-        endZone = GameObject.Find("EndZone");
-        wallParent = GameObject.Find("WallParent");
-
-        LoadLevelSettings();
-    }
-
-    private void LoadLevelSettings()
-    {
-        if (Levels == null || Levels.Length == 0)
+        for (int i = 0; i < layouts.Length; i++)
         {
-            UnityEngine.Debug.LogError("Levels array is null or empty in CoalHaulLevelManager!");
-            return;
+            layouts[i].SetActive(i == 0);
         }
 
-        if (currentLevelIndex >= Levels.Length) return;
-
-        CoalHaulLevelSettings level = Levels[currentLevelIndex];
-
-        if (level == null)
+        if (YouWinPanel != null)
         {
-            UnityEngine.Debug.LogError("Level settings for index " + currentLevelIndex + " is null!");
-            return;
-        }
-
-        endZone.transform.position = level.endZonePosition;
-
-        SetWallPositions(level.wallPositions);
-        ActivateLevelLayouts(level.levelLayouts);
-    }
-
-    void SetWallPositions(Vector3[] positions)
-    {
-        Transform[] walls = wallParent.GetComponentsInChildren<Transform>();
-        for (int i = 1; i < walls.Length; i++)
-        {
-            if (i - 1 < positions.Length)
-                walls[i].position = positions[i - 1];
-            else
-                walls[i].gameObject.SetActive(false);
-        }
-    }
-
-    void ActivateLevelLayouts(GameObject[] layouts)
-    {
-        if (activeLayout != null)
-            activeLayout.SetActive(false);
-
-        if (layouts.Length > currentLevelIndex)
-        {
-            activeLayout = layouts[currentLevelIndex];
-            activeLayout.SetActive(true);
-        }
-    }
-
-    public void AdvanceToNextLevel()
-    {
-        currentLevelIndex++;
-        if (currentLevelIndex < Levels.Length)
-        {
-            PlayerPrefs.SetInt("difficulty", currentLevelIndex);
-            LoadLevelSettings();
             YouWinPanel.SetActive(false);
         }
 
-        else
-        {
-            UnityEngine.Debug.Log("All Levels Completed!");
-        }
+        lastPuffinPosition = puffinController.transform.position;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void NextLevel()
     {
-        if (collision.CompareTag("Player"))
+        if (currentLevel < layouts.Length - 1)
         {
-            YouWinPanel.SetActive(true);
+            layouts[currentLevel].SetActive(false);
+            currentLevel++;
+            layouts[currentLevel].SetActive(true);
+        }
+
+        YouWinPanel.SetActive(false);
+        Time.timeScale = 1f;
+
+        if (puffinController != null)
+        {
+            puffinController.ResetPuffin(lastPuffinPosition);
         }
     }
-}
 
-[System.Serializable]
-class CoalHaulLevelSettings
-{
-    [Header("Level Difficulty")]
-    public int levelIndex;
+    public void SavePuffinPosition(Vector3 position)
+    {
+        lastPuffinPosition = position;
+    }
 
-    [Header("Layout Settings")]
-    public GameObject[] levelLayouts;
-    public GameObject activeLayout;
+    public void RetryLevel()
+    {
 
-    [Header("Position Settings")]
-    public Vector3 startZonePosition;
-    public Vector3 endZonePosition;
-    public Vector3[] wallPositions;
+        if (GameOverPanel != null)
+        {
+            GameOverPanel.SetActive(false);
+        }
+
+        layouts[currentLevel].SetActive(false);
+        layouts[currentLevel].SetActive(true);
+        if (puffinController != null)
+        {
+            puffinController.ResetPuffin(lastPuffinPosition);
+        }
+        Time.timeScale = 1f;
+    }
 }

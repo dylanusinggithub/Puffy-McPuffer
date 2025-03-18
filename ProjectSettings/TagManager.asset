@@ -11,6 +11,7 @@ TagManager:
   - Pipe
   - Particle
   - Wall
+  - Finish Zone
   layers:
   - Default
   - TransparentFX
