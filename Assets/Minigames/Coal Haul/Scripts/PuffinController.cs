@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Security.Cryptography;
@@ -46,16 +46,17 @@ public class PuffinController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            GameOver();  //Game Over FUnciton is called
+            GameOver();  //Game Over Funciton is called
         }
 
+        //If Puffin Collides With Finish Zone
         if (collision.gameObject.CompareTag("Finish Zone"))
         {
             if (levelManager != null)
             {
                 levelManager.SavePuffinPosition(transform.position);
             }
-            YouWin();
+            YouWin(); // You Win 
         }
     }
 
@@ -80,12 +81,12 @@ public class PuffinController : MonoBehaviour
         isGameOver = true;
         UnityEngine.Debug.Log("You Win! Dragging disabled.");
 
-        if (youWinPanel != null)
+        if (levelManager != null)
         {
-            youWinPanel.SetActive(true);
+            levelManager.WinGame(); //Level Manager handles the correct You Win panel
         }
 
-        Time.timeScale = 0f;
+        Time.timeScale = 0f; //Game pauses
     }
 
     public void ResetPuffin(Vector3 newPosition)
