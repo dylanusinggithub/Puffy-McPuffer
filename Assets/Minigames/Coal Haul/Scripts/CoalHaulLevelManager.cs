@@ -31,7 +31,7 @@ public class CoalHaulLevelManager : MonoBehaviour
 
         if (FinalYouWinPanel != null)
         {
-            YouWinPanel.SetActive(false); //Disable Final you Win panel
+            FinalYouWinPanel.SetActive(false); //Disable Final You Win panel
         }
 
         lastPuffinPosition = puffinController.transform.position;
