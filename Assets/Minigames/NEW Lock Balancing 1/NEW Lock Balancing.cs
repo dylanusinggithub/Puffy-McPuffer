@@ -31,6 +31,9 @@ public class NEWLockBalancing : MonoBehaviour
 
     float cutsceneSpeed = -0.03f;
 
+    //////////// PLAY TEST LEADERBOARD, REMOVE AFTERWARDS ////////////
+    float Playtime = 0;
+
     private void Awake()
     {
         WB = GetComponent<WaterController>();
@@ -92,6 +95,8 @@ public class NEWLockBalancing : MonoBehaviour
                     if(Puffy.transform.position.y > 0) Camera.main.transform.position = new Vector3(Puffy.transform.position.x, Puffy.transform.position.y, -10);
                     else if (Mathf.Abs(Puffy.transform.position.x) < LockSize * 5 - 3) Camera.main.transform.position = new Vector3(Puffy.transform.position.x, Camera.main.transform.position.y, -10);
 
+                    //////////// PLAY TEST LEADERBOARD, REMOVE AFTERWARDS ////////////
+                    Playtime += Time.deltaTime;
                 }
                 break;
             case GameState.Fail:
@@ -150,8 +155,13 @@ public class NEWLockBalancing : MonoBehaviour
                 GameObject.Find("Durability").SetActive(false);
                 Win.SetActive(true);
 
-                state = GameState.Complete;
                 Puffy.GetComponent<SpriteRenderer>().flipX = false;
+
+                //////////// PLAY TEST LEADERBOARD, REMOVE AFTERWARDS ////////////
+                GameObject.Find("Pause Menu").GetComponent<MenuButtons>().score = Playtime;
+                GameObject.Find("Pause Menu").GetComponent<MenuButtons>().suffix = "s";
+
+                state = GameState.Complete;
             }
             Destroy(Object);
             StartCoroutine(GetComponent<WaterController>().changeHeight(true));
