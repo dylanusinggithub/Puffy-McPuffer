@@ -11,6 +11,8 @@ public class DifficultyManager : MonoBehaviour
     NEWLockBalancing LB;
     ObjectDropper OD;
 
+    [SerializeField] GameObject SinglePlay;
+
     private void Awake()
     {
         levelIndex = PlayerPrefs.GetInt("difficulty", 0);
@@ -34,7 +36,7 @@ public class DifficultyManager : MonoBehaviour
         OD.Layouts.Clear();
         foreach (GameObject layout in Levels[levelIndex].Layouts) OD.Layouts.Add(layout);
 
-        if (!LevelDesigner.SinglePlay) GameObject.Find("SinglePlay Exit").SetActive(false);
+        if (LevelDesigner.SinglePlay) SinglePlay.SetActive(true);
     }
 }
 

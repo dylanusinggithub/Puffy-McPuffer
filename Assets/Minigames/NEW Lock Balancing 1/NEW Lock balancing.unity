@@ -621,6 +621,7 @@ MonoBehaviour:
     - {fileID: 550664953553520682, guid: 1c99917b397d0464cbe8c817f9ed4dc8, type: 3}
     perlinStepSize: 0.7
     strength: 5
+  SinglePlay: {fileID: 347278007}
 --- !u!43 &75496031
 Mesh:
   m_ObjectHideFlags: 0
@@ -5937,7 +5938,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &347278008
 RectTransform:
   m_ObjectHideFlags: 0

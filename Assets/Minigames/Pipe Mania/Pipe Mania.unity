@@ -5684,7 +5684,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &756773380
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7525,6 +7525,7 @@ MonoBehaviour:
     BrokenPipesCount: 2
     Layouts:
     - {fileID: 4855246425472736739, guid: b1af7d574eb654043990692f2eba97c9, type: 3}
+  SinglePlay: {fileID: 756773379}
   drip: {fileID: 5521459353906145027, guid: 12f2e5e20b7c47948b885f0d8a002c08, type: 3}
 --- !u!82 &1784068080
 AudioSource:

@@ -25,6 +25,8 @@ public class LevelGenerator : MonoBehaviour
     Slider timeSlider;
     RawImage timerWater;
 
+    [SerializeField] GameObject SinglePlay;
+
     private void OnValidate()
     {
         if (PressMeToSetLevelIndex)
@@ -117,7 +119,7 @@ public class LevelGenerator : MonoBehaviour
 
         StartCoroutine(PlayTutorial());
 
-        if (!LevelDesigner.SinglePlay) GameObject.Find("SinglePlay Exit").SetActive(false);
+        if (LevelDesigner.SinglePlay) SinglePlay.SetActive(true);
     }
 
     IEnumerator PlayTutorial()

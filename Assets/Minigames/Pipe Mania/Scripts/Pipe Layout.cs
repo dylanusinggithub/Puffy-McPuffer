@@ -15,6 +15,8 @@ public class PipeLayout : MonoBehaviour
 
     [SerializeField] LevelSettings[] Levels;
 
+    [SerializeField] GameObject SinglePlay;
+
     public ParticleSystem drip;
     private Dictionary<Transform, ParticleSystem> activeLeaks = new Dictionary<Transform, ParticleSystem>();
     void Awake()
@@ -60,7 +62,7 @@ public class PipeLayout : MonoBehaviour
 
         TimerWater = Timer.GetComponentInChildren<RawImage>();
 
-        if (!LevelDesigner.SinglePlay) GameObject.Find("SinglePlay Exit").SetActive(false);
+        if (LevelDesigner.SinglePlay) SinglePlay.SetActive(true);
     }
 
     private void FixedUpdate()
