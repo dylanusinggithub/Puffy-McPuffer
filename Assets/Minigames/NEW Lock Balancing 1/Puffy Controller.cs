@@ -165,11 +165,11 @@ public class PuffyController : MonoBehaviour
 
     IEnumerator PlayAnimation()
     {
+        Shake.SetTrigger("Shake");
         transform.parent.GetComponent<Animator>().enabled = true;
         transform.parent.GetComponent<Animator>().SetTrigger("Hit");
         yield return new WaitForSeconds(1);
         transform.parent.GetComponent<Animator>().enabled = false;
-        Shake.SetTrigger("Shake");
     }
 
     // Hit by obstacle
