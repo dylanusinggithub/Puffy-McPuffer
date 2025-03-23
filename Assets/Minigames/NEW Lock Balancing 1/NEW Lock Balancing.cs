@@ -158,7 +158,7 @@ public class NEWLockBalancing : MonoBehaviour
                 Puffy.GetComponent<SpriteRenderer>().flipX = false;
 
                 //////////// PLAY TEST LEADERBOARD, REMOVE AFTERWARDS ////////////
-                GameObject.Find("Pause Menu").GetComponent<MenuButtons>().score = Playtime;
+                GameObject.Find("Pause Menu").GetComponent<MenuButtons>().score = Mathf.Round(Playtime * 100) / 100;
                 GameObject.Find("Pause Menu").GetComponent<MenuButtons>().suffix = "s";
 
                 state = GameState.Complete;

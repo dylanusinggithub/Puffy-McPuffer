@@ -81,9 +81,9 @@ public class ScoreScript : MonoBehaviour
         {
             youWin.SetActive(true);
             //////////// PLAY TEST LEADERBOARD, REMOVE AFTERWARDS ////////////
-            GameObject.Find("Pause Menu").GetComponent<MenuButtons>().score = (score / GameObject.Find("Pause Menu").GetComponent<MenuButtons>().score) * 100;
+            GameObject.Find("Pause Menu").GetComponent<MenuButtons>().score = Mathf.Round(score / GameObject.Find("Pause Menu").GetComponent<MenuButtons>().score * 100);
         }
-        else if (score == 0)
+        else if (score == 0) 
         {
             gameOver.SetActive(true);
             gameOver.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "You have crashed and sunk to the bottom of the canal.";
