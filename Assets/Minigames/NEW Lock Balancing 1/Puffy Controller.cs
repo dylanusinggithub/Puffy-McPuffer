@@ -54,6 +54,9 @@ public class PuffyController : MonoBehaviour
     float Velocity;
     #endregion
 
+    [SerializeField]
+    Animator Shake;
+
     void Start()
     {
         float LockSize = GameObject.Find("GameManager").GetComponent<NEWLockBalancing>().LockSize;
@@ -102,6 +105,7 @@ public class PuffyController : MonoBehaviour
             // makes it so it cannot get hurt again until decreasedDurability is finished
             if (!isHit)
             {
+                Shake.SetTrigger("Shake");
                 StartCoroutine(decreaseDurability());
                 if (health < 0) LB.state = NEWLockBalancing.GameState.Fail;
             }
@@ -165,6 +169,7 @@ public class PuffyController : MonoBehaviour
         transform.parent.GetComponent<Animator>().SetTrigger("Hit");
         yield return new WaitForSeconds(1);
         transform.parent.GetComponent<Animator>().enabled = false;
+        Shake.SetTrigger("Shake");
     }
 
     // Hit by obstacle
