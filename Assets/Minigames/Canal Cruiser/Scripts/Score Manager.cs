@@ -77,7 +77,12 @@ public class ScoreScript : MonoBehaviour
 
     public void Die()
     {
-        if (scoreWin <= score) youWin.SetActive(true);
+        if (scoreWin <= score)
+        {
+            youWin.SetActive(true);
+            //////////// PLAY TEST LEADERBOARD, REMOVE AFTERWARDS ////////////
+            GameObject.Find("Pause Menu").GetComponent<MenuButtons>().score = (score / GameObject.Find("Pause Menu").GetComponent<MenuButtons>().score) * 100;
+        }
         else if (score == 0)
         {
             gameOver.SetActive(true);

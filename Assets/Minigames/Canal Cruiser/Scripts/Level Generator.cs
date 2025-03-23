@@ -48,6 +48,10 @@ public class LevelGenerator : MonoBehaviour
 
         SS.scoreWin = Levels[levelIndex].CreateCompletion;
 
+        //////////// PLAY TEST LEADERBOARD, REMOVE AFTERWARDS ////////////
+        GameObject.Find("Pause Menu").GetComponent<MenuButtons>().score = Levels[levelIndex].CreateCompletion + Levels[levelIndex].ExtraCreates;
+        GameObject.Find("Pause Menu").GetComponent<MenuButtons>().suffix = "%";
+
         timeSlider = GameObject.Find("Timer").GetComponent<Slider>();
         timeSlider.maxValue = Levels[levelIndex].GameplayTime;
         timeSlider.value = Levels[levelIndex].GameplayTime;
