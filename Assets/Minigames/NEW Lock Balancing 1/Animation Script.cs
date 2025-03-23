@@ -30,7 +30,6 @@ public class AnimationScript : MonoBehaviour
     private void Start()
     {
         Puffy = GameObject.Find("Player");
-        Puffy.GetComponent<PuffyController>().enabled = false;
 
         createText = GameObject.Find("CreateText");
 
@@ -51,6 +50,8 @@ public class AnimationScript : MonoBehaviour
         {
             createText.GetComponent<TextMeshProUGUI>().text = "Intro Tutorial";
             createText.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -200, 0);
+
+            Puffy.GetComponent<PuffyController>().enabled = false;
         }
     }
 
