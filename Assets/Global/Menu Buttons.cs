@@ -113,7 +113,7 @@ public class MenuButtons : MonoBehaviour
 
         switch (SceneManager.GetActiveScene().name.ToString())
         {
-            case "New Lock Balance":
+            case "NEW Lock balancing":
                 data += "Lock Balance,";
                 break;
 
