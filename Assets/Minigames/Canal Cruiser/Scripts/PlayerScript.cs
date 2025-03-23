@@ -123,6 +123,11 @@ public class PlayerScript : MonoBehaviour
     {
         Invulnerable = true;
 
+        //this pauses game for a second when hit :) tehe i cant code
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(0.15f); 
+        Time.timeScale = 1;
+
         for (int i = 0; i < flashSeconds * flashAmount; i++)
         {
             if (i % 2 == 0) GetComponent<SpriteRenderer>().color = flashColor; // changes colour every other time
