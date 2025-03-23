@@ -100,6 +100,7 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         // Here be jankons, I would make it assign the index itself but
         // that gets overwritten by the next button so im using the text instead
+        LevelDesigner.SinglePlay = true;
         LD.StartMinigame(int.Parse(Button.GetComponentInChildren<TextMeshProUGUI>().text) - 1, LevelIndex);
     }
 

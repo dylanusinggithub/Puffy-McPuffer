@@ -59,6 +59,8 @@ public class PipeLayout : MonoBehaviour
         Timer.value = 0;
 
         TimerWater = Timer.GetComponentInChildren<RawImage>();
+
+        if (!LevelDesigner.SinglePlay) GameObject.Find("SinglePlay Exit").SetActive(false);
     }
 
     private void FixedUpdate()

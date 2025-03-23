@@ -50,6 +50,12 @@ public class MenuButtons : MonoBehaviour
         BTN_Exit();
     }
 
+    public void BTN_SinglePlay()
+    {
+        StartCoroutine(UploadLeaderboard());
+        BTN_Exit();
+    }
+
     public void BTN_PauseMenu()
     {
         BTNAS.volume = BTNVol * PlayerPrefs.GetFloat("Volume", 1);

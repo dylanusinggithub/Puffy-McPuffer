@@ -15,6 +15,7 @@ public class LevelDesigner : MonoBehaviour
 
     static public LevelDesigner Instance;
     static public bool AdvanceToNextLevel = false;
+    static public bool SinglePlay = false;
 
     AudioSource BTNAS;
     float BTNVol;
@@ -64,6 +65,8 @@ public class LevelDesigner : MonoBehaviour
             PlayerPrefs.SetInt("minigameIndex", minigameIndex);
             NextLevel();
         }
+
+        SinglePlay = false;
     }
 
     void NextLevel()

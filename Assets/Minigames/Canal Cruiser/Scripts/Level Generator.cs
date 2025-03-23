@@ -117,6 +117,7 @@ public class LevelGenerator : MonoBehaviour
 
         StartCoroutine(PlayTutorial());
 
+        if (!LevelDesigner.SinglePlay) GameObject.Find("SinglePlay Exit").SetActive(false);
     }
 
     IEnumerator PlayTutorial()

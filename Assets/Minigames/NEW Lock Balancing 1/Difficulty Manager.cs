@@ -33,6 +33,8 @@ public class DifficultyManager : MonoBehaviour
 
         OD.Layouts.Clear();
         foreach (GameObject layout in Levels[levelIndex].Layouts) OD.Layouts.Add(layout);
+
+        if (!LevelDesigner.SinglePlay) GameObject.Find("SinglePlay Exit").SetActive(false);
     }
 }
 
