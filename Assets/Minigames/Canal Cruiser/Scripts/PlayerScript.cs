@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+
     [SerializeField, Range(0, 100)]
     float movementStrength = 100;
 
@@ -48,6 +49,8 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField]
     Animator HitCruiser;
+    [SerializeField]
+    Animator Shake;
 
     private void Awake()
     {
@@ -107,6 +110,7 @@ public class PlayerScript : MonoBehaviour
             points = -1;
             StartCoroutine(DamageFlash());
             StartCoroutine(AnimOn());
+            Shake.SetTrigger("Shake");
             SpawnObstacleParticles();
             
         }
