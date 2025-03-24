@@ -52,10 +52,10 @@ class GameplaySettings
 
     [Header("Item Dropping Settings")]
     [Tooltip("Delay between bursts")]
-    [Range(0, 5)] public float burstDelay = 5;
+    [Range(0, 10)] public float burstDelay = 5;
 
     [Tooltip("The time between objects dropping")]
-    [Range(0, 2)] public float burstSeparationDelay = 1;
+    [Range(0, 10)] public float burstSeparationDelay = 1;
 
     [Tooltip("Maximum of times it can spawn objects")]
     [Range(1, 8)] public int burstMaxLimit = 5;
