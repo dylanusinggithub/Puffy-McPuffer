@@ -577,31 +577,29 @@ MonoBehaviour:
     - {fileID: 3756458864428363491, guid: 6628e4a9665746e4b8df481d0b6b9a52, type: 3}
     perlinStepSize: 0
     strength: 0
-  - LockSize: 1.2
+  - LockSize: 1.5
     CreateCompletion: 5
     burstDelay: 3.07
     burstSeparationDelay: 2
-    burstMaxLimit: 3
-    burstMin: 2
-    Layouts:
-    - {fileID: 3756458864428363491, guid: 6628e4a9665746e4b8df481d0b6b9a52, type: 3}
-    - {fileID: 3163827342038594386, guid: 5ee480e6546496d4ca0b382b771d33f2, type: 3}
-    - {fileID: 550664953553520682, guid: 1c99917b397d0464cbe8c817f9ed4dc8, type: 3}
-    - {fileID: 5551459052684984698, guid: 911afc5303e520041b382a98f4aaa80d, type: 3}
-    perlinStepSize: 0.2
-    strength: 15
-  - LockSize: 1.5
-    CreateCompletion: 7
-    burstDelay: 4.03
-    burstSeparationDelay: 5
-    burstMaxLimit: 4
+    burstMaxLimit: 1
     burstMin: 1
     Layouts:
     - {fileID: 75467923570884998, guid: 4da743856b74fcd479b632a5734c3611, type: 3}
     - {fileID: 75467923570884998, guid: bfe129daf4938394ca27091c9a0b4375, type: 3}
-    - {fileID: 5375686939675947511, guid: a61ac7a5038b03e46ba09b2e5e734d5a, type: 3}
-    - {fileID: 5375686939675947511, guid: a61ac7a5038b03e46ba09b2e5e734d5a, type: 3}
-    - {fileID: 5375686939675947511, guid: a61ac7a5038b03e46ba09b2e5e734d5a, type: 3}
+    perlinStepSize: 0.2
+    strength: 15
+  - LockSize: 1.25
+    CreateCompletion: 7
+    burstDelay: 1.33
+    burstSeparationDelay: 1.4
+    burstMaxLimit: 4
+    burstMin: 2
+    Layouts:
+    - {fileID: 550664953553520682, guid: 6def3057ae7d2ca4bb56de491fa3d7b1, type: 3}
+    - {fileID: 550664953553520682, guid: ce221b1beb368474b9ee9e46d9a680de, type: 3}
+    - {fileID: 3163827342038594386, guid: 5ee480e6546496d4ca0b382b771d33f2, type: 3}
+    - {fileID: 3756458864428363491, guid: 6628e4a9665746e4b8df481d0b6b9a52, type: 3}
+    - {fileID: 5551459052684984698, guid: 911afc5303e520041b382a98f4aaa80d, type: 3}
     perlinStepSize: 0.5
     strength: 6
   - LockSize: 1
