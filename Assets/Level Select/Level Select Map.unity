@@ -2152,9 +2152,9 @@ RectTransform:
   - {fileID: 1651894075}
   - {fileID: 1983483225}
   - {fileID: 595012481}
-  - {fileID: 88355200}
-  - {fileID: 157310819}
   - {fileID: 928345041}
+  - {fileID: 157310819}
+  - {fileID: 88355200}
   - {fileID: 1216982618}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

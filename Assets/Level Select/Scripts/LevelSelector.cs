@@ -58,7 +58,7 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         yield return new WaitForSeconds(0.5f);
 
-        Transform Grid = PreviewUI.GetChild(2);
+        Transform Grid = PreviewUI.GetChild(1);
         if (Grid.childCount == 0)
         {
             EventTrigger.Entry OnEntry = new EventTrigger.Entry()
@@ -93,7 +93,6 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         Transform UI = PreviewUI;
 
         UI.GetChild(1).gameObject.SetActive(!UI.GetChild(1).gameObject.activeInHierarchy); // Description
-        UI.GetChild(0).gameObject.SetActive(!UI.GetChild(0).gameObject.activeInHierarchy); // Preview
     }
 
     public void PreviewButtonStart(GameObject Button)
@@ -153,14 +152,14 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         MouseMoved = false;
 
+        foreach(Transform child in ComicPanel.GetComponentInChildren<Transform>()) Destroy(child.gameObject);
+
         // If Button is disabled or Preview doesn't exist don't show
         if (!GetComponent<Button>().enabled || LevelPreview == null || openingLevel) return;
 
 
-        Destroy(Preview);
         Preview = Instantiate(LevelPreview, ComicPanel.transform);
         PreviewUI = Preview.transform.GetChild(0).GetChild(0);
-        if (PlayerPrefs.GetInt("Levels Unlocked", 0) > LevelIndex) PreviewUI.GetChild(3).gameObject.SetActive(false);
 
         Preview.AddComponent<PreviewController>();
 
@@ -168,10 +167,14 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         Preview.GetComponent<RectTransform>().localScale = Vector3.one * 2.5f;
 
         if (PlayerPrefs.GetInt("Levels Unlocked", 0) > LevelIndex) StartCoroutine(DisplayButton());
-        else
-        {
-            PreviewUI.GetComponentInChildren<Button>().onClick.AddListener(delegate { StartLevel(); });
-        }
+        else StartCoroutine(DisplayRegularButton());
+    }
+
+    IEnumerator DisplayRegularButton()
+    {
+        yield return new WaitForSeconds(0.5f);
+        PreviewUI.GetChild(2).gameObject.SetActive(true);
+        PreviewUI.GetComponentInChildren<Button>().onClick.AddListener(delegate { StartLevel(); });
     }
 
     public IEnumerator UnravelCheck(float Delay)
@@ -188,7 +191,8 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         anim.SetFloat("Speed", -1);
         if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1) anim.Play("Appear", 0, 1); // Replays Animation only after it completes
 
-        Destroy(PreviewUI.transform.GetChild(1).gameObject);
+        PreviewUI.GetChild(1).gameObject.SetActive(false);
+        PreviewUI.GetChild(2).gameObject.SetActive(false);
 
         // Removes previous LevelPreview
         float clipLength = anim.runtimeAnimatorController.animationClips[0].length;
