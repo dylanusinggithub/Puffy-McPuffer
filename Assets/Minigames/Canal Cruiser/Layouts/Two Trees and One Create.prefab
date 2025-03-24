@@ -9823,6 +9823,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeLogPrefab (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2847029548657872912, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
+      propertyPath: isHardmode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847029548657872912, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
+      propertyPath: HardModeColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847029548657872912, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
+      propertyPath: HardModeColor.b
+      value: 0.25938943
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847029548657872912, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
+      propertyPath: HardModeColor.g
+      value: 0.6903027
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847029548657872912, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
+      propertyPath: HardModeColor.r
+      value: 0.8207547
+      objectReference: {fileID: 0}
     - target: {fileID: 7419422350618118363, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.45
@@ -9862,6 +9882,22 @@ PrefabInstance:
     - target: {fileID: 7419422350618118363, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8868056912680239917, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8868056912680239917, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
+      propertyPath: m_Color.b
+      value: 0.25938943
+      objectReference: {fileID: 0}
+    - target: {fileID: 8868056912680239917, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6903027
+      objectReference: {fileID: 0}
+    - target: {fileID: 8868056912680239917, guid: 59554bdf62338004a91ab9da0fc2661e, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8207547
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10079,6 +10115,10 @@ PrefabInstance:
     - target: {fileID: 2124172712110933406, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716115248384597040, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
+      propertyPath: isHardmode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2716115248384597040, guid: 12c99e31d3763ba418e24e8af19d515d, type: 3}
       propertyPath: objectAudio.Array.data[0]
