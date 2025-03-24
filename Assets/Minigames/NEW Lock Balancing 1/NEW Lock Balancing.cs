@@ -34,6 +34,11 @@ public class NEWLockBalancing : MonoBehaviour
     //////////// PLAY TEST LEADERBOARD, REMOVE AFTERWARDS ////////////
     float Playtime = 0;
 
+    private void Start()
+    {
+        ScaleLock();
+    }
+
     private void Awake()
     {
         WB = GetComponent<WaterController>();
@@ -45,7 +50,7 @@ public class NEWLockBalancing : MonoBehaviour
         arrowMovement = GameObject.Find("Arrow Origin");
         windForce = transform.GetChild(0).GetChild(0).GetComponent<ParticleSystemForceField>();
 
-        ScaleLock();
+        
     }
 
     private void OnValidate()
