@@ -90,9 +90,9 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void SwapPreview(BaseEventData eventData)
     {
-        Transform UI = PreviewUI;
+        //Transform UI = PreviewUI;
 
-        UI.GetChild(1).gameObject.SetActive(!UI.GetChild(1).gameObject.activeInHierarchy); // Description
+        //UI.GetChild(1).gameObject.SetActive(!UI.GetChild(1).gameObject.activeInHierarchy); // Description
     }
 
     public void PreviewButtonStart(GameObject Button)
