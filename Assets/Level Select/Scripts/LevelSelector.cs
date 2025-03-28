@@ -31,8 +31,8 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             GetComponent<Button>().interactable = false;
 
             // Disables signs
-            transform.parent.GetComponentInChildren<Animator>().enabled = false;
-            transform.parent.GetComponentInChildren<Image>().color = GetComponent<Button>().colors.disabledColor;
+            GetComponentInChildren<Animator>().enabled = false;
+            GetComponentInChildren<Image>().color = GetComponent<Button>().colors.disabledColor;
         }
     }
 
