@@ -1,4 +1,4 @@
- using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Security.Cryptography;
@@ -46,7 +46,19 @@ public class PuffinController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            GameOver();  //Game Over Funciton is called
+            GameOver();  //Game Over Function is called
+        }
+
+        //Or if Puffin Collides With Obstacles
+        else if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            GameOver(); //Game Over Function is called
+        }
+
+        //Or if Puffin Collides With Enemy Puffins
+        else if (collision.gameObject.CompareTag("Enemy"))
+        {
+            GameOver(); //Game OVer Function is called
         }
 
         //If Puffin Collides With Finish Zone
@@ -56,7 +68,7 @@ public class PuffinController : MonoBehaviour
             {
                 levelManager.SavePuffinPosition(transform.position);
             }
-            YouWin(); // You Win 
+            YouWin(); // You Win Function is called
         }
     }
 

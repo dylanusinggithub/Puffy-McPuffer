@@ -12,6 +12,7 @@ TagManager:
   - Particle
   - Wall
   - Finish Zone
+  - Enemy
   layers:
   - Default
   - TransparentFX
