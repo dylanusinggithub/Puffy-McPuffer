@@ -130,6 +130,13 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(FadeTime(Options));
     }
 
+    public void BTN_Default()
+    {
+        AS.volume = BTNVol * PlayerPrefs.GetFloat("Volume", 1);
+        AS.Play();
+        foreach (SliderController Slider in Options.GetComponentsInChildren<SliderController>()) Slider.ResetSlider();
+    }
+
     IEnumerator FadeTime(GameObject Menu)
     {
         FadeAS.volume = FadeVol * PlayerPrefs.GetFloat("Volume", 1);
