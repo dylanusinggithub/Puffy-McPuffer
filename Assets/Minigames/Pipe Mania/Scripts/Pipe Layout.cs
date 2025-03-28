@@ -104,9 +104,6 @@ public class PipeLayout : MonoBehaviour
         Time.timeScale = 0;
         WinScren.SetActive(true);
 
-        GameObject.Find("Pause Menu").GetComponent<MenuButtons>().score = Mathf.Round(Timer.value * 100) / 100;
-        GameObject.Find("Pause Menu").GetComponent<MenuButtons>().suffix = "s";
-
         this.enabled = false;
     }
 
