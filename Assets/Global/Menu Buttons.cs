@@ -13,10 +13,6 @@ public class MenuButtons : MonoBehaviour
     AudioSource FadeAS, BTNAS;
     float FadeVol,BTNVol;
 
-    //////////// PLAY TEST LEADERBOARD, REMOVE AFTERWARDS ////////////
-    public float score = 0;
-    public string suffix = "";
-
     void Start()
     {
         BTNAS = GetComponent<AudioSource>();
@@ -46,13 +42,11 @@ public class MenuButtons : MonoBehaviour
     public void BTN_NextLevel()
     {
         LevelDesigner.AdvanceToNextLevel = true;
-        StartCoroutine(UploadLeaderboard());
         BTN_Exit();
     }
 
     public void BTN_SinglePlay()
     {
-        StartCoroutine(UploadLeaderboard());
         BTN_Exit();
     }
 
@@ -102,65 +96,5 @@ public class MenuButtons : MonoBehaviour
 
         Time.timeScale = 1;
         SceneManager.LoadScene(Scene);
-    }
-
-    //////////// PLAY TEST LEADERBOARD, REMOVE AFTERWARDS ////////////
-    IEnumerator UploadLeaderboard()
-    {
-        string data = "";
-
-        data += PlayerPrefs.GetString("PTName", "Did Not Give") + ",";
-
-        switch (SceneManager.GetActiveScene().name.ToString())
-        {
-            case "NEW Lock balancing":
-                data += "Lock Balance,";
-                break;
-
-            case "Canal Cruiser":
-                data += "Canal Cruiser,";
-                break;
-
-            case "Pipe Mania":
-                data += "Pipe Mania,";
-                break;
-        }
-
-        switch (PlayerPrefs.GetInt("levelIndex"))
-        {
-            case 0:
-                data += "Union,";
-                break;
-            case 1:
-                data += "Forth and Clyde,";
-                break;
-            case 2:
-                data += "Caledonaian,";
-                break;
-            case 3:
-                data += "Crinan,";
-                break;
-            case 4:
-                data += "Monklands,";
-                break;
-        }
-
-        data += PlayerPrefs.GetInt("difficulty") + 1 + ",";
-
-        data += score + suffix;
-
-        using (UnityWebRequest www = UnityWebRequest.Post("http://mc.pixelator.xyz:3000/", data, "text/plain"))
-        { 
-            yield return www.SendWebRequest();
-
-            if (www.result != UnityWebRequest.Result.Success)
-            {
-                Debug.LogError(www.error);
-            }
-            else
-            {
-                Debug.Log("Uploaded Data!");
-            }
-        }
     }
 }

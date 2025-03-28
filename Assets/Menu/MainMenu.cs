@@ -17,9 +17,6 @@ public class MainMenu : MonoBehaviour
 
     float BTNVol, FadeVol;
 
-    //////////// PLAY TEST LEADERBOARD, REMOVE AFTERWARDS ////////////
-    [SerializeField] GameObject NameEntry;
-
     private void Start()
     {
         Main = transform.GetChild(0).gameObject;
@@ -34,18 +31,6 @@ public class MainMenu : MonoBehaviour
 
         BTNVol = AS.volume;
         FadeVol = FadeAS.volume;
-
-        //////////// PLAY TEST LEADERBOARD, REMOVE AFTERWARDS ////////////
-        if (!PlayerPrefs.HasKey("PTName"))
-        {
-            NameEntry.SetActive(true);
-        }
-    }
-
-    public void EnterName()
-    {
-        PlayerPrefs.SetString("PTName", NameEntry.transform.GetChild(1).GetComponent<TMP_InputField>().text);
-        NameEntry.SetActive(false);
     }
 
     void HideUI()
