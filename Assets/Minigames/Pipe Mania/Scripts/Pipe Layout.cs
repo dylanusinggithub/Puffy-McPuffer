@@ -99,7 +99,7 @@ public class PipeLayout : MonoBehaviour
 
         if(Fixed) GetComponent<AudioSource>().Stop(); // Stops leak sound
 
-        if (!Solved) return;
+        if (!Solved || Time.timeScale == 0) return;
 
         Time.timeScale = 0;
         WinScren.SetActive(true);
