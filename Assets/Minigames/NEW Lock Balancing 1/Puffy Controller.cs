@@ -195,7 +195,7 @@ public class PuffyController : MonoBehaviour
         {
             StartCoroutine(PlayAnimation());
 
-            collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            collision.gameObject.GetComponent<Collider2D>().enabled = false;
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 3);
             collision.gameObject.GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-30, 30);
         }
