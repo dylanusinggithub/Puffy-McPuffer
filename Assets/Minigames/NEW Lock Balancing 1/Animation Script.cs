@@ -48,7 +48,7 @@ public class AnimationScript : MonoBehaviour
         }
         else
         {
-            createText.GetComponent<TextMeshProUGUI>().text = "Intro Tutorial";
+            createText.GetComponent<TextMeshProUGUI>().text = "Tutorial Demo";
             createText.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -200, 0);
 
             Puffy.GetComponent<PuffyController>().enabled = false;

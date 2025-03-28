@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 75467923570884998}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -42,9 +42,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 304998151938927472}
     m_Modifications:
+    - target: {fileID: 2689845138613713731, guid: 911afc5303e520041b382a98f4aaa80d, type: 3}
+      propertyPath: waitSeconds
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4561883083523198194, guid: 911afc5303e520041b382a98f4aaa80d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4561883083523198194, guid: 911afc5303e520041b382a98f4aaa80d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -82,6 +86,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4739269538065953991, guid: 911afc5303e520041b382a98f4aaa80d, type: 3}
+      propertyPath: waitSeconds
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5366423890429106459, guid: 911afc5303e520041b382a98f4aaa80d, type: 3}
+      propertyPath: waitSeconds
+      value: 1.75
+      objectReference: {fileID: 0}
     - target: {fileID: 5551459052684984698, guid: 911afc5303e520041b382a98f4aaa80d, type: 3}
       propertyPath: m_Name
       value: Cargo Left
@@ -108,6 +120,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 304998151938927472}
     m_Modifications:
+    - target: {fileID: 2350979240744156301, guid: 6628e4a9665746e4b8df481d0b6b9a52, type: 3}
+      propertyPath: waitSeconds
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3756458864428363491, guid: 6628e4a9665746e4b8df481d0b6b9a52, type: 3}
       propertyPath: m_Name
       value: Cargo Right
@@ -178,6 +194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cargo Double Right
       objectReference: {fileID: 0}
+    - target: {fileID: 550664953553520682, guid: ce221b1beb368474b9ee9e46d9a680de, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2669613427155601756, guid: ce221b1beb368474b9ee9e46d9a680de, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -217,6 +237,14 @@ PrefabInstance:
     - target: {fileID: 2669613427155601756, guid: ce221b1beb368474b9ee9e46d9a680de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898273590474406946, guid: ce221b1beb368474b9ee9e46d9a680de, type: 3}
+      propertyPath: waitSeconds
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804208459870813775, guid: ce221b1beb368474b9ee9e46d9a680de, type: 3}
+      propertyPath: waitSeconds
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

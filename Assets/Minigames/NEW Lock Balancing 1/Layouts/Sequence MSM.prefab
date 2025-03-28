@@ -88,7 +88,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3163827342038594386, guid: 5ee480e6546496d4ca0b382b771d33f2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3439051158686326998, guid: 5ee480e6546496d4ca0b382b771d33f2, type: 3}
+      propertyPath: waitSeconds
+      value: 1.88
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -114,7 +118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 550664953553520682, guid: 1c99917b397d0464cbe8c817f9ed4dc8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2669613427155601756, guid: 1c99917b397d0464cbe8c817f9ed4dc8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -155,6 +159,14 @@ PrefabInstance:
     - target: {fileID: 2669613427155601756, guid: 1c99917b397d0464cbe8c817f9ed4dc8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898273590474406946, guid: 1c99917b397d0464cbe8c817f9ed4dc8, type: 3}
+      propertyPath: waitSeconds
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804208459870813775, guid: 1c99917b397d0464cbe8c817f9ed4dc8, type: 3}
+      propertyPath: waitSeconds
+      value: 1.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -214,13 +226,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2141071983278037983, guid: 5ee480e6546496d4ca0b382b771d33f2, type: 3}
+      propertyPath: waitSeconds
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3163827342038594386, guid: 5ee480e6546496d4ca0b382b771d33f2, type: 3}
       propertyPath: m_Name
       value: Cargo Middle
       objectReference: {fileID: 0}
     - target: {fileID: 3163827342038594386, guid: 5ee480e6546496d4ca0b382b771d33f2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3439051158686326998, guid: 5ee480e6546496d4ca0b382b771d33f2, type: 3}
+      propertyPath: waitSeconds
+      value: 1.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

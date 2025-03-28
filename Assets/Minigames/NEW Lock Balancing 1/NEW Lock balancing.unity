@@ -573,8 +573,10 @@ MonoBehaviour:
     burstMaxLimit: 1
     burstMin: 1
     Layouts:
-    - {fileID: 75467923570884998, guid: 8e4078802489c1f48af5ecb5f39b573e, type: 3}
+    - {fileID: 3163827342038594386, guid: 5ee480e6546496d4ca0b382b771d33f2, type: 3}
     - {fileID: 3756458864428363491, guid: 6628e4a9665746e4b8df481d0b6b9a52, type: 3}
+    - {fileID: 5551459052684984698, guid: 911afc5303e520041b382a98f4aaa80d, type: 3}
+    - {fileID: 550664953553520682, guid: 1c99917b397d0464cbe8c817f9ed4dc8, type: 3}
     perlinStepSize: 0
     strength: 0
   - LockSize: 1.5
@@ -595,10 +597,10 @@ MonoBehaviour:
     burstMaxLimit: 4
     burstMin: 2
     Layouts:
-    - {fileID: 550664953553520682, guid: 6def3057ae7d2ca4bb56de491fa3d7b1, type: 3}
-    - {fileID: 550664953553520682, guid: ce221b1beb368474b9ee9e46d9a680de, type: 3}
-    - {fileID: 3163827342038594386, guid: 5ee480e6546496d4ca0b382b771d33f2, type: 3}
+    - {fileID: 550664953553520682, guid: 1c99917b397d0464cbe8c817f9ed4dc8, type: 3}
     - {fileID: 3756458864428363491, guid: 6628e4a9665746e4b8df481d0b6b9a52, type: 3}
+    - {fileID: 3163827342038594386, guid: 9874fe853fb48f945847106167ebd103, type: 3}
+    - {fileID: 3163827342038594386, guid: 5ee480e6546496d4ca0b382b771d33f2, type: 3}
     - {fileID: 5551459052684984698, guid: 911afc5303e520041b382a98f4aaa80d, type: 3}
     perlinStepSize: 0.5
     strength: 6
@@ -1197,7 +1199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &318887284
 ParticleSystemRenderer:
   serializedVersion: 6
