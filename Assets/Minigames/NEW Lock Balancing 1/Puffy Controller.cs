@@ -105,7 +105,9 @@ public class PuffyController : MonoBehaviour
             // makes it so it cannot get hurt again until decreasedDurability is finished
             if (!isHit)
             {
+                Shake.SetFloat("ShakeForce", PlayerPrefs.GetFloat("Screen Shake", 1));
                 Shake.SetTrigger("Shake");
+
                 StartCoroutine(decreaseDurability());
                 if (health < 0) LB.state = NEWLockBalancing.GameState.Fail;
             }

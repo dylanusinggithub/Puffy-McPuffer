@@ -110,7 +110,10 @@ public class PlayerScript : MonoBehaviour
             points = -1;
             StartCoroutine(DamageFlash());
             StartCoroutine(AnimOn());
+
+            Shake.SetFloat("ShakeForce", PlayerPrefs.GetFloat("Screen Shake", 1));
             Shake.SetTrigger("Shake");
+
             SpawnObstacleParticles();
             
         }
