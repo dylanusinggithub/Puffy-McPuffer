@@ -106,7 +106,7 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!ButtonPressed && PlayerPrefs.GetInt("Levels Unlocked", 0) >= LevelIndex)
+        if (!ButtonPressed && PlayerPrefs.GetInt("Levels Unlocked", 0) >= LevelIndex && this.enabled)
         {
             GetComponent<Button>().interactable = false;
             DisplayPreview();
@@ -136,6 +136,8 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void BTN_Preview()
     {
+        if (!this.enabled) return;
+
         StartCoroutine(BTNPressed());
 
         if (PreviewUI != null) UnravelPreview();

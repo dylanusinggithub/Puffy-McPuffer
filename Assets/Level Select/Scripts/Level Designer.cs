@@ -97,6 +97,18 @@ public class LevelDesigner : MonoBehaviour
             // if you start a new level and resets
             if (levelIndex != LevelNumber) PlayerPrefs.SetInt("minigameIndex", -1);
 
+            GameObject LevelBTNs = GameObject.Find("Canvas");
+            foreach (Transform t in LevelBTNs.GetComponentInChildren<Transform>())
+            {
+                LevelSelector BTN = t.GetComponentInChildren<LevelSelector>();
+                if (BTN != null) BTN.enabled = false;
+            }
+
+            GameObject ExtraBTN = GameObject.Find("CLOUDS");
+            
+            // Disables Comic Viewer and Exit
+            foreach(Button BTN in ExtraBTN.GetComponentsInChildren<Button>()) BTN.interactable = false;
+
             PlayerPrefs.SetInt("levelIndex", LevelNumber);
 
             levelIndex = PlayerPrefs.GetInt("levelIndex", 0);
@@ -109,6 +121,7 @@ public class LevelDesigner : MonoBehaviour
 
     public void StartLevel()
     {
+
         // Displays the Starting comic before entering the level
         if (minigameIndex == -1)
         {
