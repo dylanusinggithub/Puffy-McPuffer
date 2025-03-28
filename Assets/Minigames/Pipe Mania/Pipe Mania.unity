@@ -7505,18 +7505,18 @@ MonoBehaviour:
   RegularPipe: {fileID: 8300000, guid: 756babea1dfec014eb07a1c6a62ace89, type: 3}
   BrokenPipe: {fileID: 8300000, guid: eb10219782ae4f7419fb0c1859a9fd96, type: 3}
   Levels:
+  - Timer: 19
+    BrokenPipesCount: 2
+    Layouts:
+    - {fileID: 784578062553504973, guid: 55ce69a8ebcc4434a9b64697e7863b44, type: 3}
   - Timer: 15
     BrokenPipesCount: 2
     Layouts:
-    - {fileID: 7032088594832221168, guid: 5ff5e5240ff1e5f4091538a2f9364fad, type: 3}
-  - Timer: 15
-    BrokenPipesCount: 3
-    Layouts:
     - {fileID: 5631998103555013080, guid: 0e6adf6482e7f7e4099b82e66d3c7408, type: 3}
   - Timer: 18
-    BrokenPipesCount: 4
+    BrokenPipesCount: 3
     Layouts:
-    - {fileID: 784578062553504973, guid: 55ce69a8ebcc4434a9b64697e7863b44, type: 3}
+    - {fileID: 7032088594832221168, guid: 5ff5e5240ff1e5f4091538a2f9364fad, type: 3}
   - Timer: 20
     BrokenPipesCount: 6
     Layouts:
