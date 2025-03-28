@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 
 public class CoalHaulLevelManager : MonoBehaviour
 {
-    [SerializeField] private GameObject GameOverPanel, YouWinPanel, FinalYouWinPanel; //Game Over panel, You Win panel (Level 1 - 4), Final You Win panel (Level)
+    [SerializeField] private GameObject PausePanel, GameOverPanel, YouWinPanel, FinalYouWinPanel; //Game Over panel, You Win panel (Level 1 - 4), Final You Win panel (Level)
     [SerializeField] private GameObject[] layouts; //Level layout array
     [SerializeField] private PuffinController puffinController; //Puffin Controller script reference
 
@@ -74,8 +74,14 @@ public class CoalHaulLevelManager : MonoBehaviour
             GameOverPanel.SetActive(false); //Disable Game Over panel
         }
 
+        if (PausePanel != null)
+        {
+            PausePanel.SetActive(false);
+        }
+
         layouts[currentLevel].SetActive(false);
         layouts[currentLevel].SetActive(true);
+
         if (puffinController != null)
         {
             puffinController.ResetPuffin(lastPuffinPosition); //Puffin character is repositioned at start of whatever level layout the plauyer's on
