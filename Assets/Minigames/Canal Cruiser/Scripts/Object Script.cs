@@ -111,7 +111,7 @@ public class ObjectScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            GetComponent<BoxCollider2D>().enabled = false;
+            GetComponent<Collider2D>().enabled = false;
             startScale = transform.localScale;
             StartCoroutine(Sink());
 
