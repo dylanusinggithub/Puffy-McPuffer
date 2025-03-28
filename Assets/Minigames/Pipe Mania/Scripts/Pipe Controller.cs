@@ -108,13 +108,11 @@ public class PipeController : MonoBehaviour
         }
     }
 
-    Position GetCorrectRotations(int Direction)
+    Position GetCorrectRotations(float Direction)
     {
-        Direction /= 90;
+        Direction = Mathf.Round(Direction) / 90;
 
-        Direction = Direction % 4;
-
-        switch (Direction)
+        switch (Direction % 4)
         {
             case 0:
                 return Position.Zero;

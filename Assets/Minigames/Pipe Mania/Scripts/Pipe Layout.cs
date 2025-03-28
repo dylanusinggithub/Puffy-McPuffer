@@ -77,7 +77,7 @@ public class PipeLayout : MonoBehaviour
             Time.timeScale = 0;
             GameOverScreen.SetActive(true);
             GetComponent<AudioSource>().Stop();
-            GameObject.Find("Pause Icon").SetActive(false);
+            GameObject.Find("Pause Menu").SetActive(false);
             this.enabled = false;
         }
 
@@ -103,6 +103,8 @@ public class PipeLayout : MonoBehaviour
 
         Time.timeScale = 0;
         WinScren.SetActive(true);
+
+        GameObject.Find("Pause Menu").SetActive(false);
 
         this.enabled = false;
     }
