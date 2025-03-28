@@ -32,7 +32,8 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
             // Disables signs
             GetComponentInChildren<Animator>().enabled = false;
-            GetComponentInChildren<Image>().color = GetComponent<Button>().colors.disabledColor;
+            transform.GetChild(0).GetComponent<Image>().color = GetComponent<Button>().colors.disabledColor;
+            // Why GetComponetInChildren doesn't work is beyond me
         }
     }
 
