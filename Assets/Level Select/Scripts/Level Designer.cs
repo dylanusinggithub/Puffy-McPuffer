@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -56,11 +57,25 @@ public class LevelDesigner : MonoBehaviour
         // Sets Levels Unlocked to 0 if you're playing for the first time
         if (!PlayerPrefs.HasKey("Levels Unlocked")) PlayerPrefs.SetInt("Levels Unlocked", 0);
 
+
         levelIndex = PlayerPrefs.GetInt("levelIndex", 0);
         minigameIndex = PlayerPrefs.GetInt("minigameIndex", -1);
 
         if (AdvanceToNextLevel) 
         {
+            if (Levels[levelIndex].Sequence.Length - 1 == minigameIndex)
+            {
+                PlayerPrefs.SetInt("minigameIndex", -1);
+                PlayerPrefs.SetString("advanceToNextLevel", "False");
+
+                AdvanceToNextLevel = false;
+                SinglePlay = false;
+
+                print("Level Complete");
+
+                return;
+            }
+            
             minigameIndex++;
             PlayerPrefs.SetInt("minigameIndex", minigameIndex);
             NextLevel();
@@ -82,6 +97,9 @@ public class LevelDesigner : MonoBehaviour
         else if (MinigameIndex >= Levels[LevelIndex].Sequence.Length) Debug.LogError("Invalid Minigame Index!");
         else
         {
+            PlayerPrefs.SetInt("minigameIndex", MinigameIndex);
+            PlayerPrefs.SetInt("levelIndex", LevelIndex);
+
             minigameIndex = MinigameIndex;
             levelIndex = LevelIndex;
 
@@ -140,7 +158,7 @@ public class LevelDesigner : MonoBehaviour
         else 
         {
             // Play Previous Minigame's Victory Cutscenes
-            //Checks to see if there is any comics or you've reached the last one
+            // Checks to see if there is any comics or you've reached the last one
             if (Levels[levelIndex].Sequence[minigameIndex].Cutscene.Count > comicIndex && Levels[levelIndex].Sequence[minigameIndex].Cutscene.Count > 0)
             {
                 CreateComicBackground(Levels[levelIndex].Sequence[minigameIndex].Cutscene[comicIndex]);
@@ -148,18 +166,24 @@ public class LevelDesigner : MonoBehaviour
             }
             else
             {
-                comicIndex = 0;
-
-                if (Levels[levelIndex].Sequence.Length - 1 <= minigameIndex)
+                if (Levels[levelIndex].Sequence.Length - 1 == minigameIndex)
                 {
                     print("Level complete!");
-                    if(PlayerPrefs.GetInt("Levels Unlocked") <= levelIndex) PlayerPrefs.SetInt("Levels Unlocked", levelIndex + 1);
+                    if (PlayerPrefs.GetInt("Levels Unlocked") <= levelIndex) PlayerPrefs.SetInt("Levels Unlocked", levelIndex + 1);
                     PlayerPrefs.SetInt("minigameIndex", -1);
+
+                    PlayerPrefs.SetString("advanceToNextLevel", "False");
+                    AdvanceToNextLevel = false;
+                    SinglePlay = false;
 
                     // Destroys last comic
                     for (int i = 0; i < this.transform.childCount; i++) Destroy(transform.GetChild(i).gameObject);
                 }
-                else LoadLevel(); 
+                else
+                {
+                    comicIndex = 0;
+                    LoadLevel();
+                }
             }
         }
     }

@@ -3589,7 +3589,8 @@ MonoBehaviour:
     - minigames: 2
       difficulty: 2
       showTutorial: 0
-      Cutscene: []
+      Cutscene:
+      - {fileID: 2800000, guid: 907e21cdf8a598040aece49ff3ce0d66, type: 3}
   - StartScreen:
     - {fileID: 2800000, guid: 82853cdb1b1cd0d489d0fae2e01d10cd, type: 3}
     - {fileID: 2800000, guid: 202a326da8bca1e4e94a0b3f6aef9cb1, type: 3}
