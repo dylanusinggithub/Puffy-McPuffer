@@ -115,10 +115,14 @@ public class LevelGenerator : MonoBehaviour
 
         StartCoroutine(PlayTutorial());
 
-        if (LevelDesigner.SinglePlay) SinglePlay.SetActive(true);
+        if (LevelDesigner.SinglePlay)
+        {
+            SinglePlay.SetActive(true);
+            GameObject.Find("Level Select Button").GetComponent<RectTransform>().anchoredPosition = new Vector2(318, -377);
+        }
     }
 
-    IEnumerator PlayTutorial()
+        IEnumerator PlayTutorial()
     {
         PlayAnimation = true;
 
