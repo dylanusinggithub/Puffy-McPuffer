@@ -167,6 +167,7 @@ public class PuffyController : MonoBehaviour
 
     IEnumerator PlayAnimation()
     {
+        Shake.SetFloat("ShakeForce", PlayerPrefs.GetFloat("Screen Shake", 1));
         Shake.SetTrigger("Shake");
         transform.parent.GetComponent<Animator>().enabled = true;
         transform.parent.GetComponent<Animator>().SetTrigger("Hit");
