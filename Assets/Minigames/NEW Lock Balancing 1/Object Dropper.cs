@@ -17,7 +17,8 @@ public class ObjectDropper : MonoBehaviour
     int burstMax;
     int burstCount;
 
-    bool spawning = false;
+    [HideInInspector]
+    public bool Spawning = false;
 
     public List<GameObject> Layouts;
     float LockSize;
@@ -34,8 +35,6 @@ public class ObjectDropper : MonoBehaviour
 
         timerDelay = 2; // Start delay
         burstMax = Random.Range(burstMin, burstMaxLimit);
-        spawning = true;
-
     }
 
     // Update is called once per frame
@@ -47,16 +46,15 @@ public class ObjectDropper : MonoBehaviour
             this.enabled = false;
         }
 
-        if (timerDelay < 0)
+        if (timerDelay < 0 && !Spawning)
         {
-            if (!spawning || timerSeparation < 0)
+            if (timerSeparation < 0)
             {
                 if (burstCount == burstMax)
                 {
                     burstMax = Random.Range(burstMin, burstMaxLimit);
                     timerDelay = burstDelay;
                     burstCount = 0;
-                    spawning = false;
                     return;
                 }
                 burstCount++;
@@ -92,8 +90,7 @@ public class ObjectDropper : MonoBehaviour
 
 
                 timerSeparation = burstSeparationDelay;
-
-                spawning = true;
+                Spawning = true;
                 return;
             }
             else timerSeparation -= Time.deltaTime;
@@ -101,7 +98,6 @@ public class ObjectDropper : MonoBehaviour
         else timerDelay -= Time.deltaTime;
 
         // Check to see if objects have hit water
-        
         for (int i = 0; i < GO.Count; i++)
         {
             if (GO[i].transform.childCount == 0)

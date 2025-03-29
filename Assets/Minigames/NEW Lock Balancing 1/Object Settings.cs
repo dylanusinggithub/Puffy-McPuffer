@@ -12,9 +12,12 @@ public class ObjectSettings : MonoBehaviour
     [SerializeField]
     GameObject[] objects;
 
+    ObjectDropper OD;
     // Start is called before the first frame update
     void Start()
     {
+        OD = GameObject.Find("GameManager").GetComponent<ObjectDropper>();
+
         StartCoroutine(DropObject());
     }
 
@@ -49,7 +52,14 @@ public class ObjectSettings : MonoBehaviour
             {
                 transform.parent.parent.GetChild(transform.parent.GetSiblingIndex() + 1).gameObject.SetActive(true);
             }
+            else
+            {
+                OD.Spawning = false;
+                Destroy(transform.parent.parent.gameObject, 1);
+            }
         }
+        else OD.Spawning = false;
+
         transform.parent.SetParent(null); // Unparent the sequence
 
         Destroy(transform.gameObject);
