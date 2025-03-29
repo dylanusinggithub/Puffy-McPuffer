@@ -122,7 +122,7 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-        IEnumerator PlayTutorial()
+    IEnumerator PlayTutorial()
     {
         PlayAnimation = true;
 
@@ -139,6 +139,7 @@ public class LevelGenerator : MonoBehaviour
         else
         {
             GameObject.Find("Tutorial Assets").SetActive(false);
+            GameObject.Find("Tutorial Text").SetActive(false);
             Delay = Puffy.GetComponent<Animator>().runtimeAnimatorController.animationClips[1].length;
             Puffy.GetComponent<Animator>().Play("Crusier Opening", 0, 0);
         }
