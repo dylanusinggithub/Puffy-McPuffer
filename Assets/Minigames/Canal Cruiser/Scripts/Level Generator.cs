@@ -25,7 +25,7 @@ public class LevelGenerator : MonoBehaviour
     Slider timeSlider;
     RawImage timerWater;
 
-    [SerializeField] GameObject SinglePlay;
+    [SerializeField] GameObject SinglePlay, LevelBTN;
 
     private void OnValidate()
     {
@@ -118,7 +118,7 @@ public class LevelGenerator : MonoBehaviour
         if (LevelDesigner.SinglePlay)
         {
             SinglePlay.SetActive(true);
-            GameObject.Find("Level Select Button").GetComponent<RectTransform>().anchoredPosition = new Vector2(318, -377);
+            LevelBTN.GetComponent<RectTransform>().anchoredPosition = new Vector2(318, -377);
         }
     }
 
