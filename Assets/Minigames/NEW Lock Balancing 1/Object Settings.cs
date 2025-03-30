@@ -48,19 +48,37 @@ public class ObjectSettings : MonoBehaviour
         // activtates the next layout in sequence if there is one
         if (transform.parent.parent != null)
         {
-            if (transform.parent.GetSiblingIndex() < transform.parent.parent.childCount - 1)
+            if (transform.parent.parent.childCount > 1)
             {
-                transform.parent.parent.GetChild(transform.parent.GetSiblingIndex() + 1).gameObject.SetActive(true);
+                int SpawnerCount = 0;
+                foreach (Transform Spawners in transform.parent.GetComponentInChildren<Transform>())
+                {
+                    if (Spawners.GetComponent<ObjectSettings>()) SpawnerCount++;
+                }
+
+                // Only does anything when its the last object to drop
+                if (SpawnerCount < 2 || transform.parent.childCount == SpawnerCount * 2.5)
+                {
+                    if (transform.GetSiblingIndex() == SpawnerCount - 1 || SpawnerCount < 2)
+                    {
+                        // Enable the next layout in sequence
+                        transform.parent.parent.GetChild(transform.parent.GetSiblingIndex() + 1).gameObject.SetActive(true);
+                        transform.parent.SetParent(null);
+                    }
+                }
             }
             else
             {
                 OD.Spawning = false;
                 Destroy(transform.parent.parent.gameObject, 1);
+                transform.parent.SetParent(null);
             }
         }
-        else OD.Spawning = false;
-
-        transform.parent.SetParent(null); // Unparent the sequence
+        else
+        {
+            OD.Spawning = false;
+            transform.parent.SetParent(null);
+        }
 
         Destroy(transform.gameObject);
     }
