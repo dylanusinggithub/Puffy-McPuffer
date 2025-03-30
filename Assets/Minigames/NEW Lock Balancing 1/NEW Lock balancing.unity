@@ -531,6 +531,7 @@ MonoBehaviour:
   burstSeparationDelay: 1
   burstMaxLimit: 4
   burstMin: 2
+  Spawning: 0
   Layouts:
   - {fileID: 5551459052684984698, guid: 911afc5303e520041b382a98f4aaa80d, type: 3}
   - {fileID: 3756458864428363491, guid: 6628e4a9665746e4b8df481d0b6b9a52, type: 3}
@@ -586,8 +587,8 @@ MonoBehaviour:
     burstMaxLimit: 1
     burstMin: 1
     Layouts:
-    - {fileID: 75467923570884998, guid: 4da743856b74fcd479b632a5734c3611, type: 3}
     - {fileID: 75467923570884998, guid: bfe129daf4938394ca27091c9a0b4375, type: 3}
+    - {fileID: 75467923570884998, guid: 4da743856b74fcd479b632a5734c3611, type: 3}
     perlinStepSize: 0.2
     strength: 15
   - LockSize: 1.25
@@ -597,11 +598,7 @@ MonoBehaviour:
     burstMaxLimit: 4
     burstMin: 2
     Layouts:
-    - {fileID: 550664953553520682, guid: 1c99917b397d0464cbe8c817f9ed4dc8, type: 3}
-    - {fileID: 3756458864428363491, guid: 6628e4a9665746e4b8df481d0b6b9a52, type: 3}
-    - {fileID: 3163827342038594386, guid: 9874fe853fb48f945847106167ebd103, type: 3}
-    - {fileID: 3163827342038594386, guid: 5ee480e6546496d4ca0b382b771d33f2, type: 3}
-    - {fileID: 5551459052684984698, guid: 911afc5303e520041b382a98f4aaa80d, type: 3}
+    - {fileID: 75467923570884998, guid: 8e4078802489c1f48af5ecb5f39b573e, type: 3}
     perlinStepSize: 0.5
     strength: 6
   - LockSize: 1
