@@ -248,11 +248,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3163827342038594386, guid: 5ee480e6546496d4ca0b382b771d33f2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3439051158686326998, guid: 5ee480e6546496d4ca0b382b771d33f2, type: 3}
       propertyPath: waitSeconds
       value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037952381029108695, guid: 5ee480e6546496d4ca0b382b771d33f2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
