@@ -7509,10 +7509,10 @@ MonoBehaviour:
     BrokenPipesCount: 2
     Layouts:
     - {fileID: 784578062553504973, guid: 55ce69a8ebcc4434a9b64697e7863b44, type: 3}
-  - Timer: 15
+  - Timer: 18
     BrokenPipesCount: 2
     Layouts:
-    - {fileID: 5631998103555013080, guid: 0e6adf6482e7f7e4099b82e66d3c7408, type: 3}
+    - {fileID: 5704593439265035008, guid: 7fe0387f916c36c42abd3db937eb3441, type: 3}
   - Timer: 18
     BrokenPipesCount: 3
     Layouts:
