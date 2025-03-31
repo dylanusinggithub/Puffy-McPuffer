@@ -57,7 +57,7 @@ public class ObjectSettings : MonoBehaviour
                 }
 
                 // Only does anything when its the last object to drop
-                if (SpawnerCount < 2 || transform.parent.childCount == SpawnerCount * 2.5)
+                if (SpawnerCount < 2 || transform.parent.childCount == SpawnerCount * 2 + SpawnerCount - 1)
                 {
                     if (transform.GetSiblingIndex() == SpawnerCount - 1 || SpawnerCount < 2)
                     {
