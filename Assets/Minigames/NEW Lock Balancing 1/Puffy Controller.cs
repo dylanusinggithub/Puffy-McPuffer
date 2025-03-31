@@ -84,11 +84,25 @@ public class PuffyController : MonoBehaviour
         CheckCollison();
 
         // Flip Puffy depenidng on where they're facing
-        if (transform.position.x < 0.1f) GetComponent<SpriteRenderer>().flipX = false;
-        else GetComponent<SpriteRenderer>().flipX = true;
+        if (Mathf.Abs(transform.position.x) < 0.1f)
+        {
+            if (transform.position.x < 0)
+            {
+                GetComponent<Animator>().SetBool("Moving Right", false);
+                GetComponent<Animator>().SetTrigger("TurnAround");
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else if(transform.position.x > 0)
+            {
+                GetComponent<Animator>().SetBool("Moving Right", true);
+                GetComponent<Animator>().SetTrigger("TurnAround");
+                GetComponent<SpriteRenderer>().flipX = false;
+            }
+        }
+
 
         // Flashes Puffy whenever hurt
-        if(isRed) GetComponent<SpriteRenderer>().color = Color.red;
+        if (isRed) GetComponent<SpriteRenderer>().color = Color.red;
         else GetComponent <SpriteRenderer>().color = Color.white;
 
     }
