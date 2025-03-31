@@ -58,14 +58,11 @@ public class ObjectSettings : MonoBehaviour
                 }
 
                 // Only does anything when its the last object to drop
-                if (SpawnerCount < 2 || transform.parent.childCount == SpawnerCount * 2 + SpawnerCount - 1)
+                if (transform.parent.childCount == SpawnerCount * 2 + SpawnerCount - 1 || SpawnerCount < 2 || (SpawnerCount > 2 && (transform.parent.childCount == SpawnerCount * 2)))
                 {
-                    if (transform.GetSiblingIndex() == SpawnerCount - 1 || SpawnerCount < 2)
-                    {
-                        // Enable the next layout in sequence
-                        transform.parent.parent.GetChild(transform.parent.GetSiblingIndex() + 1).gameObject.SetActive(true);
-                        transform.parent.SetParent(null);
-                    }
+                    // Enable the next layout in sequence
+                    transform.parent.parent.GetChild(transform.parent.GetSiblingIndex() + 1).gameObject.SetActive(true);
+                    transform.parent.SetParent(null);
                 }
             }
             else
