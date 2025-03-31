@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+using Random = UnityEngine.Random;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -97,12 +100,17 @@ public class LevelGenerator : MonoBehaviour
                 Transform OBJ = transform.GetChild(i).GetChild(j);
                 if (OBJ.name.Contains("CratePrefab"))
                 {
-                    CreatesLocation.Add(OBJ.gameObject);
+                    if(!OBJ.GetComponent<ObjectScript>().isHardmode) CreatesLocation.Add(OBJ.gameObject);
                     OBJ.gameObject.SetActive(false);
                 }
-                else if(OBJ.GetComponent<ObjectScript>().isHardmode) OBJ.gameObject.SetActive(false);
+                else if (OBJ.GetComponent<ObjectScript>().isHardmode) OBJ.gameObject.SetActive(false);
             }
         }
+
+        if (CreatesLocation.Count < Levels[levelIndex].CreateCompletion)
+            Debug.LogError("Level is not Possible! Create Completion: " + Levels[levelIndex].CreateCompletion + " But only " + CreatesLocation.Count + " Valid Spots");
+        else if (CreatesLocation.Count < Levels[levelIndex].CreateCompletion + Levels[levelIndex].ExtraCreates)
+            Debug.Log("Level does not have enough space of extra crates! " + (CreatesLocation.Count - Levels[levelIndex].CreateCompletion) + "/" + Levels[levelIndex].ExtraCreates + " spawned");
 
         // Goes through all create locations and chooses a random one to reenable "Spawn"
         int initalCreateCount = CreatesLocation.Count;
