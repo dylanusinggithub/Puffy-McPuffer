@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -69,7 +68,6 @@ public class LevelDesigner : MonoBehaviour
                 PlayerPrefs.SetString("advanceToNextLevel", "False");
 
                 AdvanceToNextLevel = false;
-                SinglePlay = false;
 
                 print("Level Complete");
 
@@ -169,8 +167,9 @@ public class LevelDesigner : MonoBehaviour
                 if (Levels[levelIndex].Sequence.Length - 1 == minigameIndex)
                 {
                     print("Level complete!");
-                    if (PlayerPrefs.GetInt("Levels Unlocked") <= levelIndex) PlayerPrefs.SetInt("Levels Unlocked", levelIndex + 1);
                     PlayerPrefs.SetInt("minigameIndex", -1);
+
+                    if (PlayerPrefs.GetInt("Levels Unlocked") <= levelIndex) PlayerPrefs.SetInt("Levels Unlocked", levelIndex + 1);
 
                     PlayerPrefs.SetString("advanceToNextLevel", "False");
                     AdvanceToNextLevel = false;
@@ -178,6 +177,22 @@ public class LevelDesigner : MonoBehaviour
 
                     // Destroys last comic
                     for (int i = 0; i < this.transform.childCount; i++) Destroy(transform.GetChild(i).gameObject);
+
+                    // Renables the animators in case they were disabled before hand with a comics
+                    GameObject LevelBTNs = GameObject.Find("Canvas");
+                    foreach (Transform t in LevelBTNs.GetComponentInChildren<Transform>())
+                    {
+                        LevelSelector BTN = t.GetComponentInChildren<LevelSelector>();
+                        if (BTN != null)
+                        {
+                            BTN.gameObject.GetComponentInChildren<Animator>().enabled = true;
+                            BTN.transform.GetChild(0).GetComponent<Image>().color = Color.white;
+                            BTN.gameObject.GetComponent<Button>().interactable = true;
+                        }
+                    }
+
+                    GameObject ExtraBTN = GameObject.Find("CLOUDS");
+                    foreach (Button BTN in ExtraBTN.GetComponentsInChildren<Button>()) BTN.interactable = true;
                 }
                 else
                 {
