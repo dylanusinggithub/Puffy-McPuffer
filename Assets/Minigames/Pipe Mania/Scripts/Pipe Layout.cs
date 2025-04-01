@@ -15,6 +15,10 @@ public class PipeLayout : MonoBehaviour
     Slider Timer;
     RawImage TimerWater;
 
+    [Header("Level Settings")]
+    [SerializeField] int LevelIndex;
+    [SerializeField] bool PressMeToSetLevel = false;
+
     private void OnValidate()
     {
         if (PressMeToSetLevel)
