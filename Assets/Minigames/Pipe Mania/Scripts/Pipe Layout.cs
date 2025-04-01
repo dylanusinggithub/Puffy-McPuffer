@@ -14,6 +14,7 @@ public class PipeLayout : MonoBehaviour
     [SerializeField] AudioClip RegularPipe, BrokenPipe;
     Slider Timer;
     RawImage TimerWater;
+
     private void OnValidate()
     {
         if (PressMeToSetLevel)
