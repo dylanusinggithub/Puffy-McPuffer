@@ -9,6 +9,7 @@ public class PipeLayout : MonoBehaviour
     [Header("Pipe Settings")] 
     [SerializeField] GameObject ClickParticle;
     [SerializeField] GameObject BrokenParticle;
+    [SerializeField] GameObject SteamyParticle;
     [SerializeField] AudioClip RegularPipe, BrokenPipe;
     Slider Timer;
     RawImage TimerWater;
@@ -18,7 +19,7 @@ public class PipeLayout : MonoBehaviour
     [SerializeField] GameObject SinglePlay;
 
     public ParticleSystem drip;
-    public ParticleSystem steam;
+    
     private Dictionary<Transform, ParticleSystem> activeLeaks = new Dictionary<Transform, ParticleSystem>();
     void Awake()
     {
@@ -42,6 +43,7 @@ public class PipeLayout : MonoBehaviour
 
                 Pipe.GetComponent<PipeController>().ClickParticle = ClickParticle;
                 Pipe.GetComponent<PipeController>().BrokenParticle = BrokenParticle;
+                Pipe.GetComponent<PipeController>().SteamyParticle = SteamyParticle;
 
                 Pipes.Add(transform.GetChild(0).GetChild(i).gameObject);
             }
@@ -124,24 +126,12 @@ public class PipeLayout : MonoBehaviour
                     Solved = false;
                     if (!activeLeaks.ContainsKey(child)) 
                     {
-                        int randomInt = Random.Range(1, 3);
-                        if (randomInt == 1)
-                        {
-                            ParticleSystem newParticle = Instantiate(drip, child.position + new Vector3(0.8f, 0f, 0f), Quaternion.identity);
-                            newParticle.Play();
-
-                            activeLeaks.Add(child, newParticle);
-                        }
-                        else
-                        {
-                            ParticleSystem newParticle = Instantiate(steam, child.position + new Vector3(0f, 0f, 0f), Quaternion.identity);
-                            var main = steam.main;
-                            main.startSpeed = 1f;
-                            newParticle.Play();
-
-                            activeLeaks.Add(child, newParticle);
-                        }
                         
+                        
+                        ParticleSystem newParticle = Instantiate(drip, child.position + new Vector3(0.8f, 0f, 0f), Quaternion.identity);
+                        newParticle.Play();
+
+                        activeLeaks.Add(child, newParticle);
                     }
                     return; 
                 }

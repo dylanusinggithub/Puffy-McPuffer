@@ -15,7 +15,7 @@ public class PipeController : MonoBehaviour
     public AudioClip RegularPipe, BrokePipe;
     float initalVolume;
 
-    public GameObject ClickParticle, BrokenParticle;
+    public GameObject ClickParticle, BrokenParticle, SteamyParticle;
     GameObject BrokenObject;
 
     [Flags] enum Position {Zero = 1, Ninety = 2, OneHundredAndEighty = 4, TwoHundredAndSeventy = 8 }
@@ -67,7 +67,15 @@ public class PipeController : MonoBehaviour
         else
         {
             GetComponent<SpriteRenderer>().sprite = BrokenSprite;
-            BrokenObject = Instantiate(BrokenParticle, transform);
+            int randomInt = Random.Range(1, 3);
+            if (randomInt == 1)
+            {
+                BrokenObject = Instantiate(BrokenParticle, transform);
+            }
+            else
+            {
+                BrokenObject = Instantiate(SteamyParticle, transform);
+            }
         }
     }
 

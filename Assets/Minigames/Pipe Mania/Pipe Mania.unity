@@ -7502,6 +7502,7 @@ MonoBehaviour:
   WinScren: {fileID: 990270507}
   ClickParticle: {fileID: 684170006893336315, guid: 303f0969a3c34f043b04334c432379e5, type: 3}
   BrokenParticle: {fileID: 2702827215666277195, guid: c9b2bbc75338b9f4a9a8044841193909, type: 3}
+  SteamyParticle: {fileID: 7075644079699281911, guid: 3594b350a1177ea4493247ad1320ac81, type: 3}
   RegularPipe: {fileID: 8300000, guid: 756babea1dfec014eb07a1c6a62ace89, type: 3}
   BrokenPipe: {fileID: 8300000, guid: eb10219782ae4f7419fb0c1859a9fd96, type: 3}
   Levels:
@@ -7527,7 +7528,6 @@ MonoBehaviour:
     - {fileID: 4855246425472736739, guid: b1af7d574eb654043990692f2eba97c9, type: 3}
   SinglePlay: {fileID: 756773379}
   drip: {fileID: 5521459353906145027, guid: 12f2e5e20b7c47948b885f0d8a002c08, type: 3}
-  steam: {fileID: 6778481918615373998, guid: 3594b350a1177ea4493247ad1320ac81, type: 3}
 --- !u!82 &1784068080
 AudioSource:
   m_ObjectHideFlags: 0
