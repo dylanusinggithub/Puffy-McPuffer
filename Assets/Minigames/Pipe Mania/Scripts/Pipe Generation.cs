@@ -70,7 +70,7 @@ public class PipeGeneration : MonoBehaviour
         if (!IsAnyPipeLeaking()) // If no leaks remain
         {
             StopLeakingSound();
-            bool isLeaking = false;
+            //bool isLeaking = false;
         }
     }
 

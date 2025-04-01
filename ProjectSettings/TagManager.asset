@@ -47,6 +47,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: fish
+    uniqueID: 2305576233
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
