@@ -123,7 +123,7 @@ public class ObjectDropper : MonoBehaviour
                         GO[i].transform.GetChild(j).parent = null;
 
                     }
-                    else if (GO[i].transform.GetChild(j).position.y > 4f) // when above lock wall reset sorting order
+                    else if (GO[i].transform.GetChild(j).position.y > 6f) // when above lock wall reset sorting order
                     {
                         if (GO[i].transform.GetChild(j).GetComponent<SpriteRenderer>() != null)
                         {
