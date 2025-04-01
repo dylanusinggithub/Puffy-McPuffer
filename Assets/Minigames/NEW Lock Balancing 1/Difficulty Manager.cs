@@ -4,14 +4,28 @@ using UnityEngine;
 
 public class DifficultyManager : MonoBehaviour
 {
+    [SerializeField] GameObject SinglePlay;
+
+    [Header("Level Settings")]
+    [SerializeField] int LevelIndex;
+    [SerializeField] bool PressMeToSetLevel = false;
+
+    private void OnValidate()
+    {
+        if (PressMeToSetLevel)
+        {
+            PressMeToSetLevel = false;
+            PlayerPrefs.SetInt("difficulty", LevelIndex);
+        }
+    }
+
+
     [SerializeField] GameplaySettings[] Levels;
     int levelIndex;
 
     WaterController WC;
     NEWLockBalancing LB;
     ObjectDropper OD;
-
-    [SerializeField] GameObject SinglePlay;
 
     private void Awake()
     {

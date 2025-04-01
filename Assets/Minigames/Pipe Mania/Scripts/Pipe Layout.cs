@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class PipeLayout : MonoBehaviour
 {
     [SerializeField] GameObject GameOverScreen, WinScren;
+    [SerializeField] GameObject SinglePlay;
 
     [Header("Pipe Settings")] 
     [SerializeField] GameObject ClickParticle;
@@ -13,10 +14,16 @@ public class PipeLayout : MonoBehaviour
     [SerializeField] AudioClip RegularPipe, BrokenPipe;
     Slider Timer;
     RawImage TimerWater;
+    private void OnValidate()
+    {
+        if (PressMeToSetLevel)
+        {
+            PressMeToSetLevel = false;
+            PlayerPrefs.SetInt("difficulty", LevelIndex);
+        }
+    }
 
     [SerializeField] LevelSettings[] Levels;
-
-    [SerializeField] GameObject SinglePlay;
 
     public ParticleSystem drip;
     
