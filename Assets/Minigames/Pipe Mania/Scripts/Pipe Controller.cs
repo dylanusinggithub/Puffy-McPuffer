@@ -61,7 +61,7 @@ public class PipeController : MonoBehaviour
     {
         initalVolume = GetComponent<AudioSource>().volume;
 
-        if (!isFixed) transform.Rotate(0, 0, Random.Range(0, 3) * 90);
+        if (!isFixed && broken == 0) transform.Rotate(0, 0, Random.Range(0, 3) * 90);
 
         if (broken == 0) CheckIfCorrect();
         else
@@ -82,10 +82,8 @@ public class PipeController : MonoBehaviour
     public void OnMouseOver()
     {
         // OnMouseDown doesn't support right clicks for some reason
-        if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
+        if ((Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1)) && enabled)
         {
-            if (Time.timeScale == 0) return;
-
             Destroy(Instantiate(ClickParticle, transform), 2);
 
             GetComponent<Animator>().enabled = false;
@@ -97,12 +95,13 @@ public class PipeController : MonoBehaviour
                 broken--;
                 if (broken == 0)
                 {
+                    GetComponent<PipeController>().enabled = false;
                     GetComponent<SpriteRenderer>().sprite = RepairedSprite;
                     BrokenObject.GetComponent<ParticleSystem>().Stop();
-                    CheckIfCorrect();
+
                     // Checks if solved & stops audio when Repaired
+                    CheckIfCorrect();
                     transform.parent.parent.GetComponent<PipeLayout>().CheckPipes();
-                    
                 }
             }
             else
