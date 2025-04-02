@@ -87,7 +87,6 @@ public class PipeEditor : MonoBehaviour
             if (!sprite.Contains("End") && !sprite.Contains("Start"))
             {
                 transform.eulerAngles = new Vector3(0, 0, Mathf.RoundToInt(transform.eulerAngles.z / 90) * 90);
-                gameObject.AddComponent<PipeController>();
             }
 
             Destroy(gameObject.GetComponent<PipeEditor>());

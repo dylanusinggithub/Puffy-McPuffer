@@ -9,6 +9,7 @@ public class PipeController : MonoBehaviour
     public int broken = 0;
 
     public bool isFixed;
+    public bool gaunletMode;
 
     Sprite BrokenSprite, RepairedSprite;
 
@@ -61,7 +62,7 @@ public class PipeController : MonoBehaviour
     {
         initalVolume = GetComponent<AudioSource>().volume;
 
-        if (!isFixed && broken == 0) transform.Rotate(0, 0, Random.Range(0, 3) * 90);
+        if (!isFixed && broken == 0 && !gaunletMode) transform.Rotate(0, 0, Random.Range(0, 3) * 90);
 
         if (broken == 0) CheckIfCorrect();
         else

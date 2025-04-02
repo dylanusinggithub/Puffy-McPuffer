@@ -130,7 +130,7 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             if(PlayerPrefs.GetInt("Levels Unlocked", 0) >= LevelIndex) GetComponent<Button>().interactable = true;
 
             MouseMoved = true;
-            StartCoroutine(UnravelCheck(1));
+            StartCoroutine(UnravelCheck(2));
         }
     }
 

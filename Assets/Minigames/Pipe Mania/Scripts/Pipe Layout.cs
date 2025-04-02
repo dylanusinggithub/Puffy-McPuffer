@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
+using static PipeEditor;
 
 public class PipeLayout : MonoBehaviour
 {
@@ -31,44 +33,48 @@ public class PipeLayout : MonoBehaviour
     [SerializeField] LevelSettings[] Levels;
 
     public ParticleSystem drip;
-    
+
+    List<GameObject> Pipes = new List<GameObject>();
+    int BrokenPipesCount = 0;
+
     private Dictionary<Transform, ParticleSystem> activeLeaks = new Dictionary<Transform, ParticleSystem>();
     void Awake()
     {
         int LevelIndex = PlayerPrefs.GetInt("difficulty", 0);
         Instantiate(Levels[LevelIndex].Layouts[Random.Range(0, Levels[LevelIndex].Layouts.Length)], transform);
 
-        List<GameObject> Pipes = new List<GameObject>();
-
-        // Ignores first 2 (Start & End pipes)
-        for (int i = 0; i < transform.GetChild(0).childCount; i++) 
+        // Sets up all the pipes accordingly
+        for (int i = 0; i < transform.GetChild(0).childCount; i++)
         {
             GameObject Pipe = transform.GetChild(0).GetChild(i).gameObject;
-
-            if (!Pipe.GetComponent<SpriteRenderer>().name.Contains("End") && !Pipe.GetComponent<SpriteRenderer>().name.Contains("Start"))
+            if (!Pipe.name.Contains("End") && !Pipe.name.Contains("Start"))
             {
-                Pipe.AddComponent<BoxCollider2D>();
-
                 Pipe.AddComponent<AudioSource>();
-                Pipe.GetComponent<PipeController>().RegularPipe = RegularPipe;
-                Pipe.GetComponent<PipeController>().BrokePipe = BrokenPipe;
+                Pipe.AddComponent<PipeController>();
 
-                Pipe.GetComponent<PipeController>().ClickParticle = ClickParticle;
-                Pipe.GetComponent<PipeController>().BrokenParticle = BrokenParticle;
-                Pipe.GetComponent<PipeController>().SteamyParticle = SteamyParticle;
-
-                Pipes.Add(transform.GetChild(0).GetChild(i).gameObject);
+                Pipes.Add(Pipe);
             }
-
         }
 
-        // Goes through all pupes and chooses a random one to be broken
-        int initalPipeCount = Pipes.Count;
-        for (int i = 0; i < Levels[LevelIndex].BrokenPipesCount && i < initalPipeCount; i++)
+        if (!Levels[LevelIndex].GauntletMode)
         {
-            int randomIndex = Random.Range(0, Pipes.Count);
-            Pipes[randomIndex].GetComponent<PipeController>().broken = 3;
-            Pipes.RemoveAt(randomIndex);
+            foreach(GameObject Pipe in Pipes) CreateBrokenPipes(Pipe);
+
+            // Goes through all pipes and chooses a random one to be broken
+            int initalPipeCount = Pipes.Count;
+            for (int i = 0; i < Levels[LevelIndex].BrokenPipesCount && i < initalPipeCount; i++)
+            {
+                int randomIndex = Random.Range(0, Pipes.Count);
+                Pipes[randomIndex].GetComponent<PipeController>().broken = 3;
+                Pipes.RemoveAt(randomIndex);
+            }
+        }
+        else foreach (GameObject Pipe in Pipes)
+        {
+            Pipe.GetComponent<PipeController>().gaunletMode = true;
+            Pipe.GetComponent<PipeController>().enabled = false;
+
+            Pipe.GetComponent<Animator>().enabled = true;
         }
 
         Timer = GameObject.Find("Timer").GetComponent<Slider>();
@@ -78,8 +84,24 @@ public class PipeLayout : MonoBehaviour
         TimerWater = Timer.GetComponentInChildren<RawImage>();
 
         if (LevelDesigner.SinglePlay) SinglePlay.SetActive(true);
+
     }
 
+    GameObject CreateBrokenPipes(GameObject Pipe)
+    {
+        Pipe.AddComponent<BoxCollider2D>();
+
+        Pipe.GetComponent<PipeController>().RegularPipe = RegularPipe;
+        Pipe.GetComponent<PipeController>().BrokePipe = BrokenPipe;
+
+        Pipe.GetComponent<PipeController>().ClickParticle = ClickParticle;
+        Pipe.GetComponent<PipeController>().BrokenParticle = BrokenParticle;
+        Pipe.GetComponent<PipeController>().SteamyParticle = SteamyParticle;
+
+        return Pipe;
+    }
+
+    float oldPipeCount = 0;
     private void FixedUpdate()
     {
         if (Timer.value < Timer.maxValue)
@@ -95,6 +117,28 @@ public class PipeLayout : MonoBehaviour
             GameObject.Find("Pause Icon").SetActive(false);
             this.enabled = false;
         }
+
+        if (Levels[LevelIndex].GauntletMode)
+        {
+            //\frac{\operatorname{floor}\left(\sqrt{x}\cdot p\right)}{p}-0.2 <-- Copy and paste this bad boy into desmos for graph
+
+            float PipeCount = Timer.value / Timer.maxValue;
+            PipeCount = (float)((float)Mathf.Floor(Mathf.Sqrt(PipeCount) * Levels[LevelIndex].BrokenPipesCount) / Levels[LevelIndex].BrokenPipesCount - 0.2);
+
+            if (PipeCount != oldPipeCount)
+            {
+                int RND = Random.Range(0, Pipes.Count);
+
+                CreateBrokenPipes(Pipes[RND]);
+                Pipes[RND].GetComponent<PipeController>().enabled = true;
+                Pipes[RND].GetComponent<PipeController>().broken = 3;
+
+                Pipes.Remove(Pipes[RND]);
+
+                oldPipeCount = PipeCount;
+            }
+        }
+        else foreach (GameObject Pipe in Pipes) Pipe.GetComponent<PipeController>().enabled = false;
 
     }
 
@@ -114,7 +158,17 @@ public class PipeLayout : MonoBehaviour
 
         if(Fixed) GetComponent<AudioSource>().Stop(); // Stops leak sound
 
-        if (!Solved || Time.timeScale == 0) return;
+        if (Levels[LevelIndex].GauntletMode)
+        {
+            // Actitvated Twice
+            BrokenPipesCount ++;
+            if (Levels[LevelIndex].BrokenPipesCount > BrokenPipesCount / 2) return;
+        }
+        else
+        {
+            if (!Solved || Time.timeScale == 0) return;
+        }
+        
 
         Time.timeScale = 0;
         WinScren.SetActive(true);
@@ -126,6 +180,8 @@ public class PipeLayout : MonoBehaviour
 
     public void OrderedLeaks()
     {
+        if (Levels[LevelIndex].GauntletMode) return;
+
         bool Solved = true;
         foreach (Transform child in transform.GetChild(0).GetComponentInChildren<Transform>())
         {
@@ -168,6 +224,7 @@ public class PipeLayout : MonoBehaviour
     {
         [Range(5, 30)] public int Timer;
         [Range(0, 10)] public int BrokenPipesCount;
+        public bool GauntletMode;
         public GameObject[] Layouts;
 
         public GameObject this[int index]
