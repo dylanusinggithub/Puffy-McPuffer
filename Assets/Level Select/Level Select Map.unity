@@ -3693,8 +3693,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IntroComic:
-  - {fileID: 5319863591091230046, guid: 3301afd6e9fc29242bfecd3dd67f3efe, type: 3}
-  - {fileID: 5319863591091230046, guid: 7bcd3c725b0150341b689c0e58b8e46c, type: 3}
+  - {fileID: 773302539490807677, guid: bdddb04fdecfc574d8c523181a6d9abb, type: 3}
+  - {fileID: 1173082943975846924, guid: 92da91ee292b1e64d8f467dcd4762fd6, type: 3}
   levelIndex: 0
   minigameIndex: 0
   Levels:
