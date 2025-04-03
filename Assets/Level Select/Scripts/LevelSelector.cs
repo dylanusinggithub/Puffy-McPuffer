@@ -51,7 +51,7 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }
     }
 
-    void StartLevel()
+    public void StartLevel()
     {
         StartCoroutine(PlayLevel());
         openingLevel = true;

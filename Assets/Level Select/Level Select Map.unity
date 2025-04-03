@@ -3695,6 +3695,10 @@ MonoBehaviour:
   IntroComic:
   - {fileID: 773302539490807677, guid: bdddb04fdecfc574d8c523181a6d9abb, type: 3}
   - {fileID: 1173082943975846924, guid: 92da91ee292b1e64d8f467dcd4762fd6, type: 3}
+  - {fileID: 7724807648577947615, guid: e44b5f52efb9c0749878ff69ee327a48, type: 3}
+  - {fileID: 8072574091134006587, guid: d95236991c0c6b748bf92fd8f4b26d0c, type: 3}
+  - {fileID: 6005348345067552047, guid: a294b39f97cd98e48b131a9f630c4522, type: 3}
+  - {fileID: 708884085427118938, guid: 03dd102f9ac70574cb5b07993ae1dfd4, type: 3}
   levelIndex: 0
   minigameIndex: 0
   Levels:

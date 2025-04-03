@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class PopupController : MonoBehaviour
@@ -11,6 +10,18 @@ public class PopupController : MonoBehaviour
 
     void Start()
     {
+        if (gameObject.name.ToUpper().Contains("INTRO"))
+        {
+            gameObject.AddComponent<BoxCollider2D>();
+
+            if (GetComponentInChildren<Canvas>() != null)
+            {
+                GetComponentInChildren<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
+                GetComponentInChildren<Canvas>().worldCamera = Camera.main;
+                transform.parent.GetComponent<Canvas>().sortingOrder = 1000;
+            }
+        }
+
         foreach (Slider Tab in Resources.FindObjectsOfTypeAll(typeof(Slider)))
         {
             if (Tab.transform.IsChildOf(transform))
@@ -20,6 +31,15 @@ public class PopupController : MonoBehaviour
             }
         }
     }
+
+    void FixedUpdate()
+    {
+        if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
+        {
+            if (gameObject.name.ToUpper().Contains("INTRO")) LevelDesigner.Instance.StartLevel();
+        }        
+    }
+
 
     public void ValueUpdated(Slider SliderObject)
     {

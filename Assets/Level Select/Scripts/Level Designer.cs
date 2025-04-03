@@ -179,6 +179,8 @@ public class LevelDesigner : MonoBehaviour
                     GameObject ExtraBTN = GameObject.Find("Menu Buttons");
                     foreach (Button BTN in ExtraBTN.GetComponentsInChildren<Button>()) BTN.interactable = true;
 
+                    GetComponent<Canvas>().sortingOrder = 1;
+
                     Destroy(transform.GetChild(0).gameObject);
                     return;
                 }
@@ -341,10 +343,6 @@ public class LevelDesigner : MonoBehaviour
                     GOComic.transform.parent = transform;
 
                     GOComic.AddComponent<PopupController>();
-
-                    GOComic.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-                    GOComic.GetComponent<RectTransform>().sizeDelta = new Vector2(1920, 1080);
-                    GOComic.GetComponent<RectTransform>().localScale = Vector2.one;
                 }
                 break;
 
