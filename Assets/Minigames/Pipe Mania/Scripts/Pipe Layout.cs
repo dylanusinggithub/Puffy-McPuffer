@@ -138,8 +138,6 @@ public class PipeLayout : MonoBehaviour
                 oldPipeCount = PipeCount;
             }
         }
-        else foreach (GameObject Pipe in Pipes) Pipe.GetComponent<PipeController>().enabled = false;
-
     }
 
     public void CheckPipes()
