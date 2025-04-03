@@ -7,11 +7,14 @@ using UnityEngine.UI;
 
 public class LevelDesigner : MonoBehaviour
 {
+    [SerializeField] UnityEngine.Object[] IntroComic;
+
     [SerializeField] int levelIndex;
     [SerializeField] int minigameIndex;
     int comicIndex = 0;
 
     [SerializeField] public LevelClass[] Levels;
+
 
     static public LevelDesigner Instance;
     static public bool AdvanceToNextLevel = false;
@@ -54,7 +57,14 @@ public class LevelDesigner : MonoBehaviour
         GameObject.Find("CLOUDS").GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume", 1);
 
         // Sets Levels Unlocked to 0 if you're playing for the first time
-        if (!PlayerPrefs.HasKey("Levels Unlocked")) PlayerPrefs.SetInt("Levels Unlocked", 0);
+        if (!PlayerPrefs.HasKey("Levels Unlocked") || PlayerPrefs.GetInt("Levels Unlocked") < 0)
+        {
+            GameObject.Find("Clouds Canvas").GetComponent<Canvas>().sortingOrder = 2;
+            GameObject.Find("Menu Buttons").transform.SetParent(GameObject.Find("Canvas").transform);
+
+            PlayerPrefs.SetInt("Levels Unlocked", -1);
+            StartLevel(-1);
+        }
 
 
         levelIndex = PlayerPrefs.GetInt("levelIndex", 0);
@@ -117,10 +127,10 @@ public class LevelDesigner : MonoBehaviour
             foreach (Transform t in LevelBTNs.GetComponentInChildren<Transform>())
             {
                 LevelSelector BTN = t.GetComponentInChildren<LevelSelector>();
-                if (BTN != null) BTN.enabled = false;
+                if (BTN != null) BTN.EnableOrDisableLevel();
             }
 
-            GameObject ExtraBTN = GameObject.Find("CLOUDS");
+            GameObject ExtraBTN = GameObject.Find("Menu Buttons");
             
             // Disables Comic Viewer and Exit
             foreach(Button BTN in ExtraBTN.GetComponentsInChildren<Button>()) BTN.interactable = false;
@@ -141,16 +151,51 @@ public class LevelDesigner : MonoBehaviour
         // Displays the Starting comic before entering the level
         if (minigameIndex == -1)
         {
-            if (Levels[levelIndex].StartScreen.Count > comicIndex)
+            if (levelIndex < 0)
             {
-                CreateComicBackground(Levels[levelIndex].StartScreen[comicIndex]);
-                comicIndex++;
+                if (IntroComic.Length > comicIndex)
+                {
+                    CreateComicBackground(IntroComic[comicIndex]);
+                    comicIndex++;
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("Levels Unlocked", 0);
+
+                    GameObject.Find("Clouds Canvas").GetComponent<Canvas>().sortingOrder = 1;
+                    GameObject.Find("Menu Buttons").transform.SetParent(GameObject.Find("CLOUDS").transform);
+
+                    GameObject.Find("Union").GetComponentInChildren<LevelSelector>().enabled = true;
+
+                    // Renables the animators in case they were disabled before hand with a comics
+                    GameObject LevelBTNs = GameObject.Find("Canvas");
+                    foreach (Transform t in LevelBTNs.GetComponentInChildren<Transform>())
+                    {
+                        LevelSelector BTN = t.GetComponentInChildren<LevelSelector>();
+                        if (BTN != null) BTN.EnableOrDisableLevel();
+                    }
+
+                    // Disables Comic Viewer and Exit
+                    GameObject ExtraBTN = GameObject.Find("Menu Buttons");
+                    foreach (Button BTN in ExtraBTN.GetComponentsInChildren<Button>()) BTN.interactable = true;
+
+                    Destroy(transform.GetChild(0).gameObject);
+                    return;
+                }
             }
             else
             {
-                comicIndex = 0;
-                PlayerPrefs.SetString("advanceToNextLevel", "True");
-                LoadLevel();
+                if (Levels[levelIndex].StartScreen.Count > comicIndex)
+                {
+                    CreateComicBackground(Levels[levelIndex].StartScreen[comicIndex]);
+                    comicIndex++;
+                }
+                else
+                {
+                    comicIndex = 0;
+                    PlayerPrefs.SetString("advanceToNextLevel", "True");
+                    LoadLevel();
+                }
             }
         }
         else 
@@ -183,15 +228,11 @@ public class LevelDesigner : MonoBehaviour
                     foreach (Transform t in LevelBTNs.GetComponentInChildren<Transform>())
                     {
                         LevelSelector BTN = t.GetComponentInChildren<LevelSelector>();
-                        if (BTN != null)
-                        {
-                            BTN.gameObject.GetComponentInChildren<Animator>().enabled = true;
-                            BTN.transform.GetChild(0).GetComponent<Image>().color = Color.white;
-                            BTN.gameObject.GetComponent<Button>().interactable = true;
-                        }
+                        if (BTN != null) BTN.EnableOrDisableLevel();    
+
                     }
 
-                    GameObject ExtraBTN = GameObject.Find("CLOUDS");
+                    GameObject ExtraBTN = GameObject.Find("Menu Buttons");
                     foreach (Button BTN in ExtraBTN.GetComponentsInChildren<Button>()) BTN.interactable = true;
                 }
                 else
