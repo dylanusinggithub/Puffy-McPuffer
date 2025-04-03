@@ -26,6 +26,11 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         ComicPanel = GameObject.Find("Comic Panels");
         LD = ComicPanel.GetComponent<LevelDesigner>();
 
+        EnableOrDisableLevel();
+    }
+   
+    public void EnableOrDisableLevel()
+    {
         if (PlayerPrefs.GetInt("Levels Unlocked", 0) < LevelIndex)
         {
             GetComponent<Button>().interactable = false;
@@ -33,6 +38,15 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             // Disables signs
             GetComponentInChildren<Animator>().enabled = false;
             transform.GetChild(0).GetComponent<Image>().color = GetComponent<Button>().colors.disabledColor;
+            // Why GetComponetInChildren doesn't work is beyond me
+        }
+        else
+        {
+            GetComponent<Button>().interactable = true;
+
+            // Enables signs
+            GetComponentInChildren<Animator>().enabled = true;
+            transform.GetChild(0).GetComponent<Image>().color = GetComponent<Button>().colors.normalColor;
             // Why GetComponetInChildren doesn't work is beyond me
         }
     }
