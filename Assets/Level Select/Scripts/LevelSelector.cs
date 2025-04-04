@@ -2,10 +2,9 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class LevelSelector : MonoBehaviour
 {
 
     [SerializeField, Range(0, 10)] int LevelIndex;
@@ -17,9 +16,7 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     Transform PreviewUI;
 
-    bool openingLevel = false;
-    [HideInInspector] public bool MouseMoved = false;
-    bool ButtonPressed = false;
+    bool openingLevel = false, PreviewShown = false;
 
     private void Start()
     {
@@ -51,7 +48,7 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }
     }
 
-    public void StartLevel()
+    void StartLevel()
     {
         StartCoroutine(PlayLevel());
         openingLevel = true;
@@ -73,43 +70,19 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         yield return new WaitForSeconds(0.5f);
 
+        PreviewShown = true;
+
         Transform Grid = PreviewUI.GetChild(1);
         if (Grid.childCount == 0)
         {
-            EventTrigger.Entry OnEntry = new EventTrigger.Entry()
-            {
-                eventID = EventTriggerType.PointerEnter
-            };
-            OnEntry.callback.AddListener(SwapPreview);
-
-            EventTrigger.Entry OnExit = new EventTrigger.Entry()
-            {
-                eventID = EventTriggerType.PointerExit
-            };
-            OnExit.callback.AddListener(SwapPreview);
-
             for (int i = 0; i < LevelDesigner.Instance.Levels[LevelIndex].Sequence.Length; i++)
             {
                 GameObject BTN = Instantiate(LevelButton, Grid);
                 BTN.GetComponentInChildren<TextMeshProUGUI>().text = (i + 1).ToString();
                 BTN.GetComponent<Button>().onClick.AddListener(delegate { PreviewButtonStart(BTN); });
-
-                BTN.AddComponent<EventTrigger>();
-
-                BTN.GetComponent<EventTrigger>().triggers.Add(OnEntry);
-                BTN.GetComponent<EventTrigger>().triggers.Add(OnExit);
-
             }
         }
     }
-
-    public void SwapPreview(BaseEventData eventData)
-    {
-        //Transform UI = PreviewUI;
-
-        //UI.GetChild(1).gameObject.SetActive(!UI.GetChild(1).gameObject.activeInHierarchy); // Description
-    }
-
     public void PreviewButtonStart(GameObject Button)
     {
         // Here be jankons, I would make it assign the index itself but
@@ -118,56 +91,36 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         LD.StartMinigame(int.Parse(Button.GetComponentInChildren<TextMeshProUGUI>().text) - 1, LevelIndex);
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    IEnumerator DisplayRegularButton()
     {
-        if (!ButtonPressed && PlayerPrefs.GetInt("Levels Unlocked", 0) >= LevelIndex && this.enabled)
+        yield return new WaitForSeconds(0.5f);
+
+        PreviewShown = true;
+
+        PreviewUI.GetChild(2).gameObject.SetActive(true);
+        PreviewUI.GetComponentInChildren<Button>().onClick.AddListener(delegate { StartLevel(); });
+    }
+
+
+    // Closes Preview When you click
+    void Update()
+    {
+        if (PreviewShown)
         {
-            GetComponent<Button>().interactable = false;
-            DisplayPreview();
+            if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
+            {
+                UnravelPreview();
+            }
         }
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void DisplayPreview()
     {
-        ButtonPressed = true;
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        ButtonPressed = false;
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        if (!ButtonPressed)
+        if (PreviewShown)
         {
-            if(PlayerPrefs.GetInt("Levels Unlocked", 0) >= LevelIndex) GetComponent<Button>().interactable = true;
-
-            MouseMoved = true;
-            StartCoroutine(UnravelCheck(2));
+            UnravelPreview();
+            return;
         }
-    }
-
-    public void BTN_Preview()
-    {
-        if (!this.enabled) return;
-
-        StartCoroutine(BTNPressed());
-
-        if (PreviewUI != null) UnravelPreview();
-        else DisplayPreview();
-    }
-
-    IEnumerator BTNPressed()
-    {
-        ButtonPressed = true;
-        yield return new WaitForSeconds(1);
-        ButtonPressed = false;
-    }
-
-    void DisplayPreview()
-    {
-        MouseMoved = false;
 
         foreach(Transform child in ComicPanel.GetComponentInChildren<Transform>()) Destroy(child.gameObject);
 
@@ -178,8 +131,6 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         Preview = Instantiate(LevelPreview, ComicPanel.transform);
         PreviewUI = Preview.transform.GetChild(0).GetChild(0);
 
-        Preview.AddComponent<PreviewController>();
-
         Preview.GetComponent<RectTransform>().anchoredPosition = new Vector2(-300, -100);
         Preview.GetComponent<RectTransform>().localScale = Vector3.one * 2.5f;
 
@@ -187,21 +138,10 @@ public class LevelSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         else StartCoroutine(DisplayRegularButton());
     }
 
-    IEnumerator DisplayRegularButton()
-    {
-        yield return new WaitForSeconds(0.5f);
-        PreviewUI.GetChild(2).gameObject.SetActive(true);
-        PreviewUI.GetComponentInChildren<Button>().onClick.AddListener(delegate { StartLevel(); });
-    }
-
-    public IEnumerator UnravelCheck(float Delay)
-    {
-        yield return new WaitForSeconds(Delay);
-        if(MouseMoved) UnravelPreview();
-    }
-
     void UnravelPreview()
     {
+        PreviewShown = false;
+
         if (!GetComponent<Button>().enabled || Preview == null) return; // If Button is disabled or Preview doesn't exist don't show
         Animator anim = Preview.GetComponentInChildren<Animator>();
 
