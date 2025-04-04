@@ -23,7 +23,7 @@ public class LevelGenerator : MonoBehaviour
 
     float startSpeed;
     Material ScrollingBackground;
-    bool PlayAnimation; 
+    bool PlayAnimation, GauntletMode; 
 
     Slider timeSlider;
     RawImage timerWater;
@@ -123,6 +123,22 @@ public class LevelGenerator : MonoBehaviour
 
         StartCoroutine(PlayTutorial());
 
+        GauntletMode = Levels[levelIndex].GauntletMode;
+        if (GauntletMode)
+        {
+            SS.score = Levels[levelIndex].CreateCompletion + Levels[levelIndex].ExtraCreates;
+            SS.Gauntlet = GauntletMode;
+
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                for (int j = 0; j < transform.GetChild(i).childCount; j++)
+                {
+                    Transform OBJ = transform.GetChild(i).GetChild(j);
+                    if (OBJ.GetComponent<ObjectScript>().isHardmode) OBJ.gameObject.SetActive(true);
+                }
+            }
+        }
+
         if (LevelDesigner.SinglePlay)
         {
             SinglePlay.SetActive(true);
@@ -184,41 +200,43 @@ public class LevelGenerator : MonoBehaviour
             Puffy.transform.Translate(new Vector3(startSpeed / 10, 0, 0));
             ScrollingBackground.mainTextureOffset += new Vector2(startSpeed / 310, 0);
 
-            if (HardmodeCheckTime > 0) HardmodeCheckTime -= Time.deltaTime;
-            else
+            if (!GauntletMode)
             {
-                HardmodeCheckTime = 1f;
-
-                if (SS.score < Levels[levelIndex].CreateCompletion) return;
-
-                float closestLayout = 1000;
-                Transform closestLayoutObject = transform.GetChild(0);
-                foreach (Transform layout in GetComponentInChildren<Transform>())
+                if (HardmodeCheckTime > 0) HardmodeCheckTime -= Time.deltaTime;
+                else
                 {
-                    float dist = (layout.position - Puffy.transform.position).magnitude;
-                    if (dist < closestLayout)
-                    {
-                        closestLayout = dist;
-                        closestLayoutObject = layout;
-                    }
-                }
+                    HardmodeCheckTime = 1f;
 
-                if (closestLayoutObject.GetSiblingIndex() < transform.childCount - 1)
-                {
-                    GameObject NextLayout = transform.GetChild(closestLayoutObject.GetSiblingIndex() + 1).gameObject;
+                    if (SS.score < Levels[levelIndex].CreateCompletion) return;
 
-                    foreach (Transform layout in NextLayout.GetComponentInChildren<Transform>())
+                    float closestLayout = 1000;
+                    Transform closestLayoutObject = transform.GetChild(0);
+                    foreach (Transform layout in GetComponentInChildren<Transform>())
                     {
-                        if (layout.GetComponent<ObjectScript>().isHardmode)
+                        float dist = (layout.position - Puffy.transform.position).magnitude;
+                        if (dist < closestLayout)
                         {
-                            layout.gameObject.SetActive(true);
+                            closestLayout = dist;
+                            closestLayoutObject = layout;
                         }
                     }
 
+                    if (closestLayoutObject.GetSiblingIndex() < transform.childCount - 1)
+                    {
+                        GameObject NextLayout = transform.GetChild(closestLayoutObject.GetSiblingIndex() + 1).gameObject;
+
+                        foreach (Transform layout in NextLayout.GetComponentInChildren<Transform>())
+                        {
+                            if (layout.GetComponent<ObjectScript>().isHardmode)
+                            {
+                                layout.gameObject.SetActive(true);
+                            }
+                        }
+
+                    }
                 }
             }
         }
-
     }
 }
 
@@ -236,6 +254,8 @@ class LevelSettings
     [Range(0, 5)] public int ExtraCreates;
 
     [Range(0, 4)] public float LevelSpeed;
+
+    public bool GauntletMode;
 
     public float LayoutSeperation;
 

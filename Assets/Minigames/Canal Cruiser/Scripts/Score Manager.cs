@@ -19,6 +19,8 @@ public class ScoreScript : MonoBehaviour
     public int score = 1;
     int oldScore = -1; // So on start it generates the Ui
 
+    public bool Gauntlet;
+
     [Header("Score UI")]
     Transform ScoreUI;
 
@@ -77,16 +79,33 @@ public class ScoreScript : MonoBehaviour
 
     public void Die()
     {
-        if (scoreWin <= score) youWin.SetActive(true);
-        else if (score == 0) 
+        if (Gauntlet)
         {
-            gameOver.SetActive(true);
-            gameOver.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "You have crashed and sunk to the bottom of the canal.";
+            if(scoreWin >= score) youWin.SetActive(true);
+            else if (score == 0)
+            {
+                gameOver.SetActive(true);
+                gameOver.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "You have crashed and sunk to the bottom of the canal.";
+            }
+            else if (score > scoreWin)
+            {
+                gameOver.SetActive(true);
+                gameOver.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Something Something, You Collcted too Much!";
+            }
         }
         else
         {
-            gameOver.SetActive(true);
-            gameOver.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "You have failed to retrieve the requested amount of cargo.";
+            if (scoreWin <= score) youWin.SetActive(true);
+            else if (score == 0)
+            {
+                gameOver.SetActive(true);
+                gameOver.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "You have crashed and sunk to the bottom of the canal.";
+            }
+            else
+            {
+                gameOver.SetActive(true);
+                gameOver.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "You have failed to retrieve the requested amount of cargo.";
+            }
         }
 
         Time.timeScale = 0;
