@@ -3701,8 +3701,11 @@ MonoBehaviour:
   minigameIndex: 0
   Levels:
   - StartScreen:
-    - {fileID: 5319863591091230046, guid: 3301afd6e9fc29242bfecd3dd67f3efe, type: 3}
-    - {fileID: 5319863591091230046, guid: 7bcd3c725b0150341b689c0e58b8e46c, type: 3}
+    - {fileID: 2614672194121370258, guid: f0c413dc026898c4f99a12b48a52c0c8, type: 3}
+    - {fileID: 7099937696568764383, guid: f49405dc19835ef4098b27eb6f420c2a, type: 3}
+    - {fileID: 6616023976376289402, guid: 831b6f6538210e74f838c5d643e9e1cd, type: 3}
+    - {fileID: 4381010054495863247, guid: a2bdc88cd31571f41bda24611ce0d169, type: 3}
+    - {fileID: 1435062423119604759, guid: 3b7708182ef6f304d89e5022125c6ade, type: 3}
     Sequence:
     - minigames: 1
       difficulty: 0
