@@ -25,6 +25,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField, Range(0, 8)]
     float movementArea = 6;
 
+    [SerializeField, Range(0, 2)]
+    float steeringSensitivity = 1;
+
     float velocity = 0;
 
     ScoreScript SM;
