@@ -80,7 +80,7 @@ public class PlayerScript : MonoBehaviour
         else if (Mathf.Abs(SC.Angle) > 0.01f)
         {
             float steerInput = SC.Angle / 100f;
-            velocity += steerInput * (mouseStrength / 10000f);
+            velocity += steerInput * (steeringSensitivity * mouseStrength / 10000f);
         }
         else if (Mathf.Abs(velocity) > movementDeceleration / 1000)
         {
