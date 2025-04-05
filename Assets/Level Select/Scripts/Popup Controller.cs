@@ -36,7 +36,7 @@ public class PopupController : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
         {
-            if (gameObject.name.ToUpper().Contains("INTRO")) LevelDesigner.Instance.StartLevel();
+            LevelDesigner.Instance.StartLevel();
         }        
     }
 
