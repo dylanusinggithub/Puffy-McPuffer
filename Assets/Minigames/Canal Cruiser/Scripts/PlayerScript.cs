@@ -74,7 +74,11 @@ public class PlayerScript : MonoBehaviour
 
             Wheel.transform.eulerAngles = new Vector3(0, 0, velocity * 100);
         }
-        else if (SC.Angle != 0) velocity += (SC.Angle / 15000);
+        else if (Mathf.Abs(SC.Angle) > 0.01f)
+        {
+            float steerInput = SC.Angle / 100f;
+            velocity += steerInput * (mouseStrength / 10000f);
+        }
         else if (Mathf.Abs(velocity) > movementDeceleration / 1000)
         {
             if (velocity > 0) velocity -= movementDeceleration / 1000;
