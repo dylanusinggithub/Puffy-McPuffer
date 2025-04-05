@@ -182,6 +182,7 @@ public class LevelDesigner : MonoBehaviour
                     GetComponent<Canvas>().sortingOrder = 1;
 
                     Destroy(transform.GetChild(0).gameObject);
+                    comicIndex = 0;
                     return;
                 }
             }
