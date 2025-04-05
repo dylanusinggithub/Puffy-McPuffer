@@ -32,7 +32,7 @@ public class PopupController : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1) || Input.GetKeyUp(KeyCode.Space))
         {
