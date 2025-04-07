@@ -144,6 +144,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2865883708403791594, guid: 6e298be917d1b8746b7bd438816ecc63, type: 3}
+      propertyPath: waitSeconds
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7489723503762382315, guid: 6e298be917d1b8746b7bd438816ecc63, type: 3}
       propertyPath: m_Name
       value: CargoSign (1)
@@ -213,6 +217,10 @@ PrefabInstance:
     - target: {fileID: 836736575883188988, guid: 6e298be917d1b8746b7bd438816ecc63, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865883708403791594, guid: 6e298be917d1b8746b7bd438816ecc63, type: 3}
+      propertyPath: waitSeconds
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7489723503762382315, guid: 6e298be917d1b8746b7bd438816ecc63, type: 3}
       propertyPath: m_Name

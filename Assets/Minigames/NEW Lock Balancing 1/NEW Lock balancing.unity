@@ -659,7 +659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SinglePlay: {fileID: 347278007}
-  LevelIndex: 0
+  LevelIndex: 2
   PressMeToSetLevel: 0
   GauntletMode: 0
   Levels:
@@ -673,7 +673,7 @@ MonoBehaviour:
     - {fileID: 3163827342038594386, guid: 5ee480e6546496d4ca0b382b771d33f2, type: 3}
     - {fileID: 3756458864428363491, guid: 6628e4a9665746e4b8df481d0b6b9a52, type: 3}
     - {fileID: 5551459052684984698, guid: 911afc5303e520041b382a98f4aaa80d, type: 3}
-    - {fileID: 550664953553520682, guid: 1c99917b397d0464cbe8c817f9ed4dc8, type: 3}
+    - {fileID: 550664953553520682, guid: 2ff073864822f9e4388462568f74772d, type: 3}
     perlinStepSize: 0
     strength: 0
   - LockSize: 1.5
@@ -705,16 +705,14 @@ MonoBehaviour:
     strength: 8
   - LockSize: 1
     CreateCompletion: 10
-    burstDelay: 2
+    burstDelay: 0
     burstSeparationDelay: 1
     burstMaxLimit: 4
-    burstMin: 1
+    burstMin: 3
     Layouts:
-    - {fileID: 550664953553520682, guid: 6def3057ae7d2ca4bb56de491fa3d7b1, type: 3}
-    - {fileID: 550664953553520682, guid: ce221b1beb368474b9ee9e46d9a680de, type: 3}
-    - {fileID: 5551459052684984698, guid: 911afc5303e520041b382a98f4aaa80d, type: 3}
-    - {fileID: 3163827342038594386, guid: 5ee480e6546496d4ca0b382b771d33f2, type: 3}
-    - {fileID: 3756458864428363491, guid: 6628e4a9665746e4b8df481d0b6b9a52, type: 3}
+    - {fileID: 550664953553520682, guid: bd0259728bfaf514b92634b975cc9299, type: 3}
+    - {fileID: 5551459052684984698, guid: 365728c56e94d5c4583dbd90895780dd, type: 3}
+    - {fileID: 3163827342038594386, guid: 6ee2417096a550c4db62a99cfdf27ed2, type: 3}
     - {fileID: 3163827342038594386, guid: 9874fe853fb48f945847106167ebd103, type: 3}
     - {fileID: 550664953553520682, guid: 1c99917b397d0464cbe8c817f9ed4dc8, type: 3}
     perlinStepSize: 0.7
