@@ -253,7 +253,7 @@ MonoBehaviour:
   PressMeToSetLevelIndex: 0
   levelIndex: 2
   Levels:
-  - GameplayTime: 35
+  - GameplayTime: 30
     CreateCompletion: 5
     ExtraCreates: 2
     LevelSpeed: 1.55
@@ -262,9 +262,8 @@ MonoBehaviour:
     Layouts:
     - {fileID: 7793173836862348141, guid: 312af510616b0604692d0524a29b24a5, type: 3}
     - {fileID: 6392660177088936827, guid: 2a7ab806fb6ba684183c4044acfedbbe, type: 3}
-    - {fileID: 7159862058339159186, guid: b5fdcbbc5f7da88409aee0458cc8474b, type: 3}
-    - {fileID: 658318910959143042, guid: 2e22f93802da1074cac1c91e7ede2dcd, type: 3}
-  - GameplayTime: 37
+    - {fileID: 6392660177088936827, guid: 4d9498cdf9e0a524d939f25efe7adc17, type: 3}
+  - GameplayTime: 36
     CreateCompletion: 6
     ExtraCreates: 4
     LevelSpeed: 1.65
@@ -272,10 +271,10 @@ MonoBehaviour:
     LayoutSeperation: 15
     Layouts:
     - {fileID: 658318910959143042, guid: 2e22f93802da1074cac1c91e7ede2dcd, type: 3}
-    - {fileID: 7159862058339159186, guid: b5fdcbbc5f7da88409aee0458cc8474b, type: 3}
-    - {fileID: 7793173836862348141, guid: 312af510616b0604692d0524a29b24a5, type: 3}
-    - {fileID: 2723156374974615379, guid: 3e6dd6ff2d2608743ac69c7bdc7ef71c, type: 3}
     - {fileID: 5117915890332995674, guid: 1ec9720cee40dc24d98e63fe137ab146, type: 3}
+    - {fileID: 2357665773328269852, guid: 12f6c86d2fe08e843908681c57e054a8, type: 3}
+    - {fileID: 2723156374974615379, guid: 562c9ca1471b85940addda2e3593045d, type: 3}
+    - {fileID: 7159862058339159186, guid: b5fdcbbc5f7da88409aee0458cc8474b, type: 3}
   - GameplayTime: 43
     CreateCompletion: 8
     ExtraCreates: 5
@@ -293,7 +292,7 @@ MonoBehaviour:
     CreateCompletion: 5
     ExtraCreates: 5
     LevelSpeed: 1.9
-    GauntletMode: 0
+    GauntletMode: 1
     LayoutSeperation: 20
     Layouts:
     - {fileID: 2891347455977296174, guid: f58b6ad9a99640b4f9efb6da2167fe3c, type: 3}
