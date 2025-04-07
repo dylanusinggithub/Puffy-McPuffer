@@ -33,11 +33,13 @@ public class WaterController : MonoBehaviour
     AnimationScript AS;
     NEWLockBalancing LB;
     GameObject Puffy;
+    
 
     private void Start()
     {
         AS = GetComponent<AnimationScript>();
         LB = GetComponent<NEWLockBalancing>();
+        
 
         waterHeight = -waterMinHeight;
 

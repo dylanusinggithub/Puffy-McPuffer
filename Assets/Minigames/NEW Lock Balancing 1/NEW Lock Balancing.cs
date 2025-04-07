@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 
 public class NEWLockBalancing : MonoBehaviour
 {
@@ -31,9 +32,12 @@ public class NEWLockBalancing : MonoBehaviour
 
     float cutsceneSpeed = -0.03f;
 
+    private int randomNumber;
+
     private void Start()
     {
         ScaleLock();
+        StartCoroutine(RandomizeEvery3Seconds());
     }
 
     private void Awake()
@@ -50,11 +54,33 @@ public class NEWLockBalancing : MonoBehaviour
         
     }
 
+    IEnumerator RandomizeEvery3Seconds()
+    {
+        while (true) 
+        {
+           
+            randomNumber = UnityEngine.Random.Range(0, 2);
+            Debug.Log("Random number: " + randomNumber);
+
+            
+            if (randomNumber == 0)
+            {
+                StartCoroutine(GetComponent<WaterController>().changeHeight(true));
+            }
+            else if (randomNumber == 1)
+            {
+                StartCoroutine(GetComponent<WaterController>().changeHeight(false));
+            }
+            else yield return new WaitForSeconds(2f); ;
+
+        }
+    }
+
     private void OnValidate()
     {
         ScaleLock();
     }
-
+    //hello
     void ScaleLock()
     {
         GameObject LockBackground = GameObject.Find("Lock Background");
@@ -88,6 +114,8 @@ public class NEWLockBalancing : MonoBehaviour
 
     void FixedUpdate()
     {
+
+
         switch (state)
         {
             case GameState.Play:
@@ -170,4 +198,6 @@ public class NEWLockBalancing : MonoBehaviour
 
         createText.GetComponent<TextMeshProUGUI>().text = createCount + " / " + createCompletion;
     }
+
+
 }

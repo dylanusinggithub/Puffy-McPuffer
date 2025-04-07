@@ -20,7 +20,11 @@ public class ObjectDropper : MonoBehaviour
     [HideInInspector]
     public bool Spawning = false;
 
+    public bool Gauntlet = false;
+    public GameObject gauntletthing;
+
     public List<GameObject> Layouts;
+    public List<GameObject> evilLayouts;
     float LockSize;
 
     List<GameObject> GO = new List<GameObject>();
@@ -35,6 +39,10 @@ public class ObjectDropper : MonoBehaviour
 
         timerDelay = 2; // Start delay
         burstMax = Random.Range(burstMin, burstMaxLimit);
+        if (Gauntlet)
+        {
+            gauntletthing.SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -63,30 +71,63 @@ public class ObjectDropper : MonoBehaviour
                 {
                     if(Dropper.GetComponent<ObjectSettings>() != null) Dropper.GetComponent<SpriteRenderer>().enabled = false;
                 }
-                int randomIndex = Random.Range(0, Layouts.Count);
-                
 
-                if (!Layouts[randomIndex].name.ToUpper().Contains("SEQUENCE"))
+                if (Gauntlet == false)
                 {
-                    float spawnOffset = 0;
-                    float furthestPoint = 0;
-                    foreach(Transform OBJ in Layouts[randomIndex].GetComponentInChildren<Transform>())     
+                    int randomIndex = Random.Range(0, Layouts.Count);
+
+
+                    if (!Layouts[randomIndex].name.ToUpper().Contains("SEQUENCE"))
                     {
-                        if (Mathf.Abs(OBJ.position.x) > furthestPoint) furthestPoint = Mathf.Abs(OBJ.position.x);
+                        float spawnOffset = 0;
+                        float furthestPoint = 0;
+                        foreach (Transform OBJ in Layouts[randomIndex].GetComponentInChildren<Transform>())
+                        {
+                            if (Mathf.Abs(OBJ.position.x) > furthestPoint) furthestPoint = Mathf.Abs(OBJ.position.x);
+                        }
+
+                        spawnOffset = Random.Range(furthestPoint - LockSize + 2, LockSize - furthestPoint - 2);
+
+                        GO.Add(Instantiate(Layouts[randomIndex], new Vector2(spawnOffset, 4), Quaternion.identity));
                     }
-
-                    spawnOffset = Random.Range(furthestPoint - LockSize + 2, LockSize - furthestPoint - 2);
-
-                    GO.Add(Instantiate(Layouts[randomIndex], new Vector2(spawnOffset, 4), Quaternion.identity));
+                    else
+                    {
+                        GameObject Sequence = Instantiate(Layouts[randomIndex], new Vector3(0, 4), Quaternion.identity);
+                        foreach (Transform Layout in Sequence.GetComponentInChildren<Transform>())
+                        {
+                            GO.Add(Layout.gameObject);
+                        }
+                    }
                 }
                 else
                 {
-                    GameObject Sequence = Instantiate(Layouts[randomIndex], new Vector3(0, 4), Quaternion.identity);
-                    foreach (Transform Layout in Sequence.GetComponentInChildren<Transform>())
+                    
+                    int randomIndex = Random.Range(0, evilLayouts.Count);
+
+
+                    if (!evilLayouts[randomIndex].name.ToUpper().Contains("SEQUENCE"))
                     {
-                        GO.Add(Layout.gameObject);
+                        float spawnOffset = 0;
+                        float furthestPoint = 0;
+                        foreach (Transform OBJ in evilLayouts[randomIndex].GetComponentInChildren<Transform>())
+                        {
+                            if (Mathf.Abs(OBJ.position.x) > furthestPoint) furthestPoint = Mathf.Abs(OBJ.position.x);
+                        }
+
+                        spawnOffset = Random.Range(furthestPoint - LockSize + 2, LockSize - furthestPoint - 2);
+
+                        GO.Add(Instantiate(evilLayouts[randomIndex], new Vector2(spawnOffset, 4), Quaternion.identity));
+                    }
+                    else
+                    {
+                        GameObject Sequence = Instantiate(evilLayouts[randomIndex], new Vector3(0, 4), Quaternion.identity);
+                        foreach (Transform evilLayout in Sequence.GetComponentInChildren<Transform>())
+                        {
+                            GO.Add(evilLayout.gameObject);
+                        }
                     }
                 }
+                
 
 
                 timerSeparation = burstSeparationDelay;

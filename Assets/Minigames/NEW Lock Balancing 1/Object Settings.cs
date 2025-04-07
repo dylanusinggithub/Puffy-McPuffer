@@ -14,6 +14,7 @@ public class ObjectSettings : MonoBehaviour
 
     ObjectDropper OD;
     // Start is called before the first frame update
+
     void Start()
     {
         OD = GameObject.Find("GameManager").GetComponent<ObjectDropper>();

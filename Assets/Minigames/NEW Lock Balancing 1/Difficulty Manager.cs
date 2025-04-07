@@ -8,10 +8,12 @@ public class DifficultyManager : MonoBehaviour
 
     [Header("Level Settings")]
     [SerializeField] int LevelIndex;
-    [SerializeField] bool PressMeToSetLevel = false;
-
+    [SerializeField] bool PressMeToSetLevel = false, GauntletMode = false;
+    
     private void OnValidate()
     {
+        
+
         if (PressMeToSetLevel)
         {
             PressMeToSetLevel = false;
@@ -42,6 +44,12 @@ public class DifficultyManager : MonoBehaviour
         LB.createCompletion = Levels[levelIndex].CreateCompletion;
         GameObject.Find("CreateText").GetComponent<TextMeshProUGUI>().text = "0 / " + Levels[levelIndex].CreateCompletion;
 
+        if (OD.Gauntlet)
+        {
+            levelIndex = PlayerPrefs.GetInt("difficulty", 4);
+            Debug.Log("I love bugs");
+        }
+        
         OD.burstDelay = Levels[levelIndex].burstDelay;
         OD.burstSeparationDelay = Levels[levelIndex].burstSeparationDelay;
         OD.burstMaxLimit = Levels[levelIndex].burstMaxLimit;
