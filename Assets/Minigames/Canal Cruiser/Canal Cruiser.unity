@@ -257,6 +257,7 @@ MonoBehaviour:
     CreateCompletion: 5
     ExtraCreates: 2
     LevelSpeed: 1.55
+    GauntletMode: 0
     LayoutSeperation: 40
     Layouts:
     - {fileID: 7793173836862348141, guid: 312af510616b0604692d0524a29b24a5, type: 3}
@@ -267,6 +268,7 @@ MonoBehaviour:
     CreateCompletion: 6
     ExtraCreates: 4
     LevelSpeed: 1.65
+    GauntletMode: 0
     LayoutSeperation: 15
     Layouts:
     - {fileID: 658318910959143042, guid: 2e22f93802da1074cac1c91e7ede2dcd, type: 3}
@@ -278,6 +280,7 @@ MonoBehaviour:
     CreateCompletion: 8
     ExtraCreates: 5
     LevelSpeed: 1.75
+    GauntletMode: 0
     LayoutSeperation: 25
     Layouts:
     - {fileID: 7159862058339159186, guid: b5fdcbbc5f7da88409aee0458cc8474b, type: 3}
@@ -290,6 +293,7 @@ MonoBehaviour:
     CreateCompletion: 5
     ExtraCreates: 5
     LevelSpeed: 1.9
+    GauntletMode: 0
     LayoutSeperation: 20
     Layouts:
     - {fileID: 2891347455977296174, guid: f58b6ad9a99640b4f9efb6da2167fe3c, type: 3}
@@ -950,6 +954,7 @@ MonoBehaviour:
   movementDeceleration: 0.45
   rotationStrength: 25.3
   movementArea: 5.4
+  steeringSensitivity: 1.22
   flashColor: {r: 0, g: 0, b: 0, a: 0}
   flashSeconds: 1
   flashAmount: 10
@@ -5831,6 +5836,7 @@ MonoBehaviour:
   timeWin: 30
   scoreWin: 5
   score: 0
+  Gauntlet: 0
   NormalCreate: {fileID: 5538873769159358585, guid: f5b55c9397618024a9a1c301753d7eba, type: 3}
   DisabledCreate: {fileID: 5538873769159358585, guid: 16c0dd0cbf810424eafad22e649f80e0, type: 3}
   youWin: {fileID: 2128891534}
