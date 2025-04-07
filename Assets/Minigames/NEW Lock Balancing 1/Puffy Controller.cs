@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -145,11 +144,7 @@ public class PuffyController : MonoBehaviour
         {
             Velocity += Input.GetAxis("Horizontal") * ((float)keyStrength / 1000);
         }
-        else if (Mathf.Abs(WS.Angle) > 5)
-        {
-            float targetVelocity = -WS.Angle / 15f;
-            Velocity = Mathf.Lerp(Velocity, targetVelocity, Time.deltaTime * 3f);
-        }
+        else if (WS.Angle != 0) Velocity += -WS.Angle/1000;
         else
         {
             // Decelerates by X amount (divided by 100 to make it more reasoanble)
@@ -158,14 +153,11 @@ public class PuffyController : MonoBehaviour
                 if (Velocity > 0) Velocity -= (float)decelerationAmount / 100;
                 if (Velocity < 0) Velocity += (float)decelerationAmount / 100;
             }
-            else
-            {
-                Velocity = 0;
-            }
+            else Velocity = 0;
         }
         transform.position += new Vector3(Velocity, 0, 0);
 
-        Wheel.transform.eulerAngles = new Vector3(0, 0, -Velocity * 10);
+        Wheel.transform.eulerAngles = new Vector3(0, 0, -Velocity * 10); 
     }
 
     IEnumerator decreaseDurability()
