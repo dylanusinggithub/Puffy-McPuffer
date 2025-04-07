@@ -7,7 +7,7 @@ public class PuffyController : MonoBehaviour
 {
     NEWLockBalancing LB;
     WheelSteering WS;
-
+    ObjectDropper OD;
     [SerializeField, Range(0, 8)]
     float maxDist;
 
@@ -69,6 +69,8 @@ public class PuffyController : MonoBehaviour
         Wheel = GameObject.Find("Wheel");
         WS = Wheel.GetComponent<WheelSteering>();
 
+        OD = GameObject.Find("GameManager").GetComponent<ObjectDropper>();
+
         DurabilityBar = GameObject.Find("Durability").transform.GetChild(0).gameObject;
 
         health = healthMax;
@@ -110,6 +112,8 @@ public class PuffyController : MonoBehaviour
 
     void CheckCollison()
     {
+        
+
         // Damage Puffy for hitting walls
         if (Mathf.Abs(transform.position.x) > maxDist)
         {
@@ -120,6 +124,12 @@ public class PuffyController : MonoBehaviour
             // makes it so it cannot get hurt again until decreasedDurability is finished
             if (!isHit)
             {
+                if (OD.Gauntlet == true)
+                {
+                    StartCoroutine(decreaseDurability());
+                    LB.state = NEWLockBalancing.GameState.Fail;
+                }
+
                 Shake.SetFloat("ShakeForce", PlayerPrefs.GetFloat("Screen Shake", 1));
                 Shake.SetTrigger("Shake");
 
@@ -200,6 +210,13 @@ public class PuffyController : MonoBehaviour
     // Hit by obstacle
     void OnCollisionEnter2D(Collision2D collision)
     {
+
+        if (OD.Gauntlet == true)
+        {
+            StartCoroutine(decreaseDurability());
+            LB.state = NEWLockBalancing.GameState.Fail;
+        }
+
         LB.CollectObject(collision.gameObject);
 
         // Creates audio player object and assgins the clip given to the original colliding

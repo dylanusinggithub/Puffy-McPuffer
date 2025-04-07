@@ -33,7 +33,7 @@ public class NEWLockBalancing : MonoBehaviour
     float cutsceneSpeed = -0.03f;
 
     private int randomNumber;
-
+    ObjectDropper OD;
     private void Start()
     {
         ScaleLock();
@@ -51,27 +51,27 @@ public class NEWLockBalancing : MonoBehaviour
         arrowMovement = GameObject.Find("Arrow Origin");
         windForce = transform.GetChild(0).GetChild(0).GetComponent<ParticleSystemForceField>();
 
-        
+        OD = GameObject.Find("GameManager").GetComponent<ObjectDropper>();
     }
 
     IEnumerator RandomizeEvery3Seconds()
     {
-        while (true) 
+        while (OD.Gauntlet == true) 
         {
            
-            randomNumber = UnityEngine.Random.Range(0, 2);
+            randomNumber = UnityEngine.Random.Range(0, 3);
             Debug.Log("Random number: " + randomNumber);
 
-            
             if (randomNumber == 0)
             {
                 StartCoroutine(GetComponent<WaterController>().changeHeight(true));
             }
             else if (randomNumber == 1)
             {
-                StartCoroutine(GetComponent<WaterController>().changeHeight(false));
+                StartCoroutine(GetComponent<WaterController>().changeHeight(true));
             }
-            else yield return new WaitForSeconds(2f); ;
+            
+            yield return new WaitForSeconds(2f); 
 
         }
     }
