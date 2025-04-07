@@ -123,6 +123,7 @@ public class PipeController : MonoBehaviour
 
         switch (Direction)
         {
+            case 4: // 360
             case 0:
                 return Position.Zero;
             case 1:

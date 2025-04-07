@@ -58,7 +58,7 @@ public class PipeLayout : MonoBehaviour
 
         if (!Levels[LevelIndex].GauntletMode)
         {
-            foreach(GameObject Pipe in Pipes) CreateBrokenPipes(Pipe);
+            foreach (GameObject Pipe in Pipes) CreateBrokenPipes(Pipe);
 
             // Goes through all pipes and chooses a random one to be broken
             int initalPipeCount = Pipes.Count;
