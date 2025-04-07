@@ -616,7 +616,7 @@ MonoBehaviour:
   burstMaxLimit: 4
   burstMin: 2
   Spawning: 0
-  Gauntlet: 1
+  Gauntlet: 0
   gauntletthing: {fileID: 1268764783}
   Layouts:
   - {fileID: 5551459052684984698, guid: 911afc5303e520041b382a98f4aaa80d, type: 3}
@@ -705,7 +705,7 @@ MonoBehaviour:
     strength: 8
   - LockSize: 1
     CreateCompletion: 10
-    burstDelay: 5
+    burstDelay: 2
     burstSeparationDelay: 1
     burstMaxLimit: 4
     burstMin: 1
@@ -10004,7 +10004,7 @@ MonoBehaviour:
   StartColour: {r: 0.32219383, g: 0.6132076, b: 0, a: 1}
   EndColour: {r: 1, g: 0, b: 0, a: 1}
   keyStrength: 100
-  mouseStrength: 100
+  mouseStrength: 75
   mouseMaxDist: 2.15
   mouseInverted: 0
   decelerationAmount: 1

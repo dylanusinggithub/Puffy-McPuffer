@@ -90,15 +90,15 @@ public class PuffyController : MonoBehaviour
         {
             if (transform.position.x < 0)
             {
-                GetComponent<Animator>().SetBool("Moving Right", false);
-                GetComponent<Animator>().SetTrigger("TurnAround");
-                GetComponent<SpriteRenderer>().flipX = true;
+                //GetComponent<Animator>().SetBool("Moving Right", true);
+                //GetComponent<Animator>().SetTrigger("TurnAround");
+                GetComponent<SpriteRenderer>().flipX = false;
             }
             else if(transform.position.x > 0)
             {
-                GetComponent<Animator>().SetBool("Moving Right", true);
-                GetComponent<Animator>().SetTrigger("TurnAround");
-                GetComponent<SpriteRenderer>().flipX = false;
+                //GetComponent<Animator>().SetBool("Moving Right", false);
+                //GetComponent<Animator>().SetTrigger("TurnAround");
+                GetComponent<SpriteRenderer>().flipX = true;
             }
         }
 
