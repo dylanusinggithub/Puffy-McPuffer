@@ -659,7 +659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SinglePlay: {fileID: 347278007}
-  LevelIndex: 2
+  LevelIndex: 1
   PressMeToSetLevel: 0
   GauntletMode: 0
   Levels:
@@ -685,7 +685,6 @@ MonoBehaviour:
     Layouts:
     - {fileID: 75467923570884998, guid: bfe129daf4938394ca27091c9a0b4375, type: 3}
     - {fileID: 75467923570884998, guid: 4da743856b74fcd479b632a5734c3611, type: 3}
-    - {fileID: 3163827342038594386, guid: 5ee480e6546496d4ca0b382b771d33f2, type: 3}
     perlinStepSize: 0.2
     strength: 15
   - LockSize: 1.3
