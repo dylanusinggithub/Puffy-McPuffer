@@ -947,13 +947,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementStrength: 40.4
-  mouseStrength: 40.9
-  mouseMax: 1.79
+  mouseStrength: 48
+  mouseMax: 1.6
   mouseInverted: 0
   movementDeceleration: 0.45
   rotationStrength: 25.3
   movementArea: 5.4
-  steeringSensitivity: 1.22
+  steeringSensitivity: 1.52
   flashColor: {r: 0, g: 0, b: 0, a: 0}
   flashSeconds: 1
   flashAmount: 10
