@@ -186,7 +186,9 @@ public class NEWLockBalancing : MonoBehaviour
 
                 state = GameState.Complete;
             }
-            Destroy(Object);
+
+            if(state != GameState.Cutscene) Destroy(Object);
+
             StartCoroutine(GetComponent<WaterController>().changeHeight(true));
         }
         else if (createCount > 0)

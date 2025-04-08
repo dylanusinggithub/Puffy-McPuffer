@@ -156,7 +156,7 @@ public class ObjectDropper : MonoBehaviour
                 {
                     if (GO[i].transform.GetChild(j).position.y < WC.waterHeight) // In the water
                     {
-                        GO[i].transform.GetChild(j).GetComponent<Collider>().enabled = false;
+                        GO[i].transform.GetChild(j).GetComponent<Collider2D>().enabled = false;
                         GO[i].transform.GetChild(j).GetComponent<Rigidbody2D>().gravityScale = 0.2f;
                         GO[i].transform.GetChild(j).GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
@@ -169,7 +169,7 @@ public class ObjectDropper : MonoBehaviour
                         if (GO[i].transform.GetChild(j).GetComponent<SpriteRenderer>() != null)
                         {
                             GO[i].transform.GetChild(j).GetComponent<SpriteRenderer>().sortingOrder = 0;
-                            GO[i].transform.GetChild(j).GetComponent<Collider>().enabled = true;
+                            GO[i].transform.GetChild(j).GetComponent<Collider2D>().enabled = true;
                         }
                     }
                 }

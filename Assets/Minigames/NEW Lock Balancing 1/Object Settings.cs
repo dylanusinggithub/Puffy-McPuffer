@@ -40,7 +40,7 @@ public class ObjectSettings : MonoBehaviour
         GO.GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-10, 10);
 
         // Hides behind lock wall, which later gets undone 
-        GO.GetComponent<Collider>().enabled = false;
+        GO.GetComponent<Collider2D>().enabled = false;
         Physics2D.IgnoreLayerCollision(0, 0); // Disables Default Colliding with defualt
         GO.GetComponent<SpriteRenderer>().sortingOrder = -5;
 
