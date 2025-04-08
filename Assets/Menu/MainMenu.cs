@@ -94,6 +94,7 @@ public class MainMenu : MonoBehaviour
 
         HowToPlay.transform.GetChild(3).gameObject.SetActive(false); // Centred Exit
         HowToIndex = 0;
+        HowToPlayPos = 0;
     }
 
     public void BTN_HowToNext()
@@ -125,7 +126,7 @@ public class MainMenu : MonoBehaviour
                 yield return new WaitForSeconds(HowToPlayTransitionTime / smootheness);
                 HowToPlayPos += HowToPlayTransitionTime / smootheness;
 
-                transform.GetChild(1).GetChild(0).position = new Vector2(HowToPlayPos * -20.0f,  0);
+                transform.GetChild(1).GetChild(0).position = new Vector2(HowToPlayPos * (-20.0f / HowToPlayTransitionTime),  0);
             }
         }
         else
