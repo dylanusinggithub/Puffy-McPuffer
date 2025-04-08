@@ -124,12 +124,13 @@ public class MainMenu : MonoBehaviour
                 yield return new WaitForSeconds(HowToPlayTransitionTime / smootheness);
                 HowToPlayPos += HowToPlayTransitionTime / smootheness;
 
-                transform.GetChild(1).GetChild(0).position = new Vector2(HowToPlayPos * 2160,  0);
+                transform.GetChild(1).GetChild(0).position = new Vector2(HowToPlayPos * -20.0f,  0);
             }
         }
         else
         {
             HowToIndex = 0;
+            HowToPlayPos = 0;
 
             // Displays main manually to avoid double fade
             HideUI();
