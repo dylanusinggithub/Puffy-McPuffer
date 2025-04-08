@@ -99,10 +99,10 @@ public class MainMenu : MonoBehaviour
 
         HowToIndex++;
         HowToPlay.transform.GetChild(0).GetChild(HowToIndex - 1).gameObject.SetActive(false);
-        if (HowToIndex < transform.childCount - 1)
+        if (HowToIndex < transform.GetChild(1).GetChild(0).childCount)
         {
             // Remove buttons on last page
-            if (HowToIndex == transform.childCount - 2)
+            if (HowToIndex == transform.GetChild(1).GetChild(0).childCount - 1)
             {
                 HowToPlay.transform.GetChild(1).gameObject.SetActive(false); // Back
                 HowToPlay.transform.GetChild(2).gameObject.SetActive(false); // Exit
