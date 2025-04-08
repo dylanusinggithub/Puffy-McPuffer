@@ -1672,7 +1672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FadeTransition: {fileID: 1438381909}
   FadeDelay: 0.1
-  HowToPlayTransitionTime: 1
+  HowToPlayTransitionTime: 0.257
 --- !u!82 &615448767
 AudioSource:
   m_ObjectHideFlags: 0
