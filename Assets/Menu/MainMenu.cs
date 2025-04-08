@@ -78,6 +78,8 @@ public class MainMenu : MonoBehaviour
     {
         AS.volume = BTNVol * PlayerPrefs.GetFloat("Volume", 1);
         AS.Play();
+
+        transform.GetChild(1).GetChild(0).position = Vector3.zero;
         StartCoroutine(FadeTime(HowToPlay));
         StartCoroutine(HowTo());
     }
@@ -98,7 +100,6 @@ public class MainMenu : MonoBehaviour
     {
         AS.volume = BTNVol * PlayerPrefs.GetFloat("Volume", 1);
         AS.Play();
-        StartCoroutine(FadeTime(HowToPlay));
         StartCoroutine(HowToNext());
     }
 
