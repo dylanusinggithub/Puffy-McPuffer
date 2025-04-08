@@ -1,4 +1,5 @@
 using System.Collections;
+using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 
@@ -83,8 +84,6 @@ public class AnimationScript : MonoBehaviour
                         Create.AddComponent<Rigidbody2D>();
                         Create.AddComponent<BoxCollider2D>().isTrigger = true;
 
-                        timeWait = 1.5f;
-
                         state = AnimationState.WaitCreate;
                     }
                     else timeWait -= Time.deltaTime;
@@ -92,11 +91,13 @@ public class AnimationScript : MonoBehaviour
                 break;
             case AnimationState.WaitCreate:
                 {
-                    if (Puffy.GetComponent<Collider2D>().OverlapPoint(Create.transform.position)) // Hits puffy
+                    if (Puffy.GetComponent<Collider2D>().OverlapPoint(Create.transform.position + new Vector3(0, -0.4f))) // Hits puffy
                     {
                         // Creates audio player object and assgins the clip given to the original colliding
                         // object so if it's deleted before it finishes playing it wont be cut off
                         GameObject AudioPlayer = new GameObject(Create.name + " Audio Player");
+
+                        Destroy(Create);
 
                         AudioPlayer.AddComponent<AudioSource>();
 

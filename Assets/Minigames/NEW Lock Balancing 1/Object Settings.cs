@@ -35,13 +35,12 @@ public class ObjectSettings : MonoBehaviour
 
         GO.transform.parent = transform.parent;
         GO.AddComponent<Rigidbody2D>();
-        GO.AddComponent<BoxCollider2D>();
 
         GO.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 10);
         GO.GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-10, 10);
 
         // Hides behind lock wall, which later gets undone 
-        GO.GetComponent<BoxCollider2D>().enabled = false;
+        GO.GetComponent<Collider2D>().enabled = false;
         Physics2D.IgnoreLayerCollision(0, 0); // Disables Default Colliding with defualt
         GO.GetComponent<SpriteRenderer>().sortingOrder = -5;
 

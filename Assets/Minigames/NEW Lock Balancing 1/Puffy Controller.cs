@@ -57,7 +57,7 @@ public class PuffyController : MonoBehaviour
     [SerializeField]
     Animator Shake;
 
-    void Start()
+    void Awake()
     {
         float LockSize = GameObject.Find("GameManager").GetComponent<NEWLockBalancing>().LockSize;
         maxDist *= LockSize + Mathf.Lerp(0, 0.35f, LockSize - 1);
@@ -231,6 +231,5 @@ public class PuffyController : MonoBehaviour
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 3);
             collision.gameObject.GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-30, 30);
         }
-        else Destroy(collision.gameObject);
     }
 }

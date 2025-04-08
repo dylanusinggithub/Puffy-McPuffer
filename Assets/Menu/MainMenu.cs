@@ -11,6 +11,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField, Range(0.1f, 2)] float FadeDelay;
 
     GameObject Main, HowToPlay, Options;
+    [SerializeField, Range(0.1f, 2)] float HowToPlayTransitionTime;
+    float HowToPlayPos;
 
     GameObject Fadetransition;
     AudioSource AS, FadeAS;
@@ -31,6 +33,13 @@ public class MainMenu : MonoBehaviour
 
         BTNVol = AS.volume;
         FadeVol = FadeAS.volume;
+
+        // Activates and spaces out the How To Play 
+        for(int i = 0; i < transform.GetChild(1).GetChild(0).childCount; i++)
+        {
+            transform.GetChild(1).GetChild(0).GetChild(i).GetComponent<RectTransform>().anchoredPosition = new Vector2(2160 * i, 30);
+            transform.GetChild(1).GetChild(0).GetChild(i).gameObject.SetActive(true);
+        }
     }
 
     void HideUI()
@@ -98,11 +107,10 @@ public class MainMenu : MonoBehaviour
         yield return new WaitForSeconds(FadeDelay);
 
         HowToIndex++;
-        HowToPlay.transform.GetChild(0).GetChild(HowToIndex - 1).gameObject.SetActive(false);
-        if (HowToIndex < transform.childCount - 1)
+        if (HowToIndex < transform.GetChild(1).GetChild(0).childCount)
         {
             // Remove buttons on last page
-            if (HowToIndex == transform.childCount - 2)
+            if (HowToIndex == transform.GetChild(1).GetChild(0).childCount - 1)
             {
                 HowToPlay.transform.GetChild(1).gameObject.SetActive(false); // Back
                 HowToPlay.transform.GetChild(2).gameObject.SetActive(false); // Exit
@@ -110,8 +118,14 @@ public class MainMenu : MonoBehaviour
                 HowToPlay.transform.GetChild(3).gameObject.SetActive(true); // Centred Exit
             }
 
-            
-            HowToPlay.transform.GetChild(0).GetChild(HowToIndex).gameObject.SetActive(true);
+            int smootheness = 100;
+            for (int i = 0; i < smootheness; i++)
+            {
+                yield return new WaitForSeconds(HowToPlayTransitionTime / smootheness);
+                HowToPlayPos += HowToPlayTransitionTime / smootheness;
+
+                transform.GetChild(1).GetChild(0).position = new Vector2(HowToPlayPos * 2160,  0);
+            }
         }
         else
         {
