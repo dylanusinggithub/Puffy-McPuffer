@@ -81,17 +81,12 @@ public class ScoreScript : MonoBehaviour
     {
         if (Gauntlet)
         {
-            if(scoreWin >= score) youWin.SetActive(true);
-            else if (score == 0)
+            if (score == 0)
             {
                 gameOver.SetActive(true);
                 gameOver.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "You have crashed and sunk to the bottom of the canal.";
             }
-            else if (score > scoreWin)
-            {
-                gameOver.SetActive(true);
-                gameOver.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Something Something, You Collcted too Much!";
-            }
+            else youWin.SetActive(true);
         }
         else
         {

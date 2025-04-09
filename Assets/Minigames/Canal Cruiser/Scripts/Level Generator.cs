@@ -134,7 +134,8 @@ public class LevelGenerator : MonoBehaviour
                 for (int j = 0; j < transform.GetChild(i).childCount; j++)
                 {
                     Transform OBJ = transform.GetChild(i).GetChild(j);
-                    if (OBJ.GetComponent<ObjectScript>().isHardmode) OBJ.gameObject.SetActive(true);
+                    if (OBJ.name.ToUpper().Contains("CRATE")) OBJ.gameObject.SetActive(false);
+                    else if (OBJ.GetComponent<ObjectScript>().isHardmode) OBJ.gameObject.SetActive(true);
                 }
             }
         }
