@@ -58,9 +58,13 @@ public class DifficultyManager : MonoBehaviour
         OD.Layouts.Clear();
         foreach (GameObject layout in Levels[levelIndex].Layouts) OD.Layouts.Add(layout);
 
+        OD.SelectionAlgorithm = Levels[levelIndex].LayoutSelctions;
+
         if (LevelDesigner.SinglePlay) SinglePlay.SetActive(true);
     }
 }
+
+public enum Algorithms { Default, InOrder, RandomWithoutRepeat }
 
 [System.Serializable]
 class GameplaySettings
@@ -88,6 +92,8 @@ class GameplaySettings
     [Tooltip("The layouts to be dropped during gameplay")]
     public GameObject[] Layouts;
 
+    [Tooltip("The way layouts will be selected")]
+    public Algorithms LayoutSelctions;
 
     [Header("Water Setting", order = 1)]
     [Tooltip("How quickly the water will change horizontally")]

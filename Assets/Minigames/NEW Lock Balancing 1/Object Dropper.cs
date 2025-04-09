@@ -31,6 +31,10 @@ public class ObjectDropper : MonoBehaviour
 
     WaterController WC;
 
+    [HideInInspector]
+    public Algorithms SelectionAlgorithm;
+    int randomIndex = 0, previousIndex = -1;
+
     private void Start()
     {
         WC = GetComponent<WaterController>();
@@ -43,6 +47,9 @@ public class ObjectDropper : MonoBehaviour
         {
             gauntletthing.SetActive(true);
         }
+
+        if (SelectionAlgorithm == Algorithms.InOrder) randomIndex = -1;
+        else if (SelectionAlgorithm == Algorithms.RandomWithoutRepeat) randomIndex = Random.Range(0, Layouts.Count);
     }
 
     // Update is called once per frame
@@ -74,8 +81,32 @@ public class ObjectDropper : MonoBehaviour
 
                 if (Gauntlet == false)
                 {
-                    int randomIndex = Random.Range(0, Layouts.Count);
+                    switch(SelectionAlgorithm)
+                    {
+                        case Algorithms.Default:
+                            {
+                                randomIndex = Random.Range(0, Layouts.Count);
+                            }
+                            break;
 
+                        case Algorithms.InOrder:
+                            {
+                                if (randomIndex < Layouts.Count - 1) randomIndex++;
+                                else randomIndex = 0;
+                            }
+                            break;
+
+                        case Algorithms.RandomWithoutRepeat:
+                            {
+                                if (Layouts.Count > 1)
+                                {
+                                    while (randomIndex == previousIndex) randomIndex = Random.Range(0, Layouts.Count);
+                                    previousIndex = randomIndex;
+                                }
+                                else randomIndex = 0;
+                            }
+                            break;
+                    }
 
                     if (!Layouts[randomIndex].name.ToUpper().Contains("SEQUENCE"))
                     {
