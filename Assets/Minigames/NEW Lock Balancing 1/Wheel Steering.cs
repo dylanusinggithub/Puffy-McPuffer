@@ -22,8 +22,6 @@ public class WheelSteering : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
         Angle = Vector2.SignedAngle(Mouse, dragPoint);
 
-        GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, Angle);
-
         //Play sound if not already playing
         if (!audioSource.isPlaying)
         {

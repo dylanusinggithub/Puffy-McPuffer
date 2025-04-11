@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -157,7 +158,10 @@ public class PuffyController : MonoBehaviour
         }
         transform.position += new Vector3(Velocity, 0, 0);
 
-        Wheel.transform.eulerAngles = new Vector3(0, 0, -Velocity * 10); 
+        float targetAngle = -Velocity * 10 + WS.Angle; // Combine both movement and drag
+        float currentAngle = Wheel.transform.eulerAngles.z;
+        float smoothedAngle = Mathf.LerpAngle(currentAngle, targetAngle, Time.deltaTime * 10f);
+        Wheel.transform.eulerAngles = new Vector3(0, 0, smoothedAngle);
     }
 
     IEnumerator decreaseDurability()
