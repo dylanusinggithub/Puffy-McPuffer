@@ -30,6 +30,8 @@ public class LevelGenerator : MonoBehaviour
 
     [SerializeField] GameObject SinglePlay, LevelBTN;
 
+    [SerializeField] GameObject GauntletText;
+
     private void OnValidate()
     {
         if (PressMeToSetLevelIndex)
@@ -138,6 +140,8 @@ public class LevelGenerator : MonoBehaviour
                     else if (OBJ.GetComponent<ObjectScript>().isHardmode) OBJ.gameObject.SetActive(true);
                 }
             }
+
+            StartCoroutine(GauntletAppear());
         }
 
         if (LevelDesigner.SinglePlay)
@@ -145,6 +149,17 @@ public class LevelGenerator : MonoBehaviour
             SinglePlay.SetActive(true);
             LevelBTN.GetComponent<RectTransform>().anchoredPosition = new Vector2(318, -377);
         }
+    }
+
+    IEnumerator GauntletAppear()
+    {
+        Time.timeScale = 0;
+        GauntletText.SetActive(true);
+
+        yield return new WaitForSecondsRealtime(GauntletText.GetComponent<Animator>().runtimeAnimatorController.animationClips[0].length);
+
+        Time.timeScale = 1;
+        GauntletText.SetActive(false);
     }
 
     IEnumerator PlayTutorial()

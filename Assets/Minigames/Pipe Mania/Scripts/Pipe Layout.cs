@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -8,6 +9,8 @@ public class PipeLayout : MonoBehaviour
 {
     [SerializeField] GameObject GameOverScreen, WinScren;
     [SerializeField] GameObject SinglePlay;
+
+    [SerializeField] GameObject GauntletText;
 
     [Header("Pipe Settings")] 
     [SerializeField] GameObject ClickParticle;
@@ -83,8 +86,21 @@ public class PipeLayout : MonoBehaviour
 
         TimerWater = Timer.GetComponentInChildren<RawImage>();
 
+        StartCoroutine(GauntletAppear());
+
         if (LevelDesigner.SinglePlay) SinglePlay.SetActive(true);
 
+    }
+
+    IEnumerator GauntletAppear()
+    {
+        Time.timeScale = 0;
+        GauntletText.SetActive(true);
+
+        yield return new WaitForSecondsRealtime(GauntletText.GetComponent<Animator>().runtimeAnimatorController.animationClips[0].length);
+
+        Time.timeScale = 1;
+        GauntletText.SetActive(false);
     }
 
     GameObject CreateBrokenPipes(GameObject Pipe)
