@@ -86,7 +86,7 @@ public class ScoreScript : MonoBehaviour
                 gameOver.SetActive(true);
                 gameOver.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "You have crashed and sunk to the bottom of the canal.";
             }
-            else youWin.SetActive(true);
+            else GameObject.Find("Pause Menu").GetComponent<MenuButtons>().BTN_NextLevel();
         }
         else
         {

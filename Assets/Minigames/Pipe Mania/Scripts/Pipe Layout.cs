@@ -169,7 +169,8 @@ public class PipeLayout : MonoBehaviour
         
 
         Time.timeScale = 0;
-        WinScren.SetActive(true);
+        if (Levels[LevelIndex].GauntletMode) GameObject.Find("Pause Menu").GetComponent<MenuButtons>().BTN_NextLevel();
+        else WinScren.SetActive(true);
 
         GameObject.Find("Pause Icon").SetActive(false);
 
