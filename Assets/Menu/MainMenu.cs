@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Animator FadeTransition;
     [SerializeField, Range(0.1f, 2)] float FadeDelay;
 
-    GameObject Main, HowToPlay, Options;
+    GameObject Main, HowToPlay, Options, Credits;
     [SerializeField, Range(0.1f, 2)] float HowToPlayTransitionTime;
     float HowToPlayPos;
 
@@ -24,6 +24,7 @@ public class MainMenu : MonoBehaviour
         Main = transform.GetChild(0).gameObject;
         HowToPlay = transform.GetChild(1).gameObject;
         Options = transform.GetChild(2).gameObject;
+        Credits = transform.GetChild(3).gameObject;
 
         Fadetransition = GameObject.Find("Fadetransition");
         Fadetransition.GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume", 1);
@@ -37,8 +38,8 @@ public class MainMenu : MonoBehaviour
         // Activates and spaces out the How To Play 
         for(int i = 0; i < transform.GetChild(1).GetChild(0).childCount; i++)
         {
-            transform.GetChild(1).GetChild(0).GetChild(i).GetComponent<RectTransform>().anchoredPosition = new Vector2(2160 * i, 30);
-            transform.GetChild(1).GetChild(0).GetChild(i).gameObject.SetActive(true);
+            HowToPlay.transform.GetChild(0).GetChild(i).GetComponent<RectTransform>().anchoredPosition = new Vector2(2160 * i, 30);
+            HowToPlay.transform.GetChild(0).GetChild(i).gameObject.SetActive(true);
         }
     }
 
@@ -152,6 +153,15 @@ public class MainMenu : MonoBehaviour
         AS.volume = BTNVol * PlayerPrefs.GetFloat("Volume", 1);
         AS.Play();
         foreach (SliderController Slider in Options.GetComponentsInChildren<SliderController>()) Slider.ResetSlider();
+    }
+
+    public void BTN_Credits()
+    {
+        AS.volume = BTNVol * PlayerPrefs.GetFloat("Volume", 1);
+        AS.Play();
+
+        Credits.gameObject.SetActive(!Credits.gameObject.activeInHierarchy);
+        Options.gameObject.SetActive(!Options.gameObject.activeInHierarchy);
     }
 
     IEnumerator FadeTime(GameObject Menu)
