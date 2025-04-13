@@ -1881,78 +1881,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1 &1152966199
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1152966200}
-  - component: {fileID: 1152966202}
-  - component: {fileID: 1152966201}
-  m_Layer: 5
-  m_Name: SmallCloud03
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1152966200
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1152966199}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1216982618}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 370, y: 210}
-  m_SizeDelta: {x: 325, y: 156.0816}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1152966201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1152966199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 3f3bb072a6347454f80207ceab31d1d5, type: 3}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
---- !u!222 &1152966202
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1152966199}
-  m_CullTransparentMesh: 1
 --- !u!1 &1195978907
 GameObject:
   m_ObjectHideFlags: 0
@@ -2057,7 +1985,6 @@ RectTransform:
   m_Children:
   - {fileID: 133492526}
   - {fileID: 1195978908}
-  - {fileID: 1152966200}
   - {fileID: 443245870}
   - {fileID: 152085949}
   m_Father: {fileID: 1978141635}
@@ -4046,7 +3973,7 @@ MonoBehaviour:
       Cutscene: []
   - StartScreen: []
     Sequence:
-    - minigames: 0
+    - minigames: 1
       difficulty: 3
       showTutorial: 0
       Cutscene: []
@@ -4054,7 +3981,7 @@ MonoBehaviour:
       difficulty: 4
       showTutorial: 0
       Cutscene: []
-    - minigames: 0
+    - minigames: 1
       difficulty: 4
       showTutorial: 0
       Cutscene: []
@@ -4062,7 +3989,7 @@ MonoBehaviour:
       difficulty: 3
       showTutorial: 0
       Cutscene: []
-    - minigames: 0
+    - minigames: 1
       difficulty: 5
       showTutorial: 0
       Cutscene: []
@@ -4070,7 +3997,7 @@ MonoBehaviour:
       difficulty: 5
       showTutorial: 0
       Cutscene: []
-    - minigames: 0
+    - minigames: 1
       difficulty: 6
       showTutorial: 0
       Cutscene: []
@@ -4078,7 +4005,7 @@ MonoBehaviour:
       difficulty: 6
       showTutorial: 0
       Cutscene: []
-    - minigames: 0
+    - minigames: 1
       difficulty: 7
       showTutorial: 0
       Cutscene: []
