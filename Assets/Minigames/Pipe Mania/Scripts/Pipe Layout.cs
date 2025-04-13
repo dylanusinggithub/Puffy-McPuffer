@@ -136,10 +136,10 @@ public class PipeLayout : MonoBehaviour
 
         if (Levels[LevelIndex].GauntletMode)
         {
-            //\frac{\operatorname{floor}\left(\sqrt{x}\cdot p\right)}{p}-0.2 <-- Copy and paste this bad boy into desmos for graph
+            //\frac{\operatorname{floor}\left(x^{1.7}\cdot p\right)}{p\ } <-- Copy and paste this bad boy into desmos for graph
 
             float PipeCount = Timer.value / Timer.maxValue;
-            PipeCount = (float)((float)Mathf.Floor(Mathf.Sqrt(PipeCount) * Levels[LevelIndex].BrokenPipesCount) / Levels[LevelIndex].BrokenPipesCount - 0.2);
+            PipeCount = (float)((float)Mathf.Floor(Mathf.Pow(PipeCount, 1.7f) * Levels[LevelIndex].BrokenPipesCount) / Levels[LevelIndex].BrokenPipesCount);
 
             if (PipeCount != oldPipeCount)
             {
@@ -176,7 +176,7 @@ public class PipeLayout : MonoBehaviour
         {
             // Actitvated Twice
             BrokenPipesCount ++;
-            if (Levels[LevelIndex].BrokenPipesCount > BrokenPipesCount / 2) return;
+            if (Levels[LevelIndex].BrokenPipesCount > (BrokenPipesCount / 2) + 2) return;
         }
         else
         {
