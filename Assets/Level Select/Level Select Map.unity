@@ -4045,7 +4045,43 @@ MonoBehaviour:
       showTutorial: 0
       Cutscene: []
   - StartScreen: []
-    Sequence: []
+    Sequence:
+    - minigames: 0
+      difficulty: 3
+      showTutorial: 0
+      Cutscene: []
+    - minigames: 2
+      difficulty: 4
+      showTutorial: 0
+      Cutscene: []
+    - minigames: 0
+      difficulty: 4
+      showTutorial: 0
+      Cutscene: []
+    - minigames: 2
+      difficulty: 3
+      showTutorial: 0
+      Cutscene: []
+    - minigames: 0
+      difficulty: 5
+      showTutorial: 0
+      Cutscene: []
+    - minigames: 2
+      difficulty: 5
+      showTutorial: 0
+      Cutscene: []
+    - minigames: 0
+      difficulty: 6
+      showTutorial: 0
+      Cutscene: []
+    - minigames: 2
+      difficulty: 6
+      showTutorial: 0
+      Cutscene: []
+    - minigames: 0
+      difficulty: 7
+      showTutorial: 0
+      Cutscene: []
 --- !u!82 &1992337078
 AudioSource:
   m_ObjectHideFlags: 0
