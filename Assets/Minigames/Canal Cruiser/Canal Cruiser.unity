@@ -288,9 +288,9 @@ MonoBehaviour:
     - {fileID: 2357665773328269852, guid: 12f6c86d2fe08e843908681c57e054a8, type: 3}
     - {fileID: 6392660177088936827, guid: 4d9498cdf9e0a524d939f25efe7adc17, type: 3}
     - {fileID: 2357665773328269852, guid: 73788ba1807992248a40024b2ced088e, type: 3}
-  - GameplayTime: 15
+  - GameplayTime: 20
     CreateCompletion: 5
-    ExtraCreates: 4
+    ExtraCreates: 0
     LevelSpeed: 1.9
     GauntletMode: 1
     LayoutSeperation: 20
