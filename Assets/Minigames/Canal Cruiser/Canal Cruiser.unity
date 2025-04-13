@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PressMeToSetLevelIndex: 0
-  levelIndex: 4
+  levelIndex: 7
   Levels:
   - GameplayTime: 22
     CreateCompletion: 4
@@ -306,6 +306,44 @@ MonoBehaviour:
     - {fileID: 7793173836862348141, guid: 2dd2d6cd3fde8a94390a9c30712f6846, type: 3}
     - {fileID: 658318910959143042, guid: 6df734f3412ed1c49a42407ec42a6e8a, type: 3}
     - {fileID: 7159862058339159186, guid: de1b8f1c38a92114b895a731b8258266, type: 3}
+  - GameplayTime: 20
+    CreateCompletion: 6
+    ExtraCreates: 0
+    LevelSpeed: 1.9
+    GauntletMode: 1
+    LayoutSeperation: 15
+    Layouts:
+    - {fileID: 2723156374974615379, guid: 3e6dd6ff2d2608743ac69c7bdc7ef71c, type: 3}
+    - {fileID: 2357665773328269852, guid: ec9ab7d306bac454288156616c31e266, type: 3}
+    - {fileID: 2723156374974615379, guid: 3e6dd6ff2d2608743ac69c7bdc7ef71c, type: 3}
+    - {fileID: 2357665773328269852, guid: e0e4d0f6ffaff9b4997d77fc89aefc37, type: 3}
+  - GameplayTime: 28
+    CreateCompletion: 6
+    ExtraCreates: 0
+    LevelSpeed: 1.9
+    GauntletMode: 1
+    LayoutSeperation: 15
+    Layouts:
+    - {fileID: 658318910959143042, guid: 6df734f3412ed1c49a42407ec42a6e8a, type: 3}
+    - {fileID: 6922145835368533052, guid: 6b2c336e237beef4d85fdba378188fae, type: 3}
+    - {fileID: 7793173836862348141, guid: 2dd2d6cd3fde8a94390a9c30712f6846, type: 3}
+    - {fileID: 2357665773328269852, guid: e0e4d0f6ffaff9b4997d77fc89aefc37, type: 3}
+    - {fileID: 5117915890332995674, guid: 388149a63c3e6fa40b93bf8ab2d7676b, type: 3}
+  - GameplayTime: 45
+    CreateCompletion: 5
+    ExtraCreates: 0
+    LevelSpeed: 1.9
+    GauntletMode: 1
+    LayoutSeperation: 23
+    Layouts:
+    - {fileID: 7793173836862348141, guid: 2dd2d6cd3fde8a94390a9c30712f6846, type: 3}
+    - {fileID: 2357665773328269852, guid: e0e4d0f6ffaff9b4997d77fc89aefc37, type: 3}
+    - {fileID: 7159862058339159186, guid: de1b8f1c38a92114b895a731b8258266, type: 3}
+    - {fileID: 6922145835368533052, guid: 6b2c336e237beef4d85fdba378188fae, type: 3}
+    - {fileID: 5117915890332995674, guid: 388149a63c3e6fa40b93bf8ab2d7676b, type: 3}
+    - {fileID: 2357665773328269852, guid: ec9ab7d306bac454288156616c31e266, type: 3}
+    - {fileID: 658318910959143042, guid: 6df734f3412ed1c49a42407ec42a6e8a, type: 3}
+    - {fileID: 2723156374974615379, guid: 3e6dd6ff2d2608743ac69c7bdc7ef71c, type: 3}
   FinishLine: {fileID: 8863472203141504064, guid: 7734a7970e6e09143883089a64cbb4d0, type: 3}
   SinglePlay: {fileID: 1273068744}
   LevelBTN: {fileID: 1731607288}
