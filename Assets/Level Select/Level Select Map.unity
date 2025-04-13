@@ -3741,7 +3741,10 @@ MonoBehaviour:
       showTutorial: 0
       Cutscene: []
   - StartScreen:
-    - {fileID: 2800000, guid: 96d0de1d568e0f3428b340ec7e1a75a9, type: 3}
+    - {fileID: 2298615409199906396, guid: b1b7ab96faa3ad04d9a3ff31987dc0f5, type: 3}
+    - {fileID: 4631778515135551953, guid: b9044906d235eba4c80b8edbc86d3992, type: 3}
+    - {fileID: 2385269803091124138, guid: efb17c8c2eff9b04884a7d52faddba10, type: 3}
+    - {fileID: 2800000, guid: 5e243993b0c6f8b4797c8d57d1d82462, type: 3}
     - {fileID: 2800000, guid: 5e243993b0c6f8b4797c8d57d1d82462, type: 3}
     Sequence:
     - minigames: 0
