@@ -3971,7 +3971,11 @@ MonoBehaviour:
       difficulty: 2
       showTutorial: 0
       Cutscene: []
-  - StartScreen: []
+  - StartScreen:
+    - {fileID: 732554197901426836, guid: 895fd97f453461a4c8c802d1ce0479ee, type: 3}
+    - {fileID: 78380279943810809, guid: 44b47617233878e4e83a17da3b761877, type: 3}
+    - {fileID: 9107010337129949124, guid: 3052b59f3d0fa3a4aa3d9cb33c9a9599, type: 3}
+    - {fileID: 2656972114453487587, guid: 17c1385e382c1204fa7973d57e9abb48, type: 3}
     Sequence:
     - minigames: 1
       difficulty: 3
