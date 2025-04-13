@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: 175935693}
   - component: {fileID: 175935692}
   m_Layer: 5
-  m_Name: Caledonian
+  m_Name: North Sea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -440,7 +440,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -12.423}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15.7, y: 34}
+  m_AnchoredPosition: {x: 14.3, y: 35.8}
   m_SizeDelta: {x: 117.26, y: 87.51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &175935692
@@ -453,10 +453,10 @@ Animator:
   m_GameObject: {fileID: 175935690}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4567a4e45dcc59f4787692085f56d039, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6d649984d78323f4d8457041583c0b84, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -484,7 +484,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 21b7a8c1e3bb6aa44b0d9d0325584c6c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ee689102d29b6234287a05294b35dad5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3565,7 +3565,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1978141632
 MonoBehaviour:
   m_ObjectHideFlags: 0
