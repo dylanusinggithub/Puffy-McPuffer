@@ -3981,7 +3981,7 @@ MonoBehaviour:
       difficulty: 4
       showTutorial: 0
       Cutscene: []
-    - minigames: 0
+    - minigames: 1
       difficulty: 4
       showTutorial: 0
       Cutscene: []
