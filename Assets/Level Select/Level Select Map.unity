@@ -3973,7 +3973,7 @@ MonoBehaviour:
       Cutscene: []
   - StartScreen: []
     Sequence:
-    - minigames: 0
+    - minigames: 1
       difficulty: 3
       showTutorial: 0
       Cutscene: []
@@ -3989,7 +3989,7 @@ MonoBehaviour:
       difficulty: 3
       showTutorial: 0
       Cutscene: []
-    - minigames: 0
+    - minigames: 1
       difficulty: 5
       showTutorial: 0
       Cutscene: []
@@ -3997,7 +3997,7 @@ MonoBehaviour:
       difficulty: 5
       showTutorial: 0
       Cutscene: []
-    - minigames: 0
+    - minigames: 1
       difficulty: 6
       showTutorial: 0
       Cutscene: []
@@ -4005,7 +4005,7 @@ MonoBehaviour:
       difficulty: 6
       showTutorial: 0
       Cutscene: []
-    - minigames: 0
+    - minigames: 1
       difficulty: 7
       showTutorial: 0
       Cutscene: []
