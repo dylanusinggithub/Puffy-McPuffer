@@ -88,8 +88,7 @@ public class LevelDesigner : MonoBehaviour
             PlayerPrefs.SetInt("minigameIndex", minigameIndex);
             NextLevel();
         }
-
-        SinglePlay = false;
+        else SinglePlay = false;
     }
 
     void NextLevel()
@@ -127,7 +126,11 @@ public class LevelDesigner : MonoBehaviour
             foreach (Transform t in LevelBTNs.GetComponentInChildren<Transform>())
             {
                 LevelSelector BTN = t.GetComponentInChildren<LevelSelector>();
-                if (BTN != null) BTN.EnableOrDisableLevel();
+                if (BTN != null)
+                {
+                    BTN.enabled = false;
+                    BTN.GetComponent<Button>().enabled = false;
+                }
             }
 
             GameObject ExtraBTN = GameObject.Find("Menu Buttons");
@@ -232,7 +235,6 @@ public class LevelDesigner : MonoBehaviour
                     {
                         LevelSelector BTN = t.GetComponentInChildren<LevelSelector>();
                         if (BTN != null) BTN.EnableOrDisableLevel();    
-
                     }
 
                     GameObject ExtraBTN = GameObject.Find("Menu Buttons");
