@@ -38,6 +38,8 @@ public class ScoreScript : MonoBehaviour
     void Start()
     {
         ScoreUI = GameObject.Find("Score Counter").transform.GetChild(0);
+        FindObjectOfType<AudioManager>().StopPlaying("Intro");
+        FindObjectOfType<AudioManager>().Play("Level");
     }
 
     void FixedUpdate()
