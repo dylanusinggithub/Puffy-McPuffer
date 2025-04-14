@@ -3565,7 +3565,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1978141632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3916,7 +3916,7 @@ MonoBehaviour:
     - {fileID: 6616023976376289402, guid: 831b6f6538210e74f838c5d643e9e1cd, type: 3}
     - {fileID: 4381010054495863247, guid: a2bdc88cd31571f41bda24611ce0d169, type: 3}
     - {fileID: 1435062423119604759, guid: 3b7708182ef6f304d89e5022125c6ade, type: 3}
-    - {fileID: 2800000, guid: d1d50ecd2c33b0041b84ffacad8539f3, type: 3}
+    - {fileID: 2460228208714988137, guid: e7916851dab293b4aa20590daeceb8e4, type: 3}
     Sequence:
     - minigames: 1
       difficulty: 0
@@ -3936,7 +3936,7 @@ MonoBehaviour:
     - {fileID: 2112512188396517660, guid: 4310d1a2bd88f90499b4e6716b53f034, type: 3}
     - {fileID: 8989493728642143625, guid: ee960067f24d1df4188c31437e18f4d1, type: 3}
     - {fileID: 6746501051036681215, guid: 3f590a35545f07445a370160ce7f6483, type: 3}
-    - {fileID: 2800000, guid: 606aacca34ffd5f4f9263dc374778278, type: 3}
+    - {fileID: 4265632895156989322, guid: 93f3f1065bde8b04aa26b293b1cd4e44, type: 3}
     Sequence:
     - minigames: 2
       difficulty: 0
@@ -3954,8 +3954,8 @@ MonoBehaviour:
     - {fileID: 2298615409199906396, guid: b1b7ab96faa3ad04d9a3ff31987dc0f5, type: 3}
     - {fileID: 4631778515135551953, guid: b9044906d235eba4c80b8edbc86d3992, type: 3}
     - {fileID: 2385269803091124138, guid: efb17c8c2eff9b04884a7d52faddba10, type: 3}
-    - {fileID: 2800000, guid: 5e243993b0c6f8b4797c8d57d1d82462, type: 3}
-    - {fileID: 2800000, guid: 5e243993b0c6f8b4797c8d57d1d82462, type: 3}
+    - {fileID: 3420763164358422630, guid: 0cacfe2dede6bfe43bfc572e899dba35, type: 3}
+    - {fileID: 2191687739526287753, guid: 32712a84b6d4df54ab3903640a682615, type: 3}
     Sequence:
     - minigames: 0
       difficulty: 0
