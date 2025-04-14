@@ -11,7 +11,7 @@ public class PipeLayout : MonoBehaviour
     [SerializeField] GameObject SinglePlay;
 
     [SerializeField] GameObject GauntletText;
-    bool GauntletMode;
+    bool GauntletMode = false;
 
     [Header("Pipe Settings")] 
     [SerializeField] GameObject ClickParticle;
@@ -61,7 +61,7 @@ public class PipeLayout : MonoBehaviour
         }
 
         GauntletMode = Levels[LevelIndex].GauntletMode;
-        if (GauntletMode)
+        if (!GauntletMode)
         {
             foreach (GameObject Pipe in Pipes) CreateBrokenPipes(Pipe);
 
