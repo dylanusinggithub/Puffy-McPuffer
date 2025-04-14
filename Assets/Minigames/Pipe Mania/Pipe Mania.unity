@@ -7534,7 +7534,7 @@ MonoBehaviour:
     BrokenPipesCount: 6
     GauntletMode: 1
     Layouts:
-    - {fileID: 5898915096568057981, guid: e89726744bfa51a4db696567408fa023, type: 3}
+    - {fileID: 586886907954599750, guid: a3206ec7333e330418ed2e92b4138651, type: 3}
   - Timer: 15
     BrokenPipesCount: 10
     GauntletMode: 1
