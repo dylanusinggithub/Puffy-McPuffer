@@ -109,10 +109,13 @@ public class LevelGenerator : MonoBehaviour
             }
         }
 
-        if (CreatesLocation.Count < Levels[levelIndex].CreateCompletion)
-            Debug.LogError("Level is not Possible! Create Completion: " + Levels[levelIndex].CreateCompletion + " But only " + CreatesLocation.Count + " Valid Spots");
-        else if (CreatesLocation.Count < Levels[levelIndex].CreateCompletion + Levels[levelIndex].ExtraCreates)
-            Debug.Log("Level does not have enough space of extra crates! " + (CreatesLocation.Count - Levels[levelIndex].CreateCompletion) + "/" + Levels[levelIndex].ExtraCreates + " spawned");
+        if (!Levels[levelIndex].GauntletMode)
+        {
+            if (CreatesLocation.Count < Levels[levelIndex].CreateCompletion)
+                Debug.LogError("Level is not Possible! Create Completion: " + Levels[levelIndex].CreateCompletion + " But only " + CreatesLocation.Count + " Valid Spots");
+            else if (CreatesLocation.Count < Levels[levelIndex].CreateCompletion + Levels[levelIndex].ExtraCreates)
+                Debug.Log("Level does not have enough space of extra crates! " + (CreatesLocation.Count - Levels[levelIndex].CreateCompletion) + "/" + Levels[levelIndex].ExtraCreates + " spawned");
+        }
 
         // Goes through all create locations and chooses a random one to reenable "Spawn"
         int initalCreateCount = CreatesLocation.Count;
@@ -140,9 +143,9 @@ public class LevelGenerator : MonoBehaviour
                     else if (OBJ.GetComponent<ObjectScript>().isHardmode) OBJ.gameObject.SetActive(true);
                 }
             }
-
-            StartCoroutine(GauntletAppear());
         }
+
+        StartCoroutine(GauntletAppear());
 
         if (LevelDesigner.SinglePlay)
         {
@@ -155,6 +158,11 @@ public class LevelGenerator : MonoBehaviour
     {
         Time.timeScale = 0;
         GauntletText.SetActive(true);
+
+        // Positions Cargo Correctly
+        Transform Anchor = GameObject.Find("Cargo Objects").transform;
+        foreach (Transform Cargo in Anchor.GetComponentsInChildren<Transform>())
+            Cargo.localPosition = new Vector3(-20, 0);
 
         yield return new WaitForSecondsRealtime(GauntletText.GetComponent<Animator>().runtimeAnimatorController.animationClips[0].length);
 

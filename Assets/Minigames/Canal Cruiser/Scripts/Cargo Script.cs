@@ -28,7 +28,7 @@ public class CargoScript : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    void Update()
     {
         Transform Anchor = PuffyAnchor.transform;
 
