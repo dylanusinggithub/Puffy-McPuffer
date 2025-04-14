@@ -83,7 +83,7 @@ public class PipeController : MonoBehaviour
     public void OnMouseOver()
     {
         // OnMouseDown doesn't support right clicks for some reason
-        if ((Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1)) && enabled)
+        if ((Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1)) && enabled && Time.timeScale != 0)
         {
             Destroy(Instantiate(ClickParticle, transform), 2);
 
