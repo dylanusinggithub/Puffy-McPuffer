@@ -11,6 +11,7 @@ public class PipeLayout : MonoBehaviour
     [SerializeField] GameObject SinglePlay;
 
     [SerializeField] GameObject GauntletText;
+    bool GauntletMode;
 
     [Header("Pipe Settings")] 
     [SerializeField] GameObject ClickParticle;
@@ -59,7 +60,8 @@ public class PipeLayout : MonoBehaviour
             }
         }
 
-        if (!Levels[LevelIndex].GauntletMode)
+        GauntletMode = Levels[LevelIndex].GauntletMode;
+        if (GauntletMode)
         {
             foreach (GameObject Pipe in Pipes) CreateBrokenPipes(Pipe);
 
@@ -134,7 +136,7 @@ public class PipeLayout : MonoBehaviour
             this.enabled = false;
         }
 
-        if (Levels[LevelIndex].GauntletMode)
+        if (GauntletMode)
         {
             //\frac{\operatorname{floor}\left(x^{1.7}\cdot p\right)}{p\ } <-- Copy and paste this bad boy into desmos for graph
 
