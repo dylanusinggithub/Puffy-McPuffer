@@ -3960,13 +3960,11 @@ MonoBehaviour:
     - minigames: 0
       difficulty: 0
       showTutorial: 1
-      Cutscene:
-      - {fileID: 2800000, guid: b14a1ca0521083b4ba5766c3d7c29dde, type: 3}
+      Cutscene: []
     - minigames: 0
       difficulty: 1
       showTutorial: 0
-      Cutscene:
-      - {fileID: 2800000, guid: 30df451cbda3a4c4592030ab985759df, type: 3}
+      Cutscene: []
     - minigames: 0
       difficulty: 2
       showTutorial: 0
