@@ -7512,7 +7512,7 @@ MonoBehaviour:
   SteamyParticle: {fileID: 7075644079699281911, guid: 3594b350a1177ea4493247ad1320ac81, type: 3}
   RegularPipe: {fileID: 8300000, guid: 756babea1dfec014eb07a1c6a62ace89, type: 3}
   BrokenPipe: {fileID: 8300000, guid: eb10219782ae4f7419fb0c1859a9fd96, type: 3}
-  LevelIndex: 0
+  ManualIndex: 0
   PressMeToSetLevel: 0
   Levels:
   - Timer: 19
@@ -7534,7 +7534,7 @@ MonoBehaviour:
     BrokenPipesCount: 6
     GauntletMode: 1
     Layouts:
-    - {fileID: 586886907954599750, guid: a3206ec7333e330418ed2e92b4138651, type: 3}
+    - {fileID: 5898915096568057981, guid: e89726744bfa51a4db696567408fa023, type: 3}
   - Timer: 15
     BrokenPipesCount: 10
     GauntletMode: 1
