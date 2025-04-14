@@ -362,7 +362,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Will Puffy meet the same fate...? Or can he make it through The North Sea...?
+  m_text: Will Puffy get crushed, and in the North Sea cave...? Or can his perservearance,
+    conquer the harsh waves...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6615787160d87394b993bb6b1a883405, type: 2}
   m_sharedMaterial: {fileID: -2647114022217580940, guid: 6615787160d87394b993bb6b1a883405, type: 2}
