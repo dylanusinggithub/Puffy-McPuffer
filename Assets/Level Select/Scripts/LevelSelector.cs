@@ -31,6 +31,7 @@ public class LevelSelector : MonoBehaviour
         if (PlayerPrefs.GetInt("Levels Unlocked", 0) < LevelIndex)
         {
             GetComponent<Button>().interactable = false;
+            GetComponent<Button>().enabled = false;
 
             // Disables signs
             GetComponentInChildren<Animator>().enabled = false;
@@ -40,6 +41,7 @@ public class LevelSelector : MonoBehaviour
         else
         {
             GetComponent<Button>().interactable = true;
+            GetComponent<Button>().enabled = true;
 
             // Enables signs
             GetComponentInChildren<Animator>().enabled = true;
