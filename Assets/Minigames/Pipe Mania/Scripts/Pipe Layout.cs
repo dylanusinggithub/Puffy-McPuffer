@@ -21,8 +21,10 @@ public class PipeLayout : MonoBehaviour
     Slider Timer;
     RawImage TimerWater;
 
+    int LevelIndex;
+
     [Header("Level Settings")]
-    [SerializeField] int LevelIndex;
+    [SerializeField] int ManualIndex;
     [SerializeField] bool PressMeToSetLevel = false;
 
     private void OnValidate()
@@ -30,7 +32,7 @@ public class PipeLayout : MonoBehaviour
         if (PressMeToSetLevel)
         {
             PressMeToSetLevel = false;
-            PlayerPrefs.SetInt("difficulty", LevelIndex);
+            PlayerPrefs.SetInt("difficulty", ManualIndex);
         }
     }
 
@@ -44,7 +46,7 @@ public class PipeLayout : MonoBehaviour
     private Dictionary<Transform, ParticleSystem> activeLeaks = new Dictionary<Transform, ParticleSystem>();
     void Awake()
     {
-        int LevelIndex = PlayerPrefs.GetInt("difficulty", 0);
+        LevelIndex = PlayerPrefs.GetInt("difficulty", 0);
         Instantiate(Levels[LevelIndex].Layouts[Random.Range(0, Levels[LevelIndex].Layouts.Length)], transform);
 
         // Sets up all the pipes accordingly
@@ -141,7 +143,7 @@ public class PipeLayout : MonoBehaviour
             //\frac{\operatorname{floor}\left(x^{1.7}\cdot p\right)}{p\ } <-- Copy and paste this bad boy into desmos for graph
 
             float PipeCount = Timer.value / Timer.maxValue;
-            PipeCount = (float)((float)Mathf.Floor(Mathf.Pow(PipeCount, 1.7f) * Levels[LevelIndex].BrokenPipesCount) / Levels[LevelIndex].BrokenPipesCount);
+            PipeCount = Mathf.Floor(Mathf.Pow(PipeCount, 1.7f) * Levels[LevelIndex].BrokenPipesCount) / Levels[LevelIndex].BrokenPipesCount;
 
             if (PipeCount != oldPipeCount)
             {
