@@ -7512,7 +7512,7 @@ MonoBehaviour:
   SteamyParticle: {fileID: 7075644079699281911, guid: 3594b350a1177ea4493247ad1320ac81, type: 3}
   RegularPipe: {fileID: 8300000, guid: 756babea1dfec014eb07a1c6a62ace89, type: 3}
   BrokenPipe: {fileID: 8300000, guid: eb10219782ae4f7419fb0c1859a9fd96, type: 3}
-  LevelIndex: 4
+  LevelIndex: 0
   PressMeToSetLevel: 0
   Levels:
   - Timer: 19
@@ -7526,7 +7526,7 @@ MonoBehaviour:
     Layouts:
     - {fileID: 5704593439265035008, guid: 7fe0387f916c36c42abd3db937eb3441, type: 3}
   - Timer: 21
-    BrokenPipesCount: 3
+    BrokenPipesCount: 4
     GauntletMode: 0
     Layouts:
     - {fileID: 7032088594832221168, guid: 5ff5e5240ff1e5f4091538a2f9364fad, type: 3}
@@ -7540,6 +7540,16 @@ MonoBehaviour:
     GauntletMode: 1
     Layouts:
     - {fileID: 4855246425472736739, guid: b1af7d574eb654043990692f2eba97c9, type: 3}
+  - Timer: 15
+    BrokenPipesCount: 10
+    GauntletMode: 1
+    Layouts:
+    - {fileID: 8706912259888212390, guid: 22f1f7f888765c245817f3d61b823dce, type: 3}
+  - Timer: 15
+    BrokenPipesCount: 10
+    GauntletMode: 1
+    Layouts:
+    - {fileID: 7917842886783403579, guid: fca2058ebc800464a8163f7f5307a34e, type: 3}
   drip: {fileID: 5521459353906145027, guid: 12f2e5e20b7c47948b885f0d8a002c08, type: 3}
 --- !u!82 &1784068080
 AudioSource:
