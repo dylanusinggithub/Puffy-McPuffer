@@ -4048,6 +4048,7 @@ MonoBehaviour:
     - {fileID: 78380279943810809, guid: 44b47617233878e4e83a17da3b761877, type: 3}
     - {fileID: 9107010337129949124, guid: 3052b59f3d0fa3a4aa3d9cb33c9a9599, type: 3}
     - {fileID: 2656972114453487587, guid: 17c1385e382c1204fa7973d57e9abb48, type: 3}
+    - {fileID: 1636847735723092988, guid: 0188f52549c38604783fc16fac5557f3, type: 3}
     Sequence:
     - minigames: 1
       difficulty: 3
@@ -4084,7 +4085,11 @@ MonoBehaviour:
     - minigames: 1
       difficulty: 7
       showTutorial: 0
-      Cutscene: []
+      Cutscene:
+      - {fileID: 7072044279556737528, guid: 343b69451b393184a818721b9d829c98, type: 3}
+      - {fileID: 7822475148714824180, guid: eadbfc85cb12adc4c9d924ac5cdde412, type: 3}
+      - {fileID: 3350684210539219079, guid: 8e03b5d14b4c5f6488ff7f5467198951, type: 3}
+      - {fileID: 6819069778864187863, guid: 3be89d331e4962347948d1476d298fbc, type: 3}
 --- !u!82 &1992337078
 AudioSource:
   m_ObjectHideFlags: 0
