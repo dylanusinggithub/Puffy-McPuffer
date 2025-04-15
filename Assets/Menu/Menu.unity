@@ -9517,6 +9517,10 @@ PrefabInstance:
       value: Storm
       objectReference: {fileID: 0}
     - target: {fileID: 285556743740376581, guid: 572cfaf03cc17114b905e416f43246b1, type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 285556743740376581, guid: 572cfaf03cc17114b905e416f43246b1, type: 3}
       propertyPath: sounds.Array.data[2].volume
       value: 1
       objectReference: {fileID: 0}

@@ -26,11 +26,14 @@ public class SliderController : MonoBehaviour
     public void SliderChange()
     {
         PlayerPrefs.SetFloat(this.name, GetComponent<Slider>().value / 100); // Volume is 0 - 1
-
+        
         if (GetComponent<Slider>().value == 0) transform.GetComponentInChildren<TextMeshProUGUI>().text = this.name + ": " + valueMinText;
         else if (GetComponent<Slider>().value == valueDefault) transform.GetComponentInChildren<TextMeshProUGUI>().text = this.name + ": Default";
         else if (GetComponent<Slider>().value == valueDefault * 2) transform.GetComponentInChildren<TextMeshProUGUI>().text = this.name + ": " + valueMaxText;
         else transform.GetComponentInChildren<TextMeshProUGUI>().text = this.name + ": " + GetComponent<Slider>().value + "%";
+
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.UpdateAllVolumes();
     }
 
     public void ResetSlider()

@@ -14,9 +14,11 @@ public class AudioManager : MonoBehaviour
 
     PipeLayout PL;
 
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        
 
         if (Instance == null)
         {
@@ -57,12 +59,16 @@ public class AudioManager : MonoBehaviour
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+            s.source.pitch = s.pitch;
+
+            float globalVolume = PlayerPrefs.GetFloat("Volume", 1f);
+            s.source.volume = s.volume * globalVolume;
         }
+
     }
 
+    
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -152,10 +158,14 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        if (s.source.isPlaying) return; 
+        if (s.source.isPlaying) return;
+
+        float globalVolume = PlayerPrefs.GetFloat("Volume", 1f);
+        s.source.volume = s.volume * globalVolume;
 
         s.source.Play();
     }
+
 
 
     public void StopPlaying(string sound)
@@ -172,4 +182,16 @@ public class AudioManager : MonoBehaviour
 
         s.source.Stop();
     }
+
+    public void UpdateAllVolumes()
+    {
+        float globalVolume = PlayerPrefs.GetFloat("Volume", 1f);
+        foreach (Sound s in sounds)
+        {
+            s.source.volume = s.volume * globalVolume;
+        }
+    }
+
+    
+
 }
