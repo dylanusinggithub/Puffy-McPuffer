@@ -50,7 +50,7 @@ public class LevelDesigner : MonoBehaviour
     void Awake()
     {
         Instance = this; // To Be accessed with Cinimatic Viewer
-
+        
         BTNAS = GetComponent<AudioSource>();
         BTNVol = BTNAS.volume;
 

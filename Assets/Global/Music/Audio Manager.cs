@@ -9,26 +9,15 @@ public class AudioManager : MonoBehaviour
     public Sound[] sounds;
 
     public static AudioManager Instance;
-    AudioManager2 au;
+
     void Awake()
     {
-        GameObject obj = GameObject.Find("Audio Manager2");
-
-        if (obj != null)
-        {
-            au = obj.GetComponent<AudioManager2>();
-
-            if (au != null)
-            {
-                Destroy(au);
-                Debug.Log("Opp 2 destroyed");
-            }
-        }
         DontDestroyOnLoad(gameObject);
-        
+
         if (Instance == null)
         {
             Instance = this;
+            SceneManager.sceneLoaded += OnSceneLoaded; 
         }
         else
         {
@@ -40,21 +29,49 @@ public class AudioManager : MonoBehaviour
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
-
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
-            
         }
     }
 
-    void Start()
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Play("Puffy");
-        Play("Level");
-        Play("Intro");
+        if (scene.name == "Menu")
+        {
+            Play("Puff");
+            Play("Intro"); 
+        }
+        else if (scene.name == "NEW Lock Balancing")
+        {
+            StopPlaying("Intro");
+            Play("Puff");
+        }
+        else if (scene.name == "Pipe Mania")
+        {
+            StopPlaying("Intro");
+            Play("Puff");
+        }
+        else if (scene.name == "Canal Cruiser")
+        {
+            StopPlaying("Intro");
+            Play("Puff");
+        }
+        else if (scene.name == "Level Select Map")
+        {
+            StopPlaying("Puff");
+        }
     }
 
+    void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded; 
+        }
+    }
+
+    
     public void Play (string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -82,5 +99,3 @@ public class AudioManager : MonoBehaviour
         s.source.Stop();
     }
 }
-
-//FindObjectOfType<AudioManager>().Play("Intro");

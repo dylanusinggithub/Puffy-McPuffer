@@ -10,9 +10,8 @@ public class MenuMain : MonoBehaviour
 
     void Start()
     {
-        FindObjectOfType<AudioManager2>().StopPlaying("Level");
-        FindObjectOfType<AudioManager2>().StopPlaying("Puffy");
-        FindObjectOfType<AudioManager>().Play("Intro");
+        
+
     }
 
 }

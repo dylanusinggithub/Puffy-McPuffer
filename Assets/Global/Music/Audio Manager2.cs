@@ -12,7 +12,7 @@ public class AudioManager2 : MonoBehaviour
     AudioManager au;
     void Awake()
     {
-        GameObject obj = GameObject.Find("Audio Manager");
+        /*GameObject obj = GameObject.Find("Audio Manager");
 
         if (obj != null)
         {
@@ -23,7 +23,7 @@ public class AudioManager2 : MonoBehaviour
                 Destroy(au);
                 Debug.Log("Opp 1 destroyed");
             }
-        }
+        } */
 
         DontDestroyOnLoad(gameObject);
         if (Instance == null)
@@ -51,8 +51,7 @@ public class AudioManager2 : MonoBehaviour
     void Start()
     {
         Play("Puffy");
-        Play("Level");
-        Play("Intro");
+        
     }
 
     public void Play(string name)

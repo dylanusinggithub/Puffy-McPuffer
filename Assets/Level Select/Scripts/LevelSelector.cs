@@ -22,8 +22,8 @@ public class LevelSelector : MonoBehaviour
     {
         ComicPanel = GameObject.Find("Comic Panels");
         LD = ComicPanel.GetComponent<LevelDesigner>();
-        FindObjectOfType<AudioManager>().StopPlaying("Intro");
-        FindObjectOfType<AudioManager>().Play("Level");
+        
+
         EnableOrDisableLevel();
     }
    
