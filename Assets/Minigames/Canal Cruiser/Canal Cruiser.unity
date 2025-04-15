@@ -286,7 +286,7 @@ MonoBehaviour:
     - {fileID: 6922145835368533052, guid: 3f31a9e4bedc909498c065021fd90ec5, type: 3}
     - {fileID: 2357665773328269852, guid: 12f6c86d2fe08e843908681c57e054a8, type: 3}
     - {fileID: 2357665773328269852, guid: 73788ba1807992248a40024b2ced088e, type: 3}
-  - GameplayTime: 15
+  - GameplayTime: 20
     CreateCompletion: 5
     ExtraCreates: 0
     LevelSpeed: 1.9
@@ -299,7 +299,7 @@ MonoBehaviour:
   - GameplayTime: 15
     CreateCompletion: 5
     ExtraCreates: 0
-    LevelSpeed: 1.9
+    LevelSpeed: 1.93
     GauntletMode: 1
     LayoutSeperation: 15
     Layouts:
@@ -309,7 +309,7 @@ MonoBehaviour:
   - GameplayTime: 20
     CreateCompletion: 6
     ExtraCreates: 0
-    LevelSpeed: 1.9
+    LevelSpeed: 1.93
     GauntletMode: 1
     LayoutSeperation: 15
     Layouts:
@@ -320,7 +320,7 @@ MonoBehaviour:
   - GameplayTime: 28
     CreateCompletion: 6
     ExtraCreates: 0
-    LevelSpeed: 1.9
+    LevelSpeed: 1.93
     GauntletMode: 1
     LayoutSeperation: 15
     Layouts:
@@ -332,7 +332,7 @@ MonoBehaviour:
   - GameplayTime: 45
     CreateCompletion: 5
     ExtraCreates: 0
-    LevelSpeed: 1.9
+    LevelSpeed: 1.93
     GauntletMode: 1
     LayoutSeperation: 23
     Layouts:
