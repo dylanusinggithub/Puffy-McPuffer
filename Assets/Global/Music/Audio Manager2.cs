@@ -21,6 +21,7 @@ public class AudioManager2 : MonoBehaviour
             if (au != null)
             {
                 Destroy(au);
+                Debug.Log("Opp 1 destroyed");
             }
         }
 

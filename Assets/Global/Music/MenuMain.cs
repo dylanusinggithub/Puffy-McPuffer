@@ -5,9 +5,13 @@ using UnityEngine;
 public class MenuMain : MonoBehaviour
 {
     // Start is called before the first frame update
+    
+   
+
     void Start()
     {
-        FindObjectOfType<AudioManager>().StopPlaying("Level");
+        FindObjectOfType<AudioManager2>().StopPlaying("Level");
+        FindObjectOfType<AudioManager2>().StopPlaying("Puffy");
         FindObjectOfType<AudioManager>().Play("Intro");
     }
 
