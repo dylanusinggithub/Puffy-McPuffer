@@ -100,7 +100,7 @@ public class AudioManager : MonoBehaviour
         {
             Play("Intro");
         }
-        else if (scene.name == "NEW Lock Balancing")
+        else if (scene.name == "NEW Lock balancing 1")
         {
             StopPlaying("Intro");
             Play("Puff");
@@ -108,8 +108,9 @@ public class AudioManager : MonoBehaviour
         else if (scene.name == "Pipe Mania")
         {
             StopPlaying("Intro");
+            Play("Puff");
 
-            if (PL != null && PL.GauntletMode)
+            /*if (PL != null && PL.GauntletMode)
             {
                 StopPlaying("Puff");
                 Play("Storm");
@@ -117,13 +118,14 @@ public class AudioManager : MonoBehaviour
             else
             {
                 Play("Puff");
-            }
+            }*/
         }
         else if (scene.name == "Canal Cruiser")
         {
             StopPlaying("Intro");
+            Play("Puff");
 
-            if (SS != null && SS.GauntletMode)
+            /*if (SS != null && SS.GauntletMode)
             {
                 StopPlaying("Puff");
                 Play("Storm");
@@ -131,7 +133,7 @@ public class AudioManager : MonoBehaviour
             else
             {
                 Play("Puff");
-            }
+            }*/
         }
         else if (scene.name == "Level Select Map")
         {
