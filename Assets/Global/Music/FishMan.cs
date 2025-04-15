@@ -7,6 +7,6 @@ public class FishMan : MonoBehaviour
     public void Start()
     {
         FindObjectOfType<AudioManager>().StopPlaying("Intro");
-        FindObjectOfType<AudioManager>().Play("Level");
+        //FindObjectOfType<AudioManager>().Play("Level");
     }
 }

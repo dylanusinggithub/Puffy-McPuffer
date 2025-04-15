@@ -6362,7 +6362,6 @@ GameObject:
   - component: {fileID: 1537367298}
   - component: {fileID: 1537367301}
   - component: {fileID: 1537367302}
-  - component: {fileID: 1537367303}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6498,18 +6497,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47bfdf258cae7f2408eab063458f1ae1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1537367303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1537367297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f56d586dc28ddc544b46b132ef33eb72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1543242267
@@ -9523,7 +9510,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 285556743740376581, guid: 572cfaf03cc17114b905e416f43246b1, type: 3}
       propertyPath: sounds.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 285556743740376581, guid: 572cfaf03cc17114b905e416f43246b1, type: 3}
       propertyPath: sounds.Array.data[0].loop

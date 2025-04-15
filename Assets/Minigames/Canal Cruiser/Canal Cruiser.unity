@@ -348,6 +348,7 @@ MonoBehaviour:
   SinglePlay: {fileID: 1273068744}
   LevelBTN: {fileID: 1731607288}
   GauntletText: {fileID: 2086066134}
+  gaunttrue: 0
 --- !u!1 &108228567
 GameObject:
   m_ObjectHideFlags: 0
@@ -8812,7 +8813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8888221887672785391, guid: 16040c911e62a1442a3ee272b8460eeb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.042528227
+      value: 0.042528152
       objectReference: {fileID: 0}
     - target: {fileID: 8888221887672785391, guid: 16040c911e62a1442a3ee272b8460eeb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8828,15 +8829,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8888221887672785391, guid: 16040c911e62a1442a3ee272b8460eeb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8888221887672785391, guid: 16040c911e62a1442a3ee272b8460eeb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8888221887672785391, guid: 16040c911e62a1442a3ee272b8460eeb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8888221887672785391, guid: 16040c911e62a1442a3ee272b8460eeb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

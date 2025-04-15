@@ -2,6 +2,7 @@ using UnityEngine.Audio;
 using System;
 using UnityEngine;
 using JetBrains.Annotations;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -11,9 +12,19 @@ public class AudioManager : MonoBehaviour
     AudioManager2 au;
     void Awake()
     {
-        au = GetComponent<AudioManager2>();
+        GameObject obj = GameObject.Find("Audio Manager2");
+
+        if (obj != null)
+        {
+            au = obj.GetComponent<AudioManager2>();
+
+            if (au != null)
+            {
+                Destroy(au);
+            }
+        }
         DontDestroyOnLoad(gameObject);
-        //Destroy(au);
+        
         if (Instance == null)
         {
             Instance = this;
@@ -36,7 +47,12 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    
+    void Start()
+    {
+        Play("Puffy");
+        Play("Level");
+        Play("Intro");
+    }
 
     public void Play (string name)
     {

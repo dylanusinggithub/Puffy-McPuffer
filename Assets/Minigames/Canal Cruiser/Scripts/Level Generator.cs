@@ -32,6 +32,8 @@ public class LevelGenerator : MonoBehaviour
 
     [SerializeField] GameObject GauntletText;
 
+    public bool gaunttrue = false;
+
     private void OnValidate()
     {
         if (PressMeToSetLevelIndex)
@@ -133,7 +135,7 @@ public class LevelGenerator : MonoBehaviour
         {
             SS.score = Levels[levelIndex].CreateCompletion + Levels[levelIndex].ExtraCreates;
             SS.Gauntlet = GauntletMode;
-
+            gaunttrue = true;
             for (int i = 0; i < transform.childCount; i++)
             {
                 for (int j = 0; j < transform.GetChild(i).childCount; j++)
