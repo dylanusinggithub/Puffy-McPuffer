@@ -7461,6 +7461,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 285556743740376581, guid: 572cfaf03cc17114b905e416f43246b1, type: 3}
+      propertyPath: sounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 285556743740376581, guid: 572cfaf03cc17114b905e416f43246b1, type: 3}
+      propertyPath: sounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 942b744b0a9640e44bba754141a6d875, type: 3}
+    - target: {fileID: 285556743740376581, guid: 572cfaf03cc17114b905e416f43246b1, type: 3}
+      propertyPath: sounds.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 62311346c439f1a4bac40b2b4b888010, type: 3}
     - target: {fileID: 5776452679943701037, guid: 572cfaf03cc17114b905e416f43246b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.042528227
@@ -7564,6 +7576,7 @@ MonoBehaviour:
   WinScren: {fileID: 990270507}
   SinglePlay: {fileID: 756773379}
   GauntletText: {fileID: 1757401099}
+  GauntletMode: 0
   ClickParticle: {fileID: 684170006893336315, guid: 303f0969a3c34f043b04334c432379e5, type: 3}
   BrokenParticle: {fileID: 2702827215666277195, guid: c9b2bbc75338b9f4a9a8044841193909, type: 3}
   SteamyParticle: {fileID: 7075644079699281911, guid: 3594b350a1177ea4493247ad1320ac81, type: 3}
