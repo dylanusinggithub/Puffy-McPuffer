@@ -11,7 +11,7 @@ public class PipeLayout : MonoBehaviour
     [SerializeField] GameObject SinglePlay;
 
     [SerializeField] GameObject GauntletText;
-    bool GauntletMode = false;
+    public bool GauntletMode = false;
 
     [Header("Pipe Settings")] 
     [SerializeField] GameObject ClickParticle;
@@ -49,7 +49,7 @@ public class PipeLayout : MonoBehaviour
         LevelIndex = PlayerPrefs.GetInt("difficulty", 0);
         Instantiate(Levels[LevelIndex].Layouts[Random.Range(0, Levels[LevelIndex].Layouts.Length)], transform);
         
-        FindObjectOfType<AudioManager2>().Play("Puffy");
+        
         // Sets up all the pipes accordingly
         for (int i = 0; i < transform.GetChild(0).childCount; i++)
         {

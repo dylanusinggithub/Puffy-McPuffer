@@ -23,7 +23,7 @@ public class LevelGenerator : MonoBehaviour
 
     float startSpeed;
     Material ScrollingBackground;
-    bool PlayAnimation, GauntletMode; 
+    public bool PlayAnimation, GauntletMode; 
 
     Slider timeSlider;
     RawImage timerWater;

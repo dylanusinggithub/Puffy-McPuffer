@@ -9508,6 +9508,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 285556743740376581, guid: 572cfaf03cc17114b905e416f43246b1, type: 3}
+      propertyPath: sounds.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: e361d7be49b7906428b859e5c973eaf4, type: 3}
+    - target: {fileID: 285556743740376581, guid: 572cfaf03cc17114b905e416f43246b1, type: 3}
+      propertyPath: sounds.Array.data[2].name
+      value: Storm
+      objectReference: {fileID: 0}
+    - target: {fileID: 285556743740376581, guid: 572cfaf03cc17114b905e416f43246b1, type: 3}
+      propertyPath: sounds.Array.data[2].volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5776452679943701037, guid: 572cfaf03cc17114b905e416f43246b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.042528227

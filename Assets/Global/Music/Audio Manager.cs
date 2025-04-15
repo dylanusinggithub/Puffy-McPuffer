@@ -10,6 +10,10 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager Instance;
 
+    LevelGenerator SS;
+
+    PipeLayout PL;
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -17,12 +21,36 @@ public class AudioManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            SceneManager.sceneLoaded += OnSceneLoaded; 
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
             Destroy(gameObject);
             return;
+        }
+
+        GameObject gm = GameObject.Find("Level");
+        if (gm != null)
+        {
+            SS = gm.GetComponent<LevelGenerator>();
+            if (SS == null)
+                Debug.LogWarning("ScoreScript not found on Game Manager!");
+        }
+        else
+        {
+            Debug.LogWarning("Game Manager object not found!");
+        }
+
+        GameObject l = GameObject.Find("Layouts");
+        if (l != null)
+        {
+            PL = l.GetComponent<PipeLayout>();
+            if (PL == null)
+                Debug.LogWarning("PipeLayout not found on Layouts!");
+        }
+        else
+        {
+            Debug.LogWarning("Layouts object not found!");
         }
 
         foreach (Sound s in sounds)
@@ -35,12 +63,36 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        
+        GameObject gm = GameObject.Find("Level");
+        if (gm != null)
+        {
+            SS = gm.GetComponent<LevelGenerator>();
+            if (SS == null) Debug.LogWarning("ScoreScript missing!");
+        }
+        else
+        {
+            Debug.LogWarning("Game Manager not found!");
+        }
+
+        GameObject l = GameObject.Find("Layouts");
+        if (l != null)
+        {
+            PL = l.GetComponent<PipeLayout>();
+            if (PL == null) Debug.LogWarning("PipeLayout missing!");
+        }
+        else
+        {
+            Debug.LogWarning("Layouts not found!");
+        }
+
+       
         if (scene.name == "Menu")
         {
-            Play("Puff");
-            Play("Intro"); 
+            Play("Intro");
         }
         else if (scene.name == "NEW Lock Balancing")
         {
@@ -50,18 +102,37 @@ public class AudioManager : MonoBehaviour
         else if (scene.name == "Pipe Mania")
         {
             StopPlaying("Intro");
-            Play("Puff");
+
+            if (PL != null && PL.GauntletMode)
+            {
+                StopPlaying("Puff");
+                Play("Storm");
+            }
+            else
+            {
+                Play("Puff");
+            }
         }
         else if (scene.name == "Canal Cruiser")
         {
             StopPlaying("Intro");
-            Play("Puff");
+
+            if (SS != null && SS.GauntletMode)
+            {
+                StopPlaying("Puff");
+                Play("Storm");
+            }
+            else
+            {
+                Play("Puff");
+            }
         }
         else if (scene.name == "Level Select Map")
         {
             StopPlaying("Puff");
         }
     }
+
 
     void OnDestroy()
     {
@@ -71,8 +142,8 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    
-    public void Play (string name)
+
+    public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
@@ -80,9 +151,12 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
-            
+
+        if (s.source.isPlaying) return; 
+
         s.source.Play();
     }
+
 
     public void StopPlaying(string sound)
     {

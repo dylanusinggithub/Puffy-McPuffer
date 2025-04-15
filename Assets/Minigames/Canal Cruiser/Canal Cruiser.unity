@@ -345,6 +345,8 @@ MonoBehaviour:
     - {fileID: 658318910959143042, guid: 6df734f3412ed1c49a42407ec42a6e8a, type: 3}
     - {fileID: 2723156374974615379, guid: 3e6dd6ff2d2608743ac69c7bdc7ef71c, type: 3}
   FinishLine: {fileID: 8863472203141504064, guid: 7734a7970e6e09143883089a64cbb4d0, type: 3}
+  PlayAnimation: 0
+  GauntletMode: 0
   SinglePlay: {fileID: 1273068744}
   LevelBTN: {fileID: 1731607288}
   GauntletText: {fileID: 2086066134}
