@@ -23,7 +23,7 @@ public class LevelGenerator : MonoBehaviour
 
     float startSpeed;
     Material ScrollingBackground;
-    public bool PlayAnimation, GauntletMode; 
+    public bool GauntletMode; 
 
     Slider timeSlider;
     RawImage timerWater;
@@ -31,8 +31,6 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] GameObject SinglePlay, LevelBTN;
 
     [SerializeField] GameObject GauntletText;
-
-    public bool gaunttrue = false;
 
     private void OnValidate()
     {
@@ -135,7 +133,8 @@ public class LevelGenerator : MonoBehaviour
         {
             SS.score = Levels[levelIndex].CreateCompletion + Levels[levelIndex].ExtraCreates;
             SS.Gauntlet = GauntletMode;
-            gaunttrue = true;
+
+            // Enables every hardmode obstacle in the level
             for (int i = 0; i < transform.childCount; i++)
             {
                 for (int j = 0; j < transform.GetChild(i).childCount; j++)
@@ -158,6 +157,9 @@ public class LevelGenerator : MonoBehaviour
 
     IEnumerator GauntletAppear()
     {
+        // Disables Pause Button
+        GameObject.Find("Pause Menu").transform.GetChild(1).gameObject.SetActive(false);
+
         Time.timeScale = 0;
         GauntletText.SetActive(true);
 
@@ -174,8 +176,6 @@ public class LevelGenerator : MonoBehaviour
 
     IEnumerator PlayTutorial()
     {
-        PlayAnimation = true;
-
         GameObject.Find("UnionChaseMain").GetComponent<UnionController>().enabled = false;
         GameObject Timer = GameObject.Find("Timer Holder");
         Timer.SetActive(false);
@@ -197,16 +197,15 @@ public class LevelGenerator : MonoBehaviour
         yield return new WaitForSeconds(Delay);
         Puffy.GetComponent<Animator>().enabled = false;
 
-
-        PlayAnimation = false;
-
+        // Renables everything
         GameObject.Find("Player").GetComponent<PlayerScript>().enabled = true;
         GameObject.Find("Water Swiggles").GetComponent<Animator>().enabled = true;
         GameObject.Find("UnionChaseMain").GetComponent<UnionController>().enabled = true;
 
         GameObject.Find("Cinematic Bars").GetComponent<Animation>().Play();
-
         yield return new WaitForSeconds(0.5f);
+
+        GameObject.Find("Pause Menu").transform.GetChild(1).gameObject.SetActive(true); // Pause Button
 
         Timer.SetActive(true);
     }
@@ -214,7 +213,7 @@ public class LevelGenerator : MonoBehaviour
     float HardmodeCheckTime = 1;
     void FixedUpdate()
     {
-        if (!PlayAnimation)
+        if (!Puffy.GetComponent<Animator>().enabled)
         {
             if (timeSlider.value > 0)
             {
@@ -228,6 +227,7 @@ public class LevelGenerator : MonoBehaviour
 
             if (!GauntletMode)
             {
+                // Enables hardmode objects in the next layout when collected enough crates
                 if (HardmodeCheckTime > 0) HardmodeCheckTime -= Time.deltaTime;
                 else
                 {
@@ -235,6 +235,7 @@ public class LevelGenerator : MonoBehaviour
 
                     if (SS.score < Levels[levelIndex].CreateCompletion) return;
 
+                    // Finds current layout that Puffy is in
                     float closestLayout = 1000;
                     Transform closestLayoutObject = transform.GetChild(0);
                     foreach (Transform layout in GetComponentInChildren<Transform>())
@@ -247,6 +248,7 @@ public class LevelGenerator : MonoBehaviour
                         }
                     }
 
+                    // Finds the next layout in Puffy is about to go into and enables all hardmode objects
                     if (closestLayoutObject.GetSiblingIndex() < transform.childCount - 1)
                     {
                         GameObject NextLayout = transform.GetChild(closestLayoutObject.GetSiblingIndex() + 1).gameObject;

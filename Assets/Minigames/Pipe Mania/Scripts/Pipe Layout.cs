@@ -48,8 +48,7 @@ public class PipeLayout : MonoBehaviour
     {
         LevelIndex = PlayerPrefs.GetInt("difficulty", 0);
         Instantiate(Levels[LevelIndex].Layouts[Random.Range(0, Levels[LevelIndex].Layouts.Length)], transform);
-        
-        
+         
         // Sets up all the pipes accordingly
         for (int i = 0; i < transform.GetChild(0).childCount; i++)
         {
@@ -99,6 +98,9 @@ public class PipeLayout : MonoBehaviour
 
     IEnumerator GauntletAppear()
     {
+        // Disables Pause Button
+        GameObject.Find("Pause Menu").transform.GetChild(1).gameObject.SetActive(true);
+
         Time.timeScale = 0;
         GauntletText.SetActive(true);
 
@@ -106,6 +108,7 @@ public class PipeLayout : MonoBehaviour
 
         Time.timeScale = 1;
         GauntletText.SetActive(false);
+        GameObject.Find("Pause Menu").transform.GetChild(1).gameObject.SetActive(true);
     }
 
     GameObject CreateBrokenPipes(GameObject Pipe)
@@ -135,7 +138,7 @@ public class PipeLayout : MonoBehaviour
             Time.timeScale = 0;
             GameOverScreen.SetActive(true);
             GetComponent<AudioSource>().Stop();
-            GameObject.Find("Pause Icon").SetActive(false);
+            GameObject.Find("Pause Menu").SetActive(false);
             this.enabled = false;
         }
 
