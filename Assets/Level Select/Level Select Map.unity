@@ -3973,7 +3973,7 @@ MonoBehaviour:
     - {fileID: 6616023976376289402, guid: 831b6f6538210e74f838c5d643e9e1cd, type: 3}
     - {fileID: 4381010054495863247, guid: a2bdc88cd31571f41bda24611ce0d169, type: 3}
     - {fileID: 1435062423119604759, guid: 3b7708182ef6f304d89e5022125c6ade, type: 3}
-    - {fileID: 2460228208714988137, guid: e7916851dab293b4aa20590daeceb8e4, type: 3}
+    - {fileID: 2800000, guid: 317a466dfdd5618489af33c83095ed1b, type: 3}
     Sequence:
     - minigames: 1
       difficulty: 0
