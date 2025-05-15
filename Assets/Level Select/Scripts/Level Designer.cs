@@ -84,8 +84,12 @@ public class LevelDesigner : MonoBehaviour
                 return;
             }
             
-            minigameIndex++;
-            PlayerPrefs.SetInt("minigameIndex", minigameIndex);
+            if (!SinglePlay)
+            {
+                minigameIndex++;
+                PlayerPrefs.SetInt("minigameIndex", minigameIndex);
+            }
+
             NextLevel();
         }
         else SinglePlay = false;
