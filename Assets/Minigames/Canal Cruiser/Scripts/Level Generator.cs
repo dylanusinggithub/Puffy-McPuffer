@@ -21,7 +21,8 @@ public class LevelGenerator : MonoBehaviour
 
     float movementSpeed;
     Material ScrollingBackground;
-    public bool GauntletMode; 
+    public bool GauntletMode;
+    float GauntletDelay;
 
     Slider progressSlider;
     RawImage timerWater;
@@ -100,7 +101,6 @@ public class LevelGenerator : MonoBehaviour
             CreatesLocation.RemoveAt(randomIndex);
         }
 
-        StartCoroutine(GauntletAppear());
         StartCoroutine(PlayTutorial());
 
         GauntletMode = Levels[levelIndex].GauntletMode;
@@ -128,27 +128,10 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    IEnumerator GauntletAppear()
+    IEnumerator PlayTutorial()
     {
         // Disables Pause Button
         GameObject.Find("Pause Menu").transform.GetChild(1).gameObject.SetActive(false);
-
-        Time.timeScale = 0;
-        GauntletText.SetActive(true);
-
-        // Positions Cargo Correctly
-        Transform Anchor = GameObject.Find("Cargo Objects").transform;
-        foreach (Transform Cargo in Anchor.GetComponentsInChildren<Transform>())
-            Cargo.localPosition = new Vector3(-20, 0);
-
-        yield return new WaitForSecondsRealtime(GauntletText.GetComponent<Animator>().runtimeAnimatorController.animationClips[0].length);
-
-        Time.timeScale = 1;
-        GauntletText.SetActive(false);
-    }
-
-    IEnumerator PlayTutorial()
-    {
         GameObject.Find("UnionChaseMain").GetComponent<UnionController>().enabled = false;
         GameObject Timer = GameObject.Find("Timer Holder");
         Timer.SetActive(false);
@@ -167,7 +150,20 @@ public class LevelGenerator : MonoBehaviour
             Puffy.GetComponent<Animator>().Play("Crusier Opening", 0, 0);
         }
 
-        yield return new WaitForSeconds(Delay);
+
+        yield return new WaitForSeconds(Delay - GauntletText.GetComponent<Animator>().runtimeAnimatorController.animationClips[0].length);
+
+        GauntletText.SetActive(true);
+
+        // Positions Cargo Correctly
+        Transform Anchor = GameObject.Find("Cargo Objects").transform;
+        foreach (Transform Cargo in Anchor.GetComponentsInChildren<Transform>())
+            Cargo.localPosition = new Vector3(-20, 0);
+
+        yield return new WaitForSeconds(GauntletText.GetComponent<Animator>().runtimeAnimatorController.animationClips[0].length);
+
+        GauntletText.SetActive(false);
+
         Puffy.GetComponent<Animator>().enabled = false;
 
         // Renables everything
