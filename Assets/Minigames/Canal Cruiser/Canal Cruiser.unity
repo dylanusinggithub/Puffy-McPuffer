@@ -262,37 +262,37 @@ MonoBehaviour:
     ExtraCreates: 4
     LevelSpeed: 1.65
     GauntletMode: 0
-    Layout: {fileID: 0}
+    Layout: {fileID: 813353078805016185, guid: 93ae5901932f78647becf5101499cfb3, type: 3}
   - CreateCompletion: 6
     ExtraCreates: 5
     LevelSpeed: 1.75
     GauntletMode: 0
-    Layout: {fileID: 0}
+    Layout: {fileID: 1289755410124765680, guid: a5623747eb7fdd24081b98d0c6387466, type: 3}
   - CreateCompletion: 5
     ExtraCreates: 0
     LevelSpeed: 1.9
     GauntletMode: 1
-    Layout: {fileID: 0}
+    Layout: {fileID: 4399335513894592387, guid: d1225e7738091ad4ea3b607575a6cac3, type: 3}
   - CreateCompletion: 5
     ExtraCreates: 0
     LevelSpeed: 1.93
     GauntletMode: 1
-    Layout: {fileID: 0}
+    Layout: {fileID: 5174656798892483398, guid: b5430c88b5cfcca4f8e9b51cb0990e8f, type: 3}
   - CreateCompletion: 6
     ExtraCreates: 0
     LevelSpeed: 1.93
     GauntletMode: 1
-    Layout: {fileID: 0}
+    Layout: {fileID: 6894998674543891140, guid: 61538273758b6a7489c01ce705f9fc0d, type: 3}
   - CreateCompletion: 6
     ExtraCreates: 0
     LevelSpeed: 1.93
     GauntletMode: 1
-    Layout: {fileID: 0}
+    Layout: {fileID: 2617843040609578174, guid: b0614f2dd0b523c468c12be1cd4e6193, type: 3}
   - CreateCompletion: 5
     ExtraCreates: 0
     LevelSpeed: 1.93
     GauntletMode: 1
-    Layout: {fileID: 0}
+    Layout: {fileID: 6263104760458479999, guid: c390bb96f96f4a54392b9fc644982407, type: 3}
   GauntletMode: 0
   SinglePlay: {fileID: 1273068744}
   LevelBTN: {fileID: 1731607288}
