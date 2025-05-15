@@ -78,7 +78,7 @@ public class ScoreScript : MonoBehaviour
         }
     }
 
-    public void Die()
+    public void Finish()
     {
         if (Gauntlet)
         {

@@ -12,20 +12,18 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] int levelIndex;
 
     [SerializeField] LevelSettings[] Levels;
+    Transform Layout;
+    float BridgeDist;
     List<GameObject> CreatesLocation = new List<GameObject>();
-
-    float LevelWidth = 0;
-
-    [SerializeField] GameObject FinishLine;
 
     ScoreScript SS;
     GameObject Puffy;
 
-    float startSpeed;
+    float movementSpeed;
     Material ScrollingBackground;
     public bool GauntletMode; 
 
-    Slider timeSlider;
+    Slider progressSlider;
     RawImage timerWater;
 
     [SerializeField] GameObject SinglePlay, LevelBTN;
@@ -54,67 +52,43 @@ public class LevelGenerator : MonoBehaviour
         levelIndex = PlayerPrefs.GetInt("difficulty", 0);
 
         SS.scoreWin = Levels[levelIndex].CreateCompletion;
+        Layout = Instantiate(Levels[levelIndex].Layout, this.transform).transform;
+        BridgeDist = Layout.GetChild(Layout.childCount - 1).position.x + 17;  // The centre of the bridge is farther forward due to the fencing
 
-        timeSlider = GameObject.Find("Timer").GetComponent<Slider>();
-        timeSlider.maxValue = Levels[levelIndex].GameplayTime;
-        timeSlider.value = Levels[levelIndex].GameplayTime;
+        progressSlider = GameObject.Find("Timer").GetComponent<Slider>();
+        progressSlider.maxValue = BridgeDist;
 
-        startSpeed = Levels[levelIndex].LevelSpeed;
+        movementSpeed = Levels[levelIndex].LevelSpeed;
 
         // 2 is the speed it is pegged at so if the levelSpeed is 1.75f then it'll play at 75% speed
         GameObject.Find("Water Swiggles").GetComponent<Animator>().SetFloat("Speed", Levels[levelIndex].LevelSpeed / 2); 
-
-        // Places each layout in order
-        for (int i = 0; i < Levels[levelIndex].Length; i++)
-        {
-            // Finds the furthest away object in the chosen layout
-            float furthestElement = 0;    
-            for (int j = 0; j < Levels[levelIndex].Layouts[i].transform.childCount; j++)
-            {
-                if (Levels[levelIndex].Layouts[i].transform.GetChild(j).transform.localPosition.x > furthestElement)
-                {
-                    furthestElement = Levels[levelIndex].Layouts[i].transform.GetChild(j).transform.localPosition.x;
-                }
-            }
-
-            // Because the layouts are centred at 0,0 the furthest element's distance mulitplied would give you the total width
-            LevelWidth += furthestElement * 2; 
-
-            Vector3 pos = new Vector3(LevelWidth, 0, 0);
-            Instantiate(Levels[levelIndex][i], pos, Quaternion.identity, transform);
-
-            LevelWidth += Levels[levelIndex].LayoutSeperation;
-        }
-
-        GameObject finish = Instantiate(FinishLine);
-
-        float dist = 4.63f * Levels[levelIndex].LevelSpeed;
-        dist *= Levels[levelIndex].GameplayTime;
-
-        finish.transform.position = new Vector3(dist, 0);
-        GameObject.Find("UnionChaseMain").GetComponent<UnionController>().chaseDistance = dist - 4;
+        
+        GameObject.Find("UnionChaseMain").GetComponent<UnionController>().chaseDistance = BridgeDist - 19;
 
         // Grabs all creates and disables them to later reenable a specific ones
-        for (int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < Layout.childCount; i++)
         {
-            for (int j = 0; j < transform.GetChild(i).childCount; j++)
+            for (int j = 0; j < Layout.GetChild(i).childCount; j++)
             {
-                Transform OBJ = transform.GetChild(i).GetChild(j);
+                Transform OBJ = Layout.GetChild(i).GetChild(j);
                 if (OBJ.name.Contains("CratePrefab"))
                 {
                     if(!OBJ.GetComponent<ObjectScript>().isHardmode) CreatesLocation.Add(OBJ.gameObject);
                     OBJ.gameObject.SetActive(false);
                 }
-                else if (OBJ.GetComponent<ObjectScript>().isHardmode) OBJ.gameObject.SetActive(false);
+                else if (OBJ.GetComponent<ObjectScript>() != null) // Bridge Doesn't have a script
+                {
+                    if(OBJ.GetComponent<ObjectScript>().isHardmode) OBJ.gameObject.SetActive(false);
+                }
             }
         }
 
         if (!Levels[levelIndex].GauntletMode)
         {
             if (CreatesLocation.Count < Levels[levelIndex].CreateCompletion)
-                Debug.LogError("Level is not Possible! Create Completion: " + Levels[levelIndex].CreateCompletion + " But only " + CreatesLocation.Count + " Valid Spots");
+                Debug.LogError("Layout is not Possible! Create Completion: " + Levels[levelIndex].CreateCompletion + " But only " + CreatesLocation.Count + " Valid Spots");
             else if (CreatesLocation.Count < Levels[levelIndex].CreateCompletion + Levels[levelIndex].ExtraCreates)
-                Debug.Log("Level does not have enough space of extra crates! " + (CreatesLocation.Count - Levels[levelIndex].CreateCompletion) + "/" + Levels[levelIndex].ExtraCreates + " spawned");
+                Debug.Log("Layout does not have enough space of extra crates! " + (CreatesLocation.Count - Levels[levelIndex].CreateCompletion) + "/" + Levels[levelIndex].ExtraCreates + " spawned");
         }
 
         // Goes through all create locations and chooses a random one to reenable "Spawn"
@@ -126,6 +100,7 @@ public class LevelGenerator : MonoBehaviour
             CreatesLocation.RemoveAt(randomIndex);
         }
 
+        StartCoroutine(GauntletAppear());
         StartCoroutine(PlayTutorial());
 
         GauntletMode = Levels[levelIndex].GauntletMode;
@@ -135,18 +110,16 @@ public class LevelGenerator : MonoBehaviour
             SS.Gauntlet = GauntletMode;
 
             // Enables every hardmode obstacle in the level
-            for (int i = 0; i < transform.childCount; i++)
+            for (int i = 0; i < Layout.childCount; i++)
             {
-                for (int j = 0; j < transform.GetChild(i).childCount; j++)
+                for (int j = 0; j < Layout.GetChild(i).childCount; j++)
                 {
-                    Transform OBJ = transform.GetChild(i).GetChild(j);
+                    Transform OBJ = Layout.GetChild(i).GetChild(j);
                     if (OBJ.name.ToUpper().Contains("CRATE")) OBJ.gameObject.SetActive(false);
                     else if (OBJ.GetComponent<ObjectScript>().isHardmode) OBJ.gameObject.SetActive(true);
                 }
             }
         }
-
-        StartCoroutine(GauntletAppear());
 
         if (LevelDesigner.SinglePlay)
         {
@@ -215,15 +188,15 @@ public class LevelGenerator : MonoBehaviour
     {
         if (!Puffy.GetComponent<Animator>().enabled)
         {
-            if (timeSlider.value > 0)
+            if (progressSlider.value < BridgeDist)
             {
-                timeSlider.value -= Time.deltaTime;
+                progressSlider.value = Puffy.transform.position.x;
                 timerWater.uvRect = new Rect(timerWater.uvRect.position + new Vector2(0.1f, 0) * Time.deltaTime, timerWater.uvRect.size);
             }
-            else GameObject.Find("Game Manager").GetComponent<ScoreScript>().Die();
+            else GameObject.Find("Game Manager").GetComponent<ScoreScript>().Finish();
 
-            Puffy.transform.Translate(new Vector3(startSpeed / 10, 0, 0));
-            ScrollingBackground.mainTextureOffset += new Vector2(startSpeed / 310, 0);
+            Puffy.transform.Translate(new Vector3(movementSpeed / 10, 0, 0));
+            ScrollingBackground.mainTextureOffset += new Vector2(movementSpeed / 310, 0);
 
             if (!GauntletMode)
             {
@@ -277,36 +250,11 @@ public class LevelGenerator : MonoBehaviour
 [System.Serializable]
 class LevelSettings
 {
-    [Range(5, 50)] public int GameplayTime;
     [Range(0, 10)] public int CreateCompletion;
     [Range(0, 5)] public int ExtraCreates;
-
     [Range(0, 4)] public float LevelSpeed;
 
     public bool GauntletMode;
 
-    public float LayoutSeperation;
-
-    public GameObject[] Layouts;
-
-    public GameObject this[int index]
-    {
-        get
-        {
-            return Layouts[index];
-        }
-
-        set
-        {
-            Layouts[index] = value;
-        }
-    }
-
-    public int Length
-    {
-        get
-        {
-            return Layouts.Length;
-        }
-    }
+    public GameObject Layout;
 }

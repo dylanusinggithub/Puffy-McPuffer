@@ -253,104 +253,50 @@ MonoBehaviour:
   PressMeToSetLevelIndex: 0
   levelIndex: 7
   Levels:
-  - GameplayTime: 22
-    CreateCompletion: 4
+  - CreateCompletion: 4
     ExtraCreates: 2
     LevelSpeed: 1.55
     GauntletMode: 0
-    LayoutSeperation: 20
-    Layouts:
-    - {fileID: 7793173836862348141, guid: 312af510616b0604692d0524a29b24a5, type: 3}
-    - {fileID: 5117915890332995674, guid: 1ec9720cee40dc24d98e63fe137ab146, type: 3}
-  - GameplayTime: 32
-    CreateCompletion: 6
+    Layout: {fileID: 4410153189312373858, guid: f74824a27959c6f419bd318602c52125, type: 3}
+  - CreateCompletion: 6
     ExtraCreates: 4
     LevelSpeed: 1.65
     GauntletMode: 0
-    LayoutSeperation: 15
-    Layouts:
-    - {fileID: 658318910959143042, guid: 2e22f93802da1074cac1c91e7ede2dcd, type: 3}
-    - {fileID: 5117915890332995674, guid: 1ec9720cee40dc24d98e63fe137ab146, type: 3}
-    - {fileID: 2357665773328269852, guid: 12f6c86d2fe08e843908681c57e054a8, type: 3}
-    - {fileID: 2723156374974615379, guid: 562c9ca1471b85940addda2e3593045d, type: 3}
-    - {fileID: 7159862058339159186, guid: b5fdcbbc5f7da88409aee0458cc8474b, type: 3}
-  - GameplayTime: 32
-    CreateCompletion: 6
+    Layout: {fileID: 0}
+  - CreateCompletion: 6
     ExtraCreates: 5
     LevelSpeed: 1.75
     GauntletMode: 0
-    LayoutSeperation: 20
-    Layouts:
-    - {fileID: 7159862058339159186, guid: b5fdcbbc5f7da88409aee0458cc8474b, type: 3}
-    - {fileID: 658318910959143042, guid: 2e22f93802da1074cac1c91e7ede2dcd, type: 3}
-    - {fileID: 6922145835368533052, guid: 3f31a9e4bedc909498c065021fd90ec5, type: 3}
-    - {fileID: 2357665773328269852, guid: 12f6c86d2fe08e843908681c57e054a8, type: 3}
-    - {fileID: 2357665773328269852, guid: 73788ba1807992248a40024b2ced088e, type: 3}
-  - GameplayTime: 15
-    CreateCompletion: 5
+    Layout: {fileID: 0}
+  - CreateCompletion: 5
     ExtraCreates: 0
     LevelSpeed: 1.9
     GauntletMode: 1
-    LayoutSeperation: 15
-    Layouts:
-    - {fileID: 5117915890332995674, guid: 388149a63c3e6fa40b93bf8ab2d7676b, type: 3}
-    - {fileID: 658318910959143042, guid: 6df734f3412ed1c49a42407ec42a6e8a, type: 3}
-    - {fileID: 2357665773328269852, guid: ec9ab7d306bac454288156616c31e266, type: 3}
-  - GameplayTime: 15
-    CreateCompletion: 5
+    Layout: {fileID: 0}
+  - CreateCompletion: 5
     ExtraCreates: 0
     LevelSpeed: 1.93
     GauntletMode: 1
-    LayoutSeperation: 15
-    Layouts:
-    - {fileID: 7793173836862348141, guid: 2dd2d6cd3fde8a94390a9c30712f6846, type: 3}
-    - {fileID: 658318910959143042, guid: 6df734f3412ed1c49a42407ec42a6e8a, type: 3}
-    - {fileID: 7159862058339159186, guid: de1b8f1c38a92114b895a731b8258266, type: 3}
-  - GameplayTime: 20
-    CreateCompletion: 6
+    Layout: {fileID: 0}
+  - CreateCompletion: 6
     ExtraCreates: 0
     LevelSpeed: 1.93
     GauntletMode: 1
-    LayoutSeperation: 15
-    Layouts:
-    - {fileID: 2723156374974615379, guid: 3e6dd6ff2d2608743ac69c7bdc7ef71c, type: 3}
-    - {fileID: 2357665773328269852, guid: ec9ab7d306bac454288156616c31e266, type: 3}
-    - {fileID: 2723156374974615379, guid: 3e6dd6ff2d2608743ac69c7bdc7ef71c, type: 3}
-    - {fileID: 2357665773328269852, guid: e0e4d0f6ffaff9b4997d77fc89aefc37, type: 3}
-  - GameplayTime: 28
-    CreateCompletion: 6
+    Layout: {fileID: 0}
+  - CreateCompletion: 6
     ExtraCreates: 0
     LevelSpeed: 1.93
     GauntletMode: 1
-    LayoutSeperation: 15
-    Layouts:
-    - {fileID: 658318910959143042, guid: 6df734f3412ed1c49a42407ec42a6e8a, type: 3}
-    - {fileID: 6922145835368533052, guid: 6b2c336e237beef4d85fdba378188fae, type: 3}
-    - {fileID: 7793173836862348141, guid: 2dd2d6cd3fde8a94390a9c30712f6846, type: 3}
-    - {fileID: 2357665773328269852, guid: e0e4d0f6ffaff9b4997d77fc89aefc37, type: 3}
-    - {fileID: 5117915890332995674, guid: 388149a63c3e6fa40b93bf8ab2d7676b, type: 3}
-  - GameplayTime: 45
-    CreateCompletion: 5
+    Layout: {fileID: 0}
+  - CreateCompletion: 5
     ExtraCreates: 0
     LevelSpeed: 1.93
     GauntletMode: 1
-    LayoutSeperation: 23
-    Layouts:
-    - {fileID: 7793173836862348141, guid: 2dd2d6cd3fde8a94390a9c30712f6846, type: 3}
-    - {fileID: 2357665773328269852, guid: e0e4d0f6ffaff9b4997d77fc89aefc37, type: 3}
-    - {fileID: 7159862058339159186, guid: de1b8f1c38a92114b895a731b8258266, type: 3}
-    - {fileID: 6922145835368533052, guid: 6b2c336e237beef4d85fdba378188fae, type: 3}
-    - {fileID: 5117915890332995674, guid: 388149a63c3e6fa40b93bf8ab2d7676b, type: 3}
-    - {fileID: 2357665773328269852, guid: ec9ab7d306bac454288156616c31e266, type: 3}
-    - {fileID: 658318910959143042, guid: 6df734f3412ed1c49a42407ec42a6e8a, type: 3}
-    - {fileID: 2723156374974615379, guid: 3e6dd6ff2d2608743ac69c7bdc7ef71c, type: 3}
-  FinishLine: {fileID: 8863472203141504064, guid: 7734a7970e6e09143883089a64cbb4d0, type: 3}
-  PlayAnimation: 0
+    Layout: {fileID: 0}
   GauntletMode: 0
   SinglePlay: {fileID: 1273068744}
   LevelBTN: {fileID: 1731607288}
   GauntletText: {fileID: 2086066134}
-  gaunttrue: 0
 --- !u!1 &108228567
 GameObject:
   m_ObjectHideFlags: 0
@@ -4241,7 +4187,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -9, y: 0}
+  m_AnchoredPosition: {x: 9, y: 0}
   m_SizeDelta: {x: 0, y: 43.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &803317979
@@ -6180,7 +6126,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5, y: -17.5}
+  m_AnchoredPosition: {x: -5, y: -17.5}
   m_SizeDelta: {x: -80, y: -35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1487833086
@@ -6581,7 +6527,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.38, y: 3.9}
+  m_AnchoredPosition: {x: -7.38, y: 3.9}
   m_SizeDelta: {x: 170.31, y: 150.99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1636337694
@@ -7828,11 +7774,11 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 0}
   m_HandleRect: {fileID: 803317976}
-  m_Direction: 1
+  m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 100
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8694,7 +8640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6006067238317321212, guid: 2a4da0c721cc18943bd0f05c8908a0cf, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8103784020176895430, guid: 2a4da0c721cc18943bd0f05c8908a0cf, type: 3}
       propertyPath: m_UpdateMode

@@ -85,7 +85,5 @@ public class UnionController : MonoBehaviour
                 waterPecentage += waterSeconds / waterSmoothness;
             }
         }
-
-        waterPecentage = Mathf.RoundToInt(waterPecentage);
     }
 }
