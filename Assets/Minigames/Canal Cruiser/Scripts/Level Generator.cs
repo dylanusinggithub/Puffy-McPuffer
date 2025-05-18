@@ -124,7 +124,7 @@ public class LevelGenerator : MonoBehaviour
         if (LevelDesigner.SinglePlay)
         {
             SinglePlay.SetActive(true);
-            LevelBTN.GetComponent<RectTransform>().anchoredPosition = new Vector2(318, -377);
+            LevelBTN.GetComponent<RectTransform>().anchoredPosition = new Vector2(500, -360);
         }
     }
 
@@ -139,7 +139,7 @@ public class LevelGenerator : MonoBehaviour
         float Delay;
         if (PlayerPrefs.GetString("showTutorial", "False") == "True")
         {
-            Delay = Puffy.GetComponent<Animator>().runtimeAnimatorController.animationClips[0].length;
+            Delay = Puffy.GetComponent<Animator>().runtimeAnimatorController.animationClips[0].length + 1f;
             Puffy.GetComponent<Animator>().Play("Crusier Tutorial", 0, 0);
         }
         else
@@ -149,7 +149,6 @@ public class LevelGenerator : MonoBehaviour
             Delay = Puffy.GetComponent<Animator>().runtimeAnimatorController.animationClips[1].length;
             Puffy.GetComponent<Animator>().Play("Crusier Opening", 0, 0);
         }
-
 
         yield return new WaitForSeconds(Delay - GauntletText.GetComponent<Animator>().runtimeAnimatorController.animationClips[0].length);
 

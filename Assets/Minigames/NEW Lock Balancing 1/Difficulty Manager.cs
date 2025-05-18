@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class DifficultyManager : MonoBehaviour
 {
-    [SerializeField] GameObject SinglePlay;
+    [SerializeField] GameObject SinglePlay, LevelBTN;
 
     [Header("Level Settings")]
     [SerializeField] int LevelIndex;
@@ -12,8 +13,6 @@ public class DifficultyManager : MonoBehaviour
     
     private void OnValidate()
     {
-        
-
         if (PressMeToSetLevel)
         {
             PressMeToSetLevel = false;
@@ -60,7 +59,11 @@ public class DifficultyManager : MonoBehaviour
 
         OD.SelectionAlgorithm = Levels[levelIndex].LayoutSelctions;
 
-        if (LevelDesigner.SinglePlay) SinglePlay.SetActive(true);
+        if (LevelDesigner.SinglePlay)
+        {
+            SinglePlay.SetActive(true);
+            LevelBTN.GetComponent<RectTransform>().anchoredPosition = new Vector2(550, -360);
+        }
     }
 }
 

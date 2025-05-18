@@ -8,7 +8,7 @@ using static PipeEditor;
 public class PipeLayout : MonoBehaviour
 {
     [SerializeField] GameObject GameOverScreen, WinScren;
-    [SerializeField] GameObject SinglePlay;
+    [SerializeField] GameObject SinglePlay, LevelBTN;
 
     [SerializeField] GameObject GauntletText;
     public bool GauntletMode = false;
@@ -92,7 +92,11 @@ public class PipeLayout : MonoBehaviour
 
         StartCoroutine(GauntletAppear());
 
-        if (LevelDesigner.SinglePlay) SinglePlay.SetActive(true);
+        if (LevelDesigner.SinglePlay)
+        {
+            SinglePlay.SetActive(true);
+            LevelBTN.GetComponent<RectTransform>().anchoredPosition = new Vector2(500, -360);
+        }
 
     }
 
