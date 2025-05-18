@@ -1,7 +1,5 @@
-using UnityEngine.Audio;
 using System;
 using UnityEngine;
-using JetBrains.Annotations;
 using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
@@ -11,14 +9,16 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;
 
     LevelGenerator SS;
-
     PipeLayout PL;
 
+    string CurrentSong;
+    bool IsPlaying;
 
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        
+
+        IsPlaying = PlayerPrefs.GetString("EnableMusic") == "True";
 
         if (Instance == null)
         {
@@ -68,7 +68,18 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    
+    void Update()
+    {
+        if (PlayerPrefs.GetString("EnableMusic", "True") == "False")
+        {     
+            StopPlaying(CurrentSong);
+        }
+        else if (PlayerPrefs.GetString("EnableMusic", "True") == "True")
+        {
+            Play(CurrentSong);
+        }
+    }
+
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -95,20 +106,22 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Layouts not found!");
         }
 
-       
         if (scene.name == "Menu")
         {
             Play("Intro");
+            CurrentSong = "Intro";
         }
         else if (scene.name == "NEW Lock balancing 1")
         {
             StopPlaying("Intro");
             Play("Puff");
+            CurrentSong = "Puff";
         }
         else if (scene.name == "Pipe Mania")
         {
             StopPlaying("Intro");
             Play("Puff");
+            CurrentSong = "Puff";
 
             /*if (PL != null && PL.GauntletMode)
             {
@@ -124,6 +137,7 @@ public class AudioManager : MonoBehaviour
         {
             StopPlaying("Intro");
             Play("Puff");
+            CurrentSong = "Puff";
 
             /*if (SS != null && SS.GauntletMode)
             {
@@ -137,7 +151,9 @@ public class AudioManager : MonoBehaviour
         }
         else if (scene.name == "Level Select Map")
         {
+            Play("Intro");
             StopPlaying("Puff");
+            CurrentSong = "Intro";
         }
     }
 
@@ -193,7 +209,4 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume * globalVolume;
         }
     }
-
-    
-
 }

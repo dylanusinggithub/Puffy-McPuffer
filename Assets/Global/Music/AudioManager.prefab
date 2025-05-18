@@ -47,19 +47,19 @@ MonoBehaviour:
   sounds:
   - name: Intro
     clip: {fileID: 8300000, guid: f495780dbbb1b0c4dbad18825a5d6b84, type: 3}
-    volume: 0.3445
+    volume: 0.17225
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: Puff
     clip: {fileID: 8300000, guid: 38f9abacdc272df49a5a6c4d6887d27e, type: 3}
-    volume: 0.689
+    volume: 0.3445
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: Pubert
     clip: {fileID: 8300000, guid: 0a5858b240efe26489a8fa5538adaa43, type: 3}
-    volume: 0.689
+    volume: 0.3445
     pitch: 1
     loop: 1
     source: {fileID: 0}

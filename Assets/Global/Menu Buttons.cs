@@ -1,13 +1,15 @@
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuButtons : MonoBehaviour
 {
     [SerializeField] GameObject OptionsPanel, PausePanel;
     [SerializeField] GameObject PauseBTN;
+
+    [SerializeField] GameObject OptionsEnable;
+    bool justLoaded = true;
 
     Animator FadeTransition;
     AudioSource FadeAS, BTNAS;
@@ -20,12 +22,15 @@ public class MenuButtons : MonoBehaviour
 
         BTNAS.volume = BTNVol * PlayerPrefs.GetFloat("Volume", 1);
 
+        OptionsEnable.GetComponent<Toggle>().isOn = PlayerPrefs.GetString("EnableMusic", "True") == "True";
 
         FadeTransition = GameObject.Find("Fadetransition").GetComponent<Animator>();
         FadeAS = FadeTransition.gameObject.GetComponent<AudioSource>();
         FadeVol = FadeAS.volume;
 
         FadeAS.volume = FadeVol * PlayerPrefs.GetFloat("Volume", 1);
+
+        justLoaded = false;
     }
 
     public void BTN_Exit()
@@ -73,6 +78,15 @@ public class MenuButtons : MonoBehaviour
 
         OptionsPanel.SetActive(!isEnabled);
         PauseBTN.SetActive(isEnabled);
+    }
+
+    public void BTN_OptionsBGMEnable()
+    {
+        if (justLoaded) return; // WHY DOES IT ACTIVATE IT WHEN I DO IT MANUALLY
+
+        BTNAS.volume = BTNVol * PlayerPrefs.GetFloat("Volume", 1);
+        BTNAS.Play();
+        PlayerPrefs.SetString("EnableMusic", (!(PlayerPrefs.GetString("EnableMusic", "True") == "True")).ToString());
     }
 
     IEnumerator Fade()

@@ -1,7 +1,7 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -11,6 +11,10 @@ public class MainMenu : MonoBehaviour
     [SerializeField, Range(0.1f, 2)] float FadeDelay;
 
     GameObject Main, HowToPlay, Options, Credits;
+
+    [SerializeField] GameObject OptionsEnable;
+    bool justLoaded = true; // When I change it manually it activates the OnValueChange Event so this is to stop that
+
     [SerializeField, Range(0.1f, 2)] float HowToPlayTransitionTime;
     float HowToPlayPos;
 
@@ -28,7 +32,9 @@ public class MainMenu : MonoBehaviour
 
         Fadetransition = GameObject.Find("Fadetransition");
         Fadetransition.GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume", 1);
-        
+
+        OptionsEnable.GetComponent<Toggle>().isOn = PlayerPrefs.GetString("EnableMusic", "True") == "True";
+
         AS = GameObject.Find("UI").GetComponent<AudioSource>();
         FadeAS = Fadetransition.GetComponent<AudioSource>();
 
@@ -41,6 +47,8 @@ public class MainMenu : MonoBehaviour
             HowToPlay.transform.GetChild(0).GetChild(i).GetComponent<RectTransform>().anchoredPosition = new Vector2(2160 * i, 30);
             HowToPlay.transform.GetChild(0).GetChild(i).gameObject.SetActive(true);
         }
+
+        justLoaded = false;
     }
 
     void HideUI()
@@ -146,6 +154,15 @@ public class MainMenu : MonoBehaviour
         AS.volume = BTNVol * PlayerPrefs.GetFloat("Volume", 1);
         AS.Play();
         StartCoroutine(FadeTime(Options));
+    }
+
+    public void BTN_OptionsBGMEnable()
+    {
+        if (justLoaded) return; // WHY DOES IT ACTIVATE IT WHEN I DO IT MANUALLY
+
+        AS.volume = BTNVol * PlayerPrefs.GetFloat("Volume", 1);
+        AS.Play();
+        PlayerPrefs.SetString("EnableMusic", (!(PlayerPrefs.GetString("EnableMusic", "True") == "True")).ToString());
     }
 
     public void BTN_Default()
