@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PressMeToSetLevelIndex: 0
-  levelIndex: 7
+  levelIndex: 4
   Levels:
   - CreateCompletion: 4
     ExtraCreates: 2
