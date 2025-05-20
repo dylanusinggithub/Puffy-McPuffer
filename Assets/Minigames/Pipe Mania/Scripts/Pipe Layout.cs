@@ -142,7 +142,7 @@ public class PipeLayout : MonoBehaviour
             Time.timeScale = 0;
             GameOverScreen.SetActive(true);
             GetComponent<AudioSource>().Stop();
-            GameObject.Find("Pause Menu").SetActive(false);
+            GameObject.Find("Pause Icon").SetActive(false);
             this.enabled = false;
         }
 
