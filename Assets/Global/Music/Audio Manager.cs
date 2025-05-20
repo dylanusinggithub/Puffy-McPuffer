@@ -111,7 +111,7 @@ public class AudioManager : MonoBehaviour
             Play("Intro");
             CurrentSong = "Intro";
         }
-        else if (scene.name == "NEW Lock balancing 1")
+        else if (scene.name == "NEW Lock balancing")
         {
             StopPlaying("Intro");
             Play("Puff");
