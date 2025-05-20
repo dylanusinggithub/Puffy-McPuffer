@@ -180,6 +180,7 @@ public class NEWLockBalancing : MonoBehaviour
                 Camera.main.transform.localPosition += new Vector3(0, 8);
 
                 GameObject.Find("Durability").SetActive(false);
+                GameObject.Find("Pause Icon").SetActive(false);
                 Win.SetActive(true);
 
                 Puffy.GetComponent<SpriteRenderer>().flipX = false;
