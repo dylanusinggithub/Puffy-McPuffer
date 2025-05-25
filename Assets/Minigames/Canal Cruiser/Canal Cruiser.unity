@@ -253,17 +253,17 @@ MonoBehaviour:
   PressMeToSetLevelIndex: 0
   levelIndex: 4
   Levels:
-  - CreateCompletion: 4
+  - CreateCompletion: 3
     ExtraCreates: 2
     LevelSpeed: 1.55
     GauntletMode: 0
     Layout: {fileID: 4410153189312373858, guid: f74824a27959c6f419bd318602c52125, type: 3}
-  - CreateCompletion: 6
+  - CreateCompletion: 4
     ExtraCreates: 4
     LevelSpeed: 1.65
     GauntletMode: 0
     Layout: {fileID: 813353078805016185, guid: 93ae5901932f78647becf5101499cfb3, type: 3}
-  - CreateCompletion: 6
+  - CreateCompletion: 4
     ExtraCreates: 5
     LevelSpeed: 1.75
     GauntletMode: 0
