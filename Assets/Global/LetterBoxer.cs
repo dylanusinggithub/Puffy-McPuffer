@@ -1,18 +1,20 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 // Taken Entirely From https://www.youtube.com/watch?v=PClWqhfQlpU
 // Would've done something myself but this is perfect
 public class LetterBoxer : MonoBehaviour
 {
     Vector2 OldScreenRes = Vector2.zero;
-    void FixedUpdate()
+
+    void Awake()
     {
-        if (OldScreenRes != new Vector2(Screen.width, Screen.height)) EditViewport();
+        EditViewport();
     }
 
-    private void Awake()
+    void Update()
     {
-        this.enabled = true;
+        if (OldScreenRes != new Vector2(Screen.width, Screen.height)) EditViewport();
     }
 
     void EditViewport()
