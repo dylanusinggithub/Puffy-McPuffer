@@ -4050,22 +4050,6 @@ MonoBehaviour:
       showTutorial: 0
       Cutscene: []
     - minigames: 1
-      difficulty: 5
-      showTutorial: 0
-      Cutscene: []
-    - minigames: 2
-      difficulty: 5
-      showTutorial: 0
-      Cutscene: []
-    - minigames: 1
-      difficulty: 6
-      showTutorial: 0
-      Cutscene: []
-    - minigames: 2
-      difficulty: 6
-      showTutorial: 0
-      Cutscene: []
-    - minigames: 1
       difficulty: 7
       showTutorial: 0
       Cutscene:
