@@ -186,7 +186,7 @@ public class LevelDesigner : MonoBehaviour
                     GameObject ExtraBTN = GameObject.Find("Menu Buttons");
                     foreach (Button BTN in ExtraBTN.GetComponentsInChildren<Button>()) BTN.interactable = true;
 
-                    GetComponent<Canvas>().sortingOrder = 1;
+                    GetComponent<Canvas>().sortingOrder = 11;
 
                     Destroy(transform.GetChild(0).gameObject);
                     comicIndex = 0;

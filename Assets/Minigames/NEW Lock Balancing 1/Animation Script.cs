@@ -49,8 +49,8 @@ public class AnimationScript : MonoBehaviour
         }
         else
         {
-            createText.GetComponent<TextMeshProUGUI>().text = "Tutorial Demo";
-            createText.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -200, 0);
+            createText.gameObject.SetActive(false);
+            createText.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -170, 0);
 
             Puffy.GetComponent<PuffyController>().enabled = false;
         }
@@ -159,7 +159,7 @@ public class AnimationScript : MonoBehaviour
 
                         GetComponent<NEWLockBalancing>().state = NEWLockBalancing.GameState.Play;
 
-
+                        createText.gameObject.SetActive(true);
                         GameObject.Find("Cinematic Bars").GetComponent<Animation>().Play();
                         this.enabled = false;
                     }
