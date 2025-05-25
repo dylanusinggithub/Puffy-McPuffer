@@ -85,7 +85,7 @@ public class ScoreScript : MonoBehaviour
             if (score == 0)
             {
                 gameOver.SetActive(true);
-                gameOver.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "You have crashed and sunk to the bottom of the canal.";
+                gameOver.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "You failed to avoid the obstacles, be careful when you don't have any cargo!";
             }
             else GameObject.Find("Pause Menu").GetComponent<MenuButtons>().BTN_NextLevel();
         }
@@ -95,12 +95,12 @@ public class ScoreScript : MonoBehaviour
             else if (score == 0)
             {
                 gameOver.SetActive(true);
-                gameOver.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "You have crashed and sunk to the bottom of the canal.";
+                gameOver.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "You failed to avoid the obstacles, be careful when you don't have any cargo!";
             }
             else
             {
                 gameOver.SetActive(true);
-                gameOver.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "You have failed to retrieve the requested amount of cargo.";
+                gameOver.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "You failed to collect " + scoreWin + " cargo!";
             }
         }
 

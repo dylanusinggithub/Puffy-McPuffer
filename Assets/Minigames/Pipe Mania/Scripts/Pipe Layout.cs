@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
@@ -141,6 +142,8 @@ public class PipeLayout : MonoBehaviour
         {
             Time.timeScale = 0;
             GameOverScreen.SetActive(true);
+            if(GauntletMode) GameOverScreen.transform.GetChild(1).GetComponentInChildren<TextMeshProUGUI>().text = "Make sure you don't have more than 4 pipes broken by the end of the timer!";
+
             GetComponent<AudioSource>().Stop();
             GameObject.Find("Pause Icon").SetActive(false);
             this.enabled = false;
@@ -188,7 +191,7 @@ public class PipeLayout : MonoBehaviour
         {
             // Actitvated Twice
             BrokenPipesCount ++;
-            if (Levels[LevelIndex].BrokenPipesCount > (BrokenPipesCount / 2) + 2) return;
+            if (Levels[LevelIndex].BrokenPipesCount - 4 > (BrokenPipesCount / 2)) return;
         }
         else
         {
