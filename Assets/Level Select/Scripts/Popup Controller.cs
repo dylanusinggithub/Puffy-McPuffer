@@ -32,15 +32,6 @@ public class PopupController : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1) || Input.GetKeyUp(KeyCode.Space))
-        {
-            LevelDesigner.Instance.StartLevel();
-        }        
-    }
-
-
     public void ValueUpdated(Slider SliderObject)
     {
         if(this.enabled == false) return;
