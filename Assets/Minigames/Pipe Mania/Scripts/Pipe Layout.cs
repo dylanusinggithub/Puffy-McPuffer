@@ -140,9 +140,24 @@ public class PipeLayout : MonoBehaviour
         }
         else
         {
+            if (GauntletMode)
+            {
+                if (Levels[LevelIndex].BrokenPipesCount - 4 < (BrokenPipesCount / 2))
+                {
+                    Time.timeScale = 0;
+                    if (Levels[LevelIndex].GauntletMode) GameObject.Find("Pause Menu").GetComponent<MenuButtons>().BTN_NextLevel();
+                    else WinScren.SetActive(true);
+
+                    GameObject.Find("Pause Icon").SetActive(false);
+
+                    this.enabled = false;
+                    return;
+                }
+                else GameOverScreen.transform.GetChild(1).GetComponentInChildren<TextMeshProUGUI>().text = "Make sure you don't have more than 4 pipes broken by the end of the timer!";
+            }
+
             Time.timeScale = 0;
             GameOverScreen.SetActive(true);
-            if(GauntletMode) GameOverScreen.transform.GetChild(1).GetComponentInChildren<TextMeshProUGUI>().text = "Make sure you don't have more than 4 pipes broken by the end of the timer!";
 
             GetComponent<AudioSource>().Stop();
             GameObject.Find("Pause Icon").SetActive(false);
@@ -173,6 +188,13 @@ public class PipeLayout : MonoBehaviour
 
     public void CheckPipes()
     {
+        if (Levels[LevelIndex].GauntletMode)
+        {
+            // Actitvated Twice
+            BrokenPipesCount++;
+            return;
+        }
+
         // Goes through every pipe and if they're all solved then complete the game
         bool Solved = true, Fixed = true;
         foreach(Transform child in transform.GetChild(0).GetComponentInChildren<Transform>())
@@ -187,16 +209,7 @@ public class PipeLayout : MonoBehaviour
 
         if(Fixed) GetComponent<AudioSource>().Stop(); // Stops leak sound
 
-        if (Levels[LevelIndex].GauntletMode)
-        {
-            // Actitvated Twice
-            BrokenPipesCount ++;
-            if (Levels[LevelIndex].BrokenPipesCount - 4 > (BrokenPipesCount / 2)) return;
-        }
-        else
-        {
-            if (!Solved || Time.timeScale == 0) return;
-        }
+        if (!Solved || Time.timeScale == 0) return;
         
 
         Time.timeScale = 0;

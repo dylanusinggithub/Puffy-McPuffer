@@ -154,7 +154,6 @@ public class LevelDesigner : MonoBehaviour
 
     public void StartLevel()
     {
-
         // Displays the Starting comic before entering the level
         if (minigameIndex == -1)
         {
@@ -350,6 +349,7 @@ public class LevelDesigner : MonoBehaviour
                     GOComic.transform.parent = transform;
 
                     GOComic.AddComponent<PopupController>();
+                    StartCoroutine(AssignButtons());
 
                     if (GOComic.GetComponent<RectTransform>() != null)
                     {
@@ -368,8 +368,44 @@ public class LevelDesigner : MonoBehaviour
                 break;
         }
     }
-}
 
+    IEnumerator AssignButtons()
+    {
+        yield return new WaitForEndOfFrame();
+
+        GameObject.Find("Next").GetComponent<Button>().onClick.AddListener(StartLevel);
+        GameObject.Find("Skip").GetComponent<Button>().onClick.AddListener(SkipToLevel);
+
+        if (comicIndex > 1) GameObject.Find("Back").GetComponent<Button>().onClick.AddListener(GoBack);
+        else Destroy(GameObject.Find("Back"));
+    }
+
+    public void SkipToLevel()
+    {
+        // If intro
+        if (levelIndex < 0)
+        {
+            comicIndex = 1000; // if we ever make more than 1K comics i'll be impressed
+            StartLevel();
+        }
+        else
+        {
+            comicIndex = 0;
+            PlayerPrefs.SetString("advanceToNextLevel", "True");
+            LoadLevel();
+        }
+
+    }
+
+    public void GoBack()
+    {
+        if (comicIndex > 1) 
+        {
+            comicIndex -= 2; // Gets incremented later
+            StartLevel();
+        }
+    }
+}
 
 // Same as Canal Cruiser's Level Generator thingy, the original link is in there
 [System.Serializable]
