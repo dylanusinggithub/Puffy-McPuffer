@@ -755,9 +755,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3645346034678270983}
     m_Modifications:
+    - target: {fileID: 1951247708664477745, guid: 23a49c0ee088a854580797ed99e68d10, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2200704906195754997, guid: 23a49c0ee088a854580797ed99e68d10, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.20000076
+      objectReference: {fileID: 0}
     - target: {fileID: 5105779424734141563, guid: 23a49c0ee088a854580797ed99e68d10, type: 3}
       propertyPath: m_Name
       value: Buttons
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964643848931315374, guid: 23a49c0ee088a854580797ed99e68d10, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.20000076
       objectReference: {fileID: 0}
     - target: {fileID: 7401787355002072689, guid: 23a49c0ee088a854580797ed99e68d10, type: 3}
       propertyPath: m_Pivot.x
@@ -838,6 +850,10 @@ PrefabInstance:
     - target: {fileID: 7401787355002072689, guid: 23a49c0ee088a854580797ed99e68d10, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066736406574676617, guid: 23a49c0ee088a854580797ed99e68d10, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
