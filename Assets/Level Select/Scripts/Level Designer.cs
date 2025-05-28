@@ -419,9 +419,9 @@ public class LevelDesigner : MonoBehaviour
         }
         else
         {
-            comicIndex = 0;
-            PlayerPrefs.SetString("advanceToNextLevel", "True");
-            LoadLevel();
+            // Displays the very last comic, the how to play
+            comicIndex = Levels[levelIndex].StartScreen.Count - 1;
+            StartLevel();
         }
 
     }

@@ -153,11 +153,12 @@ public class PipeLayout : MonoBehaviour
                     this.enabled = false;
                     return;
                 }
-                else GameOverScreen.transform.GetChild(1).GetComponentInChildren<TextMeshProUGUI>().text = "Make sure you don't have more than 4 pipes broken by the end of the timer!";
             }
 
             Time.timeScale = 0;
+
             GameOverScreen.SetActive(true);
+            if(GauntletMode) GameOverScreen.transform.GetChild(1).GetComponentInChildren<TextMeshProUGUI>().text = "Make sure you don't have more than 4 pipes broken by the end of the timer!";
 
             GetComponent<AudioSource>().Stop();
             GameObject.Find("Pause Icon").SetActive(false);
