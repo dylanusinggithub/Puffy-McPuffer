@@ -155,7 +155,6 @@ public class LevelSelector : MonoBehaviour
         if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1) anim.Play("Appear", 0, 1); // Replays Animation only after it completes
 
         PreviewUI.GetChild(1).gameObject.SetActive(false);
-        PreviewUI.GetChild(2).gameObject.SetActive(false);
 
         // Removes previous LevelPreview
         float clipLength = anim.runtimeAnimatorController.animationClips[0].length;

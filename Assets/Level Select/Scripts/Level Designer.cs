@@ -31,6 +31,21 @@ public class LevelDesigner : MonoBehaviour
         if (JustLoaded) return;
 
         FreePlay = !FreePlay;
+        if (!FreePlay && transform.childCount > 0)
+        {
+            Animator anim = transform.GetChild(0).GetComponentInChildren<Animator>();
+
+            anim.SetFloat("Speed", -1);
+            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1) anim.Play("Appear", 0, 1); // Replays Animation only after it completes
+
+            anim.transform.GetChild(0).gameObject.SetActive(false);
+
+            // Removes previous LevelPreview
+            float clipLength = anim.runtimeAnimatorController.animationClips[0].length;
+            float PlaybackPercent = Mathf.Clamp01(anim.GetCurrentAnimatorStateInfo(0).normalizedTime); // Only care if it's midway
+            float DestoryTime = clipLength * PlaybackPercent;
+            Destroy(transform.GetChild(0).gameObject, DestoryTime);
+        }
 
         GameObject LevelBTNs = GameObject.Find("Canvas");
         foreach (Transform t in LevelBTNs.GetComponentInChildren<Transform>())
