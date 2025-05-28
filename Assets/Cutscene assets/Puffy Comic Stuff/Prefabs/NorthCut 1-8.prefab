@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '"But seriously! We need to have a real talk about to those Crabbit Canals!"'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6615787160d87394b993bb6b1a883405, type: 2}
-  m_sharedMaterial: {fileID: -2647114022217580940, guid: 6615787160d87394b993bb6b1a883405, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4f1b2398bf3a76b4b982ed3f6ecd3c86, type: 2}
+  m_sharedMaterial: {fileID: 760669849825750077, guid: 4f1b2398bf3a76b4b982ed3f6ecd3c86, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: -19.97
+  m_lineSpacing: -39.3
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -224,8 +224,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '"Phew, that was a real close one Puffy!"'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6615787160d87394b993bb6b1a883405, type: 2}
-  m_sharedMaterial: {fileID: -2647114022217580940, guid: 6615787160d87394b993bb6b1a883405, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4f1b2398bf3a76b4b982ed3f6ecd3c86, type: 2}
+  m_sharedMaterial: {fileID: 760669849825750077, guid: 4f1b2398bf3a76b4b982ed3f6ecd3c86, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 65.3
+  m_lineSpacing: -39.12
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0

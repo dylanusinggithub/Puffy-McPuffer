@@ -145,7 +145,6 @@ GameObject:
   - component: {fileID: 5867943860444199359}
   - component: {fileID: 1529853221868060192}
   - component: {fileID: 9139759484580828343}
-  - component: {fileID: 7966482494276181457}
   m_Layer: 5
   m_Name: Caletext2
   m_TagString: Untagged
@@ -169,7 +168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -622, y: 262}
+  m_AnchoredPosition: {x: -554, y: 308}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1529853221868060192
@@ -202,8 +201,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: But then from the storm Puffy heard something...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6615787160d87394b993bb6b1a883405, type: 2}
-  m_sharedMaterial: {fileID: -2647114022217580940, guid: 6615787160d87394b993bb6b1a883405, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4f1b2398bf3a76b4b982ed3f6ecd3c86, type: 2}
+  m_sharedMaterial: {fileID: 760669849825750077, guid: 4f1b2398bf3a76b4b982ed3f6ecd3c86, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -239,7 +238,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 80.9
+  m_lineSpacing: -49.4
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -269,27 +268,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!95 &7966482494276181457
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 566369992392852091}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: da5568ab743a1bf41838347c02047703, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2338594534902572183
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,7 +801,6 @@ GameObject:
   - component: {fileID: 5995649932886572077}
   - component: {fileID: 1656840433269970307}
   - component: {fileID: 8597437768523684810}
-  - component: {fileID: 1137110226501794895}
   m_Layer: 5
   m_Name: CaleText1
   m_TagString: Untagged
@@ -847,7 +824,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -760.3, y: 238}
+  m_AnchoredPosition: {x: -760.3, y: 306}
   m_SizeDelta: {x: 138.8, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1656840433269970307
@@ -878,17 +855,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Puffy held on as long as he could. But alas he begun to reach his wits
-    end....
+  m_text: Puffy held on as long as he could. But he begun to reach his wits end....
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6615787160d87394b993bb6b1a883405, type: 2}
-  m_sharedMaterial: {fileID: -2647114022217580940, guid: 6615787160d87394b993bb6b1a883405, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4f1b2398bf3a76b4b982ed3f6ecd3c86, type: 2}
+  m_sharedMaterial: {fileID: 760669849825750077, guid: 4f1b2398bf3a76b4b982ed3f6ecd3c86, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -918,7 +894,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 65.3
+  m_lineSpacing: -42.8
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -948,27 +924,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!95 &1137110226501794895
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6838407773102714209}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bbde9ebc6a084104ea527d12a882364d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7049155811578991468
 GameObject:
   m_ObjectHideFlags: 0

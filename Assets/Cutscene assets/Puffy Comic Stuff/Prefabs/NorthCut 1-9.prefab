@@ -141,7 +141,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -737.1, y: 239}
+  m_AnchoredPosition: {x: -737.1, y: 319}
   m_SizeDelta: {x: 278.2, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4523445040531022677
@@ -172,11 +172,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: And so Puffy, Puff gathered all the boats around to let those stuck up
-    canals know whats up!
+  m_text: And so Puffy and Puff gathered all the boats around to let those stuck
+    up canals know whats up!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6615787160d87394b993bb6b1a883405, type: 2}
-  m_sharedMaterial: {fileID: -2647114022217580940, guid: 6615787160d87394b993bb6b1a883405, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4f1b2398bf3a76b4b982ed3f6ecd3c86, type: 2}
+  m_sharedMaterial: {fileID: 760669849825750077, guid: 4f1b2398bf3a76b4b982ed3f6ecd3c86, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 70.7
+  m_lineSpacing: -37.2
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -524,7 +524,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -622, y: 239}
+  m_AnchoredPosition: {x: -622, y: 319}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2424431806897516870
@@ -557,8 +557,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: So that no other boat may face The North Sea as puffy did...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6615787160d87394b993bb6b1a883405, type: 2}
-  m_sharedMaterial: {fileID: -2647114022217580940, guid: 6615787160d87394b993bb6b1a883405, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4f1b2398bf3a76b4b982ed3f6ecd3c86, type: 2}
+  m_sharedMaterial: {fileID: 760669849825750077, guid: 4f1b2398bf3a76b4b982ed3f6ecd3c86, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -594,7 +594,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 66.2
+  m_lineSpacing: -28.5
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
