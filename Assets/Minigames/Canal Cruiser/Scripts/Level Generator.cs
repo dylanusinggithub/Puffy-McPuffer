@@ -124,10 +124,10 @@ public class LevelGenerator : MonoBehaviour
         if (LevelDesigner.SinglePlay)
         {
             SinglePlay.SetActive(true);
-            LevelBTN.GetComponent<RectTransform>().anchoredPosition = new Vector2(500, -360);
+            LevelBTN.GetComponent<RectTransform>().anchoredPosition = new Vector2(550, -350);
         }
     }
-
+        
     IEnumerator PlayTutorial()
     {
         // Disables Pause Button
