@@ -68,7 +68,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: ...Grumble...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6615787160d87394b993bb6b1a883405, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4f1b2398bf3a76b4b982ed3f6ecd3c86, type: 2}
   m_sharedMaterial: {fileID: -2647114022217580940, guid: 6615787160d87394b993bb6b1a883405, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_margin: {x: -190.7586, y: 48.32702, z: -187.96481, w: 3.8924007}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!95 &6041067432746448436
@@ -1288,7 +1288,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Further Up ahead...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6615787160d87394b993bb6b1a883405, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4f1b2398bf3a76b4b982ed3f6ecd3c86, type: 2}
   m_sharedMaterial: {fileID: -2647114022217580940, guid: 6615787160d87394b993bb6b1a883405, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1352,7 +1352,7 @@ MonoBehaviour:
   m_margin: {x: -190.7586, y: -151.12177, z: -1116.2246, w: 86.362366}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!95 &3634289271850295345
@@ -1444,7 +1444,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: ...Grumble...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6615787160d87394b993bb6b1a883405, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4f1b2398bf3a76b4b982ed3f6ecd3c86, type: 2}
   m_sharedMaterial: {fileID: -2647114022217580940, guid: 6615787160d87394b993bb6b1a883405, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1508,7 +1508,7 @@ MonoBehaviour:
   m_margin: {x: -190.7586, y: 21.854525, z: -220.26785, w: 86.362366}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!95 &4406924422454428580
@@ -1600,7 +1600,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '"Oi, Mr.Union?! Where are you?"'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6615787160d87394b993bb6b1a883405, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4f1b2398bf3a76b4b982ed3f6ecd3c86, type: 2}
   m_sharedMaterial: {fileID: -2647114022217580940, guid: 6615787160d87394b993bb6b1a883405, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1664,7 +1664,7 @@ MonoBehaviour:
   m_margin: {x: -190.7586, y: -151.12177, z: -1116.2246, w: 86.362366}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!95 &4150358849482905118
