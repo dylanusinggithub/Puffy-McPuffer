@@ -21,6 +21,9 @@ public class AnimationScript : MonoBehaviour
 
     float timeWait;
 
+    [SerializeField]
+    GameObject GauntletPopup;
+
     GameObject Puffy, createText;
     float startSpeed = -0.04f;
     Vector2 spawnPos = new Vector2(0, 2);
@@ -44,6 +47,7 @@ public class AnimationScript : MonoBehaviour
             GetComponent<ObjectDropper>().enabled = true;
 
             GetComponent<NEWLockBalancing>().state = NEWLockBalancing.GameState.Play;
+            Destroy(GauntletPopup, GauntletPopup.GetComponent<Animator>().runtimeAnimatorController.animationClips[0].length);
 
             this.enabled = false;
         }
@@ -51,6 +55,7 @@ public class AnimationScript : MonoBehaviour
         {
             createText.gameObject.SetActive(false);
             createText.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -170, 0);
+            GauntletPopup.SetActive(false);
 
             Puffy.GetComponent<PuffyController>().enabled = false;
         }
@@ -128,6 +133,9 @@ public class AnimationScript : MonoBehaviour
                         Obstacle.AddComponent<BoxCollider2D>().isTrigger = true;
 
                         state = AnimationState.WaitObstacle;
+
+                        GauntletPopup.SetActive(true);
+                        Destroy(GauntletPopup, GauntletPopup.GetComponent<Animator>().runtimeAnimatorController.animationClips[0].length);
                     }
                     else timeWait -= Time.deltaTime;
                 }
@@ -138,18 +146,19 @@ public class AnimationScript : MonoBehaviour
                     if (Puffy.GetComponent<Collider2D>().OverlapPoint(Obstacle.transform.position)) // Hits puffy
                     {
 
-                        // I KNOW THIS IS HORRIBLE I JUST WANT THIS DONE
-                        // Creates audio player object and assgins the clip given to the original colliding
-                        // object so if it's deleted before it finishes playing it wont be cut off
-                        GameObject AudioPlayer = new GameObject(Obstacle.name + " Audio Player");
+                        //// I KNOW THIS IS HORRIBLE I JUST WANT THIS DONE
+                        //// Creates audio player object and assgins the clip given to the original colliding
+                        //// object so if it's deleted before it finishes playing it wont be cut off
+                        //GameObject AudioPlayer = new GameObject(Obstacle.name + " Audio Player");
 
-                        AudioPlayer.AddComponent<AudioSource>();
+                        //AudioPlayer.AddComponent<AudioSource>();
 
-                        AudioPlayer.GetComponent<AudioSource>().clip = Obstacle.GetComponent<AudioSource>().clip;
-                        AudioPlayer.GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume", 0.5f);
-                        AudioPlayer.GetComponent<AudioSource>().Play();
+                        //AudioPlayer.GetComponent<AudioSource>().clip = Obstacle.GetComponent<AudioSource>().clip;
+                        //AudioPlayer.GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume", 0.5f);
+                        //AudioPlayer.GetComponent<AudioSource>().Play();
 
-                        Destroy(AudioPlayer, AudioPlayer.GetComponent<AudioSource>().clip.length);
+                        //Destroy(AudioPlayer, AudioPlayer.GetComponent<AudioSource>().clip.length);
+                        Destroy(Obstacle, 2f);
 
                         GetComponent<NEWLockBalancing>().CollectObject(Obstacle);
 
