@@ -646,6 +646,7 @@ MonoBehaviour:
   createWarning: {fileID: 7489723503762382315, guid: 6e298be917d1b8746b7bd438816ecc63, type: 3}
   obstacleObject: {fileID: 3120539887504473735, guid: 50c03c996ad29c64bab60d230d26cc09, type: 3}
   obstacleWarning: {fileID: 7489723503762382315, guid: 826a399fbe62bdc4380b9860776a0cb2, type: 3}
+  GauntletPopup: {fileID: 1348590239}
   state: 0
 --- !u!114 &26882341
 MonoBehaviour:
@@ -9791,6 +9792,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1348590239 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6006067238317321212, guid: 2a4da0c721cc18943bd0f05c8908a0cf, type: 3}
+  m_PrefabInstance: {fileID: 1723652558}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1377340407
 GameObject:
   m_ObjectHideFlags: 0
