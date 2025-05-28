@@ -165,11 +165,7 @@ public class LevelDesigner : MonoBehaviour
             foreach (Transform t in LevelBTNs.GetComponentInChildren<Transform>())
             {
                 LevelSelector BTN = t.GetComponentInChildren<LevelSelector>();
-                if (BTN != null)
-                {
-                    BTN.enabled = false;
-                    BTN.GetComponent<Button>().enabled = false;
-                }
+                if (BTN != null) BTN.GetComponent<Button>().enabled = false;
             }
 
             GameObject ExtraBTN = GameObject.Find("Menu Buttons");
@@ -205,8 +201,6 @@ public class LevelDesigner : MonoBehaviour
 
                     GameObject.Find("Clouds Canvas").GetComponent<Canvas>().sortingOrder = 1;
                     GameObject.Find("Menu Buttons").transform.SetParent(GameObject.Find("CLOUDS").transform);
-
-                    GameObject.Find("Union").GetComponentInChildren<LevelSelector>().enabled = true;
 
                     // Renables the animators in case they were disabled before hand with a comics
                     GameObject LevelBTNs = GameObject.Find("Canvas");
