@@ -23,15 +23,16 @@ public class LevelSelector : MonoBehaviour
         ComicPanel = GameObject.Find("Comic Panels");
         LD = ComicPanel.GetComponent<LevelDesigner>();
         
-
         EnableOrDisableLevel();
     }
    
     public void EnableOrDisableLevel()
     {
-        if (PlayerPrefs.GetInt("Levels Unlocked", 0) < LevelIndex)
+        if (PlayerPrefs.GetInt("Levels Unlocked", 0) < LevelIndex && !LevelDesigner.FreePlay)
         {
             GetComponent<Button>().interactable = false;
+            GetComponent<Image>().color = GetComponent<Button>().colors.disabledColor;
+
             GetComponent<Button>().enabled = false;
 
             // Disables signs
@@ -42,6 +43,8 @@ public class LevelSelector : MonoBehaviour
         else
         {
             GetComponent<Button>().interactable = true;
+            GetComponent<Image>().color = GetComponent<Button>().colors.normalColor;
+
             GetComponent<Button>().enabled = true;
 
             // Enables signs
@@ -137,7 +140,7 @@ public class LevelSelector : MonoBehaviour
         Preview.GetComponent<RectTransform>().anchoredPosition = new Vector2(-300, -100);
         Preview.GetComponent<RectTransform>().localScale = Vector3.one * 2.5f;
 
-        if (PlayerPrefs.GetInt("Levels Unlocked", 0) > LevelIndex) StartCoroutine(DisplayButton());
+        if (PlayerPrefs.GetInt("Levels Unlocked", 0) > LevelIndex || LevelDesigner.FreePlay) StartCoroutine(DisplayButton());
         else StartCoroutine(DisplayRegularButton());
     }
 

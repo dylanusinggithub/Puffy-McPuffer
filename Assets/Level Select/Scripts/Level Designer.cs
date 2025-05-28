@@ -20,8 +20,25 @@ public class LevelDesigner : MonoBehaviour
     static public bool AdvanceToNextLevel = false;
     static public bool SinglePlay = false;
 
+    static public bool FreePlay;
+    bool JustLoaded = true;
+
     AudioSource BTNAS;
     float BTNVol;
+
+    public void BTN_FreePlay()
+    {
+        if (JustLoaded) return;
+
+        FreePlay = !FreePlay;
+
+        GameObject LevelBTNs = GameObject.Find("Canvas");
+        foreach (Transform t in LevelBTNs.GetComponentInChildren<Transform>())
+        {
+            LevelSelector BTN = t.GetComponentInChildren<LevelSelector>();
+            if (BTN != null) BTN.EnableOrDisableLevel();
+        }
+    }
 
     public void BTN_Exit()
     {
@@ -55,6 +72,7 @@ public class LevelDesigner : MonoBehaviour
         BTNVol = BTNAS.volume;
 
         GameObject.Find("CLOUDS").GetComponent<AudioSource>().volume *= PlayerPrefs.GetFloat("Volume", 1);
+        GameObject.Find("FreePlay").GetComponent<Toggle>().isOn = FreePlay;
 
         // Sets Levels Unlocked to 0 if you're playing for the first time
         if (!PlayerPrefs.HasKey("Levels Unlocked") || PlayerPrefs.GetInt("Levels Unlocked") < 0)
@@ -93,6 +111,8 @@ public class LevelDesigner : MonoBehaviour
             NextLevel();
         }
         else SinglePlay = false;
+
+        JustLoaded = false;
     }
 
     void NextLevel()
