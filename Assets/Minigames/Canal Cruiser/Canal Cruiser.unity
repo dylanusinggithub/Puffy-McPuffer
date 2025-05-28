@@ -8801,55 +8801,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 879568901893082047, guid: 2a4da0c721cc18943bd0f05c8908a0cf, type: 3}
       propertyPath: m_text
-      value: Avoid
+      value: Avoid!
       objectReference: {fileID: 0}
-    - target: {fileID: 879568901893082047, guid: 2a4da0c721cc18943bd0f05c8908a0cf, type: 3}
-      propertyPath: m_fontSize
-      value: 147.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 879568901893082047, guid: 2a4da0c721cc18943bd0f05c8908a0cf, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 4f1b2398bf3a76b4b982ed3f6ecd3c86, type: 2}
-    - target: {fileID: 879568901893082047, guid: 2a4da0c721cc18943bd0f05c8908a0cf, type: 3}
-      propertyPath: m_fontStyle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 879568901893082047, guid: 2a4da0c721cc18943bd0f05c8908a0cf, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 147.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 879568901893082047, guid: 2a4da0c721cc18943bd0f05c8908a0cf, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 760669849825750077, guid: 4f1b2398bf3a76b4b982ed3f6ecd3c86, type: 2}
-    - target: {fileID: 879568901893082047, guid: 2a4da0c721cc18943bd0f05c8908a0cf, type: 3}
+    - target: {fileID: 3376024663434309551, guid: 2a4da0c721cc18943bd0f05c8908a0cf, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2645375217413233411, guid: 2a4da0c721cc18943bd0f05c8908a0cf, type: 3}
-      propertyPath: m_Name
-      value: Avoid
+    - target: {fileID: 5700984954449483260, guid: 2a4da0c721cc18943bd0f05c8908a0cf, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5770920109451912666, guid: 2a4da0c721cc18943bd0f05c8908a0cf, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6006067238317321212, guid: 2a4da0c721cc18943bd0f05c8908a0cf, type: 3}
       propertyPath: m_Name
       value: Gauntlet Popup
-      objectReference: {fileID: 0}
-    - target: {fileID: 6006067238317321212, guid: 2a4da0c721cc18943bd0f05c8908a0cf, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6786244790074566800, guid: 2a4da0c721cc18943bd0f05c8908a0cf, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -37
-      objectReference: {fileID: 0}
-    - target: {fileID: 7050913678193309166, guid: 2a4da0c721cc18943bd0f05c8908a0cf, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8103784020176895430, guid: 2a4da0c721cc18943bd0f05c8908a0cf, type: 3}
-      propertyPath: m_UpdateMode
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

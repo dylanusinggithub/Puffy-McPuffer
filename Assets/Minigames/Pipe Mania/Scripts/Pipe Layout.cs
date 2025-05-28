@@ -12,7 +12,7 @@ public class PipeLayout : MonoBehaviour
     [SerializeField] GameObject SinglePlay, LevelBTN;
 
     [SerializeField] GameObject GauntletText;
-    public bool GauntletMode = false;
+    [HideInInspector] public bool GauntletMode = false;
 
     [Header("Pipe Settings")] 
     [SerializeField] GameObject ClickParticle;
@@ -104,7 +104,7 @@ public class PipeLayout : MonoBehaviour
     IEnumerator GauntletAppear()
     {
         // Disables Pause Button
-        GameObject.Find("Pause Menu").transform.GetChild(1).gameObject.SetActive(true);
+        GameObject.Find("Pause Menu").transform.GetChild(1).gameObject.SetActive(false);
 
         Time.timeScale = 0;
         GauntletText.SetActive(true);
