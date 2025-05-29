@@ -158,7 +158,12 @@ public class PipeLayout : MonoBehaviour
             Time.timeScale = 0;
 
             GameOverScreen.SetActive(true);
-            if(GauntletMode) GameOverScreen.transform.GetChild(1).GetComponentInChildren<TextMeshProUGUI>().text = "Make sure you don't have more than 4 pipes broken by the end of the timer!";
+            if (GauntletMode)
+            {
+                GameOverScreen.transform.GetChild(1).GetComponentInChildren<TextMeshProUGUI>().text = "Make sure you don't have more than 4 pipes broken by the end of the timer!";
+                GameOverScreen.transform.GetChild(1).GetComponent<RectTransform>().anchoredPosition = new Vector2(243f, 52.86f);
+                GameOverScreen.transform.GetChild(1).GetComponent<RectTransform>().sizeDelta = new Vector2(383.55f, 105.73f);
+            }
 
             GetComponent<AudioSource>().Stop();
             GameObject.Find("Pause Icon").SetActive(false);
