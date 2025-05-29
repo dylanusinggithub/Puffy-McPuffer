@@ -145,7 +145,7 @@ public class PuffyController : MonoBehaviour
         {
             Velocity += Input.GetAxis("Horizontal") * ((float)keyStrength / 1000);
         }
-        else if (WS.Angle != 0) Velocity += -WS.Angle/1000;
+        else if (WS.Angle != 0) Velocity += -WS.Angle / ((100 / (float)mouseStrength) * 700);
         else
         {
             // Decelerates by X amount (divided by 100 to make it more reasoanble)
