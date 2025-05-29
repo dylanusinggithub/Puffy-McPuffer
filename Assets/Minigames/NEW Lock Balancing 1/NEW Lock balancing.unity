@@ -693,7 +693,7 @@ MonoBehaviour:
     perlinStepSize: 0.2
     strength: 15
   - LockSize: 1.3
-    CreateCompletion: 7
+    CreateCompletion: 6
     burstDelay: 1
     burstSeparationDelay: 1
     burstMaxLimit: 4
