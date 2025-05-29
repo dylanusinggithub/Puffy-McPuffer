@@ -19,6 +19,9 @@ public class AnimationScript : MonoBehaviour
     GameObject obstacleWarning;
     GameObject Obstacle;
 
+    GameObject Wheel, Durability;
+
+
     float timeWait;
 
     [SerializeField]
@@ -55,7 +58,15 @@ public class AnimationScript : MonoBehaviour
         {
             createText.gameObject.SetActive(false);
             createText.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -170, 0);
+
             GauntletPopup.SetActive(false);
+            GameObject.Find("Pause Menu").transform.GetChild(1).gameObject.SetActive(false);
+
+            Wheel = GameObject.Find("Wheel");
+            Wheel.SetActive(false);
+
+            Durability = GameObject.Find("Durability");
+            Durability.SetActive(false);
 
             Puffy.GetComponent<PuffyController>().enabled = false;
         }
@@ -167,8 +178,13 @@ public class AnimationScript : MonoBehaviour
                         GetComponent<ObjectDropper>().enabled = true;
 
                         GetComponent<NEWLockBalancing>().state = NEWLockBalancing.GameState.Play;
+                        GameObject.Find("Pause Menu").transform.GetChild(1).gameObject.SetActive(true);
 
                         createText.gameObject.SetActive(true);
+
+                        Wheel.SetActive(true);
+                        Durability.SetActive(true);
+
                         GameObject.Find("Cinematic Bars").GetComponent<Animation>().Play();
                         this.enabled = false;
                     }

@@ -9518,10 +9518,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2108912652}
     m_Modifications:
-    - target: {fileID: 3347681156462180495, guid: 362df32e4d11ad74f8c8281cea6ad2b2, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 75
-      objectReference: {fileID: 0}
     - target: {fileID: 4498173487447854929, guid: 362df32e4d11ad74f8c8281cea6ad2b2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -9602,17 +9598,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6297899726348879125, guid: 362df32e4d11ad74f8c8281cea6ad2b2, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 75
-      objectReference: {fileID: 0}
     - target: {fileID: 6553937393803009024, guid: 362df32e4d11ad74f8c8281cea6ad2b2, type: 3}
       propertyPath: m_Name
       value: Cinematic Bars
-      objectReference: {fileID: 0}
-    - target: {fileID: 6553937393803009024, guid: 362df32e4d11ad74f8c8281cea6ad2b2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10401,11 +10389,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDist: 5
   healthMax: 5
-  HitParticle: {fileID: 684170006893336315, guid: a409aea2148a4e047905ff1d0a2e8ab2, type: 3}
+  HitParticle: {fileID: 684170006893336315, guid: 1e5167140fcdbcd4c9d2c3398723f2e0, type: 3}
   StartColour: {r: 0.32219383, g: 0.6132076, b: 0, a: 1}
   EndColour: {r: 1, g: 0, b: 0, a: 1}
   keyStrength: 100
-  mouseStrength: 75
+  mouseStrength: 80
   mouseMaxDist: 2.15
   mouseInverted: 0
   decelerationAmount: 1
