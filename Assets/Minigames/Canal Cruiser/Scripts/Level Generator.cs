@@ -150,6 +150,7 @@ public class LevelGenerator : MonoBehaviour
             Puffy.GetComponent<Animator>().Play("Crusier Opening", 0, 0);
         }
 
+        GauntletText.SetActive(true);
         yield return new WaitForSeconds(Delay - GauntletText.GetComponent<Animator>().runtimeAnimatorController.animationClips[0].length);
 
         GauntletText.SetActive(true);
